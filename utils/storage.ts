@@ -1,25 +1,43 @@
-import { Directory, File, Paths } from 'expo-file-system';
+import { Platform } from 'react-native';
 
-// expo-file-system is a core Expo module available in Expo Go and all native builds.
-// SDK 54 uses a class-based API: File / Directory / Paths.
+// Web: use localStorage (synchronous, always available in browsers).
+// Native: use expo-file-system/legacy (classic URI-based API, works in Expo Go).
 
-const storeDir = new Directory(Paths.document, 'bac_store');
+let _getItem: (key: string) => Promise<string | null>;
+let _setItem: (key: string, value: string) => Promise<void>;
 
-function ensureDir(): void {
-  if (!storeDir.exists) {
-    storeDir.create({ idempotent: true });
-  }
+if (Platform.OS === 'web') {
+  _getItem = async (key) => localStorage.getItem(key);
+  _setItem = async (key, value) => { localStorage.setItem(key, value); };
+} else {
+  // Lazy require keeps Metro from bundling expo-file-system on web builds.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const FileSystem = require('expo-file-system/legacy');
+  const STORE_DIR = (FileSystem.documentDirectory ?? '') + 'bac_store/';
+
+  const ensureDir = async () => {
+    const info = await FileSystem.getInfoAsync(STORE_DIR);
+    if (!info.exists) {
+      await FileSystem.makeDirectoryAsync(STORE_DIR, { intermediates: true });
+    }
+  };
+
+  _getItem = async (key) => {
+    await ensureDir();
+    const path = STORE_DIR + encodeURIComponent(key) + '.json';
+    const info = await FileSystem.getInfoAsync(path);
+    if (!info.exists) return null;
+    return FileSystem.readAsStringAsync(path);
+  };
+
+  _setItem = async (key, value) => {
+    await ensureDir();
+    await FileSystem.writeAsStringAsync(
+      STORE_DIR + encodeURIComponent(key) + '.json',
+      value,
+    );
+  };
 }
 
-export async function getItem(key: string): Promise<string | null> {
-  ensureDir();
-  const file = new File(storeDir, encodeURIComponent(key) + '.json');
-  if (!file.exists) return null;
-  return file.text();
-}
-
-export function setItem(key: string, value: string): void {
-  ensureDir();
-  const file = new File(storeDir, encodeURIComponent(key) + '.json');
-  file.write(value);
-}
+export const getItem = _getItem;
+export const setItem = _setItem;

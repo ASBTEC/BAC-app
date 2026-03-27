@@ -9,7 +9,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import Svg, { Circle, Rect, Text as SvgText } from 'react-native-svg';
 import { EventCard } from '@/components/EventCard';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -25,41 +24,45 @@ const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
-  return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
+  return event.exhibitor_ids
+    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .filter(Boolean) as Exhibitor[];
 }
 
-// Congress venue spaces — must match event local_location values
 const SPACES = [
-  { id: 'Auditorium', label: 'Auditorium', type: 'classroom' as const, x: 30, y: 50, w: 220, h: 90 },
-  { id: 'Classroom 1', label: 'Classroom 1', type: 'classroom' as const, x: 30, y: 170, w: 100, h: 70 },
-  { id: 'Classroom 2', label: 'Classroom 2', type: 'classroom' as const, x: 150, y: 170, w: 100, h: 70 },
-  { id: 'Laboratory', label: 'Laboratory', type: 'classroom' as const, x: 30, y: 265, w: 100, h: 70 },
-  { id: 'Stand Area', label: 'Stand Area', type: 'stand' as const, x: 150, y: 265, w: 100, h: 70 },
+  { id: 'Auditorium',  label: 'Auditorium',  type: 'classroom' as const, row: 0, col: 0, span: 2 },
+  { id: 'Classroom 1', label: 'Classroom 1', type: 'classroom' as const, row: 1, col: 0, span: 1 },
+  { id: 'Classroom 2', label: 'Classroom 2', type: 'classroom' as const, row: 1, col: 1, span: 1 },
+  { id: 'Laboratory',  label: 'Laboratory',  type: 'classroom' as const, row: 2, col: 0, span: 1 },
+  { id: 'Stand Area',  label: 'Stand Area',  type: 'stand'     as const, row: 2, col: 1, span: 1 },
 ];
 
-const SPACE_COLORS = {
+const SPACE_BG: Record<string, string> = {
   classroom: BACColors.lightBlue,
   stand: BACColors.amber,
 };
 
-interface SpaceEvents {
-  now: Event[];
-  upcoming: Event[];
-}
+interface SpaceEvents { now: Event[]; upcoming: Event[] }
 
 function getSpaceEvents(spaceId: string, now: Date): SpaceEvents {
   const relevant = EVENTS.filter((e) => {
-    if (e.activity_type === 'stand') return false; // stands span whole congress
-    if (!e.local_location.includes(spaceId) && e.local_location !== spaceId) return false;
-    const status = getTemporalStatus(e, now);
-    return status === 'now' || status === 'upcoming' || status === 'future';
+    if (e.activity_type === 'stand') return false;
+    if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
+    const s = getTemporalStatus(e, now);
+    return s === 'now' || s === 'upcoming' || s === 'future';
   }).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
-
   return {
     now: relevant.filter((e) => getTemporalStatus(e, now) === 'now'),
     upcoming: relevant.filter((e) => getTemporalStatus(e, now) !== 'now'),
   };
 }
+
+// Build rows: row index → spaces in that row
+const ROWS = SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
+  if (!acc[s.row]) acc[s.row] = [];
+  acc[s.row].push(s);
+  return acc;
+}, []);
 
 export default function MapScreen() {
   const scheme = useColorScheme() ?? 'light';
@@ -69,11 +72,10 @@ export default function MapScreen() {
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null);
   const [now] = useState(new Date());
 
-  const spaceEvents = useMemo(
+  const spaceEvents = useMemo<SpaceEvents>(
     () => (selectedSpace ? getSpaceEvents(selectedSpace, now) : { now: [], upcoming: [] }),
     [selectedSpace, now],
   );
-
   const allSpaceEvents = useMemo(
     () => [...spaceEvents.now, ...spaceEvents.upcoming],
     [spaceEvents],
@@ -97,65 +99,39 @@ export default function MapScreen() {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Text style={[styles.subtitle, { color: colors.icon }]}>
-        Faculty of Biosciences · UAB · Tap a space to see events
+        Faculty of Biosciences · UAB · Tap a space to see its events
       </Text>
 
-      {/* SVG Floor Plan */}
-      <View style={styles.mapContainer}>
-        <Svg width="280" height="360" viewBox="0 0 280 360">
-          {/* Building outline */}
-          <Rect x="20" y="30" width="240" height="320" rx="8" fill={scheme === 'dark' ? '#1E2427' : '#F0F4F8'} stroke={BACColors.navyDark} strokeWidth="2" />
+      {/* Floor plan built from Views */}
+      <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
+        <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
+          FACULTY OF BIOSCIENCES — UAB
+        </Text>
 
-          {/* Floor label */}
-          <SvgText x="140" y="22" textAnchor="middle" fontSize="11" fill={BACColors.navyDark} fontWeight="700">
-            FACULTY OF BIOSCIENCES — UAB
-          </SvgText>
-
-          {SPACES.map((space) => {
-            const selected = selectedSpace === space.id;
-            const fill = selected
-              ? BACColors.teal
-              : SPACE_COLORS[space.type];
-            return (
-              <React.Fragment key={space.id}>
-                <Rect
-                  x={space.x}
-                  y={space.y}
-                  width={space.w}
-                  height={space.h}
-                  rx="6"
-                  fill={fill}
-                  stroke={selected ? BACColors.navyDark : BACColors.navyDark + '44'}
-                  strokeWidth={selected ? 2.5 : 1.5}
-                  onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}
-                />
-                <SvgText
-                  x={space.x + space.w / 2}
-                  y={space.y + space.h / 2 - 4}
-                  textAnchor="middle"
-                  fontSize="11"
-                  fill={selected ? '#fff' : BACColors.navyDark}
-                  fontWeight="700"
+        {ROWS.map((row, rowIdx) => (
+          <View key={rowIdx} style={styles.row}>
+            {row.map((space) => {
+              const selected = selectedSpace === space.id;
+              const bg = selected ? BACColors.teal : SPACE_BG[space.type];
+              return (
+                <Pressable
+                  key={space.id}
+                  style={[
+                    styles.spaceBtn,
+                    { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.navyDark + '44', borderWidth: selected ? 2 : 1.5 },
+                  ]}
                   onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
-                  {space.label}
-                </SvgText>
-                <SvgText
-                  x={space.x + space.w / 2}
-                  y={space.y + space.h / 2 + 12}
-                  textAnchor="middle"
-                  fontSize="9"
-                  fill={selected ? '#ffffffcc' : BACColors.navyDark + 'aa'}
-                  onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
-                  {space.type === 'classroom' ? 'Classroom' : 'Stand Zone'}
-                </SvgText>
-              </React.Fragment>
-            );
-          })}
-
-          {/* Compass rose */}
-          <Circle cx="252" cy="330" r="14" fill={BACColors.navyDark + '22'} />
-          <SvgText x="252" y="334" textAnchor="middle" fontSize="10" fill={BACColors.navyDark} fontWeight="700">N</SvgText>
-        </Svg>
+                  <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
+                    {space.label}
+                  </Text>
+                  <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
+                    {space.type === 'classroom' ? 'Classroom' : 'Stand Zone'}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        ))}
       </View>
 
       {/* Legend */}
@@ -170,7 +146,7 @@ export default function MapScreen() {
         </View>
       </View>
 
-      {/* Bottom sheet: events in selected space */}
+      {/* Bottom sheet */}
       <Modal
         visible={!!selectedSpace}
         transparent
@@ -185,7 +161,6 @@ export default function MapScreen() {
               <MaterialIcons name="close" size={22} color={colors.icon} />
             </Pressable>
           </View>
-
           <FlatList
             data={allSpaceEvents}
             keyExtractor={(item) => item.id}
@@ -215,41 +190,40 @@ export default function MapScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center' },
-  subtitle: { fontSize: 12, marginTop: 12, marginBottom: 8, textAlign: 'center', paddingHorizontal: 16 },
-  mapContainer: {
+  subtitle: { fontSize: 12, marginTop: 12, marginBottom: 12, textAlign: 'center', paddingHorizontal: 16 },
+  building: {
+    width: 300,
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 10,
+    gap: 8,
+  },
+  buildingLabel: {
+    fontSize: 10,
+    fontWeight: '700',
+    textAlign: 'center',
+    letterSpacing: 0.3,
+    marginBottom: 4,
+  },
+  row: { flexDirection: 'row', gap: 8 },
+  spaceBtn: {
+    borderRadius: 8,
+    paddingVertical: 20,
+    paddingHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
+    gap: 4,
   },
-  legend: {
-    flexDirection: 'row',
-    gap: 20,
-    marginTop: 8,
-  },
+  spaceLabel: { fontSize: 12, fontWeight: '700', textAlign: 'center' },
+  spaceType: { fontSize: 10, textAlign: 'center' },
+  legend: { flexDirection: 'row', gap: 20, marginTop: 16 },
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   legendDot: { width: 12, height: 12, borderRadius: 6 },
   legendText: { fontSize: 12 },
   sheetBackdrop: { flex: 1 },
-  sheet: {
-    maxHeight: '60%',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingTop: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: -4 },
-    elevation: 8,
-  },
+  sheet: { maxHeight: '60%', borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 8, elevation: 8 },
   sheetHandle: { width: 40, height: 4, borderRadius: 2, alignSelf: 'center', marginBottom: 8 },
-  sheetHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingBottom: 12,
-    borderBottomWidth: 1,
-  },
+  sheetHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, paddingBottom: 12, borderBottomWidth: 1 },
   sheetTitle: { fontSize: 17, fontWeight: '700' },
   sheetList: { paddingVertical: 8, paddingBottom: 24 },
   empty: { textAlign: 'center', marginTop: 24, fontSize: 14, paddingHorizontal: 24 },
