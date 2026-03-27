@@ -254,5 +254,7 @@ app-example
 /android
 
 
+
 # Own rules
 .idea
+brand_assets

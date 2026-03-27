@@ -1,41 +1,71 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// BAC 2026 brand palette
+export const BACColors = {
+  // Primary
+  navyDark: '#2C4E61',
+  teal: '#1E99AE',
+  lightBlue: '#B6E2EB',
+  white: '#FFFFFF',
+  // Contrast / accent
+  amber: '#FFA800',
+  peach: '#FFC08C',
+  // Semantic
+  green: '#4CAF50',
+  grey: '#9BA1A6',
+  greyLight: '#E8EAEC',
+  // Text
+  textDark: '#11181C',
+  textMedium: '#4A5568',
+  textLight: '#718096',
+};
+
+// Activity type color coding (per PRD §12)
+export const ActivityTypeColors: Record<string, string> = {
+  talk: BACColors.teal,
+  round_table: BACColors.navyDark,
+  activity: BACColors.amber,
+  outdoor_activity: BACColors.green,
+  stand: BACColors.grey,
+};
+
+// Category color coding (per PRD §12)
+export const CategoryColors: Record<string, string> = {
+  viveBAC: BACColors.amber,
+  businessBAC: BACColors.navyDark,
+  other: BACColors.grey,
+};
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: BACColors.textDark,
+    background: '#F5F7FA',
+    card: BACColors.white,
+    tint: BACColors.teal,
+    icon: BACColors.grey,
+    tabIconDefault: BACColors.grey,
+    tabIconSelected: BACColors.teal,
+    border: BACColors.greyLight,
+    headerBackground: BACColors.navyDark,
   },
   dark: {
     text: '#ECEDEE',
     background: '#151718',
-    tint: tintColorDark,
+    card: '#1E2427',
+    tint: BACColors.lightBlue,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    tabIconSelected: BACColors.lightBlue,
+    border: '#2D3748',
+    headerBackground: '#0D1F2B',
   },
 };
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
