@@ -258,3 +258,4 @@ app-example
 # Own rules
 .idea
 brand_assets
+*.apk
