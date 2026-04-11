@@ -56,6 +56,7 @@ export default function TabLayout() {
           options={{
             title: 'BAC 2026',
             tabBarLabel: 'Inicio',
+            headerShown: false,
             tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
           }}
         />

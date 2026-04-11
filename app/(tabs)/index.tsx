@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
+import { GlobalMenu } from '@/components/GlobalMenu';
 import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -60,10 +61,11 @@ export default function HomeScreen() {
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { isSaved, toggleEvent } = useSchedule();
-  const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
+  const { settings, updateSettings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const [menuOpen, setMenuOpen] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -127,9 +129,13 @@ export default function HomeScreen() {
   );
 
   return (
+    <>
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Hero header */}
       <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
+        <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
+          <MaterialIcons name="more-vert" size={24} color="#fff" />
+        </Pressable>
         <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
         <Text style={styles.congressYear}>BAC 2026</Text>
 
@@ -226,6 +232,14 @@ export default function HomeScreen() {
         }
       />
     </View>
+
+    <GlobalMenu
+      visible={menuOpen}
+      onClose={() => setMenuOpen(false)}
+      notificationSettings={settings}
+      onUpdateNotifications={updateSettings}
+    />
+    </>
   );
 }
 
@@ -246,6 +260,12 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  menuBtn: {
+    position: 'absolute',
+    top: 12,
+    right: 16,
+    zIndex: 1,
   },
   congressTitle: {
     color: BACColors.lightBlue,

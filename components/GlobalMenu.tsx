@@ -126,7 +126,8 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
               <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Aviso de privacidad</Text>
               <View style={[styles.infoBox, { backgroundColor: colors.background, borderColor: colors.border }]}>
                 <Text style={[styles.infoText, { color: colors.text }]}>
-                  Esta aplicación no recopila ningún dato personal de sus usuarios. Toda la
+                  Esta aplicación funciona sin conexión a Internet y no recopila ningún dato
+                  personal. Toda la
                   información guardada (agenda personal) se almacena exclusivamente en tu
                   dispositivo y nunca se transmite a ningún servidor.
                 </Text>
