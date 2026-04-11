@@ -108,7 +108,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
                           style={[
                             styles.leadTimeBtnText,
                             {
-                              color: notificationSettings.leadTime === min ? '#fff' : colors.text,
+                              color: notificationSettings.leadTime === min ? '#fff' : BACColors.navyDark,
                             },
                           ]}>
                           {min} min
