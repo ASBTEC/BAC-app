@@ -140,6 +140,7 @@ export default function SponsorsScreen() {
       <FlatList
         data={filteredExhibitors}
         keyExtractor={(item) => item.id}
+        style={styles.list}
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => <ExhibitorCard exhibitor={item} />}
         ListEmptyComponent={
@@ -162,9 +163,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   searchInput: { fontSize: 15 },
-  filterScroll: { flexGrow: 0 },
-  filterRow: { paddingHorizontal: 16, paddingVertical: 8, gap: 8 },
-  tierScroll: { marginTop: -4 },
+  filterScroll: { flexGrow: 0, flexShrink: 0 },
+  filterRow: { paddingHorizontal: 16, paddingVertical: 6, gap: 8, alignItems: 'center' },
+  tierScroll: { marginTop: 4 },
   chip: {
     borderRadius: 20,
     borderWidth: 1,
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   chipText: { fontSize: 13, fontWeight: '600' },
+  list: { flex: 1 },
   listContent: { paddingTop: 4, paddingBottom: 32 },
   empty: { textAlign: 'center', marginTop: 40, fontSize: 14 },
 });

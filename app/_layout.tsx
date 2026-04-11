@@ -6,6 +6,7 @@ import { Pressable } from 'react-native';
 import 'react-native-reanimated';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { BACColors } from '@/constants/theme';
+import { ScheduleProvider } from '@/context/schedule-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -26,6 +27,7 @@ export default function RootLayout() {
   );
 
   return (
+    <ScheduleProvider>
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
@@ -54,5 +56,6 @@ export default function RootLayout() {
 
       <StatusBar style="light" />
     </ThemeProvider>
+    </ScheduleProvider>
   );
 }
