@@ -10,23 +10,33 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
-import { Event, EventCategory, Exhibitor } from '@/types';
+import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import { getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
 
 type FilterCategory = EventCategory | 'all';
+type FilterType = ActivityType | 'all';
 
-const FILTERS: { key: FilterCategory; label: string }[] = [
+const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'all',         label: 'Todos' },
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
   { key: 'viveBAC',     label: 'ViveBAC' },
+];
+
+const TYPE_FILTERS: { key: FilterType; label: string }[] = [
+  { key: 'all',              label: 'Todos' },
+  { key: 'talk',             label: 'Ponencia' },
+  { key: 'round_table',      label: 'Mesa Redonda' },
+  { key: 'activity',         label: 'Actividad' },
+  { key: 'outdoor_activity', label: 'Al Aire Libre' },
+  { key: 'stand',            label: 'Stand' },
 ];
 
 const MAPS_URL = 'https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8';
@@ -52,7 +62,8 @@ export default function HomeScreen() {
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
+  const [activeType, setActiveType] = useState<FilterType>('all');
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -65,7 +76,8 @@ export default function HomeScreen() {
   const sections = useMemo(() => {
     const nonStand = EVENTS.filter((e) => {
       if (e.activity_type === 'stand') return false;
-      if (activeFilter !== 'all' && e.category !== activeFilter) return false;
+      if (activeCategory !== 'all' && e.category !== activeCategory) return false;
+      if (activeType !== 'all' && e.activity_type !== activeType) return false;
       return true;
     });
 
@@ -97,7 +109,7 @@ export default function HomeScreen() {
     if (upcoming.length > 0) result.push({ title: 'Próximos eventos', data: upcoming });
     if (past.length > 0) result.push({ title: 'Eventos pasados', data: past });
     return result;
-  }, [now, activeFilter]);
+  }, [now, activeCategory, activeType]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -123,7 +135,7 @@ export default function HomeScreen() {
 
         <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
           <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
-          <Text style={styles.locationText}>UAB, Barcelona</Text>
+          <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
         </Pressable>
 
         <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
@@ -138,8 +150,8 @@ export default function HomeScreen() {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.filterRow}
         style={styles.filterScroll}>
-        {FILTERS.map(({ key, label }) => {
-          const active = activeFilter === key;
+        {CATEGORY_FILTERS.map(({ key, label }) => {
+          const active = activeCategory === key;
           const accent = CategoryColors[key] ?? BACColors.teal;
           return (
             <Pressable
@@ -151,7 +163,35 @@ export default function HomeScreen() {
                   borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveFilter(key)}>
+              onPress={() => setActiveCategory(key)}>
+              <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                {label}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+
+      {/* Activity type filter chips */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.filterRow}
+        style={styles.filterScroll}>
+        {TYPE_FILTERS.map(({ key, label }) => {
+          const active = activeType === key;
+          const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
+          return (
+            <Pressable
+              key={key}
+              style={[
+                styles.filterChip,
+                {
+                  backgroundColor: active ? accent : colors.card,
+                  borderColor: active ? accent : colors.border,
+                },
+              ]}
+              onPress={() => setActiveType(key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>

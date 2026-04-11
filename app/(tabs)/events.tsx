@@ -9,11 +9,11 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, CategoryColors, Colors } from '@/constants/theme';
+import { ActivityTypeColors, BACColors, CategoryColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
-import { Event, EventCategory, Exhibitor } from '@/types';
+import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
 
@@ -21,13 +21,23 @@ const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type FilterCategory = EventCategory | 'all';
+type FilterType = ActivityType | 'all';
 
-const FILTERS: { key: FilterCategory; label: string }[] = [
+const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'all',         label: 'Todos' },
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
   { key: 'viveBAC',     label: 'ViveBAC' },
+];
+
+const TYPE_FILTERS: { key: FilterType; label: string }[] = [
+  { key: 'all',             label: 'Todos' },
+  { key: 'talk',            label: 'Ponencia' },
+  { key: 'round_table',     label: 'Mesa Redonda' },
+  { key: 'activity',        label: 'Actividad' },
+  { key: 'outdoor_activity', label: 'Al Aire Libre' },
+  { key: 'stand',           label: 'Stand' },
 ];
 
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
@@ -47,15 +57,20 @@ export default function EventsScreen() {
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [search, setSearch] = useState('');
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
+  const [activeType, setActiveType] = useState<FilterType>('all');
 
   const filteredEvents = useMemo(() => {
     let result = [...EVENTS].sort(
       (a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime(),
     );
 
-    if (activeFilter !== 'all') {
-      result = result.filter((e) => e.category === activeFilter);
+    if (activeCategory !== 'all') {
+      result = result.filter((e) => e.category === activeCategory);
+    }
+
+    if (activeType !== 'all') {
+      result = result.filter((e) => e.activity_type === activeType);
     }
 
     if (search.trim()) {
@@ -65,7 +80,7 @@ export default function EventsScreen() {
     }
 
     return result;
-  }, [search, activeFilter]);
+  }, [search, activeCategory, activeType]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -104,19 +119,48 @@ export default function EventsScreen() {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.filterRow}
         style={styles.filterScroll}>
-        {FILTERS.map(({ key, label }) => {
-          const active = activeFilter === key;
+        {CATEGORY_FILTERS.map(({ key, label }) => {
+          const active = activeCategory === key;
+          const accent = CategoryColors[key] ?? BACColors.teal;
           return (
             <Pressable
               key={key}
               style={[
                 styles.filterChip,
                 {
-                  backgroundColor: active ? (CategoryColors[key] ?? BACColors.teal) : colors.card,
-                  borderColor: active ? (CategoryColors[key] ?? BACColors.teal) : colors.border,
+                  backgroundColor: active ? accent : colors.card,
+                  borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveFilter(key)}>
+              onPress={() => setActiveCategory(key)}>
+              <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                {label}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+
+      {/* Activity type filter chips */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.filterRow}
+        style={styles.filterScroll}>
+        {TYPE_FILTERS.map(({ key, label }) => {
+          const active = activeType === key;
+          const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
+          return (
+            <Pressable
+              key={key}
+              style={[
+                styles.filterChip,
+                {
+                  backgroundColor: active ? accent : colors.card,
+                  borderColor: active ? accent : colors.border,
+                },
+              ]}
+              onPress={() => setActiveType(key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>
