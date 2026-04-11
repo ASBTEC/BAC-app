@@ -36,8 +36,6 @@ export function EventCard({
   const status = useMemo(() => getTemporalStatus(event, now), [event, now]);
   const isPast = status === 'past';
 
-  const primaryExhibitor = exhibitors[0];
-
   return (
     <Pressable
       style={[
@@ -65,12 +63,16 @@ export function EventCard({
         <Text style={[styles.location, { color: colors.icon }]}>{event.local_location}</Text>
       </View>
 
-      {/* Primary exhibitor */}
-      {primaryExhibitor && (
-        <Text style={[styles.exhibitor, { color: BACColors.textMedium }]} numberOfLines={1}>
-          {primaryExhibitor.exhibitor_type === 'speaker' ? '🎤 ' : '🏢 '}
-          {primaryExhibitor.name}
-        </Text>
+      {/* Exhibitors */}
+      {exhibitors.length > 0 && (
+        <View style={styles.exhibitorList}>
+          {exhibitors.map((ex) => (
+            <Text key={ex.id} style={[styles.exhibitor, { color: BACColors.textMedium }]} numberOfLines={1}>
+              {ex.exhibitor_type === 'speaker' ? '🎤 ' : '🏢 '}
+              {ex.name}
+            </Text>
+          ))}
+        </View>
       )}
 
       {/* Bottom row: badges + bookmark */}
@@ -142,9 +144,12 @@ const styles = StyleSheet.create({
   location: {
     fontSize: 12,
   },
+  exhibitorList: {
+    gap: 2,
+    marginBottom: 8,
+  },
   exhibitor: {
     fontSize: 12,
-    marginBottom: 8,
   },
   bottomRow: {
     flexDirection: 'row',
