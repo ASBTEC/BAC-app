@@ -9,6 +9,7 @@ import {
   SectionList,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
@@ -60,6 +61,9 @@ function getExhibitorsForEvent(event: Event): Exhibitor[] {
 export default function HomeScreen() {
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
+  const { width: screenWidth } = useWindowDimensions();
+  const logoWidth = Math.min(screenWidth * 0.22, 110);
+  const logoHeight = logoWidth * (130 / 110);
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, updateSettings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
@@ -139,7 +143,7 @@ export default function HomeScreen() {
         <View style={styles.heroRow}>
           <Image
             source={require('@/assets/images/logo-in-app.png')}
-            style={styles.logo}
+            style={[styles.logo, { width: logoWidth, height: logoHeight }]}
             resizeMode="contain"
           />
           <View style={styles.heroContent}>
@@ -278,10 +282,7 @@ const styles = StyleSheet.create({
   heroContent: {
     flex: 1,
   },
-  logo: {
-    width: 100,
-    height: 100
-  },
+  logo: {},
   menuBtn: {
     position: 'absolute',
     top: 12,
