@@ -20,7 +20,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.aleixmt.bacapp"
+      "package": "es.febiotec.bac"
     },
     "web": {
       "output": "static",

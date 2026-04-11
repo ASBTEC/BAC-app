@@ -1,0 +1,70 @@
+name: GitHub Release
+
+on:
+  workflow_run:
+    workflows:
+      - Lint & type-check
+    types:
+      - completed
+
+jobs:
+  release:
+    name: GitHub Release
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Download build metadata
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: test.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: build-metadata
+
+      - name: Read build ID
+        id: meta
+        run: |
+          BUILD_ID=$(cat build-id.txt)
+          echo "build-id=$BUILD_ID" >> "$GITHUB_OUTPUT"
+          VERSION=$(jq -r '.expo.version' app.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Download APK from EAS
+        run: |
+          eas build:download \
+            --id ${{ steps.meta.outputs.build-id }} \
+            --output ./bac-app.apk
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.meta.outputs.version }}-${{ github.run_number }}
+          name: BAC App v${{ steps.meta.outputs.version }} (#${{ github.run_number }})
+          body: |
+            Automated release from commit ${{ github.event.workflow_run.head_sha }}.
+
+            **Install:** download `bac-app.apk` below and open it on your Android device (enable "Install from unknown sources" if prompted).
+          files: ./bac-app.apk
+          generate_release_notes: true

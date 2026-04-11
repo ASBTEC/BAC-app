@@ -1,0 +1,52 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build APK (EAS)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build APK on EAS
+        id: eas-build
+        run: |
+          BUILD_JSON=$(eas build \
+            --platform android \
+            --profile preview \
+            --non-interactive \
+            --json \
+            2>/dev/null)
+          BUILD_ID=$(echo "$BUILD_JSON" | jq -r '.[0].id')
+          echo "EAS build ID: $BUILD_ID"
+          echo "$BUILD_ID" > build-id.txt
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload build metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-metadata
+          path: build-id.txt
+          retention-days: 1
