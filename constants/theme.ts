@@ -57,9 +57,10 @@ export const ActivityTypeColors: Record<string, string> = {
 
 // Category color coding (per PRD §12)
 export const CategoryColors: Record<string, string> = {
-  viveBAC: BACColors.amber,
+  bioBAC:      BACColors.teal,
   businessBAC: BACColors.navyDark,
-  other: BACColors.grey,
+  expoBAC:     BACColors.green,
+  viveBAC:     BACColors.amber,
 };
 
 export const Colors = {

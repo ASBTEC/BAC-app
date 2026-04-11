@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, CategoryColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -20,14 +20,14 @@ import allExhibitors from '@/data/exhibitors.json';
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
-type FilterCategory = EventCategory | 'stand' | 'all';
+type FilterCategory = EventCategory | 'all';
 
 const FILTERS: { key: FilterCategory; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'viveBAC', label: 'ViveBAC' },
+  { key: 'all',         label: 'All' },
+  { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
-  { key: 'stand', label: 'Stands' },
-  { key: 'other', label: 'Other' },
+  { key: 'expoBAC',     label: 'ExpoBAC' },
+  { key: 'viveBAC',     label: 'ViveBAC' },
 ];
 
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
@@ -55,11 +55,7 @@ export default function EventsScreen() {
     );
 
     if (activeFilter !== 'all') {
-      if (activeFilter === 'stand') {
-        result = result.filter((e) => e.activity_type === 'stand');
-      } else {
-        result = result.filter((e) => e.category === activeFilter);
-      }
+      result = result.filter((e) => e.category === activeFilter);
     }
 
     if (search.trim()) {
@@ -116,8 +112,8 @@ export default function EventsScreen() {
               style={[
                 styles.filterChip,
                 {
-                  backgroundColor: active ? BACColors.teal : colors.card,
-                  borderColor: active ? BACColors.teal : colors.border,
+                  backgroundColor: active ? (CategoryColors[key] ?? BACColors.teal) : colors.card,
+                  borderColor: active ? (CategoryColors[key] ?? BACColors.teal) : colors.border,
                 },
               ]}
               onPress={() => setActiveFilter(key)}>
