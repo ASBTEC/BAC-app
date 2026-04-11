@@ -131,6 +131,7 @@ export default function EventsScreen() {
       <FlatList
         data={filteredEvents}
         keyExtractor={(item) => item.id}
+        style={styles.list}
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => (
           <EventCard
@@ -170,11 +171,13 @@ const styles = StyleSheet.create({
   },
   filterScroll: {
     flexGrow: 0,
+    flexShrink: 0,
   },
   filterRow: {
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 6,
     gap: 8,
+    alignItems: 'center',
   },
   filterChip: {
     borderRadius: 20,
@@ -185,6 +188,9 @@ const styles = StyleSheet.create({
   filterChipText: {
     fontSize: 13,
     fontWeight: '600',
+  },
+  list: {
+    flex: 1,
   },
   listContent: {
     paddingTop: 4,

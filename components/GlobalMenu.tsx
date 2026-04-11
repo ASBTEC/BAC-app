@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import {
   Animated,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -34,7 +35,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
     if (visible) {
       Animated.spring(slideAnim, {
         toValue: 0,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
         tension: 80,
         friction: 12,
       }).start();
@@ -42,7 +43,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
       Animated.timing(slideAnim, {
         toValue: 320,
         duration: 200,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
       }).start();
     }
   }, [visible, slideAnim]);
@@ -162,11 +163,11 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     width: 300,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    shadowOffset: { width: -4, height: 0 },
     elevation: 8,
+    ...Platform.select({
+      native: { shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, shadowOffset: { width: -4, height: 0 } },
+      web: { boxShadow: '-4px 0px 10px rgba(0,0,0,0.2)' },
+    }),
   },
   safeArea: {
     flex: 1,
