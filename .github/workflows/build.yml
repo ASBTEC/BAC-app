@@ -32,13 +32,13 @@ jobs:
       - name: Build APK on EAS
         id: eas-build
         run: |
-          BUILD_JSON=$(eas build \
+          eas build \
             --platform android \
             --profile preview \
             --non-interactive \
             --json \
-            2>/dev/null)
-          BUILD_ID=$(echo "$BUILD_JSON" | jq -r '.[0].id')
+            | tee build-output.json
+          BUILD_ID=$(jq -r '.[0].id' build-output.json)
           echo "EAS build ID: $BUILD_ID"
           echo "$BUILD_ID" > build-id.txt
         env:
