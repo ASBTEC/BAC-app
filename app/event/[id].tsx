@@ -24,8 +24,7 @@ import allExhibitors from '@/data/exhibitors.json';
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
-function openInMaps(query: string) {
-  const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+function openInMaps(url: string) {
   if (Platform.OS === 'web') {
     window.open(url, '_blank');
   } else {
@@ -129,12 +128,14 @@ export default function EventDetailScreen() {
             ) : (
               <Text style={[styles.infoText, { color: colors.text }]}>{event.local_location}</Text>
             )}
-            <Pressable
-              style={[styles.mapsBtn, { borderColor: BACColors.teal }]}
-              onPress={() => openInMaps(event.local_location)}>
-              <MaterialIcons name="map" size={14} color={BACColors.teal} />
-              <Text style={[styles.mapsBtnText, { color: BACColors.teal }]}>Abrir en Mapas</Text>
-            </Pressable>
+            {event.location && (
+              <Pressable
+                style={[styles.mapsBtn, { borderColor: BACColors.teal }]}
+                onPress={() => openInMaps(event.location!)}>
+                <MaterialIcons name="map" size={14} color={BACColors.teal} />
+                <Text style={[styles.mapsBtnText, { color: BACColors.teal }]}>Abrir en Google Maps</Text>
+              </Pressable>
+            )}
           </View>
         );
       })()}

@@ -2,6 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -137,8 +138,17 @@ export default function HomeScreen() {
         <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
           <MaterialIcons name="more-vert" size={24} color="#fff" />
         </Pressable>
-        <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
-        <Text style={styles.congressYear}>BAC 2026</Text>
+        <View style={styles.titleRow}>
+          <Image
+            source={require('@/assets/images/logo-in-app.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <View style={styles.titleText}>
+            <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
+            <Text style={styles.congressYear}>BAC Barcelona 2026</Text>
+          </View>
+        </View>
 
         <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
           <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
@@ -261,6 +271,19 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingHorizontal: 20,
     paddingBottom: 20,
+  },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    marginBottom: 12,
+  },
+  titleText: {
+    flex: 1,
+  },
+  logo: {
+    width: 56,
+    height: 56,
   },
   menuBtn: {
     position: 'absolute',
