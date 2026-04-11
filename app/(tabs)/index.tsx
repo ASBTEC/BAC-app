@@ -2,6 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Platform,
   Pressable,
   ScrollView,
   SectionList,
@@ -139,12 +140,12 @@ export default function HomeScreen() {
         <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
         <Text style={styles.congressYear}>BAC 2026</Text>
 
-        <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
+        <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
           <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
           <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
         </Pressable>
 
-        <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
+        <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
           <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
           <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
         </Pressable>

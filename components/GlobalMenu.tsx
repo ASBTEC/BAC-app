@@ -1,4 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import React, { useRef } from 'react';
 import {
   Animated,
@@ -121,29 +122,28 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
               )}
             </View>
 
-            {/* Privacy Notice */}
+            {/* About */}
             <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Aviso de privacidad</Text>
-              <View style={[styles.infoBox, { backgroundColor: colors.background, borderColor: colors.border }]}>
-                <Text style={[styles.infoText, { color: colors.text }]}>
-                  Esta aplicación funciona sin conexión a Internet y no recopila ningún dato
-                  personal. Toda la
-                  información guardada (agenda personal) se almacena exclusivamente en tu
-                  dispositivo y nunca se transmite a ningún servidor.
-                </Text>
-              </View>
-            </View>
-
-            {/* Help & Support */}
-            <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Ayuda y soporte</Text>
-              <View style={[styles.infoBox, { backgroundColor: colors.background, borderColor: colors.border }]}>
-                <Text style={[styles.infoText, { color: colors.text }]}>
-                  Para cualquier problema técnico con la aplicación, contacta con el responsable informático de ASBTEC.
-                </Text>
-                <Text style={[styles.emailLink, { color: BACColors.teal }]}>
-                  informatica@asbtec.cat
-                </Text>
+              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Información</Text>
+              <View style={[styles.navGroup, { borderColor: colors.border, backgroundColor: colors.background }]}>
+                <Pressable
+                  style={[styles.navRow, { borderBottomColor: colors.border }]}
+                  onPress={() => { onClose(); router.push('/privacy'); }}>
+                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Aviso de privacidad</Text>
+                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
+                </Pressable>
+                <Pressable
+                  style={[styles.navRow, { borderBottomColor: colors.border }]}
+                  onPress={() => { onClose(); router.push('/license'); }}>
+                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Licenciamiento</Text>
+                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
+                </Pressable>
+                <Pressable
+                  style={[styles.navRow, { borderBottomWidth: 0 }]}
+                  onPress={() => { onClose(); router.push('/support'); }}>
+                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Ayuda y soporte</Text>
+                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
+                </Pressable>
               </View>
             </View>
           </ScrollView>
@@ -236,18 +236,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
   },
-  infoBox: {
+  navGroup: {
     borderRadius: 10,
     borderWidth: 1,
-    padding: 14,
-    gap: 6,
+    overflow: 'hidden',
   },
-  infoText: {
-    fontSize: 13,
-    lineHeight: 18,
+  navRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
   },
-  emailLink: {
-    fontSize: 13,
+  navRowLabel: {
+    fontSize: 14,
     fontWeight: '600',
   },
 });

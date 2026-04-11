@@ -71,6 +71,18 @@ export default function RootLayout() {
           name="exhibitor/[id]"
           options={{ title: 'Expositor', headerBackTitle: 'Atrás' }}
         />
+        <Stack.Screen
+          name="privacy"
+          options={{ title: 'Aviso de privacidad', headerBackTitle: 'Atrás' }}
+        />
+        <Stack.Screen
+          name="license"
+          options={{ title: 'Licenciamiento', headerBackTitle: 'Atrás' }}
+        />
+        <Stack.Screen
+          name="support"
+          options={{ title: 'Ayuda y soporte', headerBackTitle: 'Atrás' }}
+        />
       </Stack>
 
       <GlobalMenu
