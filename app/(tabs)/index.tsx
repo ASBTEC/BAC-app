@@ -3,20 +3,31 @@ import * as Linking from 'expo-linking';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Pressable,
+  ScrollView,
   SectionList,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
-import { Event, Exhibitor } from '@/types';
+import { Event, EventCategory, Exhibitor } from '@/types';
 import { getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
+
+type FilterCategory = EventCategory | 'all';
+
+const FILTERS: { key: FilterCategory; label: string }[] = [
+  { key: 'all',         label: 'Todos' },
+  { key: 'bioBAC',      label: 'BioBAC' },
+  { key: 'businessBAC', label: 'BusinessBAC' },
+  { key: 'expoBAC',     label: 'ExpoBAC' },
+  { key: 'viveBAC',     label: 'ViveBAC' },
+];
 
 const MAPS_URL = 'https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8';
 
@@ -41,6 +52,7 @@ export default function HomeScreen() {
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -51,7 +63,11 @@ export default function HomeScreen() {
   }, []);
 
   const sections = useMemo(() => {
-    const nonStand = EVENTS.filter((e) => e.activity_type !== 'stand');
+    const nonStand = EVENTS.filter((e) => {
+      if (e.activity_type === 'stand') return false;
+      if (activeFilter !== 'all' && e.category !== activeFilter) return false;
+      return true;
+    });
 
     const current: Event[] = [];
     const upcoming: Event[] = [];
@@ -81,7 +97,7 @@ export default function HomeScreen() {
     if (upcoming.length > 0) result.push({ title: 'Próximos eventos', data: upcoming });
     if (past.length > 0) result.push({ title: 'Eventos pasados', data: past });
     return result;
-  }, [now]);
+  }, [now, activeFilter]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -99,59 +115,97 @@ export default function HomeScreen() {
   );
 
   return (
-    <SectionList
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={styles.content}
-      sections={sections}
-      keyExtractor={(item) => item.id}
-      ListHeaderComponent={
-        <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
-          <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
-          <Text style={styles.congressYear}>BAC 2026</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      {/* Hero header */}
+      <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
+        <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
+        <Text style={styles.congressYear}>BAC 2026</Text>
 
-          <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
-            <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
-            <Text style={styles.locationText}>UAB, Barcelona</Text>
-          </Pressable>
+        <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
+          <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
+          <Text style={styles.locationText}>UAB, Barcelona</Text>
+        </Pressable>
 
-          <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
-            <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
-            <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
-          </Pressable>
-        </View>
-      }
-      renderSectionHeader={({ section }) => (
-        <View style={[styles.sectionHeader, { backgroundColor: colors.background }]}>
-          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>{section.title}</Text>
-        </View>
-      )}
-      renderItem={({ item }) => (
-        <EventCard
-          event={item}
-          exhibitors={getExhibitorsForEvent(item)}
-          showTemporalLabel
-          isSaved={isSaved(item.id)}
-          onToggleSave={handleToggleSave}
-          now={now}
-          dimPast
-        />
-      )}
-      ListEmptyComponent={
-        <Text style={[styles.empty, { color: colors.icon }]}>No se han encontrado eventos.</Text>
-      }
-    />
+        <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
+          <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
+          <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
+        </Pressable>
+      </View>
+
+      {/* Category filter chips */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.filterRow}
+        style={styles.filterScroll}>
+        {FILTERS.map(({ key, label }) => {
+          const active = activeFilter === key;
+          const accent = CategoryColors[key] ?? BACColors.teal;
+          return (
+            <Pressable
+              key={key}
+              style={[
+                styles.filterChip,
+                {
+                  backgroundColor: active ? accent : colors.card,
+                  borderColor: active ? accent : colors.border,
+                },
+              ]}
+              onPress={() => setActiveFilter(key)}>
+              <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                {label}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+
+      <SectionList
+        style={styles.list}
+        contentContainerStyle={styles.content}
+        sections={sections}
+        keyExtractor={(item) => item.id}
+        renderSectionHeader={({ section }) => (
+          <View style={[styles.sectionHeader, { backgroundColor: colors.background }]}>
+            <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>{section.title}</Text>
+          </View>
+        )}
+        renderItem={({ item }) => (
+          <EventCard
+            event={item}
+            exhibitors={getExhibitorsForEvent(item)}
+            showTemporalLabel
+            isSaved={isSaved(item.id)}
+            onToggleSave={handleToggleSave}
+            now={now}
+            dimPast
+          />
+        )}
+        ListEmptyComponent={
+          <Text style={[styles.empty, { color: colors.icon }]}>No se han encontrado eventos.</Text>
+        }
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    paddingBottom: 32,
+  container: { flex: 1 },
+  list: { flex: 1 },
+  content: { paddingBottom: 32 },
+  filterScroll: { flexGrow: 0, flexShrink: 0 },
+  filterRow: { paddingHorizontal: 16, paddingVertical: 6, gap: 8, alignItems: 'center' },
+  filterChip: {
+    borderRadius: 20,
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
   },
+  filterChipText: { fontSize: 13, fontWeight: '600' },
   header: {
     paddingTop: 24,
     paddingHorizontal: 20,
     paddingBottom: 20,
-    marginBottom: 8,
   },
   congressTitle: {
     color: BACColors.lightBlue,

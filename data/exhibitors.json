@@ -3,116 +3,116 @@
     "id": "spk_001",
     "exhibitor_type": "speaker",
     "name": "Dr. Maria Puig",
-    "description": "Principal investigator at CRG (Centre for Genomic Regulation), specialising in genome editing and CRISPR-based therapeutic strategies."
+    "description": "Investigadora principal en el CRG (Centro de Regulación Genómica), especializada en edición genómica y estrategias terapéuticas basadas en CRISPR."
   },
   {
     "id": "spk_002",
     "exhibitor_type": "speaker",
     "name": "Prof. Jordi Mas",
-    "description": "Full professor of Microbiology at the Universitat Autònoma de Barcelona. Expert in environmental microbiology and bioremediation."
+    "description": "Catedrático de Microbiología en la Universitat Autònoma de Barcelona. Experto en microbiología ambiental y biorremediación."
   },
   {
     "id": "spk_003",
     "exhibitor_type": "speaker",
     "name": "Dr. Laia Ferrer",
-    "description": "Senior scientist at CSIC, leading research on cancer immunotherapy and CAR-T cell development."
+    "description": "Científica sénior en el CSIC, líder de investigación en inmunoterapia oncológica y desarrollo de células CAR-T."
   },
   {
     "id": "spk_004",
     "exhibitor_type": "speaker",
     "name": "Dr. Andreu Palou",
-    "description": "Director of the Nutrigenomics and Obesity research group at UIB. Keynote speaker on personalised nutrition and metabolic health."
+    "description": "Director del grupo de investigación en Nutrigenómica y Obesidad de la UIB. Conferenciante magistral sobre nutrición personalizada y salud metabólica."
   },
   {
     "id": "spk_005",
     "exhibitor_type": "speaker",
     "name": "Dr. Elena Molina",
-    "description": "Co-founder and CSO of a Barcelona-based synthetic biology startup. Expert in metabolic engineering for sustainable bioproduction."
+    "description": "Cofundadora y directora científica de una startup de biología sintética con sede en Barcelona. Experta en ingeniería metabólica para la bioproducción sostenible."
   },
   {
     "id": "spk_006",
     "exhibitor_type": "speaker",
     "name": "Dr. Marc Subirana",
-    "description": "Researcher at IRB Barcelona working on protein structure prediction and drug discovery using AI-driven tools."
+    "description": "Investigador en el IRB Barcelona trabajando en predicción de estructuras proteicas y descubrimiento de fármacos mediante herramientas de IA."
   },
   {
     "id": "spk_007",
     "exhibitor_type": "speaker",
     "name": "Dr. Núria Vidal",
-    "description": "Regulatory affairs specialist with 15 years of experience guiding biotech startups through EMA approval processes."
+    "description": "Especialista en asuntos regulatorios con 15 años de experiencia guiando a startups biotecnológicas en los procesos de aprobación de la EMA."
   },
   {
     "id": "spk_008",
     "exhibitor_type": "speaker",
     "name": "Dr. Xavier Grau",
-    "description": "Science communicator and virologist at CIBEREHD. Experienced TEDx speaker on emerging infectious diseases."
+    "description": "Comunicador científico y virólogo en CIBEREHD. Ponente TEDx experimentado en enfermedades infecciosas emergentes."
   },
   {
     "id": "biz_001",
     "exhibitor_type": "business",
     "name": "Roche Diagnostics",
-    "description": "Global leader in in-vitro diagnostics and personalised medicine. Showcasing their latest oncology and infectious disease diagnostic platforms.",
+    "description": "Líder mundial en diagnóstico in vitro y medicina personalizada. Presentando sus últimas plataformas de diagnóstico en oncología y enfermedades infecciosas.",
     "sponsor_tier": "platinum"
   },
   {
     "id": "biz_002",
     "exhibitor_type": "business",
     "name": "Novartis",
-    "description": "Multinational pharmaceutical company presenting advances in gene therapies and small molecule drug discovery.",
+    "description": "Empresa farmacéutica multinacional que presenta avances en terapias génicas y descubrimiento de fármacos de pequeña molécula.",
     "sponsor_tier": "platinum"
   },
   {
     "id": "biz_003",
     "exhibitor_type": "business",
     "name": "Almirall",
-    "description": "Barcelona-headquartered pharmaceutical company focused on dermatology. Presenting career opportunities in their R&D department.",
+    "description": "Empresa farmacéutica con sede en Barcelona especializada en dermatología. Presentando oportunidades de carrera en su departamento de I+D.",
     "sponsor_tier": "gold"
   },
   {
     "id": "biz_004",
     "exhibitor_type": "business",
     "name": "Grifols",
-    "description": "Spanish multinational pharmaceutical company specialising in plasma-derived medicines. Stand showcasing their global operations.",
+    "description": "Empresa farmacéutica multinacional española especializada en medicamentos derivados del plasma. Stand con información sobre sus operaciones globales.",
     "sponsor_tier": "gold"
   },
   {
     "id": "biz_005",
     "exhibitor_type": "business",
     "name": "Thermo Fisher Scientific",
-    "description": "World leader in laboratory equipment, reagents, and consumables. Demonstrating their latest PCR systems and cell biology tools.",
+    "description": "Líder mundial en equipamiento de laboratorio, reactivos y consumibles. Demostrando sus últimos sistemas de PCR y herramientas de biología celular.",
     "sponsor_tier": "silver"
   },
   {
     "id": "biz_006",
     "exhibitor_type": "business",
     "name": "Merck Life Science",
-    "description": "Supplier of reagents, kits, and tools for research labs. Presenting their CRISPR editing portfolio and sequencing consumables.",
+    "description": "Proveedor de reactivos, kits y herramientas para laboratorios de investigación. Presenta su cartera de edición CRISPR y consumibles de secuenciación.",
     "sponsor_tier": "silver"
   },
   {
     "id": "biz_007",
     "exhibitor_type": "business",
     "name": "Bioiberica",
-    "description": "Spanish company producing pharmaceutical-grade biomolecules from animal-origin raw materials. Focus on nutraceuticals and biosimilars.",
+    "description": "Empresa española productora de biomoléculas de grado farmacéutico a partir de materias primas de origen animal. Con foco en nutracéuticos y biosimilares.",
     "sponsor_tier": "bronze"
   },
   {
     "id": "biz_008",
     "exhibitor_type": "business",
     "name": "IDIBELL",
-    "description": "Bellvitge Biomedical Research Institute. Presenting their postdoctoral and PhD fellowship programmes for congress attendees.",
+    "description": "Instituto de Investigación Biomédica de Bellvitge. Presenta sus programas de becas postdoctorales y de doctorado para los asistentes al congreso.",
     "sponsor_tier": "bronze"
   },
   {
     "id": "biz_009",
     "exhibitor_type": "business",
     "name": "CataloniaBio & HealthTech",
-    "description": "Cluster organisation supporting life science companies in Catalonia. Information on funding programmes, incubators, and ecosystem support."
+    "description": "Organización clúster que apoya a las empresas de ciencias de la vida en Cataluña. Información sobre programas de financiación, incubadoras y apoyo al ecosistema."
   },
   {
     "id": "biz_010",
     "exhibitor_type": "business",
     "name": "ASBTEC",
-    "description": "Associació de Biotecnòlegs de Catalunya — organiser of BAC 2026. Information stand about membership, initiatives, and future events."
+    "description": "Associació de Biotecnòlegs de Catalunya — organizadora del BAC 2026. Stand informativo sobre membresía, iniciativas y próximos eventos."
   }
 ]
