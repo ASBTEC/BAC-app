@@ -72,6 +72,10 @@ export default function RootLayout() {
           options={{ title: 'Expositor', headerBackTitle: 'Atrás' }}
         />
         <Stack.Screen
+          name="about"
+          options={{ title: 'Acerca de', headerBackTitle: 'Atrás' }}
+        />
+        <Stack.Screen
           name="privacy"
           options={{ title: 'Aviso de privacidad', headerBackTitle: 'Atrás' }}
         />
