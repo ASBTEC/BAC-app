@@ -26,7 +26,6 @@ type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
 
 const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
-  { key: 'all',         label: 'Todos' },
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
@@ -34,7 +33,6 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
 ];
 
 const TYPE_FILTERS: { key: FilterType; label: string }[] = [
-  { key: 'all',              label: 'Todos' },
   { key: 'talk',             label: 'Ponencia' },
   { key: 'round_table',      label: 'Mesa Redonda' },
   { key: 'activity',         label: 'Actividad' },
@@ -138,27 +136,27 @@ export default function HomeScreen() {
         <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
           <MaterialIcons name="more-vert" size={24} color="#fff" />
         </Pressable>
-        <View style={styles.titleRow}>
+        <View style={styles.heroRow}>
           <Image
             source={require('@/assets/images/logo-in-app.png')}
             style={styles.logo}
             resizeMode="contain"
           />
-          <View style={styles.titleText}>
+          <View style={styles.heroContent}>
             <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
             <Text style={styles.congressYear}>BAC Barcelona 2026</Text>
+
+            <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
+              <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
+              <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
+            </Pressable>
+
+            <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
+              <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
+              <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
+            </Pressable>
           </View>
         </View>
-
-        <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
-          <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
-          <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
-        </Pressable>
-
-        <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
-          <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
-          <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
-        </Pressable>
       </View>
 
       {/* Category filter chips */}
@@ -180,7 +178,7 @@ export default function HomeScreen() {
                   borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveCategory(key)}>
+              onPress={() => setActiveCategory(active ? 'all' : key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>
@@ -208,7 +206,7 @@ export default function HomeScreen() {
                   borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveType(key)}>
+              onPress={() => setActiveType(active ? 'all' : key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>
@@ -272,18 +270,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
   },
-  titleRow: {
+  heroRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 14,
-    marginBottom: 12,
+    gap: 16,
   },
-  titleText: {
+  heroContent: {
     flex: 1,
   },
   logo: {
-    width: 56,
-    height: 56,
+    width: 100,
+    height: 100
   },
   menuBtn: {
     position: 'absolute',

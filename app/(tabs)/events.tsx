@@ -24,7 +24,6 @@ type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
 
 const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
-  { key: 'all',         label: 'Todos' },
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
@@ -32,7 +31,6 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
 ];
 
 const TYPE_FILTERS: { key: FilterType; label: string }[] = [
-  { key: 'all',             label: 'Todos' },
   { key: 'talk',            label: 'Ponencia' },
   { key: 'round_table',     label: 'Mesa Redonda' },
   { key: 'activity',        label: 'Actividad' },
@@ -132,7 +130,7 @@ export default function EventsScreen() {
                   borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveCategory(key)}>
+              onPress={() => setActiveCategory(active ? 'all' : key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>
@@ -160,7 +158,7 @@ export default function EventsScreen() {
                   borderColor: active ? accent : colors.border,
                 },
               ]}
-              onPress={() => setActiveType(key)}>
+              onPress={() => setActiveType(active ? 'all' : key)}>
               <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                 {label}
               </Text>
