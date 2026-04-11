@@ -39,10 +39,10 @@ export const BACColors = {
   // Semantic (not brand colors — used for UI states)
   green: '#4CAF50',
   grey: '#9BA1A6',
-  greyLight: '#E8EAEC',
+  greyLight: '#F0FEFF',  // was #E8EAEC — swapped to brand blueLight
   // Text
   textDark: '#11181C',
-  textMedium: '#4A5568',
+  textMedium: '#457082',  // was #4A5568 — swapped to brand navyMid
   textLight: '#718096',
 };
 
@@ -65,7 +65,7 @@ export const CategoryColors: Record<string, string> = {
 export const Colors = {
   light: {
     text: BACColors.textDark,
-    background: '#F5F7FA',
+    background: '#F0FEFF',  // was #F5F7FA — swapped to brand blueLight
     card: BACColors.white,
     tint: BACColors.teal,
     icon: BACColors.grey,
@@ -86,6 +86,13 @@ export const Colors = {
     headerBackground: '#0D1F2B',
   },
 };
+
+// Orbitron — display font for headings and brand text
+export const OrbitronFonts = {
+  regular: 'Orbitron-Regular',
+  bold:    'Orbitron-Bold',
+  black:   'Orbitron-Black',
+} as const;
 
 export const Fonts = Platform.select({
   ios: {

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   badgeRow: { flexDirection: 'row', gap: 8, marginBottom: 4 },
-  title: { color: '#fff', fontSize: 22, fontWeight: '800', lineHeight: 28 },
+  title: { color: '#fff', fontSize: 20, fontFamily: OrbitronFonts.bold, lineHeight: 28 },
   date: { color: BACColors.lightBlue, fontSize: 13, fontWeight: '600' },
   time: { color: '#fff', fontSize: 16, fontWeight: '600' },
   infoRow: {
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   mapsBtnText: { fontSize: 12, fontWeight: '600' },
   section: { paddingHorizontal: 20, paddingTop: 20, gap: 12 },
-  sectionTitle: { fontSize: 13, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.5 },
+  sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5 },
   description: { fontSize: 15, lineHeight: 22 },
   exhibitorRow: {
     flexDirection: 'row',

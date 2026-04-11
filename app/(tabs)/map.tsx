@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
   },
-  panelTitle: { fontSize: 16, fontWeight: '700' },
+  panelTitle: { fontSize: 14, fontFamily: OrbitronFonts.bold },
   listContent: { paddingVertical: 8, paddingBottom: 24 },
   empty: { textAlign: 'center', marginTop: 24, fontSize: 14, paddingHorizontal: 24 },
 });

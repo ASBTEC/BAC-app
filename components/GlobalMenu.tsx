@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { NotificationLeadTime, NotificationSettings } from '@/types';
 
@@ -181,8 +181,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   drawerTitle: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 16,
+    fontFamily: OrbitronFonts.bold,
   },
   section: {
     paddingHorizontal: 20,
@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   sectionTitle: {
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 11,
+    fontFamily: OrbitronFonts.bold,
     letterSpacing: 0.5,
     textTransform: 'uppercase',
     marginBottom: 12,

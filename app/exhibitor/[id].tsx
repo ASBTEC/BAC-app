@@ -3,7 +3,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -160,8 +160,8 @@ const styles = StyleSheet.create({
   },
   heroName: {
     color: '#fff',
-    fontSize: 22,
-    fontWeight: '800',
+    fontSize: 20,
+    fontFamily: OrbitronFonts.bold,
     textAlign: 'center',
   },
   heroTags: { flexDirection: 'row', gap: 8, flexWrap: 'wrap', justifyContent: 'center' },
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
   tierBadgeText: { color: '#fff', fontWeight: '700', fontSize: 12 },
   section: { paddingHorizontal: 20, paddingTop: 20, gap: 8 },
-  sectionTitle: { fontSize: 13, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.5 },
+  sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5 },
   description: { fontSize: 15, lineHeight: 22 },
   eventsHeader: { paddingHorizontal: 20, paddingTop: 20, paddingBottom: 4 },
 });

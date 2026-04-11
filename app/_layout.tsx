@@ -1,9 +1,13 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LogBox, Platform, Pressable } from 'react-native';
 import 'react-native-reanimated';
+
+SplashScreen.preventAutoHideAsync();
 
 // Silence react-navigation's internal pointerEvents deprecation warning —
 // it comes from inside the library and cannot be fixed in our code.
@@ -16,7 +20,7 @@ if (Platform.OS === 'web') {
   };
 }
 import { GlobalMenu } from '@/components/GlobalMenu';
-import { BACColors } from '@/constants/theme';
+import { BACColors, OrbitronFonts } from '@/constants/theme';
 import { ScheduleProvider } from '@/context/schedule-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -30,6 +34,17 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const { settings, updateSettings } = useNotifications();
+  const [fontsLoaded] = useFonts({
+    'Orbitron-Regular': require('../assets/fonts/Orbitron-Regular.ttf'),
+    'Orbitron-Bold':    require('../assets/fonts/Orbitron-Bold.ttf'),
+    'Orbitron-Black':   require('../assets/fonts/Orbitron-Black.ttf'),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
 
   const menuButton = (
     <Pressable hitSlop={12} onPress={() => setMenuOpen(true)}>
@@ -44,7 +59,7 @@ export default function RootLayout() {
         screenOptions={{
           headerStyle: { backgroundColor: BACColors.navyDark },
           headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: '700' },
+          headerTitleStyle: { fontFamily: OrbitronFonts.bold, fontWeight: '700' },
           headerRight: () => menuButton,
         }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

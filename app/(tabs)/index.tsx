@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -156,16 +156,16 @@ const styles = StyleSheet.create({
   congressTitle: {
     color: BACColors.lightBlue,
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: OrbitronFonts.regular,
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
   congressYear: {
     color: '#fff',
     fontSize: 32,
-    fontWeight: '800',
-    lineHeight: 36,
-    marginTop: 2,
+    fontFamily: OrbitronFonts.black,
+    lineHeight: 40,
+    marginTop: 4,
     marginBottom: 12,
   },
   locationRow: {
@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
   },
   sectionTitle: {
-    fontSize: 13,
-    fontWeight: '700',
+    fontSize: 12,
+    fontFamily: OrbitronFonts.bold,
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Pressable } from 'react-native';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { HapticTab } from '@/components/haptic-tab';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 
@@ -32,7 +32,7 @@ export default function TabLayout() {
           },
           headerStyle: { backgroundColor: BACColors.navyDark },
           headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: '700' },
+          headerTitleStyle: { fontFamily: OrbitronFonts.bold, fontWeight: '700' },
           headerRight: () => menuButton,
           tabBarButton: HapticTab,
         }}>
