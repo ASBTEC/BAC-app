@@ -33,23 +33,32 @@ const SPACES = [
   { id: 'Classroom 2', label: 'Aula 2',          type: 'classroom' as const, row: 1, col: 1, span: 1 },
   { id: 'Laboratory',  label: 'Laboratorio',     type: 'classroom' as const, row: 2, col: 0, span: 1 },
   { id: 'Stand Area',  label: 'Zona de Stands',  type: 'stand'     as const, row: 2, col: 1, span: 1 },
+  { id: 'Outdoor',     label: 'Exterior',        type: 'outdoor'   as const, row: 3, col: 0, span: 2 },
 ];
 
 const SPACE_BG: Record<string, string> = {
   classroom: BACColors.lightBlue,
-  stand: BACColors.amber,
+  stand:     BACColors.amber,
+  outdoor:   BACColors.green,
 };
 
 function getSpaceEvents(spaceId: string, now: Date): Event[] {
   return EVENTS.filter((e) => {
-    if (e.activity_type === 'stand') return false;
-    if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
+    if (spaceId === 'Outdoor') {
+      if (e.activity_type !== 'outdoor_activity') return false;
+    } else {
+      if (e.activity_type === 'stand') return false;
+      if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
+    }
     const s = getTemporalStatus(e, now);
     return s === 'now' || s === 'upcoming' || s === 'future';
   }).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
 }
 
-const ROWS = SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
+const INDOOR_SPACES = SPACES.filter((s) => s.type !== 'outdoor');
+const OUTDOOR_SPACES = SPACES.filter((s) => s.type === 'outdoor');
+
+const ROWS = INDOOR_SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
   if (!acc[s.row]) acc[s.row] = [];
   acc[s.row].push(s);
   return acc;
@@ -96,6 +105,7 @@ export default function MapScreen() {
           Facultad de Biociencias · UAB · Toca un espacio para ver sus eventos
         </Text>
 
+        {/* Indoor building */}
         <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
           <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
             FACULTAD DE BIOCIENCIAS — UAB
@@ -126,6 +136,35 @@ export default function MapScreen() {
           ))}
         </View>
 
+        {/* Outdoor panel — separate from the building */}
+        <View style={[styles.outdoorPanel, { borderColor: BACColors.green + '88', backgroundColor: scheme === 'dark' ? '#1E2427' : '#F4FBF4' }]}>
+          <Text style={[styles.buildingLabel, { color: BACColors.green }]}>
+            EXTERIOR DE LA FACULTAD DE BIOCIENCIAS
+          </Text>
+          <View style={styles.row}>
+            {OUTDOOR_SPACES.map((space) => {
+              const selected = selectedSpace === space.id;
+              const bg = selected ? BACColors.teal : SPACE_BG[space.type];
+              return (
+                <Pressable
+                  key={space.id}
+                  style={[
+                    styles.spaceBtn,
+                    { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.green + '66', borderWidth: selected ? 2 : 1.5 },
+                  ]}
+                  onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
+                  <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
+                    {space.label}
+                  </Text>
+                  <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
+                    Zona exterior
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
+
         <View style={styles.legend}>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
@@ -134,6 +173,10 @@ export default function MapScreen() {
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
             <Text style={[styles.legendText, { color: colors.text }]}>Zona de Stands</Text>
+          </View>
+          <View style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: BACColors.green }]} />
+            <Text style={[styles.legendText, { color: colors.text }]}>Exterior</Text>
           </View>
         </View>
       </View>
@@ -183,6 +226,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     gap: 8,
+  },
+  outdoorPanel: {
+    width: 300,
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderRadius: 10,
+    padding: 10,
+    gap: 8,
+    marginTop: 10,
   },
   buildingLabel: {
     fontSize: 10,
