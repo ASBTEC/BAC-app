@@ -74,9 +74,9 @@ export default function ScheduleScreen() {
       )}
       ListEmptyComponent={
         <View style={styles.emptyContainer}>
-          <Text style={[styles.emptyTitle, { color: colors.text }]}>No saved events yet</Text>
+          <Text style={[styles.emptyTitle, { color: colors.text }]}>Aún no tienes eventos guardados</Text>
           <Text style={[styles.emptySub, { color: colors.icon }]}>
-            Browse Events and tap the bookmark icon to save them here.
+            Explora los eventos y pulsa el marcador para guardarlos aquí.
           </Text>
         </View>
       }

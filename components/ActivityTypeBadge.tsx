@@ -4,11 +4,11 @@ import { ActivityTypeColors } from '@/constants/theme';
 import { ActivityType } from '@/types';
 
 const LABELS: Record<ActivityType, string> = {
-  talk: 'Talk',
-  round_table: 'Round Table',
-  activity: 'Activity',
-  outdoor_activity: 'Outdoor',
-  stand: 'Stand',
+  talk:             'Ponencia',
+  round_table:      'Mesa Redonda',
+  activity:         'Actividad',
+  outdoor_activity: 'Al Aire Libre',
+  stand:            'Stand',
 };
 
 interface Props {

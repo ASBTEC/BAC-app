@@ -77,9 +77,9 @@ export default function HomeScreen() {
     past.sort((a, b) => byStart(b, a)); // most recent first
 
     const result = [];
-    if (current.length > 0) result.push({ title: 'Current Events', data: current });
-    if (upcoming.length > 0) result.push({ title: 'Upcoming Events', data: upcoming });
-    if (past.length > 0) result.push({ title: 'Past Events', data: past });
+    if (current.length > 0) result.push({ title: 'Eventos en curso', data: current });
+    if (upcoming.length > 0) result.push({ title: 'Próximos eventos', data: upcoming });
+    if (past.length > 0) result.push({ title: 'Eventos pasados', data: past });
     return result;
   }, [now]);
 
@@ -106,17 +106,17 @@ export default function HomeScreen() {
       keyExtractor={(item) => item.id}
       ListHeaderComponent={
         <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
-          <Text style={styles.congressTitle}>Biotechnology Annual Congress</Text>
+          <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
           <Text style={styles.congressYear}>BAC 2026</Text>
 
           <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
             <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
-            <Text style={styles.locationText}>UAB Barcelona</Text>
+            <Text style={styles.locationText}>UAB, Barcelona</Text>
           </Pressable>
 
           <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
             <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
-            <Text style={styles.dateText}>7 – 11 July 2026</Text>
+            <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
           </Pressable>
         </View>
       }
@@ -137,7 +137,7 @@ export default function HomeScreen() {
         />
       )}
       ListEmptyComponent={
-        <Text style={[styles.empty, { color: colors.icon }]}>No events found.</Text>
+        <Text style={[styles.empty, { color: colors.icon }]}>No se han encontrado eventos.</Text>
       }
     />
   );

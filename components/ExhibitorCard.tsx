@@ -14,10 +14,10 @@ const TIER_COLORS: Record<string, string> = {
 };
 
 const TIER_LABELS: Record<string, string> = {
-  platinum: 'Platinum Sponsor',
-  gold: 'Gold Sponsor',
-  silver: 'Silver Sponsor',
-  bronze: 'Bronze Sponsor',
+  platinum: 'Patrocinador Platino',
+  gold:     'Patrocinador Oro',
+  silver:   'Patrocinador Plata',
+  bronze:   'Patrocinador Bronce',
 };
 
 interface Props {
@@ -54,7 +54,7 @@ export function ExhibitorCard({ exhibitor }: Props) {
         <View style={styles.tagRow}>
           <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal + '22' : BACColors.navyDark + '22', borderColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.navyDark }]}>
             <Text style={[styles.typeLabel, { color: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.navyDark }]}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Speaker' : 'Company'}
+              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
             </Text>
           </View>
           {exhibitor.sponsor_tier && tierColor && (

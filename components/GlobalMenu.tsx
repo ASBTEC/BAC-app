@@ -62,7 +62,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
         <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={[styles.drawerHeader, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.drawerTitle, { color: colors.text }]}>Settings</Text>
+            <Text style={[styles.drawerTitle, { color: colors.text }]}>Ajustes</Text>
             <Pressable onPress={onClose} hitSlop={12}>
               <MaterialIcons name="close" size={24} color={colors.icon} />
             </Pressable>
@@ -71,13 +71,13 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
           <ScrollView showsVerticalScrollIndicator={false}>
             {/* Notifications section */}
             <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Notifications</Text>
+              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Notificaciones</Text>
 
               <View style={[styles.row, { borderBottomColor: colors.border }]}>
                 <View style={styles.rowContent}>
-                  <Text style={[styles.rowLabel, { color: colors.text }]}>Event reminders</Text>
+                  <Text style={[styles.rowLabel, { color: colors.text }]}>Recordatorios de eventos</Text>
                   <Text style={[styles.rowSub, { color: colors.icon }]}>
-                    Receive reminders before events you have added to your personal schedule.
+                    Recibe recordatorios antes de los eventos que hayas añadido a tu agenda personal.
                   </Text>
                 </View>
                 <Switch
@@ -90,7 +90,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
 
               {notificationSettings.enabled && (
                 <View style={[styles.leadTimeSection, { borderBottomColor: colors.border }]}>
-                  <Text style={[styles.rowLabel, { color: colors.text }]}>Reminder time</Text>
+                  <Text style={[styles.rowLabel, { color: colors.text }]}>Tiempo de aviso</Text>
                   <View style={styles.leadTimeOptions}>
                     {LEAD_TIME_OPTIONS.map((min) => (
                       <Pressable
@@ -123,22 +123,22 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
 
             {/* Privacy Notice */}
             <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Privacy Notice</Text>
+              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Aviso de privacidad</Text>
               <View style={[styles.infoBox, { backgroundColor: colors.background, borderColor: colors.border }]}>
                 <Text style={[styles.infoText, { color: colors.text }]}>
-                  This app does not collect any personal data from its users. All saved
-                  information (personal schedule) is stored exclusively on your device and is
-                  never transmitted to any server.
+                  Esta aplicación no recopila ningún dato personal de sus usuarios. Toda la
+                  información guardada (agenda personal) se almacena exclusivamente en tu
+                  dispositivo y nunca se transmite a ningún servidor.
                 </Text>
               </View>
             </View>
 
             {/* Help & Support */}
             <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Help & Support</Text>
+              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Ayuda y soporte</Text>
               <View style={[styles.infoBox, { backgroundColor: colors.background, borderColor: colors.border }]}>
                 <Text style={[styles.infoText, { color: colors.text }]}>
-                  For any technical issues with the app, contact the ASBTEC IT Officer.
+                  Para cualquier problema técnico con la aplicación, contacta con el responsable informático de ASBTEC.
                 </Text>
                 <Text style={[styles.emailLink, { color: BACColors.teal }]}>
                   informatica@asbtec.cat

@@ -65,11 +65,11 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
           name="event/[id]"
-          options={{ title: 'Event Details', headerBackTitle: 'Back' }}
+          options={{ title: 'Detalles del evento', headerBackTitle: 'Atrás' }}
         />
         <Stack.Screen
           name="exhibitor/[id]"
-          options={{ title: 'Exhibitor', headerBackTitle: 'Back' }}
+          options={{ title: 'Expositor', headerBackTitle: 'Atrás' }}
         />
       </Stack>
 

@@ -20,10 +20,10 @@ function getExhibitorsForEvent(event: Event): Exhibitor[] {
 }
 
 const TIER_LABELS: Record<string, string> = {
-  platinum: 'Platinum Sponsor',
-  gold: 'Gold Sponsor',
-  silver: 'Silver Sponsor',
-  bronze: 'Bronze Sponsor',
+  platinum: 'Patrocinador Platino',
+  gold:     'Patrocinador Oro',
+  silver:   'Patrocinador Plata',
+  bronze:   'Patrocinador Bronce',
 };
 
 const TIER_COLORS: Record<string, string> = {
@@ -68,7 +68,7 @@ export default function ExhibitorDetailScreen() {
   if (!exhibitor) {
     return (
       <View style={[styles.center, { backgroundColor: colors.background }]}>
-        <Text style={{ color: colors.text }}>Exhibitor not found.</Text>
+        <Text style={{ color: colors.text }}>Expositor no encontrado.</Text>
       </View>
     );
   }
@@ -91,7 +91,7 @@ export default function ExhibitorDetailScreen() {
         <View style={styles.heroTags}>
           <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.amber }]}>
             <Text style={styles.typeBadgeText}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Speaker' : 'Company'}
+              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
             </Text>
           </View>
           {exhibitor.sponsor_tier && tierColor && (
@@ -105,7 +105,7 @@ export default function ExhibitorDetailScreen() {
       {/* Description */}
       {exhibitor.description && (
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>About</Text>
+          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Acerca de</Text>
           <Text style={[styles.description, { color: colors.text }]}>{exhibitor.description}</Text>
         </View>
       )}
@@ -113,7 +113,7 @@ export default function ExhibitorDetailScreen() {
       {/* Events header */}
       {associatedEvents.length > 0 && (
         <View style={styles.eventsHeader}>
-          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Events</Text>
+          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Eventos</Text>
         </View>
       )}
     </View>

@@ -27,11 +27,11 @@ function getExhibitorsForEvent(event: Event): Exhibitor[] {
 }
 
 const SPACES = [
-  { id: 'Auditorium',  label: 'Auditorium',  type: 'classroom' as const, row: 0, col: 0, span: 2 },
-  { id: 'Classroom 1', label: 'Classroom 1', type: 'classroom' as const, row: 1, col: 0, span: 1 },
-  { id: 'Classroom 2', label: 'Classroom 2', type: 'classroom' as const, row: 1, col: 1, span: 1 },
-  { id: 'Laboratory',  label: 'Laboratory',  type: 'classroom' as const, row: 2, col: 0, span: 1 },
-  { id: 'Stand Area',  label: 'Stand Area',  type: 'stand'     as const, row: 2, col: 1, span: 1 },
+  { id: 'Auditorium',  label: 'Auditorio',      type: 'classroom' as const, row: 0, col: 0, span: 2 },
+  { id: 'Classroom 1', label: 'Aula 1',          type: 'classroom' as const, row: 1, col: 0, span: 1 },
+  { id: 'Classroom 2', label: 'Aula 2',          type: 'classroom' as const, row: 1, col: 1, span: 1 },
+  { id: 'Laboratory',  label: 'Laboratorio',     type: 'classroom' as const, row: 2, col: 0, span: 1 },
+  { id: 'Stand Area',  label: 'Zona de Stands',  type: 'stand'     as const, row: 2, col: 1, span: 1 },
 ];
 
 const SPACE_BG: Record<string, string> = {
@@ -87,12 +87,12 @@ export default function MapScreen() {
       {/* Map area */}
       <View style={styles.mapArea}>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
-          Faculty of Biosciences · UAB · Tap a space to see its events
+          Facultad de Biociencias · UAB · Toca un espacio para ver sus eventos
         </Text>
 
         <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
           <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
-            FACULTY OF BIOSCIENCES — UAB
+            FACULTAD DE BIOCIENCIAS — UAB
           </Text>
           {ROWS.map((row, rowIdx) => (
             <View key={rowIdx} style={styles.row}>
@@ -111,7 +111,7 @@ export default function MapScreen() {
                       {space.label}
                     </Text>
                     <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
-                      {space.type === 'classroom' ? 'Classroom' : 'Stand Zone'}
+                      {space.type === 'classroom' ? 'Aula' : 'Zona de Stands'}
                     </Text>
                   </Pressable>
                 );
@@ -123,11 +123,11 @@ export default function MapScreen() {
         <View style={styles.legend}>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Classroom / Auditorium</Text>
+            <Text style={[styles.legendText, { color: colors.text }]}>Aula / Auditorio</Text>
           </View>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Stand Area</Text>
+            <Text style={[styles.legendText, { color: colors.text }]}>Zona de Stands</Text>
           </View>
         </View>
       </View>
@@ -136,7 +136,9 @@ export default function MapScreen() {
       {selectedSpace && (
         <View style={[styles.eventPanel, { borderTopColor: colors.border }]}>
           <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.panelTitle, { color: colors.text }]}>{selectedSpace}</Text>
+            <Text style={[styles.panelTitle, { color: colors.text }]}>
+              {SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
+            </Text>
           </View>
           <FlatList
             data={spaceEvents}
@@ -155,7 +157,7 @@ export default function MapScreen() {
             )}
             ListEmptyComponent={
               <Text style={[styles.empty, { color: colors.icon }]}>
-                No current or upcoming events in this space.
+                No hay eventos actuales ni próximos en este espacio.
               </Text>
             }
           />

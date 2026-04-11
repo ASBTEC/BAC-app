@@ -20,17 +20,17 @@ type TypeFilter = ExhibitorType | 'all';
 type TierFilter = SponsorTier | 'all';
 
 const TYPE_FILTERS: { key: TypeFilter; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'speaker', label: 'Speakers' },
-  { key: 'business', label: 'Companies' },
+  { key: 'all',      label: 'Todos' },
+  { key: 'speaker',  label: 'Ponentes' },
+  { key: 'business', label: 'Empresas' },
 ];
 
 const TIER_FILTERS: { key: TierFilter; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'platinum', label: 'Platinum' },
-  { key: 'gold', label: 'Gold' },
-  { key: 'silver', label: 'Silver' },
-  { key: 'bronze', label: 'Bronze' },
+  { key: 'all',      label: 'Todos' },
+  { key: 'platinum', label: 'Platino' },
+  { key: 'gold',     label: 'Oro' },
+  { key: 'silver',   label: 'Plata' },
+  { key: 'bronze',   label: 'Bronce' },
 ];
 
 const TIER_ORDER: Record<string, number> = { platinum: 0, gold: 1, silver: 2, bronze: 3 };
@@ -83,7 +83,7 @@ export default function SponsorsScreen() {
         <TextInput
           nativeID="sponsors-search"
           style={[styles.searchInput, { color: colors.text }]}
-          placeholder="Search sponsors & speakers…"
+          placeholder="Buscar patrocinadores y ponentes…"
           placeholderTextColor={colors.icon}
           value={search}
           onChangeText={setSearch}
@@ -145,7 +145,7 @@ export default function SponsorsScreen() {
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => <ExhibitorCard exhibitor={item} />}
         ListEmptyComponent={
-          <Text style={[styles.empty, { color: colors.icon }]}>No results.</Text>
+          <Text style={[styles.empty, { color: colors.icon }]}>Sin resultados.</Text>
         }
       />
     </View>

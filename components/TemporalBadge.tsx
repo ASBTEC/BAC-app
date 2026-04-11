@@ -8,9 +8,9 @@ interface Props {
 }
 
 const config: Record<TemporalStatus, { label: string; bg: string; color: string } | null> = {
-  now: { label: 'NOW', bg: BACColors.teal, color: '#fff' },
-  upcoming: { label: 'UPCOMING', bg: BACColors.amber, color: '#fff' },
-  past: { label: 'PAST', bg: BACColors.grey, color: '#fff' },
+  now:      { label: 'AHORA',   bg: BACColors.teal,  color: '#fff' },
+  upcoming: { label: 'PRÓXIMO', bg: BACColors.amber, color: '#fff' },
+  past:     { label: 'PASADO',  bg: BACColors.grey,  color: '#fff' },
   future: null,
 };
 

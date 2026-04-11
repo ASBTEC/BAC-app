@@ -105,7 +105,7 @@ export function useNotifications() {
         const timerId = setTimeout(() => {
           if (Notification.permission === 'granted') {
             new Notification(event.title, {
-              body: `Starting in ${leadTime} min · ${event.local_location}`,
+              body: `Comienza en ${leadTime} min · ${event.local_location}`,
             });
           }
           webTimers.current.delete(event.id);
@@ -124,7 +124,7 @@ export function useNotifications() {
           identifier,
           content: {
             title: event.title,
-            body: `Starting in ${leadTime} min · ${event.local_location}`,
+            body: `Comienza en ${leadTime} min · ${event.local_location}`,
             data: { eventId: event.id },
           },
           trigger: {

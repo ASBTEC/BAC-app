@@ -24,10 +24,10 @@ const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 const TIER_LABELS: Record<string, string> = {
-  platinum: 'Platinum Sponsor',
-  gold: 'Gold Sponsor',
-  silver: 'Silver Sponsor',
-  bronze: 'Bronze Sponsor',
+  platinum: 'Patrocinador Platino',
+  gold:     'Patrocinador Oro',
+  silver:   'Patrocinador Plata',
+  bronze:   'Patrocinador Bronce',
 };
 
 export default function EventDetailScreen() {
@@ -62,7 +62,7 @@ export default function EventDetailScreen() {
   if (!event) {
     return (
       <View style={[styles.center, { backgroundColor: colors.background }]}>
-        <Text style={{ color: colors.text }}>Event not found.</Text>
+        <Text style={{ color: colors.text }}>Evento no encontrado.</Text>
       </View>
     );
   }
@@ -77,7 +77,7 @@ export default function EventDetailScreen() {
       {(status === 'now' || status === 'upcoming') && (
         <View style={[styles.statusBanner, { backgroundColor: statusColor }]}>
           <Text style={styles.statusBannerText}>
-            {status === 'now' ? '● Happening now' : '⏳ Starting soon'}
+            {status === 'now' ? '● En curso ahora' : '⏳ Comienza pronto'}
           </Text>
         </View>
       )}
@@ -102,7 +102,7 @@ export default function EventDetailScreen() {
             style={[styles.mapsBtn, { borderColor: BACColors.teal }]}
             onPress={() => Linking.openURL(event.location!)}>
             <MaterialIcons name="map" size={14} color={BACColors.teal} />
-            <Text style={[styles.mapsBtnText, { color: BACColors.teal }]}>Open in Maps</Text>
+            <Text style={[styles.mapsBtnText, { color: BACColors.teal }]}>Abrir en Mapas</Text>
           </Pressable>
         )}
       </View>
@@ -110,7 +110,7 @@ export default function EventDetailScreen() {
       {/* Description */}
       {event.description && (
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>About</Text>
+          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Acerca de</Text>
           <Text style={[styles.description, { color: colors.text }]}>{event.description}</Text>
         </View>
       )}
@@ -119,7 +119,7 @@ export default function EventDetailScreen() {
       {exhibitors.length > 0 && (
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>
-            {exhibitors.some((e) => e.exhibitor_type === 'speaker') ? 'Speakers' : 'Organisers'}
+            {exhibitors.some((e) => e.exhibitor_type === 'speaker') ? 'Ponentes' : 'Organizadores'}
           </Text>
           {exhibitors.map((ex) => (
             <Pressable
@@ -158,7 +158,7 @@ export default function EventDetailScreen() {
         onPress={handleToggleSave}>
         <MaterialIcons name={saved ? 'bookmark' : 'bookmark-border'} size={20} color={saved ? '#fff' : BACColors.teal} />
         <Text style={[styles.saveBtnText, { color: saved ? '#fff' : BACColors.teal }]}>
-          {saved ? 'Remove from My Schedule' : 'Add to My Schedule'}
+          {saved ? 'Eliminar de mi agenda' : 'Añadir a mi agenda'}
         </Text>
       </Pressable>
     </ScrollView>

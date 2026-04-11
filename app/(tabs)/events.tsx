@@ -23,7 +23,7 @@ const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 type FilterCategory = EventCategory | 'all';
 
 const FILTERS: { key: FilterCategory; label: string }[] = [
-  { key: 'all',         label: 'All' },
+  { key: 'all',         label: 'Todos' },
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
@@ -89,7 +89,7 @@ export default function EventsScreen() {
         <TextInput
           nativeID="events-search"
           style={[styles.searchInput, { color: colors.text }]}
-          placeholder="Search events, speakers, companies…"
+          placeholder="Buscar eventos, ponentes, empresas…"
           placeholderTextColor={colors.icon}
           value={search}
           onChangeText={setSearch}
@@ -142,7 +142,7 @@ export default function EventsScreen() {
         )}
         ListEmptyComponent={
           <Text style={[styles.empty, { color: colors.icon }]}>
-            No events match your search.
+            No hay eventos que coincidan con tu búsqueda.
           </Text>
         }
       />

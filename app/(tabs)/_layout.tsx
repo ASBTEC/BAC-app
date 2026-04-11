@@ -39,15 +39,15 @@ export default function TabLayout() {
         <Tabs.Screen
           name="schedule"
           options={{
-            title: 'My Schedule',
-            tabBarLabel: 'Schedule',
+            title: 'Mi Agenda',
+            tabBarLabel: 'Agenda',
             tabBarIcon: ({ color }) => <MaterialIcons name="bookmark" size={24} color={color} />,
           }}
         />
         <Tabs.Screen
           name="map"
           options={{
-            title: 'Map',
+            title: 'Mapa',
             tabBarIcon: ({ color }) => <MaterialIcons name="map" size={24} color={color} />,
           }}
         />
@@ -55,22 +55,22 @@ export default function TabLayout() {
           name="index"
           options={{
             title: 'BAC 2026',
-            tabBarLabel: 'Home',
+            tabBarLabel: 'Inicio',
             tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
           }}
         />
         <Tabs.Screen
           name="events"
           options={{
-            title: 'Events',
+            title: 'Eventos',
             tabBarIcon: ({ color }) => <MaterialIcons name="event" size={24} color={color} />,
           }}
         />
         <Tabs.Screen
           name="sponsors"
           options={{
-            title: 'Sponsors & Speakers',
-            tabBarLabel: 'People',
+            title: 'Patrocinadores y Ponentes',
+            tabBarLabel: 'Personas',
             tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color={color} />,
           }}
         />
