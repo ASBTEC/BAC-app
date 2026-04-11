@@ -2,8 +2,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  FlatList,
   Pressable,
+  SectionList,
   StyleSheet,
   Text,
   View,
@@ -14,13 +14,12 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
 import { Event, Exhibitor } from '@/types';
-import { sortByProximity } from '@/utils/temporal';
+import { getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
 
 const MAPS_URL = 'https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8';
 
-// Google Calendar URL for adding the congress as an all-day event (20260707–20260712 = excl. end)
 const GCAL_URL =
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
   '&text=BAC+2026+%E2%80%94+Biotechnology+Annual+Congress' +
@@ -44,7 +43,6 @@ export default function HomeScreen() {
   const [now, setNow] = useState(new Date());
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Refresh temporal status every minute
   useEffect(() => {
     intervalRef.current = setInterval(() => setNow(new Date()), 60_000);
     return () => {
@@ -52,10 +50,37 @@ export default function HomeScreen() {
     };
   }, []);
 
-  // Home shows all non-stand events sorted by time proximity
-  const visibleEvents = useMemo(() => {
+  const sections = useMemo(() => {
     const nonStand = EVENTS.filter((e) => e.activity_type !== 'stand');
-    return sortByProximity(nonStand, now);
+
+    const current: Event[] = [];
+    const upcoming: Event[] = [];
+    const past: Event[] = [];
+
+    for (const event of nonStand) {
+      const status = getTemporalStatus(event, now);
+      if (status === 'now') {
+        current.push(event);
+      } else if (status === 'past') {
+        past.push(event);
+      } else {
+        // 'upcoming' (≤30 min) and 'future' both go to upcoming section
+        upcoming.push(event);
+      }
+    }
+
+    const byStart = (a: Event, b: Event) =>
+      new Date(a.start_time).getTime() - new Date(b.start_time).getTime();
+
+    current.sort(byStart);
+    upcoming.sort(byStart);
+    past.sort((a, b) => byStart(b, a)); // most recent first
+
+    const result = [];
+    if (current.length > 0) result.push({ title: 'Current Events', data: current });
+    if (upcoming.length > 0) result.push({ title: 'Upcoming Events', data: upcoming });
+    if (past.length > 0) result.push({ title: 'Past Events', data: past });
+    return result;
   }, [now]);
 
   const handleToggleSave = useCallback(
@@ -73,34 +98,33 @@ export default function HomeScreen() {
     [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
-  const openMaps = () => Linking.openURL(MAPS_URL);
-
-  const addToCalendar = () => Linking.openURL(GCAL_URL);
-
   return (
-    <FlatList
+    <SectionList
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={styles.content}
+      sections={sections}
+      keyExtractor={(item) => item.id}
       ListHeaderComponent={
         <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
           <Text style={styles.congressTitle}>Biotechnology Annual Congress</Text>
           <Text style={styles.congressYear}>BAC 2026</Text>
 
-          <Pressable onPress={openMaps} style={styles.locationRow}>
+          <Pressable onPress={() => Linking.openURL(MAPS_URL)} style={styles.locationRow}>
             <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
             <Text style={styles.locationText}>UAB Barcelona</Text>
           </Pressable>
 
-          <Pressable onPress={addToCalendar} style={styles.datePill}>
+          <Pressable onPress={() => Linking.openURL(GCAL_URL)} style={styles.datePill}>
             <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
             <Text style={styles.dateText}>7 – 11 July 2026</Text>
           </Pressable>
-
-          <Text style={[styles.sectionLabel, { color: BACColors.lightBlue }]}>Current & Upcoming Events</Text>
         </View>
       }
-      data={visibleEvents}
-      keyExtractor={(item) => item.id}
+      renderSectionHeader={({ section }) => (
+        <View style={[styles.sectionHeader, { backgroundColor: colors.background }]}>
+          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>{section.title}</Text>
+        </View>
+      )}
       renderItem={({ item }) => (
         <EventCard
           event={item}
@@ -165,15 +189,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 14,
     paddingVertical: 6,
-    marginBottom: 20,
   },
   dateText: {
     color: BACColors.navyDark,
     fontWeight: '700',
     fontSize: 13,
   },
-  sectionLabel: {
-    fontSize: 12,
+  sectionHeader: {
+    paddingHorizontal: 16,
+    paddingTop: 20,
+    paddingBottom: 6,
+  },
+  sectionTitle: {
+    fontSize: 13,
     fontWeight: '700',
     letterSpacing: 0.5,
     textTransform: 'uppercase',
