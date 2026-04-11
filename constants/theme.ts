@@ -2,15 +2,41 @@ import { Platform } from 'react-native';
 
 // BAC 2026 brand palette
 export const BACColors = {
-  // Primary
+  // Primary (from official brand guide)
   navyDark: '#2C4E61',
   teal: '#1E99AE',
   lightBlue: '#B6E2EB',
   white: '#FFFFFF',
-  // Contrast / accent
+  // Contrast / accent (from official brand guide)
   amber: '#FFA800',
   peach: '#FFC08C',
-  // Semantic
+
+  // Teal shades
+  tealDark: '#65C8D0',
+  tealMid: '#8FE3E5',
+  tealLight: '#D0F6F7',
+
+  // Blue shades
+  blueDark: '#B6E2EB',   // same as lightBlue
+  blueMid: '#D4FAFF',
+  blueLight: '#F0FEFF',
+
+  // Navy shades
+  navyBase: '#2A4D61',   // close to navyDark
+  navyMid: '#457082',
+  navyLight: '#679EB2',
+
+  // Amber shades
+  amberDark: '#FFA800',  // same as amber
+  amberMid: '#FFC152',
+  amberLight: '#FFE299',
+
+  // Peach shades
+  peachDark: '#FFC08B',  // same as peach
+  peachMid: '#FFE2B8',
+  peachLight: '#FEFEFE',
+
+  // Semantic (not brand colors — used for UI states)
   green: '#4CAF50',
   grey: '#9BA1A6',
   greyLight: '#E8EAEC',
