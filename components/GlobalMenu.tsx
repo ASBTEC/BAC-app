@@ -140,7 +140,7 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
                   For any technical issues with the app, contact the ASBTEC IT Officer.
                 </Text>
                 <Text style={[styles.emailLink, { color: BACColors.teal }]}>
-                  amarine@asbtec.cat
+                  informatica@asbtec.cat
                 </Text>
               </View>
             </View>
