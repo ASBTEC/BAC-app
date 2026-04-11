@@ -1,125 +1,53 @@
-# BAC-app 👋
+# BAC-app
 
-App for the BAC Barcelona 2026.
+App for the BAC Barcelona 2026, built with Expo/React Native.
 
-This is an [Expo](https://expo.dev) project created with
-[`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Setup
 
-## Requisites
-### Android SDK
-Add this into your `~/.bashrc`:
-```shell
-# Android SDK
-export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-export ANDROID_HOME="$ANDROID_SDK_ROOT"
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
-export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
-```
-
-Also download Android Studio, Android platform tools and cmdline tools in the corresponding folder.
-
-
-## Get started
-Requisites:
-* nvm (in your computer)
-* Expo Go (in your phone)
-* Android SDK installed and configured (in your computer)
-
-Then, use the following to install and use `npm` in version 20:
-```shell
-nvm install 20
-nvm use 20
-```
-
-### Development in Expo Go
-Install `eas-cli` and login:
-```shell
-npm install -g eas-cli 
-eas login
-```
-
-Configure the build:
-```shell
-eas build:configure  # Select All
-```
-
-And run the app in the Expo Cloud:
-```shell
-eas build --platform android --profile development
-```
-
-Press 's' to switch to "Expo Go" and scan the QR code with your phone. You will see the app in your 
-phone.
-
-### Development in Android Device
-[Follow this guide](https://reactnative.dev/docs/running-on-device)
-expo-dev-client
-npx expo run:android
-
-### Generate standalone APK
-After using
-
-```shell
-eas build --platform android --profile development
-```
-
-Use 
-```shell
-./gradlew assembleRelease
-```
-
-To generate an app into `android/outputs/apk/release/app-release.apk` that you can move to your
-phone to install it. 
-
-
-### Running
-Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-
-
-In the output, you'll find options to open the app in a
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-- [Getting started](https://docs.expo.dev/get-started/set-up-your-environment/?mode=development-build)
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Requirements: Node.js v20 (via nvm)
 
 ```bash
-npm run reset-project
+nvm install 20
+nvm use 20
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Run locally (web)
 
-## Learn more
+```bash
+npm run web
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Opens at `http://localhost:8081`. Anyone on the same network can access it at `http://<your-ip>:8081`.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Build APK for Android
 
-## Join the community
+No Android SDK needed — builds in Expo's cloud.
 
-Join our community of developers creating universal apps.
+```bash
+npm install -g eas-cli
+eas login
+eas build --platform android --profile preview
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+When done, EAS gives you a download link for the `.apk` file. To install it on a phone: enable "Install from unknown sources" in Android settings, download the APK, and tap to install.
+
+## Development
+
+```bash
+npm start        # Expo dev server (scan QR with Expo Go)
+npm run android  # Run on connected Android device/emulator (requires Android SDK)
+npm run lint     # Lint
+```
+
+### Android SDK setup (only needed for `npm run android`)
+
+Add to `~/.bashrc`:
+```bash
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+```
 
 
 
