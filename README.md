@@ -40,6 +40,21 @@ npm run android  # Run on connected Android device/emulator (requires Android SD
 npm run lint     # Lint
 ```
 
+## Image assets
+
+All images live in `assets/images/`. Spec for each file:
+
+| File | Platform | When used | Spec |
+|---|---|---|---|
+| `icon.png` | iOS, Android | Home screen / app drawer icon. Also used as the push notification icon. | 1024×1024 px, PNG, no transparency, no rounded corners (OS applies mask). |
+| `splash-icon.png` | iOS, Android | Centered image on the splash screen while the app loads. Background is white (light) / black (dark). | 1024×1024 px, PNG, transparent background. Logo is displayed at 200 px wide, `contain` resize — never cropped. |
+| `favicon.png` | Web | Browser tab icon and bookmarks. | 32×32 or 64×64 px, PNG. |
+| `android-icon-foreground.png` | Android | Foreground layer of the adaptive icon (API 26+). The OS applies its own shape mask (circle, squircle, etc.). | 1024×1024 px, PNG with transparency. Keep logo centred inside the inner 66% of the canvas (safe zone). |
+| `android-icon-background.png` | Android | Background layer of the adaptive icon, shown behind the foreground. Base color is `#E6F4FE` (light blue). | 1024×1024 px, PNG, no transparency. |
+| `android-icon-monochrome.png` | Android 13+ | Themed adaptive icon when the user enables system-colored icons. The OS replaces all colors with its accent color. | 1024×1024 px, PNG. Single-color silhouette — transparent background, solid fill for the logo shape. |
+
+---
+
 ### Android SDK setup (only needed for `npm run android`)
 
 Add to `~/.bashrc`:
