@@ -91,6 +91,7 @@ export default function EventsScreen() {
       {/* Search bar */}
       <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <TextInput
+          nativeID="events-search"
           style={[styles.searchInput, { color: colors.text }]}
           placeholder="Search events, speakers, companies…"
           placeholderTextColor={colors.icon}

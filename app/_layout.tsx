@@ -2,8 +2,19 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Pressable } from 'react-native';
+import { LogBox, Platform, Pressable } from 'react-native';
 import 'react-native-reanimated';
+
+// Silence react-navigation's internal pointerEvents deprecation warning —
+// it comes from inside the library and cannot be fixed in our code.
+LogBox.ignoreLogs(['props.pointerEvents is deprecated']);
+if (Platform.OS === 'web') {
+  const _warn = console.warn.bind(console);
+  console.warn = (...args: unknown[]) => {
+    if (typeof args[0] === 'string' && args[0].includes('pointerEvents')) return;
+    _warn(...args);
+  };
+}
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { BACColors } from '@/constants/theme';
 import { ScheduleProvider } from '@/context/schedule-context';

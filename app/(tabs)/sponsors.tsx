@@ -81,6 +81,7 @@ export default function SponsorsScreen() {
       {/* Search */}
       <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <TextInput
+          nativeID="sponsors-search"
           style={[styles.searchInput, { color: colors.text }]}
           placeholder="Search sponsors & speakers…"
           placeholderTextColor={colors.icon}
