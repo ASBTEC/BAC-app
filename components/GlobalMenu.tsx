@@ -122,23 +122,16 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
               )}
             </View>
 
-            {/* About app */}
-            <View style={styles.section}>
-              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Acerca de</Text>
-              <View style={[styles.navGroup, { borderColor: colors.border, backgroundColor: colors.background }]}>
-                <Pressable
-                  style={[styles.navRow, { borderBottomWidth: 0 }]}
-                  onPress={() => { onClose(); router.push('/about'); }}>
-                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Acerca de la aplicación</Text>
-                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
-                </Pressable>
-              </View>
-            </View>
-
             {/* About */}
             <View style={styles.section}>
               <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Información</Text>
               <View style={[styles.navGroup, { borderColor: colors.border, backgroundColor: colors.background }]}>
+                <Pressable
+                  style={[styles.navRow, { borderBottomColor: colors.border }]}
+                  onPress={() => { onClose(); router.push('/about'); }}>
+                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Acerca de la aplicación</Text>
+                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
+                </Pressable>
                 <Pressable
                   style={[styles.navRow, { borderBottomColor: colors.border }]}
                   onPress={() => { onClose(); router.push('/privacy'); }}>

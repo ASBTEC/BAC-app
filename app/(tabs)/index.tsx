@@ -15,6 +15,7 @@ import {
 import { EventCard } from '@/components/EventCard';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -62,6 +63,7 @@ export default function HomeScreen() {
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { width: screenWidth } = useWindowDimensions();
+  const { top: topInset } = useSafeAreaInsets();
   const logoWidth = Math.min(screenWidth * 0.22, 110);
   const logoHeight = logoWidth * (130 / 110);
   const { isSaved, toggleEvent } = useSchedule();
@@ -136,8 +138,8 @@ export default function HomeScreen() {
     <>
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Hero header */}
-      <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
-        <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
+      <View style={[styles.header, { backgroundColor: BACColors.navyDark, paddingTop: topInset + 16 }]}>
+        <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={[styles.menuBtn, { top: topInset + 12 }]}>
           <MaterialIcons name="more-vert" size={24} color="#fff" />
         </Pressable>
         <View style={styles.heroRow}>
