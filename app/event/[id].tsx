@@ -1,5 +1,4 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import * as Linking from 'expo-linking';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import {
@@ -22,6 +21,9 @@ import allExhibitors from '@/data/exhibitors.json';
 
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
+
+// Space IDs that exist on the Map tab — must match the `id` field in SPACES (map.tsx)
+const MAP_SPACE_IDS = new Set(['Auditorium', 'Classroom 1', 'Classroom 2', 'Laboratory', 'Stand Area']);
 
 const TIER_LABELS: Record<string, string> = {
   platinum: 'Patrocinador Platino',
@@ -94,18 +96,20 @@ export default function EventDetailScreen() {
       </View>
 
       {/* Location */}
-      <View style={[styles.infoRow, { borderBottomColor: colors.border }]}>
-        <MaterialIcons name="location-on" size={20} color={BACColors.teal} />
-        <Text style={[styles.infoText, { color: colors.text }]}>{event.local_location}</Text>
-        {event.location && (
-          <Pressable
-            style={[styles.mapsBtn, { borderColor: BACColors.teal }]}
-            onPress={() => Linking.openURL(event.location!)}>
-            <MaterialIcons name="map" size={14} color={BACColors.teal} />
-            <Text style={[styles.mapsBtnText, { color: BACColors.teal }]}>Abrir en Mapas</Text>
-          </Pressable>
-        )}
-      </View>
+      {MAP_SPACE_IDS.has(event.local_location) ? (
+        <Pressable
+          style={[styles.infoRow, { borderBottomColor: colors.border }]}
+          onPress={() => router.push({ pathname: '/(tabs)/map', params: { space: event.local_location } } as never)}>
+          <MaterialIcons name="location-on" size={20} color={BACColors.teal} />
+          <Text style={[styles.infoText, { color: BACColors.teal }]}>{event.local_location}</Text>
+          <MaterialIcons name="chevron-right" size={18} color={BACColors.teal} />
+        </Pressable>
+      ) : (
+        <View style={[styles.infoRow, { borderBottomColor: colors.border }]}>
+          <MaterialIcons name="location-on" size={20} color={BACColors.teal} />
+          <Text style={[styles.infoText, { color: colors.text }]}>{event.local_location}</Text>
+        </View>
+      )}
 
       {/* Description */}
       {event.description && (
@@ -192,16 +196,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   infoText: { flex: 1, fontSize: 15 },
-  mapsBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    borderRadius: 8,
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-  mapsBtnText: { fontSize: 12, fontWeight: '600' },
   section: { paddingHorizontal: 20, paddingTop: 20, gap: 12 },
   sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5 },
   description: { fontSize: 15, lineHeight: 22 },

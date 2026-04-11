@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import { useLocalSearchParams } from 'expo-router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   FlatList,
   Pressable,
@@ -61,6 +62,11 @@ export default function MapScreen() {
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null);
   const [now] = useState(new Date());
+  const { space } = useLocalSearchParams<{ space?: string }>();
+
+  useEffect(() => {
+    if (space) setSelectedSpace(space);
+  }, [space]);
 
   const spaceEvents = useMemo<Event[]>(
     () => (selectedSpace ? getSpaceEvents(selectedSpace, now) : []),

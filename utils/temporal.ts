@@ -14,12 +14,12 @@ export function getTemporalStatus(event: Event, now: Date = new Date()): Tempora
 
 export function formatTimeSlot(start: string, end: string): string {
   const fmt = (iso: string) =>
-    new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    new Date(iso).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
   return `${fmt(start)} – ${fmt(end)}`;
 }
 
 export function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-GB', {
+  return new Date(iso).toLocaleDateString('es-ES', {
     weekday: 'short',
     day: 'numeric',
     month: 'short',
