@@ -1,7 +1,11 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+
+const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
+  'logo-asbtec-squared.jpg': require('@/assets/images/logo-asbtec-squared.jpg'),
+};
 import { EventCard } from '@/components/EventCard';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -80,11 +84,15 @@ export default function ExhibitorDetailScreen() {
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
         <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue }]}>
-          <MaterialIcons
-            name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
-            size={48}
-            color={BACColors.navyDark}
-          />
+          {exhibitor.photo && EXHIBITOR_PHOTOS[exhibitor.photo] ? (
+            <Image source={EXHIBITOR_PHOTOS[exhibitor.photo]} style={styles.heroAvatarImage} resizeMode="cover" />
+          ) : (
+            <MaterialIcons
+              name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
+              size={48}
+              color={BACColors.navyDark}
+            />
+          )}
         </View>
         <Text style={styles.heroName}>{exhibitor.name}</Text>
 
@@ -157,6 +165,11 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  heroAvatarImage: {
+    width: 80,
+    height: 80,
   },
   heroName: {
     color: '#fff',

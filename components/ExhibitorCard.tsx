@@ -1,7 +1,11 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+
+const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
+  'logo-asbtec-squared.jpg': require('../assets/images/logo-asbtec-squared.jpg'),
+};
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Exhibitor } from '@/types';
@@ -35,13 +39,17 @@ export function ExhibitorCard({ exhibitor }: Props) {
     <Pressable
       style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
-      {/* Avatar / Icon placeholder */}
+      {/* Avatar */}
       <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue }]}>
-        <MaterialIcons
-          name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
-          size={28}
-          color={BACColors.navyDark}
-        />
+        {exhibitor.photo && EXHIBITOR_PHOTOS[exhibitor.photo] ? (
+          <Image source={EXHIBITOR_PHOTOS[exhibitor.photo]} style={styles.avatarImage} resizeMode="cover" />
+        ) : (
+          <MaterialIcons
+            name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
+            size={28}
+            color={BACColors.navyDark}
+          />
+        )}
       </View>
 
       <View style={styles.content}>
@@ -99,6 +107,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
+    overflow: 'hidden',
+  },
+  avatarImage: {
+    width: 48,
+    height: 48,
   },
   content: {
     flex: 1,
