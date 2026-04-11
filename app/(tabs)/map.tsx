@@ -1,14 +1,11 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useMemo, useState } from 'react';
 import {
   FlatList,
-  Modal,
   Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { EventCard } from '@/components/EventCard';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -42,22 +39,15 @@ const SPACE_BG: Record<string, string> = {
   stand: BACColors.amber,
 };
 
-interface SpaceEvents { now: Event[]; upcoming: Event[] }
-
-function getSpaceEvents(spaceId: string, now: Date): SpaceEvents {
-  const relevant = EVENTS.filter((e) => {
+function getSpaceEvents(spaceId: string, now: Date): Event[] {
+  return EVENTS.filter((e) => {
     if (e.activity_type === 'stand') return false;
     if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
     const s = getTemporalStatus(e, now);
     return s === 'now' || s === 'upcoming' || s === 'future';
   }).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
-  return {
-    now: relevant.filter((e) => getTemporalStatus(e, now) === 'now'),
-    upcoming: relevant.filter((e) => getTemporalStatus(e, now) !== 'now'),
-  };
 }
 
-// Build rows: row index → spaces in that row
 const ROWS = SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
   if (!acc[s.row]) acc[s.row] = [];
   acc[s.row].push(s);
@@ -72,13 +62,9 @@ export default function MapScreen() {
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null);
   const [now] = useState(new Date());
 
-  const spaceEvents = useMemo<SpaceEvents>(
-    () => (selectedSpace ? getSpaceEvents(selectedSpace, now) : { now: [], upcoming: [] }),
+  const spaceEvents = useMemo<Event[]>(
+    () => (selectedSpace ? getSpaceEvents(selectedSpace, now) : []),
     [selectedSpace, now],
-  );
-  const allSpaceEvents = useMemo(
-    () => [...spaceEvents.now, ...spaceEvents.upcoming],
-    [spaceEvents],
   );
 
   const handleToggleSave = useCallback(
@@ -98,73 +84,64 @@ export default function MapScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <Text style={[styles.subtitle, { color: colors.icon }]}>
-        Faculty of Biosciences · UAB · Tap a space to see its events
-      </Text>
-
-      {/* Floor plan built from Views */}
-      <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
-        <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
-          FACULTY OF BIOSCIENCES — UAB
+      {/* Map area */}
+      <View style={styles.mapArea}>
+        <Text style={[styles.subtitle, { color: colors.icon }]}>
+          Faculty of Biosciences · UAB · Tap a space to see its events
         </Text>
 
-        {ROWS.map((row, rowIdx) => (
-          <View key={rowIdx} style={styles.row}>
-            {row.map((space) => {
-              const selected = selectedSpace === space.id;
-              const bg = selected ? BACColors.teal : SPACE_BG[space.type];
-              return (
-                <Pressable
-                  key={space.id}
-                  style={[
-                    styles.spaceBtn,
-                    { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.navyDark + '44', borderWidth: selected ? 2 : 1.5 },
-                  ]}
-                  onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
-                  <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
-                    {space.label}
-                  </Text>
-                  <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
-                    {space.type === 'classroom' ? 'Classroom' : 'Stand Zone'}
-                  </Text>
-                </Pressable>
-              );
-            })}
+        <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
+          <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
+            FACULTY OF BIOSCIENCES — UAB
+          </Text>
+          {ROWS.map((row, rowIdx) => (
+            <View key={rowIdx} style={styles.row}>
+              {row.map((space) => {
+                const selected = selectedSpace === space.id;
+                const bg = selected ? BACColors.teal : SPACE_BG[space.type];
+                return (
+                  <Pressable
+                    key={space.id}
+                    style={[
+                      styles.spaceBtn,
+                      { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.navyDark + '44', borderWidth: selected ? 2 : 1.5 },
+                    ]}
+                    onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
+                    <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
+                      {space.label}
+                    </Text>
+                    <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
+                      {space.type === 'classroom' ? 'Classroom' : 'Stand Zone'}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.legend}>
+          <View style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
+            <Text style={[styles.legendText, { color: colors.text }]}>Classroom / Auditorium</Text>
           </View>
-        ))}
-      </View>
-
-      {/* Legend */}
-      <View style={styles.legend}>
-        <View style={styles.legendItem}>
-          <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
-          <Text style={[styles.legendText, { color: colors.text }]}>Classroom / Auditorium</Text>
-        </View>
-        <View style={styles.legendItem}>
-          <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
-          <Text style={[styles.legendText, { color: colors.text }]}>Stand Area</Text>
+          <View style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
+            <Text style={[styles.legendText, { color: colors.text }]}>Stand Area</Text>
+          </View>
         </View>
       </View>
 
-      {/* Bottom sheet */}
-      <Modal
-        visible={!!selectedSpace}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setSelectedSpace(null)}>
-        <Pressable style={styles.sheetBackdrop} onPress={() => setSelectedSpace(null)} />
-        <SafeAreaView style={[styles.sheet, { backgroundColor: colors.card }]}>
-          <View style={[styles.sheetHandle, { backgroundColor: colors.border }]} />
-          <View style={[styles.sheetHeader, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.sheetTitle, { color: colors.text }]}>{selectedSpace}</Text>
-            <Pressable onPress={() => setSelectedSpace(null)} hitSlop={12}>
-              <MaterialIcons name="close" size={22} color={colors.icon} />
-            </Pressable>
+      {/* Event list — shown below the map when a space is selected */}
+      {selectedSpace && (
+        <View style={[styles.eventPanel, { borderTopColor: colors.border }]}>
+          <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
+            <Text style={[styles.panelTitle, { color: colors.text }]}>{selectedSpace}</Text>
           </View>
           <FlatList
-            data={allSpaceEvents}
+            data={spaceEvents}
             keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.sheetList}
+            contentContainerStyle={styles.listContent}
             renderItem={({ item }) => (
               <EventCard
                 event={item}
@@ -182,14 +159,15 @@ export default function MapScreen() {
               </Text>
             }
           />
-        </SafeAreaView>
-      </Modal>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center' },
+  container: { flex: 1 },
+  mapArea: { alignItems: 'center', paddingBottom: 12 },
   subtitle: { fontSize: 12, marginTop: 12, marginBottom: 12, textAlign: 'center', paddingHorizontal: 16 },
   building: {
     width: 300,
@@ -220,11 +198,13 @@ const styles = StyleSheet.create({
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   legendDot: { width: 12, height: 12, borderRadius: 6 },
   legendText: { fontSize: 12 },
-  sheetBackdrop: { flex: 1 },
-  sheet: { maxHeight: '60%', borderTopLeftRadius: 20, borderTopRightRadius: 20, paddingTop: 8, elevation: 8 },
-  sheetHandle: { width: 40, height: 4, borderRadius: 2, alignSelf: 'center', marginBottom: 8 },
-  sheetHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, paddingBottom: 12, borderBottomWidth: 1 },
-  sheetTitle: { fontSize: 17, fontWeight: '700' },
-  sheetList: { paddingVertical: 8, paddingBottom: 24 },
+  eventPanel: { flex: 1, borderTopWidth: 1 },
+  panelHeader: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+  },
+  panelTitle: { fontSize: 16, fontWeight: '700' },
+  listContent: { paddingVertical: 8, paddingBottom: 24 },
   empty: { textAlign: 'center', marginTop: 24, fontSize: 14, paddingHorizontal: 24 },
 });
