@@ -1,5 +1,6 @@
+import * as Linking from 'expo-linking';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -16,9 +17,45 @@ export default function AboutScreen() {
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Créditos</Text>
         <Text style={[styles.body, { color: colors.text }]}>
-          Aplicación desarrollada con amor {'<3'} por{' '}
-          <Text style={{ fontWeight: '700' }}>Aleix Mariné-Tena</Text>.
+          Aplicación desarrollada con amor ❤️ por{' '}
+          <Text style={{ fontWeight: '700' }}>Aleix Mariné-Tena</Text>
+          {', vocal de informàtica de ASBTEC.'}
         </Text>
+
+        <View style={styles.linkList}>
+          <Pressable
+            style={styles.linkRow}
+            onPress={() => {
+              const url = 'mailto:amarine@asbtec.cat';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
+            <Text style={[styles.linkText, { color: BACColors.teal }]}>
+              ✉️  amarine@asbtec.cat
+            </Text>
+          </Pressable>
+
+          <Pressable
+            style={styles.linkRow}
+            onPress={() => {
+              const url = 'https://github.com/AleixMT';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
+            <Text style={[styles.linkText, { color: BACColors.teal }]}>
+              🐙  GitHub — @AleixMT
+            </Text>
+          </Pressable>
+
+          <Pressable
+            style={styles.linkRow}
+            onPress={() => {
+              const url = 'https://www.linkedin.com/in/aleixmt/';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
+            <Text style={[styles.linkText, { color: BACColors.teal }]}>
+              💼  LinkedIn — @AleixMT
+            </Text>
+          </Pressable>
+        </View>
       </View>
 
       {/* Entidades participantes */}
@@ -76,5 +113,15 @@ const styles = StyleSheet.create({
   body: {
     fontSize: 15,
     lineHeight: 22,
+  },
+  linkList: {
+    marginTop: 12,
+    gap: 10,
+  },
+  linkRow: {},
+  linkText: {
+    fontSize: 15,
+    fontWeight: '600',
+    textDecorationLine: 'underline',
   },
 });
