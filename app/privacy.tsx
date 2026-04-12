@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function PrivacyScreen() {

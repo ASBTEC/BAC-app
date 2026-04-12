@@ -2,10 +2,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-
-const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
-  'logo-asbtec-squared.jpg': require('@/assets/images/logo-asbtec-squared.jpg'),
-};
 import { EventCard } from '@/components/EventCard';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -15,6 +11,9 @@ import { Event, Exhibitor } from '@/types';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
 
+const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
+  'logo-asbtec-squared.jpg': require('@/assets/images/logo-asbtec-squared.jpg'),
+};
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 

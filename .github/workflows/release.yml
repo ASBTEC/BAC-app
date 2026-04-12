@@ -52,8 +52,8 @@ jobs:
       - name: Download APK from EAS
         run: |
           eas build:download \
-            --id ${{ steps.meta.outputs.build-id }} \
-            --output ./bac-app.apk
+            --build-id ${{ steps.meta.outputs.build-id }} \
+            --path ./bac-app.apk
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 

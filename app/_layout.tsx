@@ -6,6 +6,12 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { LogBox, Platform, Pressable } from 'react-native';
 import 'react-native-reanimated';
+import { GlobalMenu } from '@/components/GlobalMenu';
+import { BACColors, OrbitronFonts } from '@/constants/theme';
+import { ScheduleProvider } from '@/context/schedule-context';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useNotifications } from '@/hooks/use-notifications';
+import { MaterialIcons } from '@expo/vector-icons';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -19,12 +25,7 @@ if (Platform.OS === 'web') {
     _warn(...args);
   };
 }
-import { GlobalMenu } from '@/components/GlobalMenu';
-import { BACColors, OrbitronFonts } from '@/constants/theme';
-import { ScheduleProvider } from '@/context/schedule-context';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useNotifications } from '@/hooks/use-notifications';
-import { MaterialIcons } from '@expo/vector-icons';
+
 
 export const unstable_settings = {
   anchor: '(tabs)',
