@@ -8,7 +8,7 @@ import { TemporalBadge } from '@/components/TemporalBadge';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Event, Exhibitor } from '@/types';
-import { formatDate, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
+import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 
 interface Props {
   event: Event;
@@ -47,7 +47,7 @@ export function EventCard({
       {/* Top row: date + time + temporal badge */}
       <View style={styles.topRow}>
         <View>
-          <Text style={[styles.date, { color: colors.icon }]}>{formatDate(event.start_time)}</Text>
+          <Text style={[styles.date, { color: colors.icon }]}>{formatDateRange(event.start_time, event.end_time)}</Text>
           <Text style={[styles.time, { color: colors.tint }]}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
         </View>
         <View style={styles.badges}>

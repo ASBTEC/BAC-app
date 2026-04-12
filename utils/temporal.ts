@@ -26,6 +26,14 @@ export function formatDate(iso: string): string {
   });
 }
 
+/** Returns "Mar 7 jul." for same-day events, or "Mar 7 jul. – Sáb 11 jul." for multi-day ones */
+export function formatDateRange(startIso: string, endIso: string): string {
+  const startDay = startIso.slice(0, 10);
+  const endDay = endIso.slice(0, 10);
+  if (startDay === endDay) return formatDate(startIso);
+  return `${formatDate(startIso)} – ${formatDate(endIso)}`;
+}
+
 /** Sort by time proximity: NOW first, then UPCOMING, then FUTURE by start time, then PAST last */
 export function sortByProximity(events: Event[], now: Date = new Date()): Event[] {
   return [...events].sort((a, b) => {

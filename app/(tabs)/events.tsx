@@ -1,3 +1,4 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useMemo, useState } from 'react';
 import {
   FlatList,
@@ -9,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
+import { TimetableView } from '@/components/TimetableView';
 import { ActivityTypeColors, BACColors, CategoryColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -22,6 +24,7 @@ const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
+type ViewMode = 'list' | 'timetable';
 
 const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'bioBAC',      label: 'BioBAC' },
@@ -31,16 +34,18 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
 ];
 
 const TYPE_FILTERS: { key: FilterType; label: string }[] = [
-  { key: 'talk',            label: 'Ponencia' },
-  { key: 'round_table',     label: 'Mesa Redonda' },
-  { key: 'activity',        label: 'Actividad' },
+  { key: 'talk',             label: 'Ponencia' },
+  { key: 'round_table',      label: 'Mesa Redonda' },
+  { key: 'activity',         label: 'Actividad' },
   { key: 'outdoor_activity', label: 'Al Aire Libre' },
-  { key: 'stand',           label: 'Stand' },
+  { key: 'stand',            label: 'Stand' },
 ];
 
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
-  return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
+  return event.exhibitor_ids
+    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .filter(Boolean) as Exhibitor[];
 }
 
 function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): boolean {
@@ -54,29 +59,23 @@ export default function EventsScreen() {
   const colors = Colors[scheme];
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
+
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
 
   const filteredEvents = useMemo(() => {
     let result = [...EVENTS].sort(
       (a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime(),
     );
-
-    if (activeCategory !== 'all') {
-      result = result.filter((e) => e.category === activeCategory);
-    }
-
-    if (activeType !== 'all') {
-      result = result.filter((e) => e.activity_type === activeType);
-    }
-
+    if (activeCategory !== 'all') result = result.filter((e) => e.category === activeCategory);
+    if (activeType !== 'all') result = result.filter((e) => e.activity_type === activeType);
     if (search.trim()) {
       result = result.filter((e) =>
         matchesSearch(e, search.trim(), getExhibitorsForEvent(e)),
       );
     }
-
     return result;
   }, [search, activeCategory, activeType]);
 
@@ -97,18 +96,57 @@ export default function EventsScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      {/* Search bar */}
-      <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
-        <TextInput
-          nativeID="events-search"
-          style={[styles.searchInput, { color: colors.text }]}
-          placeholder="Buscar eventos, ponentes, empresas…"
-          placeholderTextColor={colors.icon}
-          value={search}
-          onChangeText={setSearch}
-          clearButtonMode="while-editing"
-          returnKeyType="search"
-        />
+
+      {/* Search bar + view toggle */}
+      <View style={styles.searchRow}>
+        <View
+          style={[
+            styles.searchWrap,
+            { backgroundColor: colors.card, borderColor: colors.border },
+          ]}>
+          <TextInput
+            nativeID="events-search"
+            style={[styles.searchInput, { color: colors.text }]}
+            placeholder="Buscar eventos, ponentes, empresas…"
+            placeholderTextColor={colors.icon}
+            value={search}
+            onChangeText={setSearch}
+            clearButtonMode="while-editing"
+            returnKeyType="search"
+          />
+        </View>
+
+        {/* Segmented view toggle */}
+        <View
+          style={[
+            styles.viewToggle,
+            { backgroundColor: colors.card, borderColor: colors.border },
+          ]}>
+          <Pressable
+            style={[
+              styles.toggleBtn,
+              viewMode === 'list' && { backgroundColor: BACColors.teal },
+            ]}
+            onPress={() => setViewMode('list')}>
+            <MaterialIcons
+              name="view-list"
+              size={18}
+              color={viewMode === 'list' ? '#fff' : colors.icon}
+            />
+          </Pressable>
+          <Pressable
+            style={[
+              styles.toggleBtn,
+              viewMode === 'timetable' && { backgroundColor: BACColors.teal },
+            ]}
+            onPress={() => setViewMode('timetable')}>
+            <MaterialIcons
+              name="view-week"
+              size={18}
+              color={viewMode === 'timetable' ? '#fff' : colors.icon}
+            />
+          </Pressable>
+        </View>
       </View>
 
       {/* Category filter chips */}
@@ -167,51 +205,79 @@ export default function EventsScreen() {
         })}
       </ScrollView>
 
-      <FlatList
-        data={filteredEvents}
-        keyExtractor={(item) => item.id}
-        style={styles.list}
-        contentContainerStyle={styles.listContent}
-        renderItem={({ item }) => (
-          <EventCard
-            event={item}
-            exhibitors={getExhibitorsForEvent(item)}
-            showTemporalLabel={false}
-            isSaved={isSaved(item.id)}
-            onToggleSave={handleToggleSave}
-            dimPast={false}
-          />
-        )}
-        ListEmptyComponent={
-          <Text style={[styles.empty, { color: colors.icon }]}>
-            No hay eventos que coincidan con tu búsqueda.
-          </Text>
-        }
-      />
+      {/* Content: list or timetable */}
+      {viewMode === 'list' ? (
+        <FlatList
+          data={filteredEvents}
+          keyExtractor={(item) => item.id}
+          style={styles.list}
+          contentContainerStyle={styles.listContent}
+          renderItem={({ item }) => (
+            <EventCard
+              event={item}
+              exhibitors={getExhibitorsForEvent(item)}
+              showTemporalLabel={false}
+              isSaved={isSaved(item.id)}
+              onToggleSave={handleToggleSave}
+              dimPast={false}
+            />
+          )}
+          ListEmptyComponent={
+            <Text style={[styles.empty, { color: colors.icon }]}>
+              No hay eventos que coincidan con tu búsqueda.
+            </Text>
+          }
+        />
+      ) : (
+        <TimetableView
+          events={filteredEvents}
+          isSaved={isSaved}
+          onToggleSave={handleToggleSave}
+          emptyMessage={
+            search.trim() || activeCategory !== 'all' || activeType !== 'all'
+              ? 'No hay eventos que coincidan con los filtros activos este día.'
+              : 'No hay eventos este día.'
+          }
+        />
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  searchWrap: {
+  container: { flex: 1 },
+
+  /* Search row */
+  searchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
     marginHorizontal: 16,
     marginTop: 12,
     marginBottom: 4,
+  },
+  searchWrap: {
+    flex: 1,
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
     paddingVertical: 10,
   },
-  searchInput: {
-    fontSize: 15,
+  searchInput: { fontSize: 15 },
+
+  /* View toggle (segmented control) */
+  viewToggle: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    borderWidth: 1,
+    overflow: 'hidden',
   },
-  filterScroll: {
-    flexGrow: 0,
-    flexShrink: 0,
+  toggleBtn: {
+    padding: 8,
   },
+
+  /* Filter chips */
+  filterScroll: { flexGrow: 0, flexShrink: 0 },
   filterRow: {
     paddingHorizontal: 16,
     paddingVertical: 6,
@@ -224,20 +290,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 6,
   },
-  filterChipText: {
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  list: {
-    flex: 1,
-  },
-  listContent: {
-    paddingTop: 4,
-    paddingBottom: 32,
-  },
-  empty: {
-    textAlign: 'center',
-    marginTop: 40,
-    fontSize: 14,
-  },
+  filterChipText: { fontSize: 13, fontWeight: '600' },
+
+  /* List */
+  list: { flex: 1 },
+  listContent: { paddingTop: 4, paddingBottom: 32 },
+  empty: { textAlign: 'center', marginTop: 40, fontSize: 14 },
 });

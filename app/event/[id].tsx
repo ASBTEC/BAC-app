@@ -17,7 +17,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
 import { Event, Exhibitor } from '@/types';
-import { formatDate, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
+import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
 
@@ -108,7 +108,7 @@ export default function EventDetailScreen() {
           <CategoryBadge category={event.category} />
         </View>
         <Text style={styles.title}>{event.title}</Text>
-        <Text style={styles.date}>{formatDate(event.start_time)}</Text>
+        <Text style={styles.date}>{formatDateRange(event.start_time, event.end_time)}</Text>
         <Text style={styles.time}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
       </View>
 

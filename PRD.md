@@ -405,7 +405,7 @@ The top of the screen prominently displays:
 #### Bottom Section — Current & Upcoming Events
 
 - Event list sorted by **time proximity** (in-progress and soonest-to-start events first).
-- **Stands (`activity_type: stand`) are excluded** from this view, as they run continuously throughout the congress and do not add value in a time-proximity list.
+- All event types are included, sorted by start time.
 - Uses the event card component with no search bar and no quick filters.
 - Temporal labels (NOW / UPCOMING / PAST) are visible.
 - The list refreshes automatically in the background.
