@@ -260,7 +260,7 @@ All event lists in the app (Home, Events, My Schedule, Map space detail) use the
 
 Each event card displays:
 
-- Time slot (start time – end time)
+- Full date and time slot (e.g. `Tuesday 7 July · 10:00 – 11:00`)
 - Event title
 - Local location (`local_location`)
 - Activity type badge (`activity_type`), colour-coded
