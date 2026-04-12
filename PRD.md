@@ -260,7 +260,7 @@ All event lists in the app (Home, Events, My Schedule, Map space detail) use the
 
 Each event card displays:
 
-- Time slot (start time – end time)
+- Full date and time slot (e.g. `Tuesday 7 July · 10:00 – 11:00`)
 - Event title
 - Local location (`local_location`)
 - Activity type badge (`activity_type`), colour-coded
@@ -405,7 +405,7 @@ The top of the screen prominently displays:
 #### Bottom Section — Current & Upcoming Events
 
 - Event list sorted by **time proximity** (in-progress and soonest-to-start events first).
-- **Stands (`activity_type: stand`) are excluded** from this view, as they run continuously throughout the congress and do not add value in a time-proximity list.
+- All event types are included, sorted by start time.
 - Uses the event card component with no search bar and no quick filters.
 - Temporal labels (NOW / UPCOMING / PAST) are visible.
 - The list refreshes automatically in the background.

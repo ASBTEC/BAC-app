@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider as NavThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -9,6 +9,7 @@ import 'react-native-reanimated';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { BACColors, OrbitronFonts } from '@/constants/theme';
 import { ScheduleProvider } from '@/context/schedule-context';
+import { ThemeProvider } from '@/context/theme-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -26,15 +27,11 @@ if (Platform.OS === 'web') {
   };
 }
 
-
 export const unstable_settings = {
   anchor: '(tabs)',
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { settings, updateSettings } = useNotifications();
   const [fontsLoaded] = useFonts({
     'Orbitron-Regular': require('../assets/fonts/Orbitron-Regular.ttf'),
     'Orbitron-Bold':    require('../assets/fonts/Orbitron-Bold.ttf'),
@@ -47,6 +44,21 @@ export default function RootLayout() {
 
   if (!fontsLoaded) return null;
 
+  return (
+    <ThemeProvider>
+      <ScheduleProvider>
+        <RootNavigator />
+      </ScheduleProvider>
+    </ThemeProvider>
+  );
+}
+
+/** Inner navigator — lives inside ThemeProvider so useColorScheme() is context-aware. */
+function RootNavigator() {
+  const colorScheme = useColorScheme();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { settings, updateSettings } = useNotifications();
+
   const menuButton = (
     <Pressable hitSlop={12} onPress={() => setMenuOpen(true)}>
       <MaterialIcons name="more-vert" size={24} color="#fff" />
@@ -54,8 +66,7 @@ export default function RootLayout() {
   );
 
   return (
-    <ScheduleProvider>
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: BACColors.navyDark },
@@ -98,7 +109,6 @@ export default function RootLayout() {
       />
 
       <StatusBar style="light" />
-    </ThemeProvider>
-    </ScheduleProvider>
+    </NavThemeProvider>
   );
 }

@@ -66,7 +66,7 @@ export const CategoryColors: Record<string, string> = {
 export const Colors = {
   light: {
     text: BACColors.textDark,
-    background: '#F0FEFF',  // was #F5F7FA — swapped to brand blueLight
+    background: BACColors.greyLight,
     card: BACColors.white,
     tint: BACColors.teal,
     icon: BACColors.grey,
@@ -80,8 +80,8 @@ export const Colors = {
     background: '#151718',
     card: '#1E2427',
     tint: BACColors.lightBlue,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: BACColors.grey,
+    tabIconDefault: BACColors.grey,
     tabIconSelected: BACColors.lightBlue,
     border: '#2D3748',
     headerBackground: '#0D1F2B',

@@ -1,7 +1,9 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { Colors, OrbitronFonts } from '@/constants/theme';
+import { TimetableView } from '@/components/TimetableView';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -13,9 +15,13 @@ import allExhibitors from '@/data/exhibitors.json';
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
+type ViewMode = 'list' | 'timetable';
+
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
-  return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
+  return event.exhibitor_ids
+    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .filter(Boolean) as Exhibitor[];
 }
 
 export default function ScheduleScreen() {
@@ -24,6 +30,7 @@ export default function ScheduleScreen() {
   const { savedIds, isSaved, toggleEvent, loaded } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -55,47 +62,118 @@ export default function ScheduleScreen() {
 
   if (!loaded) return null;
 
+  // Global empty state — no saved events at all
+  if (savedEvents.length === 0) {
+    return (
+      <View style={[styles.emptyContainer, { backgroundColor: colors.background }]}>
+        <Text style={[styles.emptyTitle, { color: colors.text }]}>
+          Aún no tienes eventos guardados
+        </Text>
+        <Text style={[styles.emptySub, { color: colors.icon }]}>
+          Explora los eventos y pulsa el marcador para guardarlos aquí.
+        </Text>
+      </View>
+    );
+  }
+
   return (
-    <FlatList
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={styles.content}
-      data={savedEvents}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <EventCard
-          event={item}
-          exhibitors={getExhibitorsForEvent(item)}
-          showTemporalLabel
-          isSaved={isSaved(item.id)}
-          onToggleSave={handleToggleSave}
+    <View style={[styles.root, { backgroundColor: colors.background }]}>
+
+      {/* View toggle bar */}
+      <View style={[styles.toggleBar, { borderBottomColor: colors.border }]}>
+        <View
+          style={[
+            styles.viewToggle,
+            { backgroundColor: colors.card, borderColor: colors.border },
+          ]}>
+          <Pressable
+            style={[
+              styles.toggleBtn,
+              viewMode === 'list' && { backgroundColor: BACColors.teal },
+            ]}
+            onPress={() => setViewMode('list')}>
+            <MaterialIcons
+              name="view-list"
+              size={18}
+              color={viewMode === 'list' ? '#fff' : colors.icon}
+            />
+          </Pressable>
+          <Pressable
+            style={[
+              styles.toggleBtn,
+              viewMode === 'timetable' && { backgroundColor: BACColors.teal },
+            ]}
+            onPress={() => setViewMode('timetable')}>
+            <MaterialIcons
+              name="view-week"
+              size={18}
+              color={viewMode === 'timetable' ? '#fff' : colors.icon}
+            />
+          </Pressable>
+        </View>
+      </View>
+
+      {/* Content */}
+      {viewMode === 'list' ? (
+        <FlatList
+          style={{ flex: 1 }}
+          contentContainerStyle={styles.listContent}
+          data={savedEvents}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <EventCard
+              event={item}
+              exhibitors={getExhibitorsForEvent(item)}
+              showTemporalLabel
+              isSaved={isSaved(item.id)}
+              onToggleSave={handleToggleSave}
+              now={now}
+              dimPast
+            />
+          )}
+        />
+      ) : (
+        <TimetableView
+          events={savedEvents}
           now={now}
-          dimPast
+          isSaved={isSaved}
+          onToggleSave={handleToggleSave}
+          emptyMessage="No tienes eventos guardados para este día."
         />
       )}
-      ListEmptyComponent={
-        <View style={styles.emptyContainer}>
-          <Text style={[styles.emptyTitle, { color: colors.text }]}>Aún no tienes eventos guardados</Text>
-          <Text style={[styles.emptySub, { color: colors.icon }]}>
-            Explora los eventos y pulsa el marcador para guardarlos aquí.
-          </Text>
-        </View>
-      }
-    />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    paddingTop: 8,
-    paddingBottom: 32,
-    flexGrow: 1,
+  root: { flex: 1 },
+
+  /* Toggle bar */
+  toggleBar: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderBottomWidth: 1,
   },
+  viewToggle: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    borderWidth: 1,
+    overflow: 'hidden',
+  },
+  toggleBtn: { padding: 8 },
+
+  /* List */
+  listContent: { paddingTop: 8, paddingBottom: 32 },
+
+  /* Global empty state */
   emptyContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 32,
-    paddingTop: 80,
     gap: 10,
   },
   emptyTitle: {

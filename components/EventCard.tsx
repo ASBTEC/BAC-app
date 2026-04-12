@@ -8,7 +8,7 @@ import { TemporalBadge } from '@/components/TemporalBadge';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Event, Exhibitor } from '@/types';
-import { formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
+import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 
 interface Props {
   event: Event;
@@ -44,9 +44,12 @@ export function EventCard({
         isPast && dimPast && styles.dimmed,
       ]}
       onPress={() => router.push(`/event/${event.id}` as never)}>
-      {/* Top row: time + temporal badge */}
+      {/* Top row: date + time + temporal badge */}
       <View style={styles.topRow}>
-        <Text style={[styles.time, { color: colors.tint }]}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
+        <View>
+          <Text style={[styles.date, { color: colors.icon }]}>{formatDateRange(event.start_time, event.end_time)}</Text>
+          <Text style={[styles.time, { color: colors.tint }]}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
+        </View>
         <View style={styles.badges}>
           {showTemporalLabel && <TemporalBadge status={status} />}
         </View>
@@ -120,6 +123,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 4,
+  },
+  date: {
+    fontSize: 11,
+    fontWeight: '400',
+    marginBottom: 1,
   },
   time: {
     fontSize: 12,

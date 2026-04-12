@@ -83,7 +83,6 @@ export default function HomeScreen() {
 
   const sections = useMemo(() => {
     const nonStand = EVENTS.filter((e) => {
-      if (e.activity_type === 'stand') return false;
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
       return true;
