@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1020" viewBox="0 0 960 1020" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- ── Background ── -->
+  <rect width="960" height="1020" fill="#F8FAFB"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MAIN TITLE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <text x="480" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#2C4E61">BAC 2026 — Color Palette</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 1 — OFFICIAL BRAND COLORS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <text x="30" y="58" font-size="11" font-weight="700" fill="#679EB2" letter-spacing="1">OFFICIAL BRAND COLORS</text>
+
+  <!-- Navy -->
+  <rect x="30"  y="66" width="140" height="88" rx="8" fill="#2C4E61"/>
+  <text x="100" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#2C4E61</text>
+  <text x="100" y="122" text-anchor="middle" font-size="10" fill="#B6E2EB">navyDark</text>
+
+  <!-- Teal -->
+  <rect x="180" y="66" width="140" height="88" rx="8" fill="#1E99AE"/>
+  <text x="250" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#1E99AE</text>
+  <text x="250" y="122" text-anchor="middle" font-size="10" fill="#D0F6F7">teal</text>
+
+  <!-- Light Blue -->
+  <rect x="330" y="66" width="140" height="88" rx="8" fill="#B6E2EB"/>
+  <text x="400" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#B6E2EB</text>
+  <text x="400" y="122" text-anchor="middle" font-size="10" fill="#2C4E61">lightBlue</text>
+
+  <!-- White -->
+  <rect x="480" y="66" width="140" height="88" rx="8" fill="#FFFFFF" stroke="#B6E2EB" stroke-width="1"/>
+  <text x="550" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFFFFF</text>
+  <text x="550" y="122" text-anchor="middle" font-size="10" fill="#2C4E61">white</text>
+
+  <!-- Amber -->
+  <rect x="630" y="66" width="140" height="88" rx="8" fill="#FFA800"/>
+  <text x="700" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFA800</text>
+  <text x="700" y="122" text-anchor="middle" font-size="10" fill="#2C4E61">amber</text>
+
+  <!-- Peach -->
+  <rect x="780" y="66" width="150" height="88" rx="8" fill="#FFC08C"/>
+  <text x="855" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFC08C</text>
+  <text x="855" y="122" text-anchor="middle" font-size="10" fill="#2C4E61">peach</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="170" x2="930" y2="170" stroke="#D4FAFF" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 2 — EXTENDED PALETTE (SHADES) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <text x="30" y="192" font-size="11" font-weight="700" fill="#679EB2" letter-spacing="1">EXTENDED PALETTE — SHADES</text>
+
+  <!-- Column labels -->
+  <text x="210" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#457082">Dark</text>
+  <text x="500" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#457082">Mid</text>
+  <text x="790" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#457082">Light</text>
+
+  <!-- Row: Teal -->
+  <text x="8" y="278" text-anchor="middle" font-size="10" font-weight="700" fill="#457082" transform="rotate(-90,8,278)">TEAL</text>
+  <rect x="30"  y="218" width="350" height="82" rx="8" fill="#65C8D0"/>
+  <text x="205" y="254" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#65C8D0</text>
+  <text x="205" y="272" text-anchor="middle" font-size="10" fill="#2C4E61">tealDark</text>
+  <rect x="390" y="218" width="220" height="82" rx="8" fill="#8FE3E5"/>
+  <text x="500" y="254" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#8FE3E5</text>
+  <text x="500" y="272" text-anchor="middle" font-size="10" fill="#2C4E61">tealMid</text>
+  <rect x="620" y="218" width="310" height="82" rx="8" fill="#D0F6F7"/>
+  <text x="775" y="254" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#D0F6F7</text>
+  <text x="775" y="272" text-anchor="middle" font-size="10" fill="#2C4E61">tealLight</text>
+
+  <!-- Row: Blue -->
+  <text x="8" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="#457082" transform="rotate(-90,8,352)">BLUE</text>
+  <rect x="30"  y="308" width="350" height="82" rx="8" fill="#B6E2EB"/>
+  <text x="205" y="344" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#B6E2EB</text>
+  <text x="205" y="362" text-anchor="middle" font-size="10" fill="#2C4E61">blueDark = lightBlue</text>
+  <rect x="390" y="308" width="220" height="82" rx="8" fill="#D4FAFF"/>
+  <text x="500" y="344" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#D4FAFF</text>
+  <text x="500" y="362" text-anchor="middle" font-size="10" fill="#2C4E61">blueMid</text>
+  <rect x="620" y="308" width="310" height="82" rx="8" fill="#F0FEFF" stroke="#B6E2EB" stroke-width="1"/>
+  <text x="775" y="344" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#F0FEFF</text>
+  <text x="775" y="362" text-anchor="middle" font-size="10" fill="#2C4E61">blueLight · bg · greyLight</text>
+
+  <!-- Row: Navy -->
+  <text x="8" y="438" text-anchor="middle" font-size="10" font-weight="700" fill="#457082" transform="rotate(-90,8,438)">NAVY</text>
+  <rect x="30"  y="398" width="350" height="82" rx="8" fill="#2C4E61"/>
+  <text x="205" y="434" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#2C4E61</text>
+  <text x="205" y="452" text-anchor="middle" font-size="10" fill="#B6E2EB">navyDark = navyBase</text>
+  <rect x="390" y="398" width="220" height="82" rx="8" fill="#457082"/>
+  <text x="500" y="434" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#457082</text>
+  <text x="500" y="452" text-anchor="middle" font-size="10" fill="#D4FAFF">navyMid · textMedium</text>
+  <rect x="620" y="398" width="310" height="82" rx="8" fill="#679EB2"/>
+  <text x="775" y="434" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#679EB2</text>
+  <text x="775" y="452" text-anchor="middle" font-size="10" fill="#D4FAFF">navyLight</text>
+
+  <!-- Row: Amber -->
+  <text x="8" y="524" text-anchor="middle" font-size="10" font-weight="700" fill="#457082" transform="rotate(-90,8,524)">AMBER</text>
+  <rect x="30"  y="488" width="350" height="82" rx="8" fill="#FFA800"/>
+  <text x="205" y="524" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFA800</text>
+  <text x="205" y="542" text-anchor="middle" font-size="10" fill="#2C4E61">amber = amberDark</text>
+  <rect x="390" y="488" width="220" height="82" rx="8" fill="#FFC152"/>
+  <text x="500" y="524" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFC152</text>
+  <text x="500" y="542" text-anchor="middle" font-size="10" fill="#2C4E61">amberMid</text>
+  <rect x="620" y="488" width="310" height="82" rx="8" fill="#FFE299"/>
+  <text x="775" y="524" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFE299</text>
+  <text x="775" y="542" text-anchor="middle" font-size="10" fill="#2C4E61">amberLight</text>
+
+  <!-- Row: Peach -->
+  <text x="8" y="612" text-anchor="middle" font-size="10" font-weight="700" fill="#457082" transform="rotate(-90,8,612)">PEACH</text>
+  <rect x="30"  y="578" width="350" height="82" rx="8" fill="#FFC08C"/>
+  <text x="205" y="614" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFC08C</text>
+  <text x="205" y="632" text-anchor="middle" font-size="10" fill="#2C4E61">peach = peachDark</text>
+  <rect x="390" y="578" width="220" height="82" rx="8" fill="#FFE2B8"/>
+  <text x="500" y="614" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FFE2B8</text>
+  <text x="500" y="632" text-anchor="middle" font-size="10" fill="#2C4E61">peachMid</text>
+  <rect x="620" y="578" width="310" height="82" rx="8" fill="#FEFEFE" stroke="#FFE2B8" stroke-width="1"/>
+  <text x="775" y="614" text-anchor="middle" font-size="14" font-weight="700" fill="#2C4E61">#FEFEFE</text>
+  <text x="775" y="632" text-anchor="middle" font-size="10" fill="#2C4E61">peachLight</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="678" x2="930" y2="678" stroke="#D4FAFF" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 3 — SEMANTIC / UI COLORS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <text x="30" y="700" font-size="11" font-weight="700" fill="#679EB2" letter-spacing="1">SEMANTIC / UI COLORS</text>
+
+  <!-- Green -->
+  <rect x="30"  y="710" width="210" height="78" rx="8" fill="#4CAF50"/>
+  <text x="135" y="746" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#4CAF50</text>
+  <text x="135" y="764" text-anchor="middle" font-size="10" fill="#FFFFFF">green · outdoor_activity</text>
+
+  <!-- Grey -->
+  <rect x="250" y="710" width="210" height="78" rx="8" fill="#9BA1A6"/>
+  <text x="355" y="746" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#9BA1A6</text>
+  <text x="355" y="764" text-anchor="middle" font-size="10" fill="#FFFFFF">grey · icons · stand</text>
+
+  <!-- textDark -->
+  <rect x="470" y="710" width="210" height="78" rx="8" fill="#11181C"/>
+  <text x="575" y="746" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#11181C</text>
+  <text x="575" y="764" text-anchor="middle" font-size="10" fill="#9BA1A6">textDark · body text</text>
+
+  <!-- textLight -->
+  <rect x="690" y="710" width="240" height="78" rx="8" fill="#718096"/>
+  <text x="810" y="746" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">#718096</text>
+  <text x="810" y="764" text-anchor="middle" font-size="10" fill="#FFFFFF">textLight</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="806" x2="930" y2="806" stroke="#D4FAFF" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 4 — DARK MODE COLORS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <text x="30" y="828" font-size="11" font-weight="700" fill="#679EB2" letter-spacing="1">DARK MODE COLORS</text>
+
+  <!-- background -->
+  <rect x="30"  y="838" width="165" height="78" rx="8" fill="#151718"/>
+  <text x="112" y="874" text-anchor="middle" font-size="13" font-weight="700" fill="#ECEDEE">#151718</text>
+  <text x="112" y="892" text-anchor="middle" font-size="10" fill="#9BA1A6">background</text>
+
+  <!-- card -->
+  <rect x="203" y="838" width="165" height="78" rx="8" fill="#1E2427"/>
+  <text x="285" y="874" text-anchor="middle" font-size="13" font-weight="700" fill="#ECEDEE">#1E2427</text>
+  <text x="285" y="892" text-anchor="middle" font-size="10" fill="#9BA1A6">card</text>
+
+  <!-- header -->
+  <rect x="376" y="838" width="165" height="78" rx="8" fill="#0D1F2B"/>
+  <text x="458" y="874" text-anchor="middle" font-size="13" font-weight="700" fill="#ECEDEE">#0D1F2B</text>
+  <text x="458" y="892" text-anchor="middle" font-size="10" fill="#9BA1A6">headerBackground</text>
+
+  <!-- border -->
+  <rect x="549" y="838" width="165" height="78" rx="8" fill="#2D3748"/>
+  <text x="631" y="874" text-anchor="middle" font-size="13" font-weight="700" fill="#ECEDEE">#2D3748</text>
+  <text x="631" y="892" text-anchor="middle" font-size="10" fill="#9BA1A6">border</text>
+
+  <!-- text -->
+  <rect x="722" y="838" width="208" height="78" rx="8" fill="#ECEDEE"/>
+  <text x="826" y="874" text-anchor="middle" font-size="13" font-weight="700" fill="#2C4E61">#ECEDEE</text>
+  <text x="826" y="892" text-anchor="middle" font-size="10" fill="#457082">text</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- LEGEND -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <line x1="30" y1="934" x2="930" y2="934" stroke="#D4FAFF" stroke-width="1"/>
+  <text x="30"  y="956" font-size="10" fill="#679EB2">Source: constants/theme.ts · brand_assets/COLORS.md</text>
+  <text x="930" y="956" text-anchor="end" font-size="10" fill="#679EB2">BAC Barcelona 2026</text>
+
+</svg>

@@ -159,7 +159,7 @@ Represents any activity at the congress. All events share the following fields:
 | `id` | string | Yes | Unique event identifier |
 | `title` | string | Yes | Event title |
 | `description` | string | No | Full event description |
-| `category` | enum | Yes | Main category: `viveBAC`, `businessBAC`, `other` |
+| `category` | enum | Yes | Main category: `viveBAC`, `bioBAC`, `expoBAC`, `businessBAC`, `other` |
 | `activity_type` | enum | Yes | Activity type: `stand`, `talk`, `activity`, `outdoor_activity`, `round_table` |
 | `start_time` | datetime (ISO 8601) | Yes | Start time |
 | `end_time` | datetime (ISO 8601) | Yes | End time |
@@ -172,7 +172,9 @@ Represents any activity at the congress. All events share the following fields:
 | Value | Description |
 |---|---|
 | `viveBAC` | Congress experience events: social, cultural, and networking activities |
-| `businessBAC` | Professional events: round tables, company stands, career sessions |
+| `bioBAC` | Scientific events: talks, workshops, and academic sessions |
+| `expoBAC` | Exhibition events: sponsor stands and company showcases |
+| `businessBAC` | Professional events: round tables, career sessions, and networking |
 | `other` | Any event that does not fit the above categories |
 
 **`activity_type` values:**
@@ -421,8 +423,9 @@ The top of the screen prominently displays:
 - **Quick filter buttons** by category, displayed horizontally:
   - All (default)
   - ViveBAC
+  - BioBAC
+  - ExpoBAC
   - BusinessBAC
-  - Stands
   - Other
 - Category filters are mutually exclusive (only one active at a time).
 
@@ -574,7 +577,9 @@ The visual style follows the CHI Events App conventions: light card-based layout
 | Category | Suggested Colour |
 |---|---|
 | ViveBAC | Brand accent |
-| BusinessBAC | Dark blue / navy |
+| BioBAC | Dark blue / navy |
+| ExpoBAC | Purple / violet |
+| BusinessBAC | Teal / green |
 | Other | Light grey |
 
 ### Iconography
