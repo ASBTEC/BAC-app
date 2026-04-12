@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { ThemePreference, useThemePreference } from '@/context/theme-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { NotificationLeadTime, NotificationSettings } from '@/types';
 
@@ -30,6 +31,7 @@ const LEAD_TIME_OPTIONS: NotificationLeadTime[] = [5, 10, 15, 30];
 export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNotifications }: Props) {
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
+  const { preference: themePref, setPreference: setThemePref } = useThemePreference();
   const slideAnim = useRef(new Animated.Value(320)).current;
 
   React.useEffect(() => {
@@ -70,6 +72,40 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
           </View>
 
           <ScrollView showsVerticalScrollIndicator={false}>
+            {/* Appearance section */}
+            <View style={styles.section}>
+              <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Apariencia</Text>
+              <View style={styles.themeOptions}>
+                {(
+                  [
+                    { key: 'system', label: 'Sistema',  icon: 'brightness-auto' },
+                    { key: 'light',  label: 'Claro',    icon: 'wb-sunny'        },
+                    { key: 'dark',   label: 'Oscuro',   icon: 'nights-stay'     },
+                  ] as { key: ThemePreference; label: string; icon: string }[]
+                ).map(({ key, label, icon }) => {
+                  const active = themePref === key;
+                  return (
+                    <Pressable
+                      key={key}
+                      style={[
+                        styles.themeBtn,
+                        { backgroundColor: active ? BACColors.teal : BACColors.greyLight },
+                      ]}
+                      onPress={() => setThemePref(key)}>
+                      <MaterialIcons
+                        name={icon as any}
+                        size={16}
+                        color={active ? '#fff' : BACColors.navyDark}
+                      />
+                      <Text style={[styles.themeBtnText, { color: active ? '#fff' : BACColors.navyDark }]}>
+                        {label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </View>
+
             {/* Notifications section */}
             <View style={styles.section}>
               <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Notificaciones</Text>
@@ -240,6 +276,24 @@ const styles = StyleSheet.create({
   },
   leadTimeBtnText: {
     fontSize: 13,
+    fontWeight: '600',
+  },
+  themeOptions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  themeBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+  },
+  themeBtnText: {
+    fontSize: 12,
     fontWeight: '600',
   },
   navGroup: {
