@@ -39,8 +39,11 @@ jobs:
             --json \
             | tee build-output.json
           BUILD_ID=$(jq -r '.[0].id' build-output.json)
+          DOWNLOAD_URL=$(jq -r '.[0].artifacts.applicationArchiveUrl' build-output.json)
           echo "EAS build ID: $BUILD_ID"
+          echo "Download URL: $DOWNLOAD_URL"
           echo "$BUILD_ID" > build-id.txt
+          echo "$DOWNLOAD_URL" > build-url.txt
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
@@ -48,5 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-metadata
-          path: build-id.txt
+          path: |
+            build-id.txt
+            build-url.txt
           retention-days: 1

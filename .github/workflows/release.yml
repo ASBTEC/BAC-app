@@ -28,12 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set up EAS CLI
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
       - name: Download build metadata
         uses: dawidd6/action-download-artifact@v6
         with:
@@ -41,22 +35,15 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: build-metadata
 
-      - name: Read build ID
+      - name: Read build metadata
         id: meta
         run: |
-          BUILD_ID=$(cat build-id.txt)
-          echo "build-id=$BUILD_ID" >> "$GITHUB_OUTPUT"
-          VERSION=$(jq -r '.expo.version' app.json)
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "build-id=$(cat build-id.txt)" >> "$GITHUB_OUTPUT"
+          echo "download-url=$(cat build-url.txt)" >> "$GITHUB_OUTPUT"
+          echo "version=$(jq -r '.expo.version' app.json)" >> "$GITHUB_OUTPUT"
 
       - name: Download APK from EAS
-        run: |
-          eas build:download \
-            --fingerprint=${{ steps.meta.outputs.build-id }} \
-            --platform=android \
-            --output=./bac-app.apk
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: curl -L "${{ steps.meta.outputs.download-url }}" -o ./bac-app.apk
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

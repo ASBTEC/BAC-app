@@ -43,5 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-metadata
-          path: build-id.txt
+          path: |
+            build-id.txt
+            build-url.txt
           retention-days: 1
