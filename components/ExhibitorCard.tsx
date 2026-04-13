@@ -9,19 +9,6 @@ import { Exhibitor } from '@/types';
 const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'logo-asbtec-squared.jpg': require('../assets/images/logo-asbtec-squared.jpg'),
 };
-const TIER_COLORS: Record<string, string> = {
-  platinum: '#A8A9AD',
-  gold: '#D4A017',
-  silver: '#9EA1A5',
-  bronze: '#CD7F32',
-};
-
-const TIER_LABELS: Record<string, string> = {
-  platinum: 'Patrocinador Platino',
-  gold:     'Patrocinador Oro',
-  silver:   'Patrocinador Plata',
-  bronze:   'Patrocinador Bronce',
-};
 
 interface Props {
   exhibitor: Exhibitor;
@@ -31,8 +18,6 @@ export function ExhibitorCard({ exhibitor }: Props) {
   const router = useRouter();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
-
-  const tierColor = exhibitor.sponsor_tier ? TIER_COLORS[exhibitor.sponsor_tier] : undefined;
 
   return (
     <Pressable
@@ -64,11 +49,6 @@ export function ExhibitorCard({ exhibitor }: Props) {
               {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
             </Text>
           </View>
-          {exhibitor.sponsor_tier && tierColor && (
-            <View style={[styles.tierBadge, { backgroundColor: tierColor + '22', borderColor: tierColor }]}>
-              <Text style={[styles.tierLabel, { color: tierColor }]}>{TIER_LABELS[exhibitor.sponsor_tier]}</Text>
-            </View>
-          )}
         </View>
 
         {exhibitor.description && (
@@ -138,16 +118,6 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
   typeLabel: {
-    fontSize: 10,
-    fontWeight: '600',
-  },
-  tierBadge: {
-    borderRadius: 4,
-    borderWidth: 1,
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-  },
-  tierLabel: {
     fontSize: 10,
     fontWeight: '600',
   },

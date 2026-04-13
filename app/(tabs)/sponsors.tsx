@@ -10,26 +10,17 @@ import {
 import { ExhibitorCard } from '@/components/ExhibitorCard';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Exhibitor, ExhibitorType, SponsorTier } from '@/types';
+import { Exhibitor, ExhibitorType } from '@/types';
 import allExhibitors from '@/data/exhibitors.json';
 
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type TypeFilter = ExhibitorType | 'all';
-type TierFilter = SponsorTier | 'all';
 
 const TYPE_FILTERS: { key: TypeFilter; label: string }[] = [
   { key: 'all',      label: 'Todos' },
   { key: 'speaker',  label: 'Ponentes' },
   { key: 'business', label: 'Empresas' },
-];
-
-const TIER_FILTERS: { key: TierFilter; label: string }[] = [
-  { key: 'all',      label: 'Todos' },
-  { key: 'platinum', label: 'Platino' },
-  { key: 'gold',     label: 'Oro' },
-  { key: 'silver',   label: 'Plata' },
-  { key: 'bronze',   label: 'Bronce' },
 ];
 
 const TIER_ORDER: Record<string, number> = { platinum: 0, gold: 1, silver: 2, bronze: 3 };
@@ -52,20 +43,15 @@ export default function SponsorsScreen() {
   const colors = Colors[scheme];
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all');
-  const [tierFilter, setTierFilter] = useState<TierFilter>('all');
-
-  const showTierFilter = typeFilter === 'business' || typeFilter === 'all';
-
   const filteredExhibitors = useMemo(() => {
     let result = [...EXHIBITORS];
     if (typeFilter !== 'all') result = result.filter((e) => e.exhibitor_type === typeFilter);
-    if (showTierFilter && tierFilter !== 'all') result = result.filter((e) => e.sponsor_tier === tierFilter);
     if (search.trim()) {
       const q = search.toLowerCase();
       result = result.filter((e) => e.name.toLowerCase().includes(q));
     }
     return sortExhibitors(result);
-  }, [search, typeFilter, tierFilter, showTierFilter]);
+  }, [search, typeFilter]);
 
   const listHeader = (
     <View>
@@ -98,25 +84,6 @@ export default function SponsorsScreen() {
         })}
       </View>
 
-      {/* Tier filter (shown when viewing companies) */}
-      {showTierFilter && (
-        <>
-          <View style={styles.filterDivider} />
-          <View style={styles.filterRow}>
-            {TIER_FILTERS.map(({ key, label }) => {
-              const active = tierFilter === key;
-              return (
-                <Pressable
-                  key={key}
-                  style={[styles.chip, { backgroundColor: active ? BACColors.amber : colors.card, borderColor: active ? BACColors.amber : colors.border }]}
-                  onPress={() => setTierFilter(key)}>
-                  <Text style={[styles.chipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </>
-      )}
     </View>
   );
 
@@ -146,9 +113,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 7,
   },
-  searchInput: { fontSize: 15 },
+  searchInput: { fontSize: 15, textAlignVertical: 'center' },
   filterRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',

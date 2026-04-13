@@ -44,12 +44,6 @@ function getMapSpace(event: Event): string | null {
   return null;
 }
 
-const TIER_LABELS: Record<string, string> = {
-  platinum: 'Patrocinador Platino',
-  gold:     'Patrocinador Oro',
-  silver:   'Patrocinador Plata',
-  bronze:   'Patrocinador Bronce',
-};
 
 export default function EventDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -174,11 +168,6 @@ export default function EventDetailScreen() {
               </View>
               <View style={styles.exhibitorInfo}>
                 <Text style={[styles.exhibitorName, { color: colors.text }]}>{ex.name}</Text>
-                {ex.sponsor_tier && (
-                  <Text style={[styles.exhibitorTier, { color: BACColors.amber }]}>
-                    {TIER_LABELS[ex.sponsor_tier]}
-                  </Text>
-                )}
                 {ex.description && (
                   <Text style={[styles.exhibitorDesc, { color: colors.icon }]} numberOfLines={2}>
                     {ex.description}
@@ -268,8 +257,7 @@ const styles = StyleSheet.create({
   },
   exhibitorInfo: { flex: 1, gap: 2 },
   exhibitorName: { fontSize: 15, fontWeight: '700' },
-  exhibitorTier: { fontSize: 11, fontWeight: '600' },
-  exhibitorDesc: { fontSize: 12, lineHeight: 16 },
+exhibitorDesc: { fontSize: 12, lineHeight: 16 },
   saveBtn: {
     flexDirection: 'row',
     alignItems: 'center',

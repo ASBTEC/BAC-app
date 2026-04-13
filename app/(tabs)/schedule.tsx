@@ -231,9 +231,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 7,
   },
-  searchInput: { fontSize: 15 },
+  searchInput: { fontSize: 15, textAlignVertical: 'center' },
   filterBtn: {
     borderRadius: 8,
     borderWidth: 1,

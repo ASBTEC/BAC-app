@@ -20,19 +20,6 @@ function getExhibitorsForEvent(event: Event): Exhibitor[] {
   return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
 }
 
-const TIER_LABELS: Record<string, string> = {
-  platinum: 'Patrocinador Platino',
-  gold:     'Patrocinador Oro',
-  silver:   'Patrocinador Plata',
-  bronze:   'Patrocinador Bronce',
-};
-
-const TIER_COLORS: Record<string, string> = {
-  platinum: '#A8A9AD',
-  gold: '#D4A017',
-  silver: '#9EA1A5',
-  bronze: '#CD7F32',
-};
 
 export default function ExhibitorDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -74,8 +61,6 @@ export default function ExhibitorDetailScreen() {
     );
   }
 
-  const tierColor = exhibitor.sponsor_tier ? TIER_COLORS[exhibitor.sponsor_tier] : undefined;
-
   const ListHeader = (
     <View>
       {/* Hero header */}
@@ -99,11 +84,6 @@ export default function ExhibitorDetailScreen() {
               {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
             </Text>
           </View>
-          {exhibitor.sponsor_tier && tierColor && (
-            <View style={[styles.tierBadge, { backgroundColor: tierColor }]}>
-              <Text style={styles.tierBadgeText}>{TIER_LABELS[exhibitor.sponsor_tier]}</Text>
-            </View>
-          )}
         </View>
       </View>
 
@@ -181,12 +161,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   typeBadgeText: { color: '#fff', fontWeight: '700', fontSize: 12 },
-  tierBadge: {
-    borderRadius: 20,
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-  },
-  tierBadgeText: { color: '#fff', fontWeight: '700', fontSize: 12 },
   section: { paddingHorizontal: 20, paddingTop: 20, gap: 8 },
   sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5 },
   description: { fontSize: 15, lineHeight: 22 },
