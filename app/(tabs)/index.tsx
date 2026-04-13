@@ -201,7 +201,7 @@ export default function HomeScreen() {
             { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
           ]}
           onPress={() => setShowFilters((v) => !v)}>
-          <MaterialIcons name="filter-list" size={18} color={showFilters ? '#fff' : colors.icon} />
+          <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
         </Pressable>
         <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
           <Pressable
@@ -220,11 +220,7 @@ export default function HomeScreen() {
       {/* Category + type filter chips — hidden when filter button is off */}
       {showFilters && (
         <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterRow}
-            style={styles.filterScroll}>
+          <View style={styles.filterRow}>
             {CATEGORY_FILTERS.map(({ key, label }) => {
               const active = activeCategory === key;
               const accent = CategoryColors[key] ?? BACColors.teal;
@@ -245,13 +241,11 @@ export default function HomeScreen() {
                 </Pressable>
               );
             })}
-          </ScrollView>
+          </View>
 
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterRow}
-            style={styles.filterScroll}>
+          <View style={styles.filterDivider} />
+
+          <View style={styles.filterRow}>
             {TYPE_FILTERS.map(({ key, label }) => {
               const active = activeType === key;
               const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
@@ -272,7 +266,7 @@ export default function HomeScreen() {
                 </Pressable>
               );
             })}
-          </ScrollView>
+          </View>
         </>
       )}
 
@@ -359,8 +353,19 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   toggleBtn: { padding: 8 },
-  filterScroll: { flexGrow: 0, flexShrink: 0 },
-  filterRow: { paddingHorizontal: 16, paddingVertical: 6, gap: 8, alignItems: 'center' },
+  filterRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
+    paddingTop: 6,
+    paddingBottom: 2,
+    gap: 8,
+  },
+  filterDivider: {
+    height: 1,
+    marginHorizontal: 16,
+    backgroundColor: BACColors.lightBlue,
+  },
   filterChip: {
     borderRadius: 20,
     borderWidth: 1,

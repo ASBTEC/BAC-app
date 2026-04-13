@@ -3,7 +3,6 @@ import React, { useCallback, useMemo, useState } from 'react';
 import {
   FlatList,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -124,7 +123,7 @@ export default function EventsScreen() {
             { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
           ]}
           onPress={() => setShowFilters((v) => !v)}>
-          <MaterialIcons name="filter-list" size={18} color={showFilters ? '#fff' : colors.icon} />
+          <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
         </Pressable>
 
         {/* Segmented view toggle */}
@@ -163,11 +162,7 @@ export default function EventsScreen() {
       {/* Category + type filter chips — hidden when filter button is off */}
       {showFilters && (
         <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterRow}
-            style={styles.filterScroll}>
+          <View style={styles.filterRow}>
             {CATEGORY_FILTERS.map(({ key, label }) => {
               const active = activeCategory === key;
               const accent = CategoryColors[key] ?? BACColors.teal;
@@ -188,13 +183,11 @@ export default function EventsScreen() {
                 </Pressable>
               );
             })}
-          </ScrollView>
+          </View>
 
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterRow}
-            style={styles.filterScroll}>
+          <View style={styles.filterDivider} />
+
+          <View style={styles.filterRow}>
             {TYPE_FILTERS.map(({ key, label }) => {
               const active = activeType === key;
               const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
@@ -215,7 +208,7 @@ export default function EventsScreen() {
                 </Pressable>
               );
             })}
-          </ScrollView>
+          </View>
         </>
       )}
 
@@ -298,12 +291,18 @@ const styles = StyleSheet.create({
   },
 
   /* Filter chips */
-  filterScroll: { flexGrow: 0, flexShrink: 0 },
   filterRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     paddingHorizontal: 16,
-    paddingVertical: 6,
+    paddingTop: 6,
+    paddingBottom: 2,
     gap: 8,
-    alignItems: 'center',
+  },
+  filterDivider: {
+    height: 1,
+    marginHorizontal: 16,
+    backgroundColor: BACColors.lightBlue,
   },
   filterChip: {
     borderRadius: 20,

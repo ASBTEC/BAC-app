@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
 import { TimetableView } from '@/components/TimetableView';
-import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
-import { Event, Exhibitor } from '@/types';
+import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import { sortByProximity } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
@@ -16,6 +16,23 @@ const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type ViewMode = 'list' | 'timetable';
+type FilterCategory = EventCategory | 'all';
+type FilterType = ActivityType | 'all';
+
+const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
+  { key: 'bioBAC',      label: 'BioBAC' },
+  { key: 'businessBAC', label: 'BusinessBAC' },
+  { key: 'expoBAC',     label: 'ExpoBAC' },
+  { key: 'viveBAC',     label: 'ViveBAC' },
+];
+
+const TYPE_FILTERS: { key: FilterType; label: string }[] = [
+  { key: 'talk',             label: 'Ponencia' },
+  { key: 'round_table',      label: 'Mesa Redonda' },
+  { key: 'activity',         label: 'Actividad' },
+  { key: 'outdoor_activity', label: 'Al Aire Libre' },
+  { key: 'stand',            label: 'Stand' },
+];
 
 function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): boolean {
   const q = query.toLowerCase();
@@ -38,6 +55,9 @@ export default function ScheduleScreen() {
   const [now, setNow] = useState(new Date());
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [search, setSearch] = useState('');
+  const [showFilters, setShowFilters] = useState(true);
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
+  const [activeType, setActiveType] = useState<FilterType>('all');
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -50,11 +70,13 @@ export default function ScheduleScreen() {
   const savedEvents = useMemo(() => {
     const saved = EVENTS.filter((e) => {
       if (!savedIds.has(e.id)) return false;
+      if (activeCategory !== 'all' && e.category !== activeCategory) return false;
+      if (activeType !== 'all' && e.activity_type !== activeType) return false;
       if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e))) return false;
       return true;
     });
     return sortByProximity(saved, now);
-  }, [savedIds, now, search]);
+  }, [savedIds, now, search, activeCategory, activeType]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -73,8 +95,8 @@ export default function ScheduleScreen() {
 
   if (!loaded) return null;
 
-  // Global empty state — no saved events at all
-  if (savedEvents.length === 0) {
+  // Global empty state — no saved events at all (not just filtered out)
+  if (savedIds.size === 0) {
     return (
       <View style={[styles.emptyContainer, { backgroundColor: colors.background }]}>
         <Text style={[styles.emptyTitle, { color: colors.text }]}>
@@ -90,7 +112,7 @@ export default function ScheduleScreen() {
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>
 
-      {/* Search bar + view toggle */}
+      {/* Search bar + filter button + view toggle */}
       <View style={styles.searchRow}>
         <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
           <TextInput
@@ -103,6 +125,14 @@ export default function ScheduleScreen() {
             returnKeyType="search"
           />
         </View>
+        <Pressable
+          style={[
+            styles.filterBtn,
+            { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
+          ]}
+          onPress={() => setShowFilters((v) => !v)}>
+          <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
+        </Pressable>
         <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
           <Pressable
             style={[styles.toggleBtn, viewMode === 'list' && { backgroundColor: BACColors.teal }]}
@@ -116,6 +146,53 @@ export default function ScheduleScreen() {
           </Pressable>
         </View>
       </View>
+
+      {/* Category + type filter chips */}
+      {showFilters && (
+        <>
+          <View style={styles.filterRow}>
+            {CATEGORY_FILTERS.map(({ key, label }) => {
+              const active = activeCategory === key;
+              const accent = CategoryColors[key] ?? BACColors.teal;
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
+                  ]}
+                  onPress={() => setActiveCategory(active ? 'all' : key)}>
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                    {label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          <View style={styles.filterDivider} />
+
+          <View style={styles.filterRow}>
+            {TYPE_FILTERS.map(({ key, label }) => {
+              const active = activeType === key;
+              const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
+                  ]}
+                  onPress={() => setActiveType(active ? 'all' : key)}>
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                    {label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </>
+      )}
 
       {/* Content */}
       {viewMode === 'list' ? (
@@ -135,6 +212,11 @@ export default function ScheduleScreen() {
               dimPast
             />
           )}
+          ListEmptyComponent={
+            <Text style={[styles.empty, { color: colors.icon }]}>
+              No hay eventos guardados que coincidan con los filtros.
+            </Text>
+          }
         />
       ) : (
         <TimetableView
@@ -169,6 +251,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   searchInput: { fontSize: 15 },
+  filterBtn: {
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 8,
+  },
   viewToggle: {
     flexDirection: 'row',
     borderRadius: 8,
@@ -177,8 +264,31 @@ const styles = StyleSheet.create({
   },
   toggleBtn: { padding: 8 },
 
+  /* Filter chips */
+  filterRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
+    paddingTop: 6,
+    paddingBottom: 2,
+    gap: 8,
+  },
+  filterDivider: {
+    height: 1,
+    marginHorizontal: 16,
+    backgroundColor: BACColors.lightBlue,
+  },
+  filterChip: {
+    borderRadius: 20,
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+  },
+  filterChipText: { fontSize: 13, fontWeight: '600' },
+
   /* List */
   listContent: { paddingTop: 8, paddingBottom: 32 },
+  empty: { textAlign: 'center', marginTop: 40, fontSize: 14, paddingHorizontal: 24 },
 
   /* Global empty state */
   emptyContainer: {
