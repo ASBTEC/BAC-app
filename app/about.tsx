@@ -62,15 +62,30 @@ export default function AboutScreen() {
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Entidades participantes</Text>
         <View style={styles.logosColumn}>
-          <View style={styles.logoWrap}>
+          <Pressable
+            style={styles.logoWrap}
+            onPress={() => {
+              const url = 'https://bac.febiotec.es/';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
             <Image source={require('@/assets/images/logo-bac.png')} style={styles.logo} resizeMode="contain" />
-          </View>
-          <View style={styles.logoWrap}>
+          </Pressable>
+          <Pressable
+            style={styles.logoWrap}
+            onPress={() => {
+              const url = 'https://asbtec.cat/';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
             <Image source={require('@/assets/images/logo-asbtec.png')} style={styles.logo} resizeMode="contain" />
-          </View>
-          <View style={styles.logoWrap}>
+          </Pressable>
+          <Pressable
+            style={styles.logoWrap}
+            onPress={() => {
+              const url = 'https://febiotec.es/';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
             <Image source={require('@/assets/images/logo-febiotec.png')} style={styles.logo} resizeMode="contain" />
-          </View>
+          </Pressable>
         </View>
       </View>
 
