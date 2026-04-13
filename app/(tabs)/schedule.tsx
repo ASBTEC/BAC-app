@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     paddingHorizontal: 16,
     paddingTop: 6,
-    paddingBottom: 2,
+    paddingBottom: 6,
     gap: 8,
   },
   filterDivider: {
