@@ -64,6 +64,7 @@ export default function EventsScreen() {
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [showFilters, setShowFilters] = useState(true);
 
   const filteredEvents = useMemo(() => {
     let result = [...EVENTS].sort(
@@ -116,6 +117,16 @@ export default function EventsScreen() {
           />
         </View>
 
+        {/* Filter toggle */}
+        <Pressable
+          style={[
+            styles.filterBtn,
+            { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
+          ]}
+          onPress={() => setShowFilters((v) => !v)}>
+          <MaterialIcons name="filter-list" size={18} color={showFilters ? '#fff' : colors.icon} />
+        </Pressable>
+
         {/* Segmented view toggle */}
         <View
           style={[
@@ -149,61 +160,64 @@ export default function EventsScreen() {
         </View>
       </View>
 
-      {/* Category filter chips */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.filterRow}
-        style={styles.filterScroll}>
-        {CATEGORY_FILTERS.map(({ key, label }) => {
-          const active = activeCategory === key;
-          const accent = CategoryColors[key] ?? BACColors.teal;
-          return (
-            <Pressable
-              key={key}
-              style={[
-                styles.filterChip,
-                {
-                  backgroundColor: active ? accent : colors.card,
-                  borderColor: active ? accent : colors.border,
-                },
-              ]}
-              onPress={() => setActiveCategory(active ? 'all' : key)}>
-              <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                {label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
+      {/* Category + type filter chips — hidden when filter button is off */}
+      {showFilters && (
+        <>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterRow}
+            style={styles.filterScroll}>
+            {CATEGORY_FILTERS.map(({ key, label }) => {
+              const active = activeCategory === key;
+              const accent = CategoryColors[key] ?? BACColors.teal;
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    {
+                      backgroundColor: active ? accent : colors.card,
+                      borderColor: active ? accent : colors.border,
+                    },
+                  ]}
+                  onPress={() => setActiveCategory(active ? 'all' : key)}>
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                    {label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
 
-      {/* Activity type filter chips */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.filterRow}
-        style={styles.filterScroll}>
-        {TYPE_FILTERS.map(({ key, label }) => {
-          const active = activeType === key;
-          const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
-          return (
-            <Pressable
-              key={key}
-              style={[
-                styles.filterChip,
-                {
-                  backgroundColor: active ? accent : colors.card,
-                  borderColor: active ? accent : colors.border,
-                },
-              ]}
-              onPress={() => setActiveType(active ? 'all' : key)}>
-              <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                {label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterRow}
+            style={styles.filterScroll}>
+            {TYPE_FILTERS.map(({ key, label }) => {
+              const active = activeType === key;
+              const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    {
+                      backgroundColor: active ? accent : colors.card,
+                      borderColor: active ? accent : colors.border,
+                    },
+                  ]}
+                  onPress={() => setActiveType(active ? 'all' : key)}>
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
+                    {label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </>
+      )}
 
       {/* Content: list or timetable */}
       {viewMode === 'list' ? (
@@ -264,6 +278,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   searchInput: { fontSize: 15 },
+
+  /* Filter button */
+  filterBtn: {
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 8,
+  },
 
   /* View toggle (segmented control) */
   viewToggle: {

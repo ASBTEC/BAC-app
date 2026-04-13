@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
-  FlatList,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -98,7 +98,9 @@ export default function MapScreen() {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView
+      style={{ backgroundColor: colors.background }}
+      contentContainerStyle={styles.container}>
       {/* Map area */}
       <View style={styles.mapArea}>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
@@ -189,35 +191,34 @@ export default function MapScreen() {
               {SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
             </Text>
           </View>
-          <FlatList
-            data={spaceEvents}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.listContent}
-            renderItem={({ item }) => (
-              <EventCard
-                event={item}
-                exhibitors={getExhibitorsForEvent(item)}
-                showTemporalLabel
-                isSaved={isSaved(item.id)}
-                onToggleSave={handleToggleSave}
-                now={now}
-                dimPast={false}
-              />
-            )}
-            ListEmptyComponent={
+          <View style={styles.listContent}>
+            {spaceEvents.length === 0 ? (
               <Text style={[styles.empty, { color: colors.icon }]}>
                 No hay eventos actuales ni próximos en este espacio.
               </Text>
-            }
-          />
+            ) : (
+              spaceEvents.map((item) => (
+                <EventCard
+                  key={item.id}
+                  event={item}
+                  exhibitors={getExhibitorsForEvent(item)}
+                  showTemporalLabel
+                  isSaved={isSaved(item.id)}
+                  onToggleSave={handleToggleSave}
+                  now={now}
+                  dimPast={false}
+                />
+              ))
+            )}
+          </View>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { paddingBottom: 40 },
   mapArea: { alignItems: 'center', paddingBottom: 12 },
   subtitle: { fontSize: 12, marginTop: 12, marginBottom: 12, textAlign: 'center', paddingHorizontal: 16 },
   building: {
@@ -258,7 +259,7 @@ const styles = StyleSheet.create({
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   legendDot: { width: 12, height: 12, borderRadius: 6 },
   legendText: { fontSize: 12 },
-  eventPanel: { flex: 1, borderTopWidth: 1 },
+  eventPanel: { borderTopWidth: 1 },
   panelHeader: {
     paddingHorizontal: 16,
     paddingVertical: 10,
