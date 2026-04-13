@@ -1,7 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { CategoryColors } from '@/constants/theme';
 import { EventCategory } from '@/types';
+import BioBACLogo      from '../assets/images/event_types/logo biobac.svg';
+import BusinessBACLogo from '../assets/images/event_types/logo businessbac.svg';
+import ExpoBACLogo     from '../assets/images/event_types/logo expobac.svg';
+import ViveBACLogo     from '../assets/images/event_types/logo vivebac.svg';
 
 const LABELS: Record<EventCategory, string> = {
   bioBAC:      'BioBAC',
@@ -10,11 +14,11 @@ const LABELS: Record<EventCategory, string> = {
   viveBAC:     'ViveBAC',
 };
 
-const ICONS: Record<EventCategory, ReturnType<typeof require>> = {
-  bioBAC:      require('../assets/images/event_types/bioBAC.png'),
-  businessBAC: require('../assets/images/event_types/businessBAC.png'),
-  expoBAC:     require('../assets/images/event_types/expoBAC.png'),
-  viveBAC:     require('../assets/images/event_types/viveBAC.png'),
+const ICONS: Record<EventCategory, React.FC<{ width?: number; height?: number }>> = {
+  bioBAC:      BioBACLogo,
+  businessBAC: BusinessBACLogo,
+  expoBAC:     ExpoBACLogo,
+  viveBAC:     ViveBACLogo,
 };
 
 interface Props {
@@ -23,9 +27,10 @@ interface Props {
 
 export function CategoryBadge({ category }: Props) {
   const color = CategoryColors[category] ?? '#9BA1A6';
+  const Icon = ICONS[category];
   return (
     <View style={[styles.badge, { backgroundColor: color + '22', borderColor: color }]}>
-      <Image source={ICONS[category]} style={styles.icon} />
+      <Icon width={12} height={12} />
       <Text style={[styles.label, { color }]}>{LABELS[category]}</Text>
     </View>
   );
@@ -41,11 +46,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     paddingVertical: 2,
     alignSelf: 'flex-start',
-  },
-  icon: {
-    width: 12,
-    height: 12,
-    resizeMode: 'contain',
   },
   label: {
     fontSize: 10,

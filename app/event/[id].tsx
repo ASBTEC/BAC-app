@@ -3,6 +3,7 @@ import * as Linking from 'expo-linking';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import {
+  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -12,6 +13,7 @@ import {
 } from 'react-native';
 import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -160,11 +162,15 @@ export default function EventDetailScreen() {
               style={[styles.exhibitorRow, { backgroundColor: colors.card, borderColor: colors.border }]}
               onPress={() => router.push(`/exhibitor/${ex.id}` as never)}>
               <View style={[styles.exhibitorAvatar, { backgroundColor: BACColors.lightBlue }]}>
-                <MaterialIcons
-                  name={ex.exhibitor_type === 'speaker' ? 'person' : 'business'}
-                  size={24}
-                  color={BACColors.navyDark}
-                />
+                {ex.photo && EXHIBITOR_PHOTOS[ex.photo] ? (
+                  <Image source={EXHIBITOR_PHOTOS[ex.photo]} style={styles.exhibitorAvatarImage} resizeMode="cover" />
+                ) : (
+                  <MaterialIcons
+                    name={ex.exhibitor_type === 'speaker' ? 'person' : 'business'}
+                    size={24}
+                    color={BACColors.navyDark}
+                  />
+                )}
               </View>
               <View style={styles.exhibitorInfo}>
                 <Text style={[styles.exhibitorName, { color: colors.text }]}>{ex.name}</Text>
@@ -254,6 +260,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
+    overflow: 'hidden',
+  },
+  exhibitorAvatarImage: {
+    width: 44,
+    height: 44,
   },
   exhibitorInfo: { flex: 1, gap: 2 },
   exhibitorName: { fontSize: 15, fontWeight: '700' },
