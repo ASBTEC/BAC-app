@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import {
   FlatList,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -59,25 +58,17 @@ export default function SponsorsScreen() {
 
   const filteredExhibitors = useMemo(() => {
     let result = [...EXHIBITORS];
-
-    if (typeFilter !== 'all') {
-      result = result.filter((e) => e.exhibitor_type === typeFilter);
-    }
-
-    if (showTierFilter && tierFilter !== 'all') {
-      result = result.filter((e) => e.sponsor_tier === tierFilter);
-    }
-
+    if (typeFilter !== 'all') result = result.filter((e) => e.exhibitor_type === typeFilter);
+    if (showTierFilter && tierFilter !== 'all') result = result.filter((e) => e.sponsor_tier === tierFilter);
     if (search.trim()) {
       const q = search.toLowerCase();
       result = result.filter((e) => e.name.toLowerCase().includes(q));
     }
-
     return sortExhibitors(result);
   }, [search, typeFilter, tierFilter, showTierFilter]);
 
-  return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+  const listHeader = (
+    <View>
       {/* Search */}
       <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <TextInput
@@ -93,56 +84,50 @@ export default function SponsorsScreen() {
       </View>
 
       {/* Type filter */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.filterRow}
-        style={styles.filterScroll}>
+      <View style={styles.filterRow}>
         {TYPE_FILTERS.map(({ key, label }) => {
           const active = typeFilter === key;
           return (
             <Pressable
               key={key}
-              style={[
-                styles.chip,
-                { backgroundColor: active ? BACColors.navyDark : colors.card, borderColor: active ? BACColors.navyDark : colors.border },
-              ]}
+              style={[styles.chip, { backgroundColor: active ? BACColors.navyDark : colors.card, borderColor: active ? BACColors.navyDark : colors.border }]}
               onPress={() => { setTypeFilter(key); setTierFilter('all'); }}>
               <Text style={[styles.chipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
             </Pressable>
           );
         })}
-      </ScrollView>
+      </View>
 
       {/* Tier filter (shown when viewing companies) */}
       {showTierFilter && (
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.filterRow}
-          style={[styles.filterScroll, styles.tierScroll]}>
-          {TIER_FILTERS.map(({ key, label }) => {
-            const active = tierFilter === key;
-            return (
-              <Pressable
-                key={key}
-                style={[
-                  styles.chip,
-                  { backgroundColor: active ? BACColors.amber : colors.card, borderColor: active ? BACColors.amber : colors.border },
-                ]}
-                onPress={() => setTierFilter(key)}>
-                <Text style={[styles.chipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
+        <>
+          <View style={styles.filterDivider} />
+          <View style={styles.filterRow}>
+            {TIER_FILTERS.map(({ key, label }) => {
+              const active = tierFilter === key;
+              return (
+                <Pressable
+                  key={key}
+                  style={[styles.chip, { backgroundColor: active ? BACColors.amber : colors.card, borderColor: active ? BACColors.amber : colors.border }]}
+                  onPress={() => setTierFilter(key)}>
+                  <Text style={[styles.chipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </>
       )}
+    </View>
+  );
 
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <FlatList
         data={filteredExhibitors}
         keyExtractor={(item) => item.id}
         style={styles.list}
         contentContainerStyle={styles.listContent}
+        ListHeaderComponent={listHeader}
         renderItem={({ item }) => <ExhibitorCard exhibitor={item} />}
         ListEmptyComponent={
           <Text style={[styles.empty, { color: colors.icon }]}>Sin resultados.</Text>
@@ -164,10 +149,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   searchInput: { fontSize: 15 },
-  filterScroll: { flexGrow: 0, flexShrink: 0 },
-  filterRow: { paddingHorizontal: 16, paddingVertical: 6, gap: 8, alignItems: 'center' },
-  tierScroll: { marginTop: 4 },
+  filterRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
+    paddingTop: 6,
+    paddingBottom: 2,
+    gap: 8,
+  },
+  filterDivider: {
+    height: 1,
+    marginHorizontal: 16,
+    backgroundColor: BACColors.lightBlue,
+  },
   chip: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 20,
     borderWidth: 1,
     paddingHorizontal: 14,

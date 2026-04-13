@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
 import { TimetableView } from '@/components/TimetableView';
+import { CATEGORY_ICONS } from '@/constants/categoryIcons';
 import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -26,12 +27,12 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'viveBAC',     label: 'ViveBAC' },
 ];
 
-const TYPE_FILTERS: { key: FilterType; label: string }[] = [
-  { key: 'talk',             label: 'Ponencia' },
-  { key: 'round_table',      label: 'Mesa Redonda' },
-  { key: 'activity',         label: 'Actividad' },
-  { key: 'outdoor_activity', label: 'Al Aire Libre' },
-  { key: 'stand',            label: 'Stand' },
+const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
+  { key: 'talk',             label: 'Ponencia',      iconName: 'mic' },
+  { key: 'round_table',      label: 'Mesa Redonda',  iconName: 'groups' },
+  { key: 'activity',         label: 'Actividad',     iconName: 'extension' },
+  { key: 'outdoor_activity', label: 'Al Aire Libre', iconName: 'park' },
+  { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
 ];
 
 function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): boolean {
@@ -112,121 +113,103 @@ export default function ScheduleScreen() {
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>
 
-      {/* Search bar + filter button + view toggle */}
-      <View style={styles.searchRow}>
-        <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <TextInput
-            style={[styles.searchInput, { color: colors.text }]}
-            placeholder="Buscar eventos guardados…"
-            placeholderTextColor={colors.icon}
-            value={search}
-            onChangeText={setSearch}
-            clearButtonMode="while-editing"
-            returnKeyType="search"
+      {(() => {
+        const filterHeader = (
+          <View>
+            <View style={styles.searchRow}>
+              <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
+                <TextInput
+                  style={[styles.searchInput, { color: colors.text }]}
+                  placeholder="Buscar eventos guardados…"
+                  placeholderTextColor={colors.icon}
+                  value={search}
+                  onChangeText={setSearch}
+                  clearButtonMode="while-editing"
+                  returnKeyType="search"
+                />
+              </View>
+              <Pressable style={[styles.filterBtn, { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border }]} onPress={() => setShowFilters((v) => !v)}>
+                <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
+              </Pressable>
+              <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
+                <Pressable style={[styles.toggleBtn, viewMode === 'list' && { backgroundColor: BACColors.teal }]} onPress={() => setViewMode('list')}>
+                  <MaterialIcons name="view-list" size={18} color={viewMode === 'list' ? '#fff' : colors.icon} />
+                </Pressable>
+                <Pressable style={[styles.toggleBtn, viewMode === 'timetable' && { backgroundColor: BACColors.teal }]} onPress={() => setViewMode('timetable')}>
+                  <MaterialIcons name="view-week" size={18} color={viewMode === 'timetable' ? '#fff' : colors.icon} />
+                </Pressable>
+              </View>
+            </View>
+            {showFilters && (
+              <>
+                <View style={styles.filterRow}>
+                  {CATEGORY_FILTERS.map(({ key, label }) => {
+                    const active = activeCategory === key;
+                    const accent = CategoryColors[key] ?? BACColors.teal;
+                    const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
+                    return (
+                      <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border }]} onPress={() => setActiveCategory(active ? 'all' : key)}>
+                        {Icon && <Icon width={14} height={14} />}
+                        <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+                <View style={styles.filterDivider} />
+                <View style={styles.filterRow}>
+                  {TYPE_FILTERS.map(({ key, label, iconName }) => {
+                    const active = activeType === key;
+                    const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
+                    return (
+                      <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border }]} onPress={() => setActiveType(active ? 'all' : key)}>
+                        <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.icon} />
+                        <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </>
+            )}
+          </View>
+        );
+
+        return viewMode === 'list' ? (
+          <FlatList
+            style={{ flex: 1 }}
+            contentContainerStyle={styles.listContent}
+            data={savedEvents}
+            keyExtractor={(item) => item.id}
+            ListHeaderComponent={filterHeader}
+            renderItem={({ item }) => (
+              <EventCard
+                event={item}
+                exhibitors={getExhibitorsForEvent(item)}
+                showTemporalLabel
+                isSaved={isSaved(item.id)}
+                onToggleSave={handleToggleSave}
+                now={now}
+                dimPast
+              />
+            )}
+            ListEmptyComponent={
+              <Text style={[styles.empty, { color: colors.icon }]}>
+                No hay eventos guardados que coincidan con los filtros.
+              </Text>
+            }
           />
-        </View>
-        <Pressable
-          style={[
-            styles.filterBtn,
-            { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
-          ]}
-          onPress={() => setShowFilters((v) => !v)}>
-          <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
-        </Pressable>
-        <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <Pressable
-            style={[styles.toggleBtn, viewMode === 'list' && { backgroundColor: BACColors.teal }]}
-            onPress={() => setViewMode('list')}>
-            <MaterialIcons name="view-list" size={18} color={viewMode === 'list' ? '#fff' : colors.icon} />
-          </Pressable>
-          <Pressable
-            style={[styles.toggleBtn, viewMode === 'timetable' && { backgroundColor: BACColors.teal }]}
-            onPress={() => setViewMode('timetable')}>
-            <MaterialIcons name="view-week" size={18} color={viewMode === 'timetable' ? '#fff' : colors.icon} />
-          </Pressable>
-        </View>
-      </View>
-
-      {/* Category + type filter chips */}
-      {showFilters && (
-        <>
-          <View style={styles.filterRow}>
-            {CATEGORY_FILTERS.map(({ key, label }) => {
-              const active = activeCategory === key;
-              const accent = CategoryColors[key] ?? BACColors.teal;
-              return (
-                <Pressable
-                  key={key}
-                  style={[
-                    styles.filterChip,
-                    { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
-                  ]}
-                  onPress={() => setActiveCategory(active ? 'all' : key)}>
-                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                    {label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-
-          <View style={styles.filterDivider} />
-
-          <View style={styles.filterRow}>
-            {TYPE_FILTERS.map(({ key, label }) => {
-              const active = activeType === key;
-              const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
-              return (
-                <Pressable
-                  key={key}
-                  style={[
-                    styles.filterChip,
-                    { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
-                  ]}
-                  onPress={() => setActiveType(active ? 'all' : key)}>
-                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                    {label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </>
-      )}
-
-      {/* Content */}
-      {viewMode === 'list' ? (
-        <FlatList
-          style={{ flex: 1 }}
-          contentContainerStyle={styles.listContent}
-          data={savedEvents}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <EventCard
-              event={item}
-              exhibitors={getExhibitorsForEvent(item)}
-              showTemporalLabel
-              isSaved={isSaved(item.id)}
-              onToggleSave={handleToggleSave}
+        ) : (
+          <>
+            {filterHeader}
+            <TimetableView
+              events={savedEvents}
               now={now}
-              dimPast
+              isSaved={isSaved}
+              onToggleSave={handleToggleSave}
+              emptyMessage="No tienes eventos guardados para este día."
             />
-          )}
-          ListEmptyComponent={
-            <Text style={[styles.empty, { color: colors.icon }]}>
-              No hay eventos guardados que coincidan con los filtros.
-            </Text>
-          }
-        />
-      ) : (
-        <TimetableView
-          events={savedEvents}
-          now={now}
-          isSaved={isSaved}
-          onToggleSave={handleToggleSave}
-          emptyMessage="No tienes eventos guardados para este día."
-        />
-      )}
+          </>
+        );
+      })()}
     </View>
   );
 }
@@ -279,9 +262,12 @@ const styles = StyleSheet.create({
     backgroundColor: BACColors.lightBlue,
   },
   filterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
     borderRadius: 20,
     borderWidth: 1,
-    paddingHorizontal: 14,
+    paddingHorizontal: 12,
     paddingVertical: 6,
   },
   filterChipText: { fontSize: 13, fontWeight: '600' },

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
 import { TimetableView } from '@/components/TimetableView';
+import { CATEGORY_ICONS } from '@/constants/categoryIcons';
 import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -34,12 +35,12 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'viveBAC',     label: 'ViveBAC' },
 ];
 
-const TYPE_FILTERS: { key: FilterType; label: string }[] = [
-  { key: 'talk',             label: 'Ponencia' },
-  { key: 'round_table',      label: 'Mesa Redonda' },
-  { key: 'activity',         label: 'Actividad' },
-  { key: 'outdoor_activity', label: 'Al Aire Libre' },
-  { key: 'stand',            label: 'Stand' },
+const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
+  { key: 'talk',             label: 'Ponencia',      iconName: 'mic' },
+  { key: 'round_table',      label: 'Mesa Redonda',  iconName: 'groups' },
+  { key: 'activity',         label: 'Actividad',     iconName: 'extension' },
+  { key: 'outdoor_activity', label: 'Al Aire Libre', iconName: 'park' },
+  { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
 ];
 
 function getExhibitorsForEvent(event: Event): Exhibitor[] {
@@ -278,6 +279,7 @@ export default function MapScreen() {
                 {CATEGORY_FILTERS.map(({ key, label }) => {
                   const active = activeCategory === key;
                   const accent = CategoryColors[key] ?? BACColors.teal;
+                  const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
                   return (
                     <Pressable
                       key={key}
@@ -286,6 +288,7 @@ export default function MapScreen() {
                         { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
                       ]}
                       onPress={() => setActiveCategory(active ? 'all' : key)}>
+                      {Icon && <Icon width={14} height={14} />}
                       <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                         {label}
                       </Text>
@@ -297,7 +300,7 @@ export default function MapScreen() {
               <View style={styles.filterDivider} />
 
               <View style={styles.filterRow}>
-                {TYPE_FILTERS.map(({ key, label }) => {
+                {TYPE_FILTERS.map(({ key, label, iconName }) => {
                   const active = activeType === key;
                   const accent = ActivityTypeColors[key] ?? BACColors.navyMid;
                   return (
@@ -308,6 +311,7 @@ export default function MapScreen() {
                         { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border },
                       ]}
                       onPress={() => setActiveType(active ? 'all' : key)}>
+                      <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.icon} />
                       <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                         {label}
                       </Text>
@@ -451,9 +455,12 @@ const styles = StyleSheet.create({
     backgroundColor: BACColors.lightBlue,
   },
   filterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
     borderRadius: 20,
     borderWidth: 1,
-    paddingHorizontal: 14,
+    paddingHorizontal: 12,
     paddingVertical: 6,
   },
   filterChipText: { fontSize: 13, fontWeight: '600' },
