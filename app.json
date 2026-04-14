@@ -56,7 +56,7 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true,
-      "baseUrl": "/bac"
+      "baseUrl": "/BAC-app"
     },
     "extra": {
       "eas": {
