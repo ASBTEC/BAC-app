@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
 import { TimetableView } from '@/components/TimetableView';
 import { CATEGORY_ICONS } from '@/constants/categoryIcons';
@@ -120,7 +120,7 @@ export default function ScheduleScreen() {
               <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
                 <TextInput
                   style={[styles.searchInput, { color: colors.text }]}
-                  placeholder="Buscar eventos guardados…"
+                  placeholder="Buscar eventos"
                   placeholderTextColor={colors.icon}
                   value={search}
                   onChangeText={setSearch}
@@ -229,9 +229,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
-    paddingVertical: 7,
+    justifyContent: 'center',
+    height: 44,
   },
-  searchInput: { fontSize: 15, textAlignVertical: 'center' },
+  searchInput: { fontSize: 15, textAlignVertical: 'center', paddingVertical: 0 },
   filterBtn: {
     borderRadius: 8,
     borderWidth: 1,
@@ -271,7 +272,7 @@ const styles = StyleSheet.create({
   filterChipText: { fontSize: 13, fontWeight: '600' },
 
   /* List */
-  listContent: { paddingTop: 8, paddingBottom: 32 },
+  listContent: { paddingTop: 8, paddingBottom: Platform.select({ web: 32, default: 48 }) },
   empty: { textAlign: 'center', marginTop: 40, fontSize: 14, paddingHorizontal: 24 },
 
   /* Global empty state */

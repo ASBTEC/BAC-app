@@ -1,6 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useMemo, useState } from 'react';
 import {
+  Platform,
   FlatList,
   Pressable,
   StyleSheet,
@@ -103,7 +104,7 @@ export default function EventsScreen() {
           <TextInput
             nativeID="events-search"
             style={[styles.searchInput, { color: colors.text }]}
-            placeholder="Buscar eventos, ponentes, empresas…"
+            placeholder="Buscar evento"
             placeholderTextColor={colors.icon}
             value={search}
             onChangeText={setSearch}
@@ -219,9 +220,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
-    paddingVertical: 7,
+    justifyContent: 'center',
+    height: 44,
   },
-  searchInput: { fontSize: 15, textAlignVertical: 'center' },
+  searchInput: { fontSize: 15, textAlignVertical: 'center', paddingVertical: 0 },
 
   /* Filter button */
   filterBtn: {
@@ -268,6 +270,6 @@ const styles = StyleSheet.create({
 
   /* List */
   list: { flex: 1 },
-  listContent: { paddingTop: 4, paddingBottom: 32 },
+  listContent: { paddingTop: 4, paddingBottom: Platform.select({ web: 32, default: 48 }) },
   empty: { textAlign: 'center', marginTop: 40, fontSize: 14 },
 });

@@ -242,7 +242,7 @@ export default function MapScreen() {
             <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
               <TextInput
                 style={[styles.searchInput, { color: colors.text }]}
-                placeholder="Buscar eventos en este espacio…"
+                placeholder="Buscar eventos en mapa"
                 placeholderTextColor={colors.icon}
                 value={search}
                 onChangeText={setSearch}
@@ -422,9 +422,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    justifyContent: 'center',
+    height: 44,
   },
-  searchInput: { fontSize: 15 },
+  searchInput: { fontSize: 15, textAlignVertical: 'center', paddingVertical: 0 },
   filterBtn: {
     borderRadius: 8,
     borderWidth: 1,
