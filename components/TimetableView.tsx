@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { ActivityTypeColors, BACColors, Colors } from '@/constants/theme';
+import { CategoryColors, BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Event } from '@/types';
 
@@ -215,7 +215,7 @@ export function TimetableView({
           style={[styles.bannerWrap, { borderBottomColor: colors.border }]}
           contentContainerStyle={styles.bannerRow}>
           {banners.map((ev) => {
-            const c = ActivityTypeColors[ev.activity_type] ?? BACColors.teal;
+            const c = CategoryColors[ev.category] ?? BACColors.teal;
             return (
               <Pressable
                 key={ev.id}
@@ -266,7 +266,7 @@ export function TimetableView({
             const gapTotal = (item.numCols - 1) * COL_GAP;
             const colW = (screenWidth - TIME_COL - gapTotal) / item.numCols;
             const left = TIME_COL + item.col * (colW + COL_GAP);
-            const color = ActivityTypeColors[item.event.activity_type] ?? BACColors.teal;
+            const color = CategoryColors[item.event.category] ?? BACColors.teal;
             const saved = isSaved(item.event.id);
 
             return (
