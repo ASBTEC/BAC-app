@@ -1,0 +1,39 @@
+name: Deploy Web to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Build & deploy to asbtec.github.io/bac
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Export web app
+        run: npx expo export --platform web
+        # Outputs to dist/ with all paths prefixed by /bac (via experiments.baseUrl in app.json)
+
+      - name: Deploy to asbtec.github.io/bac
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          repository-name: ASBTEC/asbtec.github.io
+          branch: master                  # or main — whichever branch the org site uses
+          folder: dist                    # local folder to publish
+          target-folder: bac             # subdirectory on the org site
+          clean: true                    # remove files that no longer exist in dist/
+          commit-message: "chore: deploy BAC app v${{ github.run_number }} to /bac [skip ci]"
