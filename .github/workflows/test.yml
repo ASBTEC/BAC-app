@@ -11,6 +11,7 @@ jobs:
   test:
     name: Lint & type-check
     runs-on: ubuntu-latest
+    # Run even if some build jobs failed (continue-on-error makes the workflow succeed)
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
@@ -33,6 +34,7 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Download Android build metadata
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build.yml
@@ -40,26 +42,25 @@ jobs:
           name: android-build-metadata
 
       - name: Download iOS build metadata
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build.yml
           run_id: ${{ github.event.workflow_run.id }}
           name: ios-build-metadata
 
-      - name: Re-upload Android build metadata for Release workflow
+      - name: Re-upload Android build metadata
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: android-build-metadata
-          path: |
-            android-build-id.txt
-            android-build-url.txt
+          path: android-build-url.txt
           retention-days: 1
 
-      - name: Re-upload iOS build metadata for Release workflow
+      - name: Re-upload iOS build metadata
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: ios-build-metadata
-          path: |
-            ios-build-id.txt
-            ios-build-url.txt
+          path: ios-build-url.txt
           retention-days: 1

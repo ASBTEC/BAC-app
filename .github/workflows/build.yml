@@ -6,9 +6,12 @@ on:
       - master
 
 jobs:
-  build-android:
-    name: Build Android APK (EAS)
+  # ── 1. Trigger both platform builds via EAS workflow ──────────────────────
+  trigger:
+    name: Trigger EAS workflow
     runs-on: ubuntu-latest
+    outputs:
+      triggered-at: ${{ steps.trigger.outputs.triggered-at }}
 
     steps:
       - name: Checkout
@@ -29,31 +32,84 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build Android APK on EAS
+      - name: Run EAS workflow (both platforms in parallel)
+        id: trigger
         run: |
-          eas build \
-            --platform android \
-            --profile preview \
-            --non-interactive \
-            --json \
-            | tee build-android.json
-          echo "$(jq -r '.[0].id' build-android.json)" > android-build-id.txt
-          echo "$(jq -r '.[0].artifacts.applicationArchiveUrl' build-android.json)" > android-build-url.txt
+          echo "triggered-at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          npx eas-cli@latest workflow:run .eas/workflows/create-production-builds.yml \
+            --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Upload Android build metadata
+  # ── 2a. Wait for Android build (independent of iOS) ───────────────────────
+  wait-android:
+    name: Wait for Android build
+    needs: trigger
+    runs-on: ubuntu-latest
+    continue-on-error: true   # iOS failure must not block Android release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Poll until Android build finishes
+        id: poll
+        run: |
+          SINCE="${{ needs.trigger.outputs.triggered-at }}"
+          echo "Waiting for Android build created after $SINCE …"
+          for i in $(seq 1 40); do
+            sleep 60
+            URL=$(npx eas-cli@latest build:list \
+              --platform android \
+              --profile production \
+              --status finished \
+              --limit 5 \
+              --json \
+              --non-interactive 2>/dev/null \
+              | jq -r --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first | .artifacts.applicationArchiveUrl // empty' \
+              2>/dev/null || true)
+            if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+              echo "Android build ready: $URL"
+              echo "$URL" > android-build-url.txt
+              echo "url=$URL" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Attempt $i/40: not finished yet…"
+          done
+          echo "Timed out waiting for Android build" && exit 1
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload Android build URL
+        if: steps.poll.outputs.url != ''
         uses: actions/upload-artifact@v4
         with:
           name: android-build-metadata
-          path: |
-            android-build-id.txt
-            android-build-url.txt
+          path: android-build-url.txt
           retention-days: 1
 
-  build-ios:
-    name: Build iOS IPA (EAS)
+  # ── 2b. Wait for iOS build (independent of Android) ───────────────────────
+  wait-ios:
+    name: Wait for iOS build
+    needs: trigger
     runs-on: ubuntu-latest
+    continue-on-error: true   # Android failure must not block iOS release
 
     steps:
       - name: Checkout
@@ -74,24 +130,39 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build iOS IPA on EAS
+      - name: Poll until iOS build finishes
+        id: poll
         run: |
-          eas build \
-            --platform ios \
-            --profile preview \
-            --non-interactive \
-            --json \
-            | tee build-ios.json
-          echo "$(jq -r '.[0].id' build-ios.json)" > ios-build-id.txt
-          echo "$(jq -r '.[0].artifacts.applicationArchiveUrl' build-ios.json)" > ios-build-url.txt
+          SINCE="${{ needs.trigger.outputs.triggered-at }}"
+          echo "Waiting for iOS build created after $SINCE …"
+          for i in $(seq 1 40); do
+            sleep 60
+            URL=$(npx eas-cli@latest build:list \
+              --platform ios \
+              --profile production \
+              --status finished \
+              --limit 5 \
+              --json \
+              --non-interactive 2>/dev/null \
+              | jq -r --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first | .artifacts.applicationArchiveUrl // empty' \
+              2>/dev/null || true)
+            if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+              echo "iOS build ready: $URL"
+              echo "$URL" > ios-build-url.txt
+              echo "url=$URL" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Attempt $i/40: not finished yet…"
+          done
+          echo "Timed out waiting for iOS build" && exit 1
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Upload iOS build metadata
+      - name: Upload iOS build URL
+        if: steps.poll.outputs.url != ''
         uses: actions/upload-artifact@v4
         with:
           name: ios-build-metadata
-          path: |
-            ios-build-id.txt
-            ios-build-url.txt
+          path: ios-build-url.txt
           retention-days: 1
