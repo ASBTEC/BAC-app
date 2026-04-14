@@ -149,7 +149,7 @@ export default function ScheduleScreen() {
                     const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
                     return (
                       <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? accent : colors.card, borderColor: active ? accent : colors.border }]} onPress={() => setActiveCategory(active ? 'all' : key)}>
-                        {Icon && <Icon width={14} height={14} />}
+                        {Icon && <Icon width={18} height={18} />}
                         <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
                       </Pressable>
                     );

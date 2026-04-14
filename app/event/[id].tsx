@@ -15,10 +15,22 @@ import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import BioBACLogo      from '@/assets/images/event_types/logo biobac.svg';
+import BusinessBACLogo from '@/assets/images/event_types/logo businessbac.svg';
+import ExpoBACLogo     from '@/assets/images/event_types/logo expobac.svg';
+import ViveBACLogo     from '@/assets/images/event_types/logo vivebac.svg';
+import { SvgProps } from 'react-native-svg';
+
+const CATEGORY_LOGOS: Record<EventCategory, React.FC<SvgProps>> = {
+  bioBAC:      BioBACLogo,
+  businessBAC: BusinessBACLogo,
+  expoBAC:     ExpoBACLogo,
+  viveBAC:     ViveBACLogo,
+};
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
-import { Event, Exhibitor } from '@/types';
+import { Event, EventCategory, Exhibitor } from '@/types';
 import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
@@ -104,8 +116,22 @@ export default function EventDetailScreen() {
           <CategoryBadge category={event.category} />
         </View>
         <Text style={styles.title}>{event.title}</Text>
-        <Text style={styles.date}>{formatDateRange(event.start_time, event.end_time)}</Text>
-        <Text style={styles.time}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
+        {(() => {
+          const CategoryLogo = CATEGORY_LOGOS[event.category];
+          return (
+            <View style={styles.dateTimeRow}>
+              <View style={styles.dateTimeStack}>
+                <Text style={styles.date}>{formatDateRange(event.start_time, event.end_time)}</Text>
+                <Text style={styles.time}>{formatTimeSlot(event.start_time, event.end_time)}</Text>
+              </View>
+              {CategoryLogo && (
+                <View style={styles.categoryLogoWrap}>
+                  <CategoryLogo width={120} height={64} />
+                </View>
+              )}
+            </View>
+          );
+        })()}
       </View>
 
       {/* Location */}
@@ -209,6 +235,19 @@ const styles = StyleSheet.create({
   },
   badgeRow: { flexDirection: 'row', gap: 8, marginBottom: 4 },
   title: { color: '#fff', fontSize: 20, fontFamily: OrbitronFonts.bold, lineHeight: 28 },
+  dateTimeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 4,
+  },
+  categoryLogoWrap: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  dateTimeStack: { gap: 4 },
   date: { color: BACColors.lightBlue, fontSize: 13, fontWeight: '600' },
   time: { color: '#fff', fontSize: 16, fontWeight: '600' },
   infoRow: {

@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CategoryColors } from '@/constants/theme';
 import { EventCategory } from '@/types';
-import BioBACLogo      from '../assets/images/event_types/logo biobac.svg';
-import BusinessBACLogo from '../assets/images/event_types/logo businessbac.svg';
-import ExpoBACLogo     from '../assets/images/event_types/logo expobac.svg';
-import ViveBACLogo     from '../assets/images/event_types/logo vivebac.svg';
+import BioBACLogo      from '../assets/images/event_types/logo biobac_no_text.svg';
+import BusinessBACLogo from '../assets/images/event_types/logo businessbac_no_text.svg';
+import ExpoBACLogo     from '../assets/images/event_types/logo expobac_no_text.svg';
+import ViveBACLogo     from '../assets/images/event_types/logo vivebac_no_text.svg';
 
 const LABELS: Record<EventCategory, string> = {
   bioBAC:      'BioBAC',
