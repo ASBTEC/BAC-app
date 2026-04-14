@@ -126,7 +126,7 @@ export default function EventDetailScreen() {
               </View>
               {CategoryLogo && (
                 <View style={styles.categoryLogoWrap}>
-                  <CategoryLogo width={120} height={64} />
+                  <CategoryLogo width={140} height={75} />
                 </View>
               )}
             </View>
