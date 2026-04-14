@@ -190,7 +190,7 @@ export default function HomeScreen() {
               <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
                 <TextInput
                   style={[styles.searchInput, { color: colors.text }]}
-                  placeholder="Buscar evento"
+                  placeholder="Buscar eventos"
                   placeholderTextColor={colors.icon}
                   value={search}
                   onChangeText={setSearch}

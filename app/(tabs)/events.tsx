@@ -104,7 +104,7 @@ export default function EventsScreen() {
           <TextInput
             nativeID="events-search"
             style={[styles.searchInput, { color: colors.text }]}
-            placeholder="Buscar evento"
+            placeholder="Buscar eventos"
             placeholderTextColor={colors.icon}
             value={search}
             onChangeText={setSearch}
