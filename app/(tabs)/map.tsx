@@ -287,7 +287,7 @@ export default function MapScreen() {
                         { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border },
                       ]}
                       onPress={() => setActiveCategory(active ? 'all' : key)}>
-                      {Icon && <Icon width={18} height={18} />}
+                      {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
                       <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
                         {label}
                       </Text>

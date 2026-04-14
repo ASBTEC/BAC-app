@@ -9,7 +9,7 @@
       }
 
       .cls-1, .cls-2 {
-        fill: #368396;
+        fill: currentColor;
       }
     </style>
   </defs>

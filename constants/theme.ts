@@ -57,9 +57,9 @@ export const ActivityTypeColors: Record<string, string> = {
 
 // Category color coding (per PRD §12)
 export const CategoryColors: Record<string, string> = {
-  bioBAC:      BACColors.teal,
-  businessBAC: BACColors.navyDark,
-  expoBAC:     BACColors.green,
+  bioBAC:      '#1C1C1C',   // black & white — matches SVG dark stroke
+  businessBAC: '#2C4E62',   // dark blue — matches SVG fill
+  expoBAC:     '#368396',   // steel blue — matches SVG fill
   viveBAC:     BACColors.amber,
 };
 

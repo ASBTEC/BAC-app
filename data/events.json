@@ -347,5 +347,144 @@
       "biz_005"
     ],
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_026",
+    "title": "Ponencia bioBAC: Proteómica de alta resolución en biomarcadores de diagnóstico",
+    "description": "La Dra. Laia Ferrer presenta los últimos avances en proteómica basada en espectrometría de masas para la identificación de biomarcadores en biopsias líquidas. Se discuten los retos de validación clínica y las perspectivas de traslación al diagnóstico rutinario.",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-07T12:00:00",
+    "end_time": "2026-07-07T13:00:00",
+    "local_location": "Classroom 2",
+    "exhibitor_ids": [
+      "spk_003"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_027",
+    "title": "Taller bioBAC: Análisis de datos de secuenciación masiva con herramientas bioinformáticas",
+    "description": "Taller práctico conducido por el Dr. Marc Subirana. Los participantes procesarán un conjunto de datos de RNA-seq usando pipelines estándar (FastQC, STAR, DESeq2) en un entorno cloud. Se requieren conocimientos básicos de línea de comandos. Plazas limitadas a 16 participantes.",
+    "category": "bioBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-08T09:30:00",
+    "end_time": "2026-07-08T11:00:00",
+    "local_location": "Classroom 1",
+    "exhibitor_ids": [
+      "spk_006"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_028",
+    "title": "Mesa redonda bioBAC: Investigación traslacional en oncología molecular",
+    "description": "Panel de investigadores y clínicos que debaten los cuellos de botella en la traslación de hallazgos moleculares en oncología desde el laboratorio hasta el paciente. Se abordan la heterogeneidad tumoral, los modelos preclínicos y los ensayos de cesta.",
+    "category": "bioBAC",
+    "activity_type": "round_table",
+    "start_time": "2026-07-09T11:00:00",
+    "end_time": "2026-07-09T12:30:00",
+    "local_location": "Classroom 1",
+    "exhibitor_ids": [
+      "spk_003",
+      "spk_004",
+      "biz_008"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_029",
+    "title": "Ponencia bioBAC: Orgánoides cerebrales como modelos de enfermedad neurológica",
+    "description": "El Prof. Jordi Mas expone cómo los orgánoides cerebrales derivados de iPSC están revolucionando el modelado de enfermedades como el Alzheimer y el autismo, y analiza sus limitaciones actuales en términos de madurez neuronal y vascularización.",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-10T09:30:00",
+    "end_time": "2026-07-10T10:30:00",
+    "local_location": "Classroom 2",
+    "exhibitor_ids": [
+      "spk_002"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_030",
+    "title": "Práctica bioBAC: Microscopía confocal y análisis de imagen en biología celular",
+    "description": "Sesión práctica guiada por la Dra. Núria Vidal en el laboratorio de imagen avanzada. Los participantes aprenderán a preparar muestras, adquirir imágenes confocales y realizar análisis cuantitativo con Fiji/ImageJ. Plazas limitadas a 12 participantes.",
+    "category": "bioBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-11T09:30:00",
+    "end_time": "2026-07-11T11:00:00",
+    "local_location": "Laboratory",
+    "exhibitor_ids": [
+      "spk_007"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_031",
+    "title": "ExpoBAC: Demo Merck Life Science — Reactivos y plataformas para biología molecular",
+    "description": "Merck Life Science presenta sus últimas novedades en kits de clonación, reactivos de transfección y plataformas de edición genómica. Demostración interactiva con el equipo de aplicaciones técnicas y oportunidad de obtener muestras gratuitas.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-07T14:00:00",
+    "end_time": "2026-07-07T15:30:00",
+    "local_location": "Stand Area",
+    "exhibitor_ids": [
+      "biz_006"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_032",
+    "title": "ExpoBAC: Exposición de proyectos de investigación de estudiantes",
+    "description": "Muestra de proyectos de fin de grado y máster de estudiantes de biociencias. Los autores presentan sus trabajos en formato póster y flash talk de 3 minutos. Votación del público para el Premio ExpoBAC al Mejor Proyecto Joven.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-08T16:00:00",
+    "end_time": "2026-07-08T18:00:00",
+    "local_location": "Stand Area",
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_033",
+    "title": "ExpoBAC: Demo Bioiberica — Ingredientes bioactivos y plataformas de extracción",
+    "description": "Bioiberica muestra sus tecnologías de extracción y purificación de biomoléculas de origen animal, con especial atención a condroitín sulfato, hialuronato y péptidos bioactivos. Incluye degustación de productos nutracéuticos y visita guiada al stand.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-09T15:30:00",
+    "end_time": "2026-07-09T17:00:00",
+    "local_location": "Stand Area",
+    "exhibitor_ids": [
+      "biz_007"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_034",
+    "title": "ExpoBAC: Showcase IDIBELL — Proyectos de investigación traslacional en oncología",
+    "description": "El Instituto de Investigación Biomédica de Bellvitge (IDIBELL) presenta sus líneas activas de investigación en oncología, neurociencias y enfermedades cardiovasculares. Los investigadores explican sus proyectos en sesiones de 10 minutos con turno de preguntas.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-10T11:00:00",
+    "end_time": "2026-07-10T13:00:00",
+    "local_location": "Classroom 2",
+    "exhibitor_ids": [
+      "biz_008"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_035",
+    "title": "ExpoBAC: Ronda de presentaciones de startups biotecnológicas",
+    "description": "Ocho startups del ecosistema biotecnológico catalán presentan sus proyectos ante un panel de inversores y el público del congreso. Cada empresa dispone de 5 minutos de pitch y 5 de preguntas. Organizado con el apoyo de CataloniaBio & HealthTech.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-11T11:00:00",
+    "end_time": "2026-07-11T13:00:00",
+    "local_location": "Auditorium",
+    "exhibitor_ids": [
+      "biz_009"
+    ],
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
   }
 ]

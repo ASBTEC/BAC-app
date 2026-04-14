@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   badgeRow: {
     flexDirection: 'row',
     gap: 6,
-    flexWrap: 'wrap',
+    flexShrink: 1,
   },
   bookmark: {
     padding: 2,

@@ -25,13 +25,19 @@ interface Props {
   category: EventCategory;
 }
 
+// Categories that use a solid background with white text/icon instead of a tinted background
+const SOLID_CATEGORIES = new Set<EventCategory>(['bioBAC']);
+
 export function CategoryBadge({ category }: Props) {
   const color = CategoryColors[category] ?? '#9BA1A6';
   const Icon = ICONS[category];
+  const solid = SOLID_CATEGORIES.has(category);
+  const bg = solid ? color : color + '22';
+  const fg = solid ? '#fff' : color;
   return (
-    <View style={[styles.badge, { backgroundColor: color + '22', borderColor: color }]}>
-      <Icon width={12} height={12} />
-      <Text style={[styles.label, { color }]}>{LABELS[category]}</Text>
+    <View style={[styles.badge, { backgroundColor: bg, borderColor: color }]}>
+      <Icon width={12} height={12} color={fg} />
+      <Text style={[styles.label, { color: fg }]}>{LABELS[category]}</Text>
     </View>
   );
 }
