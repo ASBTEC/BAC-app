@@ -3,7 +3,7 @@ name: Lint & type-check
 on:
   workflow_run:
     workflows:
-      - Build APK
+      - Build Apps
     types:
       - completed
 
@@ -32,18 +32,34 @@ jobs:
       - name: Type-check
         run: npx tsc --noEmit
 
-      - name: Download build metadata from Build workflow
+      - name: Download Android build metadata
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build.yml
           run_id: ${{ github.event.workflow_run.id }}
-          name: build-metadata
+          name: android-build-metadata
 
-      - name: Re-upload build metadata for Release workflow
+      - name: Download iOS build metadata
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: build.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: ios-build-metadata
+
+      - name: Re-upload Android build metadata for Release workflow
         uses: actions/upload-artifact@v4
         with:
-          name: build-metadata
+          name: android-build-metadata
           path: |
-            build-id.txt
-            build-url.txt
+            android-build-id.txt
+            android-build-url.txt
+          retention-days: 1
+
+      - name: Re-upload iOS build metadata for Release workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-metadata
+          path: |
+            ios-build-id.txt
+            ios-build-url.txt
           retention-days: 1

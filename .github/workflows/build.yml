@@ -1,4 +1,4 @@
-name: Build APK
+name: Build Apps
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build APK (EAS)
+  build-android:
+    name: Build Android APK (EAS)
     runs-on: ubuntu-latest
 
     steps:
@@ -29,29 +29,69 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build APK on EAS
-        id: eas-build
+      - name: Build Android APK on EAS
         run: |
           eas build \
             --platform android \
             --profile preview \
             --non-interactive \
             --json \
-            | tee build-output.json
-          BUILD_ID=$(jq -r '.[0].id' build-output.json)
-          DOWNLOAD_URL=$(jq -r '.[0].artifacts.applicationArchiveUrl' build-output.json)
-          echo "EAS build ID: $BUILD_ID"
-          echo "Download URL: $DOWNLOAD_URL"
-          echo "$BUILD_ID" > build-id.txt
-          echo "$DOWNLOAD_URL" > build-url.txt
+            | tee build-android.json
+          echo "$(jq -r '.[0].id' build-android.json)" > android-build-id.txt
+          echo "$(jq -r '.[0].artifacts.applicationArchiveUrl' build-android.json)" > android-build-url.txt
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Upload build metadata
+      - name: Upload Android build metadata
         uses: actions/upload-artifact@v4
         with:
-          name: build-metadata
+          name: android-build-metadata
           path: |
-            build-id.txt
-            build-url.txt
+            android-build-id.txt
+            android-build-url.txt
+          retention-days: 1
+
+  build-ios:
+    name: Build iOS IPA (EAS)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build iOS IPA on EAS
+        run: |
+          eas build \
+            --platform ios \
+            --profile preview \
+            --non-interactive \
+            --json \
+            | tee build-ios.json
+          echo "$(jq -r '.[0].id' build-ios.json)" > ios-build-id.txt
+          echo "$(jq -r '.[0].artifacts.applicationArchiveUrl' build-ios.json)" > ios-build-url.txt
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload iOS build metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-metadata
+          path: |
+            ios-build-id.txt
+            ios-build-url.txt
           retention-days: 1

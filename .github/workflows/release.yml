@@ -28,22 +28,34 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Download build metadata
+      - name: Download Android build metadata
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: test.yml
           run_id: ${{ github.event.workflow_run.id }}
-          name: build-metadata
+          name: android-build-metadata
+
+      - name: Download iOS build metadata
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: test.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: ios-build-metadata
 
       - name: Read build metadata
         id: meta
         run: |
-          echo "build-id=$(cat build-id.txt)" >> "$GITHUB_OUTPUT"
-          echo "download-url=$(cat build-url.txt)" >> "$GITHUB_OUTPUT"
+          echo "android-build-id=$(cat android-build-id.txt)" >> "$GITHUB_OUTPUT"
+          echo "android-download-url=$(cat android-build-url.txt)" >> "$GITHUB_OUTPUT"
+          echo "ios-build-id=$(cat ios-build-id.txt)" >> "$GITHUB_OUTPUT"
+          echo "ios-download-url=$(cat ios-build-url.txt)" >> "$GITHUB_OUTPUT"
           echo "version=$(jq -r '.expo.version' app.json)" >> "$GITHUB_OUTPUT"
 
       - name: Download APK from EAS
-        run: curl -L "${{ steps.meta.outputs.download-url }}" -o ./bac-app.apk
+        run: curl -L "${{ steps.meta.outputs.android-download-url }}" -o ./bac-app.apk
+
+      - name: Download IPA from EAS
+        run: curl -L "${{ steps.meta.outputs.ios-download-url }}" -o ./bac-app.ipa
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -53,6 +65,14 @@ jobs:
           body: |
             Automated release from commit ${{ github.event.workflow_run.head_sha }}.
 
-            **Install:** download `bac-app.apk` below and open it on your Android device (enable "Install from unknown sources" if prompted).
-          files: ./bac-app.apk
+            **Android:** download `bac-app.apk` and open it on your Android device (enable "Install from unknown sources" if prompted).
+
+            **iOS:** download `bac-app.ipa` and install via TestFlight or [AltStore](https://altstore.io).
+
+            EAS build IDs:
+            - Android: `${{ steps.meta.outputs.android-build-id }}`
+            - iOS: `${{ steps.meta.outputs.ios-build-id }}`
+          files: |
+            ./bac-app.apk
+            ./bac-app.ipa
           generate_release_notes: true
