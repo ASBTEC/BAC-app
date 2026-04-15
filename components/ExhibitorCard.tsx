@@ -2,13 +2,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Exhibitor } from '@/types';
-
-const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
-  'logo-asbtec-squared.jpg': require('../assets/images/logo-asbtec-squared.jpg'),
-};
 
 interface Props {
   exhibitor: Exhibitor;

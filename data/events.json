@@ -486,5 +486,54 @@
       "biz_009"
     ],
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+  },
+  {
+    "id": "evt_036",
+    "title": "Curso de Neurobioenginyeria: Introducción a la Tractografía",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "activity",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_007"
+    ]
+  },
+  {
+    "id": "evt_037",
+    "title": "Curso de Estadísticas Ómicas",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "activity",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_008"
+    ]
+  },
+  {
+    "id": "evt_038",
+    "title": "Curso de Fecundación In Vitro y Reproducción Asistida",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "activity",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_009"
+    ]
+  },
+  {
+    "id": "evt_039",
+    "title": "Visita al Sincrotón ALBA",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "viveBAC",
+    "activity_type": "outdoor_activity",
+    "start_time": "2026-07-08TFALTA",
+    "end_time": "2026-07-08TFALTA",
+    "local_location": "Sincrotón ALBA, Cerdanyola del Vallès"
   }
 ]

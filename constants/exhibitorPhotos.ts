@@ -4,4 +4,10 @@
  */
 export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'logo-asbtec-squared.jpg': require('@/assets/images/logo-asbtec-squared.jpg'),
+  'antonio ferrer montiel.png': require('@/assets/images/exhibitors/speakers/antonio ferrer montiel.png'),
+  'Benedetta bolognesi.png': require('@/assets/images/exhibitors/speakers/Benedetta bolognesi.png'),
+  'benjamí oller-salvia.png': require('@/assets/images/exhibitors/speakers/benjamí oller-salvia.png'),
+  'Juan J. calvete.png': require('@/assets/images/exhibitors/speakers/Juan J. calvete.png'),
+  'nuria sanchez coll.png': require('@/assets/images/exhibitors/speakers/nuria sanchez coll.png'),
+  'sílvia osuna.png': require('@/assets/images/exhibitors/speakers/sílvia osuna.png'),
 };

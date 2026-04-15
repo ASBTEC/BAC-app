@@ -2,50 +2,65 @@
   {
     "id": "spk_001",
     "exhibitor_type": "speaker",
-    "name": "Dr. Maria Puig",
-    "description": "Investigadora principal en el CRG (Centro de Regulación Genómica), especializada en edición genómica y estrategias terapéuticas basadas en CRISPR."
+    "name": "Antonio Ferrer Montiel",
+    "photo": "antonio ferrer montiel.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_002",
     "exhibitor_type": "speaker",
-    "name": "Prof. Jordi Mas",
-    "description": "Catedrático de Microbiología en la Universitat Autònoma de Barcelona. Experto en microbiología ambiental y biorremediación."
+    "name": "Benedetta Bolognesi",
+    "photo": "Benedetta bolognesi.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_003",
     "exhibitor_type": "speaker",
-    "name": "Dr. Laia Ferrer",
-    "description": "Científica sénior en el CSIC, líder de investigación en inmunoterapia oncológica y desarrollo de células CAR-T."
+    "name": "Benjamí Oller-Salvia",
+    "photo": "benjamí oller-salvia.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_004",
     "exhibitor_type": "speaker",
-    "name": "Dr. Andreu Palou",
-    "description": "Director del grupo de investigación en Nutrigenómica y Obesidad de la UIB. Conferenciante magistral sobre nutrición personalizada y salud metabólica."
+    "name": "Juan J. Calvete",
+    "photo": "Juan J. calvete.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_005",
     "exhibitor_type": "speaker",
-    "name": "Dr. Elena Molina",
-    "description": "Cofundadora y directora científica de una startup de biología sintética con sede en Barcelona. Experta en ingeniería metabólica para la bioproducción sostenible."
+    "name": "Nuria Sánchez Coll",
+    "photo": "nuria sanchez coll.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_006",
     "exhibitor_type": "speaker",
-    "name": "Dr. Marc Subirana",
-    "description": "Investigador en el IRB Barcelona trabajando en predicción de estructuras proteicas y descubrimiento de fármacos mediante herramientas de IA."
+    "name": "Sílvia Osuna",
+    "photo": "sílvia osuna.png",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_007",
     "exhibitor_type": "speaker",
-    "name": "Dr. Núria Vidal",
-    "description": "Especialista en asuntos regulatorios con 15 años de experiencia guiando a startups biotecnológicas en los procesos de aprobación de la EMA."
+    "name": "FALTA",
+    "photo": "FALTA",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_008",
     "exhibitor_type": "speaker",
-    "name": "Dr. Xavier Grau",
-    "description": "Comunicador científico y virólogo en CIBEREHD. Ponente TEDx experimentado en enfermedades infecciosas emergentes."
+    "name": "FALTA",
+    "photo": "FALTA",
+    "description": "FALTA DESCRIPCIÓN"
+  },
+  {
+    "id": "spk_009",
+    "exhibitor_type": "speaker",
+    "name": "FALTA",
+    "photo": "FALTA",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_001",
