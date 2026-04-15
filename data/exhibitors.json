@@ -65,70 +65,50 @@
   {
     "id": "biz_001",
     "exhibitor_type": "business",
-    "name": "Roche Diagnostics",
-    "description": "Líder mundial en diagnóstico in vitro y medicina personalizada. Presentando sus últimas plataformas de diagnóstico en oncología y enfermedades infecciosas.",
-    "sponsor_tier": "platinum"
+    "name": "Farmandome",
+    "photo": "Farmandome.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_002",
     "exhibitor_type": "business",
-    "name": "Novartis",
-    "description": "Empresa farmacéutica multinacional que presenta avances en terapias génicas y descubrimiento de fármacos de pequeña molécula.",
-    "sponsor_tier": "platinum"
+    "name": "PharmaX",
+    "photo": "logo-pharmaX.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_003",
     "exhibitor_type": "business",
-    "name": "Almirall",
-    "description": "Empresa farmacéutica con sede en Barcelona especializada en dermatología. Presentando oportunidades de carrera en su departamento de I+D.",
-    "sponsor_tier": "gold"
+    "name": "ProteinTech",
+    "photo": "logo-proteintech.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_004",
     "exhibitor_type": "business",
-    "name": "Grifols",
-    "description": "Empresa farmacéutica multinacional española especializada en medicamentos derivados del plasma. Stand con información sobre sus operaciones globales.",
-    "sponsor_tier": "gold"
+    "name": "Minoryx",
+    "photo": "Minoryx.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_005",
     "exhibitor_type": "business",
-    "name": "Thermo Fisher Scientific",
-    "description": "Líder mundial en equipamiento de laboratorio, reactivos y consumibles. Demostrando sus últimos sistemas de PCR y herramientas de biología celular.",
-    "sponsor_tier": "silver"
+    "name": "Sartorius",
+    "photo": "Sartorius-logo.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_006",
     "exhibitor_type": "business",
-    "name": "Merck Life Science",
-    "description": "Proveedor de reactivos, kits y herramientas para laboratorios de investigación. Presenta su cartera de edición CRISPR y consumibles de secuenciación.",
-    "sponsor_tier": "silver"
+    "name": "UdL",
+    "photo": "UdL.webp",
+    "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "biz_007",
     "exhibitor_type": "business",
-    "name": "Bioiberica",
-    "description": "Empresa española productora de biomoléculas de grado farmacéutico a partir de materias primas de origen animal. Con foco en nutracéuticos y biosimilares.",
-    "sponsor_tier": "bronze"
-  },
-  {
-    "id": "biz_008",
-    "exhibitor_type": "business",
-    "name": "IDIBELL",
-    "description": "Instituto de Investigación Biomédica de Bellvitge. Presenta sus programas de becas postdoctorales y de doctorado para los asistentes al congreso.",
-    "sponsor_tier": "bronze"
-  },
-  {
-    "id": "biz_009",
-    "exhibitor_type": "business",
-    "name": "CataloniaBio & HealthTech",
-    "description": "Organización clúster que apoya a las empresas de ciencias de la vida en Cataluña. Información sobre programas de financiación, incubadoras y apoyo al ecosistema."
-  },
-  {
-    "id": "biz_010",
-    "exhibitor_type": "business",
-    "name": "ASBTEC",
-    "photo": "logo-asbtec-squared.jpg",
-    "description": "Associació de Biotecnòlegs de Catalunya — organizadora del BAC 2026. Stand informativo sobre membresía, iniciativas y próximos eventos."
+    "name": "URV",
+    "photo": "URV-1024x706.webp",
+    "description": "FALTA DESCRIPCIÓN"
   }
 ]

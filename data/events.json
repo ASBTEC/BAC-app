@@ -8,27 +8,10 @@
     "start_time": "2026-07-07T09:30:00",
     "end_time": "2026-07-07T10:30:00",
     "local_location": "Auditorium",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
-    "exhibitor_ids": [
-      "biz_010"
-    ]
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
   },
   {
     "id": "evt_002",
-    "title": "Conferencia magistral: Edición genómica — del laboratorio a la clínica",
-    "description": "La Dra. Maria Puig presenta los últimos avances en terapéutica con CRISPR-Cas9, abordando el panorama regulatorio, los retos de la distribución y los primeros ensayos en humanos. Una visión integral del estado de la edición genómica en 2026.",
-    "category": "viveBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-07T11:00:00",
-    "end_time": "2026-07-07T12:00:00",
-    "local_location": "Auditorium",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
-    "exhibitor_ids": [
-      "spk_001"
-    ]
-  },
-  {
-    "id": "evt_003",
     "title": "Expo BAC: Visita a stands y networking",
     "description": "Stands de expositores abiertos durante todo el congreso. Visita los stands de empresas e instituciones, recoge materiales y habla directamente con reclutadores y científicos del sector.",
     "category": "businessBAC",
@@ -43,249 +26,12 @@
       "biz_004",
       "biz_005",
       "biz_006",
-      "biz_007",
-      "biz_008",
-      "biz_009",
-      "biz_010"
+      "biz_007"
     ],
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
   },
   {
-    "id": "evt_004",
-    "title": "Taller: Herramientas de IA en el descubrimiento de fármacos",
-    "description": "Taller práctico dirigido por el Dr. Marc Subirana sobre cómo el aprendizaje automático y la predicción de estructuras proteicas (AlphaFold, RoseTTAFold) están transformando los procesos de descubrimiento de fármacos en fase inicial. Trae tu portátil.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-07T14:00:00",
-    "end_time": "2026-07-07T16:00:00",
-    "local_location": "Classroom 1",
-    "exhibitor_ids": [
-      "spk_006"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_005",
-    "title": "Cóctel de bienvenida y encuentro social",
-    "description": "Recepción informal de bienvenida en la terraza de la Facultad. Un ambiente relajado para conocer a otros asistentes, organizadores y ponentes antes de que arranque el congreso.",
-    "category": "viveBAC",
-    "activity_type": "outdoor_activity",
-    "start_time": "2026-07-07T18:30:00",
-    "end_time": "2026-07-07T20:30:00",
-    "local_location": "Terraza de la Facultad",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_006",
-    "title": "Ponencia: Terapia con células CAR-T — Retos actuales",
-    "description": "La Dra. Laia Ferrer analiza los obstáculos clínicos y de fabricación que enfrentan las terapias CAR-T, incluyendo la resistencia del microentorno tumoral, los costes de producción y la escalabilidad para tumores sólidos.",
-    "category": "viveBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-08T09:30:00",
-    "end_time": "2026-07-08T10:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_003"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_007",
-    "title": "Mesa redonda: Carreras en biotecnología — Industria vs. Academia",
-    "description": "Un panel de investigadores y profesionales del sector debate sobre trayectorias profesionales, conciliación, salarios y las habilidades más valoradas por los empleadores. Turno abierto de preguntas para todos los asistentes.",
-    "category": "businessBAC",
-    "activity_type": "round_table",
-    "start_time": "2026-07-08T11:00:00",
-    "end_time": "2026-07-08T12:30:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "spk_003",
-      "spk_007",
-      "biz_003"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_008",
-    "title": "Masterclass Roche: Innovación en diagnóstico",
-    "description": "Roche Diagnostics presenta sus plataformas de secuenciación de nueva generación y su cartera de diagnósticos complementarios. Incluye una demostración en directo de su sistema de información para laboratorios clínicos.",
-    "category": "businessBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-08T14:00:00",
-    "end_time": "2026-07-08T15:30:00",
-    "local_location": "Classroom 1",
-    "exhibitor_ids": [
-      "biz_001"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_009",
-    "title": "Escape room científico: El brote viral",
-    "description": "Reto de escape room en equipo ambientado en un escenario ficticio de enfermedad infecciosa. Grupos de 6 personas deben aplicar conocimientos de biología molecular y epidemiología para detener el brote. Divertido, competitivo y educativo.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-08T16:00:00",
-    "end_time": "2026-07-08T18:00:00",
-    "local_location": "Laboratory",
-    "exhibitor_ids": [
-      "spk_008"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_010",
-    "title": "Conferencia magistral: Nutrición personalizada y salud metabólica",
-    "description": "El Dr. Andreu Palou imparte la segunda gran conferencia magistral del BAC 2026. La investigación de su grupo relaciona la composición del microbioma intestinal, los polimorfismos genéticos y los patrones dietéticos con el riesgo de enfermedad metabólica, con implicaciones para la salud pública.",
-    "category": "viveBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-09T09:30:00",
-    "end_time": "2026-07-09T10:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_004"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_011",
-    "title": "Taller: Vías regulatorias para productos biotecnológicos",
-    "description": "La Dra. Núria Vidal guía a los asistentes a través de la estrategia regulatoria de la EMA y la FDA para medicamentos de terapia avanzada (ATMPs), biosimilares y productos sanitarios. Incluye un caso práctico del proceso de aprobación de una startup española.",
-    "category": "businessBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-09T11:00:00",
-    "end_time": "2026-07-09T13:00:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "spk_007"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_012",
-    "title": "Visita guiada al campus de la UAB",
-    "description": "Un recorrido guiado por el campus de la UAB, incluyendo la Facultad de Biociencias, el Instituto de Biotecnología y Biomedicina y el Parque Científico de la UAB. Al aire libre — se recomienda calzado cómodo.",
-    "category": "viveBAC",
-    "activity_type": "outdoor_activity",
-    "start_time": "2026-07-09T15:00:00",
-    "end_time": "2026-07-09T17:00:00",
-    "local_location": "Punto de encuentro: entrada de la Facultad",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_013",
-    "title": "Mesa redonda: Financiación y emprendimiento en biotecnología en España",
-    "description": "Inversores, fundadores de startups y especialistas en subvenciones debaten sobre el panorama de financiación biotecnológica en España, desde ayudas nacionales (CDTI, AEI) hasta rondas Serie A y la financiación del acelerador EIC.",
-    "category": "businessBAC",
-    "activity_type": "round_table",
-    "start_time": "2026-07-09T17:30:00",
-    "end_time": "2026-07-09T19:00:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_005",
-      "biz_009"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_014",
-    "title": "Ponencia: Biología sintética para una bioproducción sostenible",
-    "description": "La Dra. Elena Molina describe cómo la ingeniería metabólica y la biología sintética se aplican para sustituir procesos petroquímicos por rutas biosintéticas, con foco en la plataforma de su startup para la producción de bioplásticos.",
-    "category": "viveBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-10T09:30:00",
-    "end_time": "2026-07-10T10:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_005"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_015",
-    "title": "Práctica: Técnicas de laboratorio de microbiología",
-    "description": "Sesión práctica de laboratorio con técnicas avanzadas de microbiología: cultivo anaerobio, preparación de secuenciación de amplicones 16S rRNA e imagen de biopelículas por microscopía confocal. Plazas limitadas a 20 participantes.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-10T11:00:00",
-    "end_time": "2026-07-10T13:00:00",
-    "local_location": "Laboratory",
-    "exhibitor_ids": [
-      "spk_002"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_016",
-    "title": "Simposio Novartis: Terapia génica — Horizontes 2026",
-    "description": "Científicos de Novartis presentan sus programas de terapia génica con AAV y LNP, con foco en los avances en administración in vivo y los retos de fabricación en la transición de los ensayos en Fase I a la comercialización.",
-    "category": "businessBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-10T14:00:00",
-    "end_time": "2026-07-10T15:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "biz_002"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_017",
-    "title": "Taller de comunicación científica",
-    "description": "El Dr. Xavier Grau dirige una sesión práctica sobre cómo comunicar ciencia compleja a audiencias no especializadas. Incluye entrevistas en medios, escritura científica, redes sociales y la ética de la simplificación. Con ejercicios en directo.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-10T16:00:00",
-    "end_time": "2026-07-10T18:00:00",
-    "local_location": "Classroom 1",
-    "exhibitor_ids": [
-      "spk_008"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_018",
-    "title": "Cena BAC y ceremonia de premios",
-    "description": "Cena de gala para todos los participantes del congreso, seguida de los Premios BAC 2026: al mejor póster, a la mejor comunicación oral y al Premio ASBTEC Joven Biotecnólogo. Código de vestimenta: smart casual.",
-    "category": "viveBAC",
-    "activity_type": "outdoor_activity",
-    "start_time": "2026-07-10T20:00:00",
-    "end_time": "2026-07-10T23:30:00",
-    "local_location": "Terraza de la Facultad",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_019",
-    "title": "Ponencia: Microbioma ambiental y biorremediación",
-    "description": "El Prof. Jordi Mas presenta dos décadas de investigación sobre el papel de las comunidades microbianas en la remediación de acuíferos contaminados y el tratamiento de aguas residuales industriales, con ejemplos de yacimientos activos en Cataluña.",
-    "category": "viveBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-11T09:30:00",
-    "end_time": "2026-07-11T10:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_002"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_020",
-    "title": "Mesa redonda: El futuro de la biotecnología en Cataluña",
-    "description": "Mesa redonda de clausura que reúne a científicos, emprendedores y representantes de políticas públicas para debatir sobre las perspectivas del sector de ciencias de la vida en Cataluña: cantera de talento, competitividad internacional y prioridades de inversión pública.",
-    "category": "businessBAC",
-    "activity_type": "round_table",
-    "start_time": "2026-07-11T11:00:00",
-    "end_time": "2026-07-11T12:30:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "spk_001",
-      "spk_005",
-      "biz_009"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_021",
+    "id": "evt_003",
     "title": "Ceremonia de clausura y despedida",
     "description": "Palabras de cierre de la junta de ASBTEC, anuncio de la próxima asociación anfitriona del BAC y despedida a los participantes. Incluye un breve vídeo resumen de los mejores momentos del BAC 2026.",
     "category": "viveBAC",
@@ -293,247 +39,203 @@
     "start_time": "2026-07-11T13:00:00",
     "end_time": "2026-07-11T14:00:00",
     "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "biz_010"
-    ],
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
   },
   {
-    "id": "evt_022",
-    "title": "Sesión informativa Grifols: Plasma y biosimilares",
-    "description": "Grifols presenta su cartera de medicamentos derivados del plasma y su pipeline de biosimilares, con foco en las oportunidades de carrera en sus operaciones globales y centros de I+D.",
-    "category": "businessBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-08T15:30:00",
-    "end_time": "2026-07-08T16:30:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "biz_004"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_023",
-    "title": "Sesión de pósteres I",
-    "description": "Presentaciones de pósteres de los participantes del congreso — pósteres de los días 1 y 2 en exposición. Los autores presentan su trabajo y responden preguntas. Café y networking incluidos.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-08T12:30:00",
-    "end_time": "2026-07-08T14:00:00",
-    "local_location": "Stand Area",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_024",
-    "title": "Sesión de pósteres II",
-    "description": "Presentaciones de pósteres de los participantes del congreso — pósteres de los días 3 y 4 en exposición. Café y networking incluidos.",
-    "category": "viveBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-10T13:00:00",
-    "end_time": "2026-07-10T14:00:00",
-    "local_location": "Stand Area",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_025",
-    "title": "Demo Thermo Fisher: PCR y secuenciación de nueva generación",
-    "description": "Demostración en directo de los sistemas Applied Biosystems QuantStudio de Thermo Fisher y su secuenciador integrado Ion Torrent Genexus. Oportunidad de uso práctico para los asistentes.",
-    "category": "businessBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-09T14:00:00",
-    "end_time": "2026-07-09T15:30:00",
-    "local_location": "Laboratory",
-    "exhibitor_ids": [
-      "biz_005"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_026",
-    "title": "Ponencia bioBAC: Proteómica de alta resolución en biomarcadores de diagnóstico",
-    "description": "La Dra. Laia Ferrer presenta los últimos avances en proteómica basada en espectrometría de masas para la identificación de biomarcadores en biopsias líquidas. Se discuten los retos de validación clínica y las perspectivas de traslación al diagnóstico rutinario.",
-    "category": "bioBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-07T12:00:00",
-    "end_time": "2026-07-07T13:00:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "spk_003"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_027",
-    "title": "Taller bioBAC: Análisis de datos de secuenciación masiva con herramientas bioinformáticas",
-    "description": "Taller práctico conducido por el Dr. Marc Subirana. Los participantes procesarán un conjunto de datos de RNA-seq usando pipelines estándar (FastQC, STAR, DESeq2) en un entorno cloud. Se requieren conocimientos básicos de línea de comandos. Plazas limitadas a 16 participantes.",
-    "category": "bioBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-08T09:30:00",
-    "end_time": "2026-07-08T11:00:00",
-    "local_location": "Classroom 1",
-    "exhibitor_ids": [
-      "spk_006"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_028",
-    "title": "Mesa redonda bioBAC: Investigación traslacional en oncología molecular",
-    "description": "Panel de investigadores y clínicos que debaten los cuellos de botella en la traslación de hallazgos moleculares en oncología desde el laboratorio hasta el paciente. Se abordan la heterogeneidad tumoral, los modelos preclínicos y los ensayos de cesta.",
-    "category": "bioBAC",
-    "activity_type": "round_table",
-    "start_time": "2026-07-09T11:00:00",
-    "end_time": "2026-07-09T12:30:00",
-    "local_location": "Classroom 1",
-    "exhibitor_ids": [
-      "spk_003",
-      "spk_004",
-      "biz_008"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_029",
-    "title": "Ponencia bioBAC: Orgánoides cerebrales como modelos de enfermedad neurológica",
-    "description": "El Prof. Jordi Mas expone cómo los orgánoides cerebrales derivados de iPSC están revolucionando el modelado de enfermedades como el Alzheimer y el autismo, y analiza sus limitaciones actuales en términos de madurez neuronal y vascularización.",
-    "category": "bioBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-10T09:30:00",
-    "end_time": "2026-07-10T10:30:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "spk_002"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_030",
-    "title": "Práctica bioBAC: Microscopía confocal y análisis de imagen en biología celular",
-    "description": "Sesión práctica guiada por la Dra. Núria Vidal en el laboratorio de imagen avanzada. Los participantes aprenderán a preparar muestras, adquirir imágenes confocales y realizar análisis cuantitativo con Fiji/ImageJ. Plazas limitadas a 12 participantes.",
-    "category": "bioBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-11T09:30:00",
-    "end_time": "2026-07-11T11:00:00",
-    "local_location": "Laboratory",
-    "exhibitor_ids": [
-      "spk_007"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_031",
-    "title": "ExpoBAC: Demo Merck Life Science — Reactivos y plataformas para biología molecular",
-    "description": "Merck Life Science presenta sus últimas novedades en kits de clonación, reactivos de transfección y plataformas de edición genómica. Demostración interactiva con el equipo de aplicaciones técnicas y oportunidad de obtener muestras gratuitas.",
-    "category": "expoBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-07T14:00:00",
-    "end_time": "2026-07-07T15:30:00",
-    "local_location": "Stand Area",
-    "exhibitor_ids": [
-      "biz_006"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_032",
-    "title": "ExpoBAC: Exposición de proyectos de investigación de estudiantes",
-    "description": "Muestra de proyectos de fin de grado y máster de estudiantes de biociencias. Los autores presentan sus trabajos en formato póster y flash talk de 3 minutos. Votación del público para el Premio ExpoBAC al Mejor Proyecto Joven.",
-    "category": "expoBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-08T16:00:00",
-    "end_time": "2026-07-08T18:00:00",
-    "local_location": "Stand Area",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_033",
-    "title": "ExpoBAC: Demo Bioiberica — Ingredientes bioactivos y plataformas de extracción",
-    "description": "Bioiberica muestra sus tecnologías de extracción y purificación de biomoléculas de origen animal, con especial atención a condroitín sulfato, hialuronato y péptidos bioactivos. Incluye degustación de productos nutracéuticos y visita guiada al stand.",
-    "category": "expoBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-09T15:30:00",
-    "end_time": "2026-07-09T17:00:00",
-    "local_location": "Stand Area",
-    "exhibitor_ids": [
-      "biz_007"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_034",
-    "title": "ExpoBAC: Showcase IDIBELL — Proyectos de investigación traslacional en oncología",
-    "description": "El Instituto de Investigación Biomédica de Bellvitge (IDIBELL) presenta sus líneas activas de investigación en oncología, neurociencias y enfermedades cardiovasculares. Los investigadores explican sus proyectos en sesiones de 10 minutos con turno de preguntas.",
-    "category": "expoBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-10T11:00:00",
-    "end_time": "2026-07-10T13:00:00",
-    "local_location": "Classroom 2",
-    "exhibitor_ids": [
-      "biz_008"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_035",
-    "title": "ExpoBAC: Ronda de presentaciones de startups biotecnológicas",
-    "description": "Ocho startups del ecosistema biotecnológico catalán presentan sus proyectos ante un panel de inversores y el público del congreso. Cada empresa dispone de 5 minutos de pitch y 5 de preguntas. Organizado con el apoyo de CataloniaBio & HealthTech.",
-    "category": "expoBAC",
-    "activity_type": "activity",
-    "start_time": "2026-07-11T11:00:00",
-    "end_time": "2026-07-11T13:00:00",
-    "local_location": "Auditorium",
-    "exhibitor_ids": [
-      "biz_009"
-    ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
-  },
-  {
-    "id": "evt_036",
+    "id": "evt_004",
     "title": "Curso de Neurobioenginyeria: Introducción a la Tractografía",
     "description": "FALTA DESCRIPCIÓN",
-    "category": "bioBAC",
+    "category": "businessBAC",
     "activity_type": "activity",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-09T17:00:00",
+    "end_time": "2026-07-09T20:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_007"
     ]
   },
   {
-    "id": "evt_037",
+    "id": "evt_005",
     "title": "Curso de Estadísticas Ómicas",
     "description": "FALTA DESCRIPCIÓN",
-    "category": "bioBAC",
+    "category": "businessBAC",
     "activity_type": "activity",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-07T10:00:00",
+    "end_time": "2026-07-07T13:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_008"
     ]
   },
   {
-    "id": "evt_038",
+    "id": "evt_006",
     "title": "Curso de Fecundación In Vitro y Reproducción Asistida",
     "description": "FALTA DESCRIPCIÓN",
-    "category": "bioBAC",
+    "category": "businessBAC",
     "activity_type": "activity",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-08T17:00:00",
+    "end_time": "2026-07-08T20:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_009"
     ]
   },
   {
-    "id": "evt_039",
+    "id": "evt_007",
+    "title": "Concurso de Pósteres — Estudios de grado y máster",
+    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_008",
+    "title": "Concurso de Pósteres — Doctorado, posdoctoral, industrial y no académico",
+    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
+    "category": "expoBAC",
+    "activity_type": "activity",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_009",
+    "title": "Comunicaciones Orales — Estudios de grado y máster",
+    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
+    "category": "expoBAC",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_010",
+    "title": "Comunicaciones Orales — Doctorado, posdoctoral, industrial y no académico",
+    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
+    "category": "expoBAC",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_011",
+    "title": "Understanding protein aggregation at scale",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-08T15:00:00",
+    "end_time": "2026-07-08T15:45:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_002"
+    ]
+  },
+  {
+    "id": "evt_012",
+    "title": "Omics platforms for the preclinical assessment of snake antivenoms",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-08T15:45:00",
+    "end_time": "2026-07-08T16:30:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_004"
+    ]
+  },
+  {
+    "id": "evt_013",
+    "title": "Translating science into patient care",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-09T09:00:00",
+    "end_time": "2026-07-09T09:45:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_001"
+    ]
+  },
+  {
+    "id": "evt_014",
+    "title": "Computational design of enzymes for a more sustainable world",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-09T09:45:00",
+    "end_time": "2026-07-09T10:30:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_006"
+    ]
+  },
+  {
+    "id": "evt_015",
+    "title": "Toward selective and brain-permeable protein therapeutics",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-10T09:00:00",
+    "end_time": "2026-07-10T09:45:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_003"
+    ]
+  },
+  {
+    "id": "evt_016",
+    "title": "Metabolic engineering for resistance against pathogens in plants",
+    "description": "FALTA DESCRIPCIÓN",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-10T09:45:00",
+    "end_time": "2026-07-10T10:30:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_005"
+    ]
+  },
+  {
+    "id": "evt_017",
+    "title": "Mesa Redonda: Ecosistema Emprendedor e Inversión",
+    "description": "Un espacio dedicado a la innovación y el negocio. Contaremos con la participación de Venture Capitals y fundadores de Startups, quienes desgranarán las claves del emprendimiento, las rondas de financiación y cómo transformar una idea científica en un proyecto empresarial viable.",
+    "category": "businessBAC",
+    "activity_type": "round_table",
+    "start_time": "2026-07-09T15:30:00",
+    "end_time": "2026-07-09T17:00:00",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_018",
+    "title": "Mesa redonda: Del grado al mundo profesional",
+    "description": "Explora la transición de la universidad a la empresa de la mano de expertos consolidados en diversos sectores de la industria. A través de sus trayectorias, analizaremos las distintas salidas profesionales y los retos actuales para ayudarte a trazar tu propio camino estratégico en el sector biotecnológico.",
+    "category": "businessBAC",
+    "activity_type": "round_table",
+    "start_time": "2026-07-08T12:00:00",
+    "end_time": "2026-07-08T13:30:00",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_019",
+    "title": "Ponencias magistrales y Keynote speakers",
+    "description": "Accede a una visión privilegiada del sector a través de ponencias exclusivas a cargo de líderes de la industria farmacéutica —compañías top que marcan el ritmo del sector a nivel global—, emprendedores de referencia —fundadores que están transformando la ciencia en soluciones de mercado— y especialistas multidisciplinares de alto nivel en las diversas áreas de la biotecnología (roja, verde, blanca y azul).",
+    "category": "viveBAC",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA"
+  },
+  {
+    "id": "evt_020",
     "title": "Visita al Sincrotón ALBA",
     "description": "FALTA DESCRIPCIÓN",
     "category": "viveBAC",
     "activity_type": "outdoor_activity",
-    "start_time": "2026-07-08TFALTA",
-    "end_time": "2026-07-08TFALTA",
+    "start_time": "2026-07-08T15:00:00",
+    "end_time": "2026-07-08T18:00:00",
     "local_location": "Sincrotón ALBA, Cerdanyola del Vallès"
   }
 ]
