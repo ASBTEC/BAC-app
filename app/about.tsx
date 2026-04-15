@@ -56,6 +56,19 @@ export default function AboutScreen() {
             </Text>
           </Pressable>
         </View>
+
+        <Text style={[styles.betaTitle, { color: colors.text }]}>Beta-testers:</Text>
+        <View style={styles.linkList}>
+          <Text style={[styles.body, { color: colors.text }]}>• Meritxell Tardà</Text>
+          <Pressable
+            style={styles.linkRow}
+            onPress={() => {
+              const url = 'mailto:apadilla@asbtec.cat';
+              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+            }}>
+            <Text style={[styles.body, { color: colors.text }]}>{'• Anna Padilla Figuerola  '}<Text style={[styles.linkText, { color: BACColors.teal }]}>✉️ apadilla@asbtec.cat</Text></Text>
+          </Pressable>
+        </View>
       </View>
 
       {/* Entidades participantes */}
@@ -132,6 +145,12 @@ const styles = StyleSheet.create({
   linkList: {
     marginTop: 12,
     gap: 10,
+  },
+  betaTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    marginTop: 12,
+    marginBottom: 4,
   },
   linkRow: {},
   linkText: {
