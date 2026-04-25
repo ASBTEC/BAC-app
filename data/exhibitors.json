@@ -3,42 +3,52 @@
     "id": "spk_001",
     "exhibitor_type": "speaker",
     "name": "Antonio Ferrer Montiel",
-    "photo": "antonio ferrer montiel.png",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "antonio ferrer montiel.jpg",
+    "description": "Catedrático de Bioquímica y Biología Molecular y director del Instituto en Biotecnología Sanitaria. Universidad Miguel Hernández de Elche. Presidente de la Sociedad de Bioquímica y Biología Molecular.",
+    "contact_information": [
+      "https://www.linkedin.com/in/antonioferrermontiel/"
+    ]
   },
   {
     "id": "spk_002",
     "exhibitor_type": "speaker",
     "name": "Benedetta Bolognesi",
-    "photo": "Benedetta bolognesi.png",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "Benedetta bolognesi.jpg",
+    "description": "BA & Master's in Biotechnology - University of Pavia; PhD in Chemistry, University of Cambridge; Marie Curie Post-doctoral fellow at CRG Barcelona; PI since 2019 at IBEC, Barcelona. ERC Consolidator & La Caixa Health Awardee.",
+    "contact_information": [
+      "https://www.linkedin.com/in/benedetta-bolognesi-b35b6a26/"
+    ]
   },
   {
     "id": "spk_003",
     "exhibitor_type": "speaker",
     "name": "Benjamí Oller-Salvia",
-    "photo": "benjamí oller-salvia.png",
+    "photo": "benjamí oller-salvia.jpg",
     "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_004",
     "exhibitor_type": "speaker",
     "name": "Juan J. Calvete",
-    "photo": "Juan J. calvete.png",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "Juan J. calvete.jpg",
+    "description": "Ph.D. in Biochemistry from Complutense University (Madrid, 1985). Currently Research Professor of the Spanish Research Council (CSIC) and Head of the Structural and Functional Venomics Laboratory at the Instituto de Biomedicina de Valencia.",
+    "contact_information": [
+      "http://scholar.google.ca/citations?user=3J6y5bkAAAAJ&hl=en&oi=sra",
+      "https://orcid.org/0000-0001-5026-3122"
+    ]
   },
   {
     "id": "spk_005",
     "exhibitor_type": "speaker",
     "name": "Nuria Sánchez Coll",
-    "photo": "nuria sanchez coll.png",
+    "photo": "nuria sanchez coll.jpg",
     "description": "FALTA DESCRIPCIÓN"
   },
   {
     "id": "spk_006",
     "exhibitor_type": "speaker",
     "name": "Sílvia Osuna",
-    "photo": "sílvia osuna.png",
+    "photo": "Silvia Osuna.jpg",
     "description": "FALTA DESCRIPCIÓN"
   },
   {
@@ -61,6 +71,16 @@
     "name": "FALTA",
     "photo": "FALTA",
     "description": "FALTA DESCRIPCIÓN"
+  },
+  {
+    "id": "spk_010",
+    "exhibitor_type": "speaker",
+    "name": "Enrique Asin-Garcia",
+    "photo": "Enrique Asin-Garcia.jpg",
+    "description": "Enrique Asin-Garcia is Assistant Professor of Biomanufacturing at the Bioprocess Engineering group of Wageningen University & Research, the Netherlands. His work aims at expanding the scale and impact of living technologies that we can rely on and trust in and outside the lab. Specifically, Enrique's research spans real-time biosensors, bioengineering and intelligent biomanufacturing, with a strong focus on Safe-and-Sustainable-by-Design biotech solutions. Beyond research, he is deeply engaged in teaching and mentoring, as well as in community building through SynBioNL and iGEM.",
+    "contact_information": [
+      "https://www.linkedin.com/in/enriqueasingarcia/"
+    ]
   },
   {
     "id": "biz_001",
