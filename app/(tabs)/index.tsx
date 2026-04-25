@@ -285,7 +285,6 @@ export default function HomeScreen() {
           </>
         );
       })()}
-      )}
     </View>
 
     <GlobalMenu
