@@ -182,8 +182,8 @@ export default function EventDetailScreen() {
               style={[styles.exhibitorRow, { backgroundColor: colors.card, borderColor: colors.border }]}
               onPress={() => router.push(`/exhibitor/${ex.id}` as never)}>
               <View style={[styles.exhibitorAvatar, { backgroundColor: BACColors.lightBlue }]}>
-                {ex.photo && EXHIBITOR_PHOTOS[ex.photo] ? (
-                  <Image source={EXHIBITOR_PHOTOS[ex.photo]} style={styles.exhibitorAvatarImage} resizeMode="cover" />
+                {EXHIBITOR_PHOTOS[ex.id] ? (
+                  <Image source={EXHIBITOR_PHOTOS[ex.id]} style={styles.exhibitorAvatarImage} resizeMode="cover" />
                 ) : (
                   <MaterialIcons
                     name={ex.exhibitor_type === 'speaker' ? 'person' : 'business'}

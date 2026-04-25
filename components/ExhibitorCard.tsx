@@ -22,8 +22,8 @@ export function ExhibitorCard({ exhibitor }: Props) {
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
       {/* Avatar */}
       <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue }]}>
-        {exhibitor.photo && EXHIBITOR_PHOTOS[exhibitor.photo] ? (
-          <Image source={EXHIBITOR_PHOTOS[exhibitor.photo]} style={styles.avatarImage} resizeMode="cover" />
+        {EXHIBITOR_PHOTOS[exhibitor.id] ? (
+          <Image source={EXHIBITOR_PHOTOS[exhibitor.id]} style={styles.avatarImage} resizeMode="cover" />
         ) : (
           <MaterialIcons
             name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}

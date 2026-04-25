@@ -66,8 +66,8 @@ export default function ExhibitorDetailScreen() {
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
         <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue }]}>
-          {exhibitor.photo && EXHIBITOR_PHOTOS[exhibitor.photo] ? (
-            <Image source={EXHIBITOR_PHOTOS[exhibitor.photo]} style={styles.heroAvatarImage} resizeMode="cover" />
+          {EXHIBITOR_PHOTOS[exhibitor.id] ? (
+            <Image source={EXHIBITOR_PHOTOS[exhibitor.id]} style={styles.heroAvatarImage} resizeMode="cover" />
           ) : (
             <MaterialIcons
               name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}

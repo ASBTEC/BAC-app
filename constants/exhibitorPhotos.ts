@@ -1,21 +1,22 @@
-/**
- * Maps the `photo` filename stored in exhibitors.json to the bundled asset.
- * Add a new entry here whenever a new exhibitor photo is added to assets/images/exhibitors/.
- */
 export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   // Speakers
-  'antonio ferrer montiel.png': require('@/assets/images/exhibitors/speakers/antonio ferrer montiel.png'),
-  'Benedetta bolognesi.png': require('@/assets/images/exhibitors/speakers/Benedetta bolognesi.png'),
-  'benjamí oller-salvia.png': require('@/assets/images/exhibitors/speakers/benjamí oller-salvia.png'),
-  'Juan J. calvete.png': require('@/assets/images/exhibitors/speakers/Juan J. calvete.png'),
-  'nuria sanchez coll.png': require('@/assets/images/exhibitors/speakers/nuria sanchez coll.png'),
-  'sílvia osuna.png': require('@/assets/images/exhibitors/speakers/sílvia osuna.png'),
+  'spk_001': require('@/assets/images/exhibitors/speakers/antonio ferrer montiel.jpg'),
+  'spk_002': require('@/assets/images/exhibitors/speakers/Benedetta bolognesi.jpg'),
+  'spk_003': require('@/assets/images/exhibitors/speakers/benjamí oller-salvia.jpg'),
+  'spk_004': require('@/assets/images/exhibitors/speakers/Juan J. calvete.jpg'),
+  'spk_005': require('@/assets/images/exhibitors/speakers/nuria sanchez coll.jpg'),
+  'spk_006': require('@/assets/images/exhibitors/speakers/Silvia Osuna.jpg'),
+  'spk_010': require('@/assets/images/exhibitors/speakers/Enrique Asin-Garcia.jpg'),
+  'spk_011': require('@/assets/images/exhibitors/speakers/Martin Floor.jpg'),
+  'spk_012': require('@/assets/images/exhibitors/speakers/francesc godia.jpg'),
+  'spk_013': require('@/assets/images/exhibitors/speakers/Elisabet Engel Lopez.jpg'),
+  'spk_014': require('@/assets/images/exhibitors/speakers/Marta Cascante.jpg'),
   // Sponsors
-  'Farmandome.webp': require('@/assets/images/exhibitors/sponsors/Farmandome.webp'),
-  'logo-pharmaX.webp': require('@/assets/images/exhibitors/sponsors/logo-pharmaX.webp'),
-  'logo-proteintech.webp': require('@/assets/images/exhibitors/sponsors/logo-proteintech.webp'),
-  'Minoryx.webp': require('@/assets/images/exhibitors/sponsors/Minoryx.webp'),
-  'Sartorius-logo.webp': require('@/assets/images/exhibitors/sponsors/Sartorius-logo.webp'),
-  'UdL.webp': require('@/assets/images/exhibitors/sponsors/UdL.webp'),
-  'URV-1024x706.webp': require('@/assets/images/exhibitors/sponsors/URV-1024x706.webp'),
+  'biz_001': require('@/assets/images/exhibitors/sponsors/Farmandome.webp'),
+  'biz_002': require('@/assets/images/exhibitors/sponsors/logo-pharmaX.webp'),
+  'biz_003': require('@/assets/images/exhibitors/sponsors/logo-proteintech.webp'),
+  'biz_004': require('@/assets/images/exhibitors/sponsors/Minoryx.webp'),
+  'biz_005': require('@/assets/images/exhibitors/sponsors/Sartorius-logo.webp'),
+  'biz_006': require('@/assets/images/exhibitors/sponsors/UdL.webp'),
+  'biz_007': require('@/assets/images/exhibitors/sponsors/URV-1024x706.webp'),
 };

@@ -24,7 +24,10 @@
     "exhibitor_type": "speaker",
     "name": "Benjamí Oller-Salvia",
     "photo": "benjamí oller-salvia.jpg",
-    "description": "FALTA DESCRIPCIÓN"
+    "description": "Benjamí Oller‑Salvia is an Associate Professor at IQS-Ramon Llull University, where he leads the Chemical and Synthetic Biology for Biotherapies (ChemSynBio) group since 2023. He obtained his PhD at IRB Barcelona in 2015 and completed postdoctoral training at the MRC-LMB in Cambridge. Since joining IQS in 2019, he has secured competitive funding including an ERC Starting Grant, established collaborations with leading biotech companies, and published high‑impact research on brain delivery and conditionally active biotherapeutics.",
+    "contact_information": [
+      "https://chemsynbio.iqs.edu/"
+    ]
   },
   {
     "id": "spk_004",
@@ -42,14 +45,20 @@
     "exhibitor_type": "speaker",
     "name": "Nuria Sánchez Coll",
     "photo": "nuria sanchez coll.jpg",
-    "description": "FALTA DESCRIPCIÓN"
+    "description": "Núria Sánchez Coll és científica del CSIC i líder del grup de Malalties Bacterianes de les Plantes i Proteòstasi al Centre de Recerca en Agrigenòmica (CRAG). El seu grup estudia els mecanismes que regulen les respostes immunitàries de les plantes. Compta amb més de 10 anys d'experiència en recerca internacional a l'ETH de Zurich, Duke University i University of North Carolina, a través de finançament competitiu Marie Curie, Beatriu de Pinós, Swiss National Science Foundation, Ramón y Cajal i Fulbright.",
+    "contact_information": [
+      "https://www.ub.edu/bactplantdiseases/"
+    ]
   },
   {
     "id": "spk_006",
     "exhibitor_type": "speaker",
     "name": "Sílvia Osuna",
     "photo": "Silvia Osuna.jpg",
-    "description": "FALTA DESCRIPCIÓN"
+    "description": "Sílvia Osuna received her PhD in 2010 from the University of Girona (UdG). In 2010, she moved to the group of Prof. Houk at the University of California, Los Angeles (UCLA) with a Marie Curie postdoctoral fellowship to work on the computational design of enzymes. Sílvia is now an ICREA research professor at UdG, and her group focuses on the development of new computational tools and approaches for computational enzyme design. She has been awarded with the 2025 Fundación Banco Sabadell science and engineering award, the 2023 Young Spanish National Award in Chemistry, among others.",
+    "contact_information": [
+      "https://www.osunalab.com/"
+    ]
   },
   {
     "id": "spk_007",
@@ -80,6 +89,46 @@
     "description": "Enrique Asin-Garcia is Assistant Professor of Biomanufacturing at the Bioprocess Engineering group of Wageningen University & Research, the Netherlands. His work aims at expanding the scale and impact of living technologies that we can rely on and trust in and outside the lab. Specifically, Enrique's research spans real-time biosensors, bioengineering and intelligent biomanufacturing, with a strong focus on Safe-and-Sustainable-by-Design biotech solutions. Beyond research, he is deeply engaged in teaching and mentoring, as well as in community building through SynBioNL and iGEM.",
     "contact_information": [
       "https://www.linkedin.com/in/enriqueasingarcia/"
+    ]
+  },
+  {
+    "id": "spk_011",
+    "exhibitor_type": "speaker",
+    "name": "Martin Floor Pilquil",
+    "photo": "Martin Floor.jpg",
+    "description": "És bioquímic, format a la Universitat de Xile, on es va iniciar en el disseny computacional d'enzims amb Gerald Zapata. Es va doctorar a la Universitat de Vic amb Jordi Villà i va completar la seva formació amb estades de recerca a la Universitat d'Uppsala amb Lynn Kamerlin i a la Xina amb Jeng-Kang Hwang. Actualment és investigador postdoctoral al Barcelona Supercomputing Center amb Víctor Guallar, on integra intel·ligència artificial i modelatge molecular per la bioprospecció i l'enginyeria d'enzims per millorar-ne l'expressió, l'estabilitat, l'activitat i la selectivitat.",
+    "contact_information": [
+      "https://scholar.google.com/citations?user=kchbcQMAAAAJ&hl=en"
+    ]
+  },
+  {
+    "id": "spk_012",
+    "exhibitor_type": "speaker",
+    "name": "Francesc Godia Casablancas",
+    "photo": "francesc godia.jpg",
+    "description": "Professor d'Enginyeria Química a la Universitat Autònoma de Barcelona. Investigador en bioprocessos basats en cèl·lules animals per a la producció de biofàrmacs, vacunes basades en VLPs i vectors virals per a teràpia gènica. Director de la Planta Pilot MELiSSA, un laboratori de la European Space Agency per al desenvolupament de tecnologia de suport de vida a l'Espai en missions humanes de llarga durada. Membre del Comitè Executiu de la European Society for the Advancement of Cell Technologies. President de la European Federation of Biotechnology.",
+    "contact_information": [
+      "https://orcid.org/0000-0002-4060-9887"
+    ]
+  },
+  {
+    "id": "spk_013",
+    "exhibitor_type": "speaker",
+    "name": "Elisabeth Engel",
+    "photo": "Elisabet Engel Lopez.jpg",
+    "description": "Prof. Engel is biologist by training and PhD in medicine, working in bioengineering for more than two decades. Her research interests include the preparation and design of materials and scaffolds for in vitro and in vivo fundamental studies, and a further focus is the provision of useful tools to assess mechanisms that govern cell behavior in regenerative medicine.",
+    "contact_information": [
+      "https://ibecbarcelona.eu/biomaterials"
+    ]
+  },
+  {
+    "id": "spk_014",
+    "exhibitor_type": "speaker",
+    "name": "Marta Cascante",
+    "photo": "Marta Cascante.jpg",
+    "description": "Professor Marta Cascante is Full Professor at the University of Barcelona and Principal Investigator of a leading research group in cancer metabolism. She pioneered the integration of multi‑omics in metabolic flux models to identify therapeutic targets and clinically relevant metabolic subtypes, particularly in CRC. She has authored over 320 publications, supervised more than 40 PhD theses, coordinated major European training programs, and received major distinctions including three ICREA Academia awards and Honorary Fellowship of the Metabolomics Society.",
+    "contact_information": [
+      "https://orcid.org/0000-0002-2062-4633"
     ]
   },
   {

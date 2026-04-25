@@ -162,7 +162,7 @@
   {
     "id": "evt_014",
     "title": "Computational design of enzymes for a more sustainable world",
-    "description": "FALTA DESCRIPCIÓN",
+    "description": "A aquesta xerrada es discutirà la importància de la catàlisi enzimàtica i dels avantatges de la biocatàlisi per a un futur més sostenible, així com els últims avenços en el camp de la intel·ligència artificial enfocat al camp de la biologia.",
     "category": "bioBAC",
     "activity_type": "talk",
     "start_time": "2026-07-09T09:45:00",
@@ -175,7 +175,7 @@
   {
     "id": "evt_015",
     "title": "Toward selective and brain-permeable protein therapeutics",
-    "description": "FALTA DESCRIPCIÓN",
+    "description": "Protein therapeutics have delivered major clinical advances in cancer and other diseases, yet key challenges remain. Many therapeutic targets are expressed in both diseased and healthy tissues, leading to dose‑limiting toxicities. For neurological indications, efficient delivery across the blood–brain barrier (BBB) is an additional hurdle. In this talk, I will present our group's efforts to engineer conditionally active biotherapeutics and to enhance their transport across the BBB, aiming to improve efficacy while minimizing off‑target effects.",
     "category": "bioBAC",
     "activity_type": "talk",
     "start_time": "2026-07-10T09:00:00",
@@ -188,7 +188,7 @@
   {
     "id": "evt_016",
     "title": "Metabolic engineering for resistance against pathogens in plants",
-    "description": "FALTA DESCRIPCIÓN",
+    "description": "Les malalties causades per patògens vasculars són un problema greu per a l'agricultura perquè bloquegen el sistema de transport d'aigua de les plantes, provocant el marciment i la mort. Utilitzant l'enginyeria genètica i metabòlica mostrarem com introduir la resistència a patògens vasculars en varietats de tomaquera comercials, mitjançant el reforçament de les parets dels vasos conductors i la producció de compostos de defensa que frenen la propagació del patogen. Modificar aquests mecanismes de defensa pot augmentar la resistència i ajudar a desenvolupar cultius més resilients.",
     "category": "bioBAC",
     "activity_type": "talk",
     "start_time": "2026-07-10T09:45:00",
@@ -315,6 +315,58 @@
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_001"
+    ]
+  },
+  {
+    "id": "evt_028",
+    "title": "IA per al descobriment d'enzims: el bo, el lleig i el dolent",
+    "description": "Aquesta xerrada explora com l'aprenentatge automàtic i el modelatge molecular poden contribuir al descobriment i a l'enginyeria d'enzims en sistemes diversos a partir de l'experiència del nostre laboratori. S'hi presenten casos reals de bioprospecció guiada per simulació, predicció d'expressió, disseny d'activitat i interpretació de dades experimentals, destacant tant els èxits com les limitacions recurrents i quan l'ús de la IA no justifica l'esforç. L'objectiu és oferir una visió crítica i aplicada del seu valor pràctic.",
+    "category": "FALTA",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_011"
+    ]
+  },
+  {
+    "id": "evt_029",
+    "title": "MELiSSA: Regenerative Life Support for Humans in Space",
+    "description": "MELiSSA (Micro Ecological Life Support System Alternative) is developing regenerative Life Support technologies for long-term human Space exploration missions. In the scenario of missions targeting longer distances and presence in Space (Moon, Mars) there is the need to decrease the dependency from Earth resupply. The MELiSSA loop is conceived as a circular system with several compartments, each one performing a specific function, providing all together the basic functions in life support: food production, atmosphere regeneration, water recovery.",
+    "category": "FALTA",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_012"
+    ]
+  },
+  {
+    "id": "evt_030",
+    "title": "Engineering microenvironments for biomedical applications",
+    "description": "Biomaterials have long been used in regenerative medicine as scaffolds or delivery vehicles. Increasing evidence shows, however, that they actively interact with their biological milieu. By understanding how cells sense material properties and how degradation products drive metabolic and transcriptional responses, we engineer microenvironments that control cell fate. This strategy applies not only to regeneration, but also to disease microenvironments such as tumor niches.",
+    "category": "FALTA",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_013"
+    ]
+  },
+  {
+    "id": "evt_031",
+    "title": "From Metabolic Fluxes to Genome‑Scale Modeling: Targeting Cancer Vulnerabilities",
+    "description": "Metabolic reprogramming is a hallmark of cancer, yet functional interpretation remains limited. This presentation shows how quantitative metabolic flux analysis reveals relevant metabolic adaptations in colorectal cancer that are not captured by gene expression or metabolite levels alone. Integration of flux data into genome‑scale metabolic models uncovered metabolic rewiring linked to therapy response, drug resistance, and metastatic progression, identifying actionable vulnerabilities and enabling metabolic subtyping and prediction of differential drug sensitivity.",
+    "category": "FALTA",
+    "activity_type": "talk",
+    "start_time": "FALTA",
+    "end_time": "FALTA",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_014"
     ]
   }
 ]
