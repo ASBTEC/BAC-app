@@ -155,35 +155,36 @@ export default function HomeScreen() {
   return (
     <>
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      {/* Hero header */}
-      <View style={[styles.header, { backgroundColor: BACColors.navyDark, paddingTop: topInset + 16 }]}>
-        <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={[styles.menuBtn, { top: topInset + 12 }]}>
-          <MaterialIcons name="more-vert" size={24} color="#fff" />
-        </Pressable>
-        <View style={styles.heroRow}>
-          <Image
-            source={require('@/assets/images/logo-in-app.png')}
-            style={[styles.logo, { width: logoWidth, height: logoHeight }]}
-            resizeMode="contain"
-          />
-          <View style={styles.heroContent}>
-            <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
-            <Text style={styles.congressYear}>BAC Barcelona 2026</Text>
-
-            <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
-              <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
-              <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
-            </Pressable>
-
-            <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
-              <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
-              <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
-            </Pressable>
-          </View>
-        </View>
-      </View>
-
       {(() => {
+        const heroHeader = (
+          <View style={[styles.header, { backgroundColor: BACColors.navyDark, paddingTop: topInset + 16 }]}>
+            <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={[styles.menuBtn, { top: topInset + 12 }]}>
+              <MaterialIcons name="more-vert" size={24} color="#fff" />
+            </Pressable>
+            <View style={styles.heroRow}>
+              <Image
+                source={require('@/assets/images/logo-in-app.png')}
+                style={[styles.logo, { width: logoWidth, height: logoHeight }]}
+                resizeMode="contain"
+              />
+              <View style={styles.heroContent}>
+                <Text style={styles.congressTitle}>Congreso Anual de Biotecnología</Text>
+                <Text style={styles.congressYear}>BAC Barcelona 2026</Text>
+
+                <Pressable onPress={() => Platform.OS === 'web' ? window.open(MAPS_URL, '_blank') : Linking.openURL(MAPS_URL)} style={styles.locationRow}>
+                  <MaterialIcons name="location-on" size={16} color={BACColors.lightBlue} />
+                  <Text style={styles.locationText}>Facultad de Biociencias UAB, Barcelona</Text>
+                </Pressable>
+
+                <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
+                  <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
+                  <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        );
+
         const filterHeader = (
           <View>
             <View style={styles.searchRow}>
@@ -247,7 +248,7 @@ export default function HomeScreen() {
             contentContainerStyle={styles.content}
             sections={sections}
             keyExtractor={(item) => item.id}
-            ListHeaderComponent={filterHeader}
+            ListHeaderComponent={<>{heroHeader}{filterHeader}</>}
             renderSectionHeader={({ section }) => (
               <View style={[styles.sectionHeader, { backgroundColor: colors.background }]}>
                 <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>{section.title}</Text>
@@ -270,6 +271,7 @@ export default function HomeScreen() {
           />
         ) : (
           <>
+            {heroHeader}
             {filterHeader}
             <TimetableView
               events={filteredEvents}
