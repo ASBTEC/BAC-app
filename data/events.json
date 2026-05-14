@@ -368,5 +368,18 @@
     "exhibitor_ids": [
       "spk_014"
     ]
+  },
+  {
+    "id": "evt_032",
+    "title": "Cosechas inteligentes: de la innovación al reto real",
+    "description": "Paquita Escoi abordará cómo la visión artificial, el análisis inteligente y la IA generativa están revolucionando el control de calidad y la toma de decisiones en tiempo real en la postcosecha. Una visión aplicada e industrial sobre cómo la agricultura está evolucionando gracias a los grandes avances tecnológicos, y cómo los biotecnólogos pueden contribuir integrándose en entornos altamente tecnificados para resolver los retos del futuro.",
+    "category": "businessBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-10T10:45:00",
+    "end_time": "2026-07-10T11:30:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_027"
+    ]
   }
 ]
