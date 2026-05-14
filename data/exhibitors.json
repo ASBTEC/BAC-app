@@ -132,6 +132,110 @@
     ]
   },
   {
+    "id": "spk_015",
+    "exhibitor_type": "speaker",
+    "name": "Albert Font Inglès",
+    "photo": "albert font ingles.jpg",
+    "description": "Albert Font Inglès es Director General y cofundador de Leanbio, una CDMO especializada en el desarrollo y fabricación de productos biológicos, con una propuesta integrada end-to-end en Drug Substance y Drug Product para proteínas recombinantes, ADC y mRNA. Con más de una década de trayectoria y más de 100 proyectos desarrollados, Leanbio se ha consolidado como un actor clave en biológicos en España. Su reciente adquisición por Reig Jofre refuerza su propuesta de valor integrando capacidades DS y DP. Miembro de ASBTEC desde 2012.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_016",
+    "exhibitor_type": "speaker",
+    "name": "Ariadna Grau",
+    "photo": "ariadna grau.png",
+    "description": "Ariadna Grau es Responsable de I+D en LipoTrue, donde lidera el desarrollo de ingredientes activos innovadores para la industria dermocosmética. Graduada en Química por la Universidad de Barcelona, con Máster en Química Avanzada y Doctorado en Química Orgánica. Su trayectoria combina una sólida especialización en síntesis y diseño molecular con una clara orientación a la aplicación industrial, integrando química orgánica, biología celular y evaluación funcional.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_017",
+    "exhibitor_type": "speaker",
+    "name": "Avencia Sánchez-Mejías",
+    "photo": "avencia sanchez-mejias.jpg",
+    "description": "Avencia Sánchez-Mejías es CEO y cofundadora de Integra Therapeutics. Con sólida formación científica en genética clínica, oncología molecular y biología sintética, lideró investigación postdoctoral en la Universidad Nacional de Singapur y la Universidad de Miami antes de fundar Integra Therapeutics en 2018. La compañía ha captado 24M€ y su plataforma de edición genómica basa en integrasas está diseñada para superar las limitaciones de los vectores virales tradicionales. Premio Mujer y Liderazgo 2022 de Deusto Business School.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_018",
+    "exhibitor_type": "speaker",
+    "name": "Coté Falaguera",
+    "photo": "cote falaguera.jpg",
+    "description": "Coté Falaguera es Senior Data Developer en el hub de AstraZeneca de Barcelona, trabajando en el desarrollo y preparación de datos para productos de inteligencia artificial. Biotecnóloga por la Universidad Politécnica de Valencia, con máster y doctorado en Bioinformática por la Universidad Pompeu Fabra. Ha desarrollado su carrera entre la academia y la industria, con estancias posdoctorales en el Instituto de Bioinformática Europeo (EMBL-EBI, Reino Unido) y en la Universidad de Stanford.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_019",
+    "exhibitor_type": "speaker",
+    "name": "Estel·la Buscató Arsequell",
+    "photo": "estella buscato.png",
+    "description": "Estel·la Buscató trabaja en Bayer en la intersección entre biotecnología agrícola, análisis avanzado y toma de decisiones, liderando procesos que convierten la complejidad científica en valor tangible para el negocio. Es referente en la gestión estratégica de pipelines de I+D y en la conexión entre innovación científica e impacto empresarial, con experiencia en metodologías de gestión de la incertidumbre, priorización estratégica y desarrollo de talento.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_020",
+    "exhibitor_type": "speaker",
+    "name": "Gerard Caelles Vidal",
+    "photo": "gerard caelles.jpg",
+    "description": "Gerard Caelles es Chief Business Officer (CBO) de SpliceBio, spin-off de la Universidad de Princeton asentada en Barcelona y pionera global en terapia génica. Graduado en Biotecnología por la UAB, su visión estratégica ha sido clave para escalar SpliceBio —cuya plataforma tecnológica basada en inteínas supera las limitaciones de los vectores virales— cerrando rondas de financiación históricas en el sector biotecnológico español.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_021",
+    "exhibitor_type": "speaker",
+    "name": "Joan Domingo Espín",
+    "photo": "joan domingo.png",
+    "description": "Joan Domingo Espín es Senior Director de Desarrollo de Biológicos en Almirall. Experto de referencia en la dirección estratégica de operaciones CMC (Chemistry, Manufacturing and Controls), ha liderado alianzas críticas y transferencias tecnológicas con CDMOs a nivel internacional. Su pasión por el downstream —purificación y separación de terapias biológicas de última generación— ha sido pieza clave para garantizar la viabilidad, pureza y seguridad de biológicos en fases clínicas avanzadas.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_022",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Ruano",
+    "photo": "jordi ruano.jpg",
+    "description": "Con más de 25 años de experiencia en el sector biotecnológico, Jordi Ruano es Executive Director de Operaciones para la División de Salud Humana en HIPRA. Su trayectoria abarca roles de liderazgo en procesos upstream y downstream, fabricación de productos biológicos complejos —incluyendo antígenos virales, proteínas recombinantes y vacunas—, formulación, llenado aséptico y liofilización. Lidera la estrategia y ejecución operativa para apoyar la expansión del portafolio de salud humana de la compañía.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_023",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Xiol",
+    "photo": "jordi xiol.jpg",
+    "description": "Jordi Xiol es Partner en Ysios Capital, una de las firmas de venture capital referentes en Europa en ciencias de la vida. Doctor en Biología Molecular por el EMBL y con experiencia previa en consultoría estratégica en Boston Consulting Group, combina el rigor de la investigación básica con la viabilidad comercial. Ha liderado la identificación y el crecimiento de compañías biotecnológicas disruptivas, consolidándose como experto en transformar ciencia de vanguardia en soluciones clínicas reales.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_024",
+    "exhibitor_type": "speaker",
+    "name": "Laure Burtin",
+    "photo": "laure burtin.jpeg",
+    "description": "Laure Burtin es una referente internacional en el desarrollo de terapias biológicas y optimización de bioprocesos. Biotecnóloga de formación, su trayectoria abarca desde la investigación a escala piloto hasta la toma de decisiones ejecutivas como vicepresidenta en Sanofi, LETI Pharma y Almirall. Actualmente asesora técnica y estratégicamente a compañías y fondos de inversión en España y Suiza. Combina excelencia técnica con un liderazgo genuino basado en la confianza y el desarrollo del talento intergeneracional.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_025",
+    "exhibitor_type": "speaker",
+    "name": "Luís Ruiz-Ávila",
+    "photo": "luis ruiz-avila.png",
+    "description": "Doctor en Biología Molecular con 10 años de trayectoria académica antes de incorporarse al sector industrial en 1998. CEO de Leukos Biotech (producto de oncología en fase I/II) y emprendedor serial que ha trabajado como ejecutivo, emprendedor o inversor en más de 15 empresas, captando más de 40M€ para impulsar proyectos de la academia a fases clínicas, con diversas desinversiones y acuerdos de licencia. Profesor asociado en la Universitat Internacional de Catalunya, donde dirige el Máster en Gestión de Empresas Biomédicas.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_026",
+    "exhibitor_type": "speaker",
+    "name": "Marta Figa Bosch",
+    "photo": "marta figa.jpg",
+    "description": "Marta Figa Bosch es Strategic Projects Director en HIPRA, multinacional biofarmacéutica europea enfocada en la prevención de enfermedades infecciosas. Lidera el Biotech Workshop del BAC 2026, en el que los participantes exploran el ciclo de vida de un producto farmacéutico a través de casos reales de la industria, desarrollando visión estratégica y soft skills clave en un formato interactivo de resolución de retos en equipo.",
+    "contact_information": []
+  },
+  {
+    "id": "spk_027",
+    "exhibitor_type": "speaker",
+    "name": "Paquita Escoi Martínez",
+    "photo": "paqui escoi.png",
+    "description": "Paquita Escoi es Gerente en Fruilar e Ingeniera Agrónoma por la Universitat de Lleida (UdL). Ha ejercido como Responsable de Calidad liderando el control de la producción y el mantenimiento de certificaciones en central frutícola. Especializada en optimizar el tratamiento de la fruta fresca mediante la integración de soluciones de visión artificial, análisis inteligente e IA generativa para el control de calidad y la toma de decisiones en tiempo real en postcosecha.",
+    "contact_information": []
+  },
+  {
     "id": "biz_001",
     "exhibitor_type": "business",
     "name": "Farmandome",
