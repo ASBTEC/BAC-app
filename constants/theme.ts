@@ -60,6 +60,7 @@ export const CategoryColors: Record<string, string> = {
   bioBAC:      '#1C1C1C',   // black & white — matches SVG dark stroke
   businessBAC: '#2C4E62',   // dark blue — matches SVG fill
   expoBAC:     '#368396',   // steel blue — matches SVG fill
+  general:     '#6B7280',   // neutral grey — logistics/schedule events
   viveBAC:     BACColors.amber,
 };
 

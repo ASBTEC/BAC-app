@@ -41,6 +41,7 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'bioBAC',      label: 'BioBAC' },
   { key: 'businessBAC', label: 'BusinessBAC' },
   { key: 'expoBAC',     label: 'ExpoBAC' },
+  { key: 'general',     label: 'General' },
   { key: 'viveBAC',     label: 'ViveBAC' },
 ];
 

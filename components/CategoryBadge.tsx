@@ -11,10 +11,11 @@ const LABELS: Record<EventCategory, string> = {
   bioBAC:      'BioBAC',
   businessBAC: 'BusinessBAC',
   expoBAC:     'ExpoBAC',
+  general:     'General',
   viveBAC:     'ViveBAC',
 };
 
-const ICONS: Record<EventCategory, React.FC<{ width?: number; height?: number }>> = {
+const ICONS: Partial<Record<EventCategory, React.FC<{ width?: number; height?: number }>>> = {
   bioBAC:      BioBACLogo,
   businessBAC: BusinessBACLogo,
   expoBAC:     ExpoBACLogo,
@@ -36,7 +37,7 @@ export function CategoryBadge({ category }: Props) {
   const fg = solid ? '#fff' : color;
   return (
     <View style={[styles.badge, { backgroundColor: bg, borderColor: color }]}>
-      <Icon width={12} height={12} color={fg} />
+      {Icon && <Icon width={12} height={12} color={fg} />}
       <Text style={[styles.label, { color: fg }]}>{LABELS[category]}</Text>
     </View>
   );

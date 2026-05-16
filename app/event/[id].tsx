@@ -21,7 +21,7 @@ import ExpoBACLogo     from '@/assets/images/event_types/logo expobac.svg';
 import ViveBACLogo     from '@/assets/images/event_types/logo vivebac.svg';
 import { SvgProps } from 'react-native-svg';
 
-const CATEGORY_LOGOS: Record<EventCategory, React.FC<SvgProps>> = {
+const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
   bioBAC:      BioBACLogo,
   businessBAC: BusinessBACLogo,
   expoBAC:     ExpoBACLogo,

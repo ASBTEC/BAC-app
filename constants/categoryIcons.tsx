@@ -6,7 +6,7 @@ import ExpoBACLogo     from '@/assets/images/event_types/logo expobac_no_text.sv
 import ViveBACLogo     from '@/assets/images/event_types/logo vivebac_no_text.svg';
 import { EventCategory } from '@/types';
 
-export const CATEGORY_ICONS: Record<EventCategory, React.FC<SvgProps>> = {
+export const CATEGORY_ICONS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
   bioBAC:      BioBACLogo,
   businessBAC: BusinessBACLogo,
   expoBAC:     ExpoBACLogo,

@@ -1,4 +1,4 @@
-export type EventCategory = 'bioBAC' | 'businessBAC' | 'expoBAC' | 'viveBAC';
+export type EventCategory = 'bioBAC' | 'businessBAC' | 'expoBAC' | 'general' | 'viveBAC';
 
 export type ActivityType = 'stand' | 'talk' | 'activity' | 'outdoor_activity' | 'round_table';
 

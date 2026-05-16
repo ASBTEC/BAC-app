@@ -3,7 +3,7 @@
     "id": "evt_001",
     "title": "Mesa inaugural",
     "description": "La apertura oficial del BAC 2026. Palabras de bienvenida del presidente de ASBTEC, el presidente de FEBIOTEC y un representante de la Facultad de Biociencias de la UAB. Marca el comienzo de cinco días de ciencia, networking y desarrollo profesional.",
-    "category": "viveBAC",
+    "category": "general",
     "activity_type": "talk",
     "start_time": "2026-07-08T09:30:00",
     "end_time": "2026-07-08T10:00:00",
@@ -432,11 +432,66 @@
     "id": "evt_036",
     "title": "Registro",
     "description": "Recogida de acreditaciones y material del congreso.",
-    "category": "viveBAC",
+    "category": "general",
     "activity_type": "activity",
     "start_time": "2026-07-08T09:00:00",
     "end_time": "2026-07-08T09:30:00",
     "local_location": "Entrada Facultad de Biociencias",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_037",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "activity",
+    "start_time": "2026-07-08T11:00:00",
+    "end_time": "2026-07-08T11:30:00",
+    "local_location": "Hall",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_038",
+    "title": "Comida",
+    "description": "Pausa para comer. Tiempo libre para networking.",
+    "category": "general",
+    "activity_type": "activity",
+    "start_time": "2026-07-08T14:00:00",
+    "end_time": "2026-07-08T15:00:00",
+    "local_location": "Comedor",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_039",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "activity",
+    "start_time": "2026-07-09T10:30:00",
+    "end_time": "2026-07-09T11:00:00",
+    "local_location": "Hall",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_040",
+    "title": "Comida",
+    "description": "Pausa para comer. Tiempo libre para networking.",
+    "category": "general",
+    "activity_type": "activity",
+    "start_time": "2026-07-09T14:15:00",
+    "end_time": "2026-07-09T15:45:00",
+    "local_location": "Comedor",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_041",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "activity",
+    "start_time": "2026-07-10T12:15:00",
+    "end_time": "2026-07-10T13:15:00",
+    "local_location": "Hall",
     "language": "spanish"
   }
 ]
