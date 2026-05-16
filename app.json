@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "es.febiotec.bac",
+      "bundleIdentifier": "cat.asbtec.bac2026",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -24,7 +24,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "es.febiotec.bac"
+      "package": "cat.asbtec.bac2026"
     },
     "web": {
       "output": "static",

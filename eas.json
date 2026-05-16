@@ -24,7 +24,7 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "$GOOGLE_SERVICE_ACCOUNT_KEY_PATH",
+        "serviceAccountKeyPath": "bac-app-project-key.json",
         "track": "production"
       }
     }
