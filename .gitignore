@@ -260,4 +260,6 @@ app-example
 .idea
 brand_assets
 *.apk
-bac-app-project-key.json
+secrets/bac-app-project-key.json
+secrets/*
+!secrets/.gitignore
