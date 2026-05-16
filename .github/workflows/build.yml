@@ -47,6 +47,8 @@ jobs:
     needs: trigger
     runs-on: ubuntu-latest
     continue-on-error: true   # iOS failure must not block Android release
+    outputs:
+      build-url: ${{ steps.poll.outputs.url }}
 
     steps:
       - name: Checkout
@@ -166,3 +168,40 @@ jobs:
           name: ios-build-metadata
           path: ios-build-url.txt
           retention-days: 1
+
+  # ── 3. Submit Android build to Google Play ────────────────────────────────
+  submit-android:
+    name: Submit Android to Google Play
+    needs: wait-android
+    runs-on: ubuntu-latest
+    if: ${{ needs.wait-android.outputs.build-url != '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Write Google service account key
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: echo "$GOOGLE_SERVICE_ACCOUNT_KEY" > /tmp/google-service-account.json
+
+      - name: Submit to Google Play
+        run: eas submit --platform android --profile production --latest --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          GOOGLE_SERVICE_ACCOUNT_KEY_PATH: /tmp/google-service-account.json

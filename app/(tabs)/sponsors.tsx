@@ -78,7 +78,7 @@ export default function SponsorsScreen() {
             <Pressable
               key={key}
               style={[styles.chip, { backgroundColor: active ? BACColors.navyDark : colors.card, borderColor: active ? BACColors.navyDark : colors.border }]}
-              onPress={() => { setTypeFilter(key); setTierFilter('all'); }}>
+              onPress={() => setTypeFilter(key)}>
               <Text style={[styles.chipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
             </Pressable>
           );
