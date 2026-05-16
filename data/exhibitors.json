@@ -4,7 +4,7 @@
     "exhibitor_type": "speaker",
     "name": "Antonio Ferrer Montiel",
     "photo": "antonio ferrer montiel.jpg",
-    "description": "Catedrático de Bioquímica y Biología Molecular y director del Instituto en Biotecnología Sanitaria. Universidad Miguel Hernández de Elche. Presidente de la Sociedad de Bioquímica y Biología Molecular.",
+    "description": "Antonio Ferrer Montiel es Catedrático de Bioquímica y Biología Molecular y director del Instituto de Investigación, Desarrollo e Innovación en Biotecnología Sanitaria (IDiBE) de la Universidad Miguel Hernández. Actual presidente de la Sociedad Española de Bioquímica y Biología Molecular (SEBBM), centra su investigación en el diseño de moléculas terapéuticas para el tratamiento del dolor crónico y patologías dermatológicas.",
     "contact_information": [
       "https://www.linkedin.com/in/antonioferrermontiel/"
     ]
@@ -14,7 +14,7 @@
     "exhibitor_type": "speaker",
     "name": "Benedetta Bolognesi",
     "photo": "Benedetta bolognesi.jpg",
-    "description": "BA & Master's in Biotechnology - University of Pavia; PhD in Chemistry, University of Cambridge; Marie Curie Post-doctoral fellow at CRG Barcelona; PI since 2019 at IBEC, Barcelona. ERC Consolidator & La Caixa Health Awardee.",
+    "description": "Benedetta Bolognesi es investigadora principal en el Instituto de Bioingeniería de Cataluña (IBEC) desde 2019. Doctora en Química por la Universidad de Cambridge y antigua becaria Marie Curie en el CRG, lidera estudios sobre mutaciones genéticas y plegamiento de proteínas. Su excelencia investigadora ha sido reconocida con una ayuda ERC Consolidator y el prestigioso premio de salud de Fundación «la Caixa».",
     "contact_information": [
       "https://www.linkedin.com/in/benedetta-bolognesi-b35b6a26/"
     ]
@@ -24,7 +24,7 @@
     "exhibitor_type": "speaker",
     "name": "Benjamí Oller-Salvia",
     "photo": "benjamí oller-salvia.jpg",
-    "description": "Benjamí Oller‑Salvia is an Associate Professor at IQS-Ramon Llull University, where he leads the Chemical and Synthetic Biology for Biotherapies (ChemSynBio) group since 2023. He obtained his PhD at IRB Barcelona in 2015 and completed postdoctoral training at the MRC-LMB in Cambridge. Since joining IQS in 2019, he has secured competitive funding including an ERC Starting Grant, established collaborations with leading biotech companies, and published high‑impact research on brain delivery and conditionally active biotherapeutics.",
+    "description": "Benjamí Oller‑Salvia es profesor asociado en IQS-Ramon Llull, donde lidera el grupo de Biología Química y Sintética para Bioterapias (ChemSynBio). Doctor por el IRB Barcelona y formado en el MRC-LMB de Cambridge, posee una ERC Starting Grant. Su trabajo se enfoca en el desarrollo de biofármacos inteligentes y sistemas avanzados de transporte de fármacos al sistema nervioso central.",
     "contact_information": [
       "https://chemsynbio.iqs.edu/"
     ]
@@ -34,7 +34,7 @@
     "exhibitor_type": "speaker",
     "name": "Juan J. Calvete",
     "photo": "Juan J. calvete.jpg",
-    "description": "Ph.D. in Biochemistry from Complutense University (Madrid, 1985). Currently Research Professor of the Spanish Research Council (CSIC) and Head of the Structural and Functional Venomics Laboratory at the Instituto de Biomedicina de Valencia.",
+    "description": "Juan J. Calvete es Profesor de Investigación del CSIC y director del Laboratorio de Venómica Estructural y Funcional en el Instituto de Biomedicina de Valencia. Doctor en Bioquímica por la Universidad Complutense, es un referente internacional en toxinología. Su trabajo pionero en proteómica de venenos busca descifrar la evolución de las toxinas y desarrollar nuevos antídotos y fármacos terapéuticos.",
     "contact_information": [
       "http://scholar.google.ca/citations?user=3J6y5bkAAAAJ&hl=en&oi=sra",
       "https://orcid.org/0000-0001-5026-3122"
@@ -43,9 +43,9 @@
   {
     "id": "spk_005",
     "exhibitor_type": "speaker",
-    "name": "Nuria Sánchez Coll",
+    "name": "Núria Sánchez Coll",
     "photo": "nuria sanchez coll.jpg",
-    "description": "Núria Sánchez Coll és científica del CSIC i líder del grup de Malalties Bacterianes de les Plantes i Proteòstasi al Centre de Recerca en Agrigenòmica (CRAG). El seu grup estudia els mecanismes que regulen les respostes immunitàries de les plantes. Compta amb més de 10 anys d'experiència en recerca internacional a l'ETH de Zurich, Duke University i University of North Carolina, a través de finançament competitiu Marie Curie, Beatriu de Pinós, Swiss National Science Foundation, Ramón y Cajal i Fulbright.",
+    "description": "Núria Sánchez Coll es científica del CSIC y colíder del grupo de Enfermedades Bacterianas de las Plantas en el CRAG. Experta en inmunidad vegetal y proteostasis, cuenta con una sólida trayectoria internacional en instituciones como la ETH de Zúrich y la Universidad de Duke. Su investigación busca entender cómo las plantas responden a infecciones para mejorar la sanidad agrícola y alimentaria.",
     "contact_information": [
       "https://www.ub.edu/bactplantdiseases/"
     ]
@@ -55,7 +55,7 @@
     "exhibitor_type": "speaker",
     "name": "Sílvia Osuna",
     "photo": "Silvia Osuna.jpg",
-    "description": "Sílvia Osuna received her PhD in 2010 from the University of Girona (UdG). In 2010, she moved to the group of Prof. Houk at the University of California, Los Angeles (UCLA) with a Marie Curie postdoctoral fellowship to work on the computational design of enzymes. Sílvia is now an ICREA research professor at UdG, and her group focuses on the development of new computational tools and approaches for computational enzyme design. She has been awarded with the 2025 Fundación Banco Sabadell science and engineering award, the 2023 Young Spanish National Award in Chemistry, among others.",
+    "description": "Sílvia Osuna es profesora de investigación ICREA en la Universidad de Girona. Tras su formación en la Universidad de California (UCLA), su grupo se ha especializado en el desarrollo de herramientas computacionales para el diseño de enzimas de interés industrial. Su destacada trayectoria ha sido reconocida con el Premio Nacional de Química Joven 2023 y el Premio Fundación Banco Sabadell 2025.",
     "contact_information": [
       "https://www.osunalab.com/"
     ]
@@ -77,16 +77,16 @@
   {
     "id": "spk_009",
     "exhibitor_type": "speaker",
-    "name": "FALTA",
+    "name": "Carla López",
     "photo": "FALTA",
-    "description": "FALTA DESCRIPCIÓN"
+    "description": "Carla López es Embrióloga Senior en Reproclinic Barcelona. Graduada en Ciencias Biomédicas y con un Máster en Biología de la Reproducción por la UAB-Dexeus, combina una sólida experiencia técnica en laboratorio con una profunda visión humanista gracias a su formación en Bioética. En el taller «Hablemos de repro» guía la práctica de valoración de gametos y lidera el debate sobre los retos éticos y sociales de la reproducción asistida actual."
   },
   {
     "id": "spk_010",
     "exhibitor_type": "speaker",
     "name": "Enrique Asin-Garcia",
     "photo": "Enrique Asin-Garcia.jpg",
-    "description": "Enrique Asin-Garcia is Assistant Professor of Biomanufacturing at the Bioprocess Engineering group of Wageningen University & Research, the Netherlands. His work aims at expanding the scale and impact of living technologies that we can rely on and trust in and outside the lab. Specifically, Enrique's research spans real-time biosensors, bioengineering and intelligent biomanufacturing, with a strong focus on Safe-and-Sustainable-by-Design biotech solutions. Beyond research, he is deeply engaged in teaching and mentoring, as well as in community building through SynBioNL and iGEM.",
+    "description": "Enrique Asin-Garcia es profesor de Biofabricación en la Universidad de Wageningen, Países Bajos. Su investigación expande el impacto de las tecnologías vivas mediante biosensores en tiempo real y biofabricación inteligente, bajo principios de diseño seguro y sostenible. Es un miembro activo en la comunidad de biotecnología sintética, impulsando el talento joven a través de iniciativas como SynBioNL e iGEM.",
     "contact_information": [
       "https://www.linkedin.com/in/enriqueasingarcia/"
     ]
@@ -96,7 +96,7 @@
     "exhibitor_type": "speaker",
     "name": "Martin Floor Pilquil",
     "photo": "Martin Floor.jpg",
-    "description": "És bioquímic, format a la Universitat de Xile, on es va iniciar en el disseny computacional d'enzims amb Gerald Zapata. Es va doctorar a la Universitat de Vic amb Jordi Villà i va completar la seva formació amb estades de recerca a la Universitat d'Uppsala amb Lynn Kamerlin i a la Xina amb Jeng-Kang Hwang. Actualment és investigador postdoctoral al Barcelona Supercomputing Center amb Víctor Guallar, on integra intel·ligència artificial i modelatge molecular per la bioprospecció i l'enginyeria d'enzims per millorar-ne l'expressió, l'estabilitat, l'activitat i la selectivitat.",
+    "description": "Es bioquímico, formado en la Universidad de Chile, donde se inició en el diseño computacional de enzimas con Gerald Zapata. Se doctoró en la Universidad de Vic con Jordi Villà y completó su formación con estancias de investigación en la Universidad de Uppsala con Lynn Kamerlin y en China con Jeng-Kang Hwang. Actualmente es investigador postdoctoral en el Barcelona Supercomputing Center con Víctor Guallar, donde integra inteligencia artificial y modelado molecular para la bioprospección y la ingeniería de enzimas con el objetivo de mejorar su expresión, estabilidad, actividad y selectividad.",
     "contact_information": [
       "https://scholar.google.com/citations?user=kchbcQMAAAAJ&hl=en"
     ]
@@ -106,7 +106,7 @@
     "exhibitor_type": "speaker",
     "name": "Francesc Godia Casablancas",
     "photo": "francesc godia.jpg",
-    "description": "Professor d'Enginyeria Química a la Universitat Autònoma de Barcelona. Investigador en bioprocessos basats en cèl·lules animals per a la producció de biofàrmacs, vacunes basades en VLPs i vectors virals per a teràpia gènica. Director de la Planta Pilot MELiSSA, un laboratori de la European Space Agency per al desenvolupament de tecnologia de suport de vida a l'Espai en missions humanes de llarga durada. Membre del Comitè Executiu de la European Society for the Advancement of Cell Technologies. President de la European Federation of Biotechnology.",
+    "description": "Profesor de Ingeniería Química en la Universitat Autònoma de Barcelona. Investigador en bioprocesos basados en células animales para la producción de biofármacos, vacunas basadas en VLPs y vectores virales para terapia génica. Director de la Planta Piloto MELiSSA, un laboratorio de la European Space Agency para el desarrollo de tecnología de soporte vital en el Espacio en misiones humanas de larga duración. Miembro del Comité Ejecutivo de la European Society for the Advancement of Cell Technologies. Presidente de la European Federation of Biotechnology.",
     "contact_information": [
       "https://orcid.org/0000-0002-4060-9887"
     ]
@@ -116,7 +116,7 @@
     "exhibitor_type": "speaker",
     "name": "Elisabeth Engel",
     "photo": "Elisabet Engel Lopez.jpg",
-    "description": "Prof. Engel is biologist by training and PhD in medicine, working in bioengineering for more than two decades. Her research interests include the preparation and design of materials and scaffolds for in vitro and in vivo fundamental studies, and a further focus is the provision of useful tools to assess mechanisms that govern cell behavior in regenerative medicine.",
+    "description": "La Prof. Engel es bióloga de formación y doctora en medicina, con más de dos décadas de trayectoria en bioingeniería. Sus intereses de investigación incluyen la preparación y el diseño de materiales y andamios para estudios fundamentales in vitro e in vivo, con un enfoque adicional en el desarrollo de herramientas para evaluar los mecanismos que gobiernan el comportamiento celular en medicina regenerativa.",
     "contact_information": [
       "https://ibecbarcelona.eu/biomaterials"
     ]
@@ -126,7 +126,7 @@
     "exhibitor_type": "speaker",
     "name": "Marta Cascante",
     "photo": "Marta Cascante.jpg",
-    "description": "Professor Marta Cascante is Full Professor at the University of Barcelona and Principal Investigator of a leading research group in cancer metabolism. She pioneered the integration of multi‑omics in metabolic flux models to identify therapeutic targets and clinically relevant metabolic subtypes, particularly in CRC. She has authored over 320 publications, supervised more than 40 PhD theses, coordinated major European training programs, and received major distinctions including three ICREA Academia awards and Honorary Fellowship of the Metabolomics Society.",
+    "description": "La profesora Marta Cascante es Catedrática en la Universidad de Barcelona e investigadora principal de un grupo líder en metabolismo del cáncer. Fue pionera en la integración de datos multi-ómica en modelos de flujo metabólico para identificar dianas terapéuticas y subtipos metabólicos con relevancia clínica, especialmente en cáncer colorrectal. Ha publicado más de 320 artículos, dirigido más de 40 tesis doctorales, coordinado importantes programas de formación europeos y recibido destacadas distinciones, entre ellas tres premios ICREA Acadèmia y la Membresía Honoraria de la Metabolomics Society.",
     "contact_information": [
       "https://orcid.org/0000-0002-2062-4633"
     ]
@@ -236,6 +236,27 @@
     "contact_information": []
   },
   {
+    "id": "spk_029",
+    "exhibitor_type": "speaker",
+    "name": "David Baker",
+    "photo": "FALTA",
+    "description": "David Baker es Catedrático de Bioquímica en la Universidad de Washington y director del Instituto para el Diseño de Proteínas. Fue pionero en el diseño computacional de proteínas, desarrollando métodos para crear proteínas con estructuras y funciones que no existen en la naturaleza. Su trabajo con el software Rosetta ha permitido diseñar desde cero nuevas enzimas, proteínas de unión y máquinas moleculares. En 2024 recibió el Premio Nobel de Química por sus contribuciones revolucionarias al diseño computacional de proteínas.",
+    "contact_information": [
+      "https://www.bakerlab.org/"
+    ]
+  },
+  {
+    "id": "spk_028",
+    "exhibitor_type": "speaker",
+    "name": "Julia García Prado",
+    "photo": "julia garcia.jpg",
+    "description": "La Dra. Julia G. Prado, nacida en Avilés, es licenciada en Bioquímica por la Universidad de Oviedo y doctora con honores en Inmunología por la UAB. Realizó su postdoctorado en la Universidad de Oxford con una beca Marie Skłodowska-Curie y en 2009 regresó a España con un contrato Miguel Servet. Desde 2013 lidera un grupo en IrsiCaixa y desde 2019 es directora científica del Instituto de Investigación Germans Trias. Investiga la inmunidad frente al VIH, otras infecciones virales y la COVID-19. Es coinventora de cuatro patentes y autora de más de 80 publicaciones científicas.",
+    "contact_information": [
+      "https://orcid.org/0000-0002-5439-4645",
+      "https://www.linkedin.com/in/julia-garcia-prado-7647701b8/"
+    ]
+  },
+  {
     "id": "biz_001",
     "exhibitor_type": "business",
     "name": "Farmandome",
@@ -246,22 +267,22 @@
     "id": "biz_002",
     "exhibitor_type": "business",
     "name": "PharmaX",
-    "photo": "logo-pharmaX.webp",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "pharmax.png",
+    "description": "PharmaX Solutions es una empresa de servicios especializados para la industria farmacéutica y biotecnológica, con soluciones integrales que abarcan desde el desarrollo clínico hasta la comercialización de medicamentos. Patrocinador Plata del BAC Barcelona 2026."
   },
   {
     "id": "biz_003",
     "exhibitor_type": "business",
     "name": "ProteinTech",
-    "photo": "logo-proteintech.webp",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "proteintech.png",
+    "description": "Proteintech es un proveedor global líder de anticuerpos, proteínas recombinantes y kits de ensayo para investigación en ciencias de la vida. Con más de 20 años de experiencia, ofrece reactivos validados y de alta calidad para investigación en biología celular, señalización y biomarcadores. Patrocinador Plata del BAC Barcelona 2026."
   },
   {
     "id": "biz_004",
     "exhibitor_type": "business",
     "name": "Minoryx",
-    "photo": "Minoryx.webp",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "minoryx.png",
+    "description": "Minoryx Therapeutics es una empresa biotecnológica española especializada en el desarrollo de terapias para enfermedades neurológicas raras y graves. Su principal activo, leriglitazone, es un agonista de PPARγ de segunda generación con capacidad de penetración en el sistema nervioso central. Patrocinador Bronce del BAC Barcelona 2026."
   },
   {
     "id": "biz_005",
@@ -274,8 +295,8 @@
     "id": "biz_006",
     "exhibitor_type": "business",
     "name": "UdL",
-    "photo": "UdL.webp",
-    "description": "FALTA DESCRIPCIÓN"
+    "photo": "udl.png",
+    "description": "La Universitat de Lleida (UdL) es una universidad pública catalana con amplia tradición en ciencias agrarias, biotecnología y ciencias de la salud. Su campus acoge centros de investigación de referencia y programas de doctorado en biotecnología y ciencias afines. Patrocinador del BAC Barcelona 2026."
   },
   {
     "id": "biz_007",
@@ -283,5 +304,33 @@
     "name": "URV",
     "photo": "URV-1024x706.webp",
     "description": "FALTA DESCRIPCIÓN"
+  },
+  {
+    "id": "biz_008",
+    "exhibitor_type": "business",
+    "name": "BePharma",
+    "photo": "bepharma.png",
+    "description": "BePharma es una empresa de servicios especializada en la industria farmacéutica y biotecnológica, con soluciones orientadas al crecimiento y la competitividad del sector. Patrocinador Bronce del BAC Barcelona 2026 con presencia en stand el día 8 de julio."
+  },
+  {
+    "id": "biz_009",
+    "exhibitor_type": "business",
+    "name": "HIPRA",
+    "photo": "hipra.jpg",
+    "description": "HIPRA es una empresa biofarmacéutica española enfocada en la prevención de enfermedades infecciosas en salud animal y humana. Bajo el lema «Construyendo inmunidad para un mundo más saludable», ofrece un amplio portafolio de vacunas innovadoras con filiales en más de 40 países y distribución global en los cinco continentes. Patrocinador Plata del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_010",
+    "exhibitor_type": "business",
+    "name": "SpliceBio",
+    "photo": "splicebio.png",
+    "description": "SpliceBio es una empresa pionera en terapia génica fundada en Barcelona como spin-off de la Universidad de Princeton. Su plataforma tecnológica basada en inteínas supera las limitaciones de capacidad de los vectores virales tradicionales, posicionándola como referente global en el campo. Ha cerrado rondas de financiación históricas en el ecosistema biotecnológico español. Patrocinador Bronce del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_011",
+    "exhibitor_type": "business",
+    "name": "UAB",
+    "photo": "uab.png",
+    "description": "La Universitat Autònoma de Barcelona (UAB) es la institución anfitriona del BAC Barcelona 2026, acogiendo el congreso en su Facultad de Biociencias. Reconocida internacionalmente por su excelencia investigadora en ciencias de la vida, biotecnología y biomedicina, es una de las universidades más importantes de España y Europa."
   }
 ]

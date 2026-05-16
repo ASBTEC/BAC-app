@@ -1,14 +1,15 @@
 [
   {
     "id": "evt_001",
-    "title": "Ceremonia de apertura y bienvenida",
+    "title": "Mesa inaugural",
     "description": "La apertura oficial del BAC 2026. Palabras de bienvenida del presidente de ASBTEC, el presidente de FEBIOTEC y un representante de la Facultad de Biociencias de la UAB. Marca el comienzo de cinco días de ciencia, networking y desarrollo profesional.",
     "category": "viveBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-07T09:30:00",
-    "end_time": "2026-07-07T10:30:00",
+    "start_time": "2026-07-08T09:30:00",
+    "end_time": "2026-07-08T10:00:00",
     "local_location": "Auditorium",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
+    "language": "spanish"
   },
   {
     "id": "evt_002",
@@ -28,22 +29,24 @@
       "biz_006",
       "biz_007"
     ],
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
+    "language": "spanish"
   },
   {
     "id": "evt_003",
-    "title": "Ceremonia de clausura y despedida",
+    "title": "Mesa Clausura / Entrega de premios",
     "description": "Palabras de cierre de la junta de ASBTEC, anuncio de la próxima asociación anfitriona del BAC y despedida a los participantes. Incluye un breve vídeo resumen de los mejores momentos del BAC 2026.",
     "category": "viveBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-11T13:00:00",
-    "end_time": "2026-07-11T14:00:00",
+    "start_time": "2026-07-10T14:15:00",
+    "end_time": "2026-07-10T15:00:00",
     "local_location": "Auditorium",
-    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8"
+    "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
+    "language": "spanish"
   },
   {
     "id": "evt_004",
-    "title": "Curso de Neurobioenginyeria: Introducción a la Tractografía",
+    "title": "Curso de Neurobioingenería: Introducción a la Tractografía",
     "description": "FALTA DESCRIPCIÓN",
     "category": "businessBAC",
     "activity_type": "activity",
@@ -52,7 +55,8 @@
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_007"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_005",
@@ -65,7 +69,8 @@
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_008"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_006",
@@ -78,7 +83,8 @@
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_009"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_007",
@@ -88,7 +94,8 @@
     "activity_type": "activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_008",
@@ -98,7 +105,8 @@
     "activity_type": "activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_009",
@@ -108,7 +116,8 @@
     "activity_type": "talk",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_010",
@@ -118,85 +127,92 @@
     "activity_type": "talk",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_011",
-    "title": "Understanding protein aggregation at scale",
-    "description": "Protein aggregation plays a central role in many diseases, yet its genetic and molecular origins remain difficult to map. Multiplexed assays of variant effects allow us to measure thousands of variants at once. Using this massive-scale approach enables three key advances: (1) improving clinical interpretation of genetic variants found in patients or healthy individuals; (2) uncovering the fundamental mechanisms that govern folding, misfolding, and aggregation; and (3) generating large, high-quality datasets that can train next-generation AI models to predict protein behaviour more accurately.",
+    "title": "Comprendiendo la agregación de proteínas a gran escala",
+    "description": "La agregación de proteínas juega un papel central en muchas enfermedades, pero sus orígenes genéticos y moleculares son difíciles de determinar. Los ensayos multiplexados de efectos de variantes nos permiten medir miles de variantes a la vez. Este enfoque a gran escala posibilita tres avances clave: (1) mejorar la interpretación clínica de variantes genéticas halladas en pacientes o individuos sanos; (2) descubrir los mecanismos fundamentales que gobiernan el plegamiento, mal plegamiento y agregación de proteínas; y (3) generar conjuntos de datos grandes y de alta calidad que permitan entrenar modelos de IA de próxima generación para predecir el comportamiento de las proteínas con mayor precisión.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-08T15:00:00",
-    "end_time": "2026-07-08T15:45:00",
+    "start_time": "2026-07-08T13:15:00",
+    "end_time": "2026-07-08T14:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_002"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_012",
-    "title": "Omics platforms for the preclinical assessment of snake antivenoms",
-    "description": "FALTA DESCRIPCIÓN",
+    "title": "Plataformas ómicas para la evaluación preclínica de antivenenos de serpiente",
+    "description": "El envenenamiento por mordedura de serpiente es una enfermedad desatendida que provoca un enorme sufrimiento, discapacidad y muerte prematura, especialmente en Asia y África. La 71.ª Asamblea Mundial de la Salud adoptó una resolución que insta a una respuesta coordinada para mitigar su impacto. Hemos desarrollado plataformas para caracterizar las composiciones del veneno («Venómica»), determinar la toxicidad de las toxinas individuales («Toxicovénomica»), evaluar la capacidad de unión a toxinas de los antivenenos («Antivénomica») y determinar su potencia neutralizante in vivo. Se presentará la participación de nuestro laboratorio en el Plan de Acción de la OMS.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-08T15:45:00",
-    "end_time": "2026-07-08T16:30:00",
+    "start_time": "2026-07-10T10:00:00",
+    "end_time": "2026-07-10T10:45:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_004"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_013",
-    "title": "Translating science into patient care",
-    "description": "FALTA DESCRIPCIÓN",
+    "title": "Trasladando la ciencia al cuidado del paciente",
+    "description": "Se abordará el proceso de transformar el conocimiento biológico y biomédico en productos y servicios de valor para los pacientes. La ponencia se centrará en los avances logrados en el traslado de soluciones innovadoras para el cuidado continuo del paciente oncológico, destacando cómo la investigación básica puede culminar en aplicaciones clínicas que mejoren significativamente la calidad de vida.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-09T09:00:00",
-    "end_time": "2026-07-09T09:45:00",
+    "start_time": "2026-07-10T11:30:00",
+    "end_time": "2026-07-10T12:15:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_001"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_014",
-    "title": "Computational design of enzymes for a more sustainable world",
-    "description": "A aquesta xerrada es discutirà la importància de la catàlisi enzimàtica i dels avantatges de la biocatàlisi per a un futur més sostenible, així com els últims avenços en el camp de la intel·ligència artificial enfocat al camp de la biologia.",
+    "title": "Diseño computacional de enzimas para un mundo más sostenible",
+    "description": "Esta ponencia destaca la importancia de la catálisis enzimática y las ventajas de la biocatálisis para construir un futuro industrial más sostenible. Se analizarán los últimos avances en el campo de la inteligencia artificial aplicada a la biología, mostrando cómo estas herramientas computacionales están revolucionando el diseño de nuevas enzimas y optimizando procesos biotecnológicos clave para la sociedad actual.",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-08T12:30:00",
+    "end_time": "2026-07-08T13:15:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_006"
+    ],
+    "language": "spanish"
+  },
+  {
+    "id": "evt_015",
+    "title": "Hacia bioterapéuticos selectivos y permeables a la barrera hematoencefálica",
+    "description": "Los bioterapéuticos han logrado avances clínicos importantes en cáncer y otras enfermedades, pero persisten retos clave. Muchas dianas terapéuticas se expresan tanto en tejidos enfermos como sanos, generando toxicidades limitantes de dosis. Para las indicaciones neurológicas, la administración eficiente a través de la barrera hematoencefálica (BHE) supone un obstáculo adicional. En esta ponencia presentaré los esfuerzos de nuestro grupo para diseñar bioterapéuticos de activación condicional y potenciar su transporte a través de la BHE, con el objetivo de mejorar la eficacia y minimizar los efectos fuera de la diana.",
     "category": "bioBAC",
     "activity_type": "talk",
     "start_time": "2026-07-09T09:45:00",
     "end_time": "2026-07-09T10:30:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
-      "spk_006"
-    ]
-  },
-  {
-    "id": "evt_015",
-    "title": "Toward selective and brain-permeable protein therapeutics",
-    "description": "Protein therapeutics have delivered major clinical advances in cancer and other diseases, yet key challenges remain. Many therapeutic targets are expressed in both diseased and healthy tissues, leading to dose‑limiting toxicities. For neurological indications, efficient delivery across the blood–brain barrier (BBB) is an additional hurdle. In this talk, I will present our group's efforts to engineer conditionally active biotherapeutics and to enhance their transport across the BBB, aiming to improve efficacy while minimizing off‑target effects.",
-    "category": "bioBAC",
-    "activity_type": "talk",
-    "start_time": "2026-07-10T09:00:00",
-    "end_time": "2026-07-10T09:45:00",
-    "local_location": "FALTA",
-    "exhibitor_ids": [
       "spk_003"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_016",
-    "title": "Metabolic engineering for resistance against pathogens in plants",
-    "description": "Les malalties causades per patògens vasculars són un problema greu per a l'agricultura perquè bloquegen el sistema de transport d'aigua de les plantes, provocant el marciment i la mort. Utilitzant l'enginyeria genètica i metabòlica mostrarem com introduir la resistència a patògens vasculars en varietats de tomaquera comercials, mitjançant el reforçament de les parets dels vasos conductors i la producció de compostos de defensa que frenen la propagació del patogen. Modificar aquests mecanismes de defensa pot augmentar la resistència i ajudar a desenvolupar cultius més resilients.",
+    "title": "Ingeniería metabólica para la resistencia frente a patógenos en plantas",
+    "description": "Las enfermedades causadas por patógenos vasculares son un grave problema para la agricultura porque bloquean el sistema de transporte de agua de las plantas, provocando su marchitamiento y muerte. Mediante ingeniería genética y metabólica mostraremos cómo introducir la resistencia a patógenos vasculares en variedades comerciales de tomate, reforzando las paredes de los vasos conductores y produciendo compuestos de defensa que frenan la propagación del patógeno. Modificar estos mecanismos de defensa puede aumentar la resistencia y contribuir al desarrollo de cultivos más resilientes.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "2026-07-10T09:45:00",
-    "end_time": "2026-07-10T10:30:00",
+    "start_time": "2026-07-09T12:00:00",
+    "end_time": "2026-07-09T12:45:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_005"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_017",
@@ -204,9 +220,10 @@
     "description": "Un espacio dedicado a la innovación y el negocio. Contaremos con la participación de Venture Capitals y fundadores de Startups, quienes desgranarán las claves del emprendimiento, las rondas de financiación y cómo transformar una idea científica en un proyecto empresarial viable.",
     "category": "businessBAC",
     "activity_type": "round_table",
-    "start_time": "2026-07-09T15:30:00",
-    "end_time": "2026-07-09T17:00:00",
-    "local_location": "FALTA"
+    "start_time": "2026-07-09T15:45:00",
+    "end_time": "2026-07-09T17:15:00",
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_018",
@@ -214,9 +231,10 @@
     "description": "Explora la transición de la universidad a la empresa de la mano de expertos consolidados en diversos sectores de la industria. A través de sus trayectorias, analizaremos las distintas salidas profesionales y los retos actuales para ayudarte a trazar tu propio camino estratégico en el sector biotecnológico.",
     "category": "businessBAC",
     "activity_type": "round_table",
-    "start_time": "2026-07-08T12:00:00",
-    "end_time": "2026-07-08T13:30:00",
-    "local_location": "FALTA"
+    "start_time": "2026-07-08T15:00:00",
+    "end_time": "2026-07-08T16:30:00",
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_019",
@@ -226,7 +244,8 @@
     "activity_type": "talk",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_020",
@@ -236,7 +255,8 @@
     "activity_type": "outdoor_activity",
     "start_time": "2026-07-08T15:00:00",
     "end_time": "2026-07-08T18:00:00",
-    "local_location": "Sincrotón ALBA, Cerdanyola del Vallès"
+    "local_location": "Sincrotón ALBA, Cerdanyola del Vallès",
+    "language": "spanish"
   },
   {
     "id": "evt_021",
@@ -246,17 +266,19 @@
     "activity_type": "outdoor_activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_022",
-    "title": "Un curs d’iniciacio a R studio aplicat a dades omiques",
-    "description": "In this workshop, you will learn the fundamentals of the R programming language. You will make your first steps in learning how to write and execute code in RStudio, covering everything from importing and handling data to performing statistical analysis and visualization. This fast-paced introduction will end with the analysis of a real proteomics dataset.",
+    "title": "Introducción a RStudio aplicado a datos ómicos",
+    "description": "En este taller aprenderás los fundamentos del lenguaje de programación R. Darás tus primeros pasos en la escritura y ejecución de código en RStudio, abarcando desde la importación y gestión de datos hasta el análisis estadístico y la visualización. Esta introducción intensiva culminará con el análisis de un conjunto de datos proteómicos real.",
     "category": "viveBAC",
     "activity_type": "outdoor_activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_023",
@@ -266,7 +288,8 @@
     "activity_type": "outdoor_activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
+    "local_location": "FALTA",
+    "language": "spanish"
   },
   {
     "id": "evt_024",
@@ -276,98 +299,78 @@
     "activity_type": "outdoor_activity",
     "start_time": "FALTA",
     "end_time": "FALTA",
-    "local_location": "FALTA"
-  },
-  {
-    "id": "evt_026",
-    "title": "Omics platforms for the preclinical assessment of snake antivenoms",
-    "description": "Snakebite envenoming (SBE) is a neglected disease causing enormous suffering, disability and premature death, especially in Asia and Africa. The 71st World Health Assembly adopted a resolution calling for coordinated responses to mitigate the burden of SBE. We have developed platforms to characterize the venom compositions (\"Venomics\"), determine individual toxins' toxicity (\"Toxicovenomics\"), assess the toxin binding capacity of antivenoms (\"Antivenomics\") and determine their in vivo neutralization potency. Here, we will discuss the participation of our laboratory in the WHO's Roadmap.",
-    "category": "bioBAC",
-    "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
     "local_location": "FALTA",
-    "exhibitor_ids": [
-      "spk_004"
-    ]
+    "language": "spanish"
   },
   {
     "id": "evt_025",
-    "title": "Chimeras, Sentinels, and traces of Modernism: Reprogramming cells for biointelligent bioprocesses and complex environments",
-    "description": "Biotechnology is shifting from controlled laboratory settings to messy, information-rich environments. In this talk, I explore how engineered \"chimeric\" sensor architectures, sentinel microbes, and high-throughput design and biointegration are redefining what cells can perceive and communicate. I will present recent advances in microbial whole-cell biosensors, electrochemical and optical reporting, and resilient microbial cell factories designed to operate reliably in fluctuating industrial and environmental conditions, all under the umbrella of Safe-and-Sustainable-by-Design principles.",
+    "title": "Quimeras, Centinelas y trazos del Modernismo: Reprogramando células para bioprocesos biointeligentes",
+    "description": "La biotecnología está evolucionando desde entornos de laboratorio controlados hacia ambientes complejos y ricos en información. En esta charla exploraré cómo las arquitecturas sensoras «quiméricas», los microbios centinela y el diseño de alta densidad y biointegración están redefiniendo lo que las células pueden percibir y comunicar. Presentaré avances recientes en biosensores microbianos de células completas, reporteros electroquímicos y ópticos, y biofactorías microbianas resilientes diseñadas para operar de forma fiable en condiciones industriales y ambientales fluctuantes, todo bajo los principios de Seguridad y Sostenibilidad por Diseño.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-09T12:45:00",
+    "end_time": "2026-07-09T13:30:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_010"
-    ]
-  },
-  {
-    "id": "evt_027",
-    "title": "Trasladando la ciencia al paciente",
-    "description": "Se abordará la temática de como transformar el conocimiento biológico y biomédico en productos y servicios útiles para los pacientes. Se enmarcará en nuestro progreso trasladando productos para el cuidado continuo del paciente oncológico.",
-    "category": "bioBAC",
-    "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
-    "local_location": "FALTA",
-    "exhibitor_ids": [
-      "spk_001"
-    ]
+    ],
+    "language": "english"
   },
   {
     "id": "evt_028",
-    "title": "IA per al descobriment d'enzims: el bo, el lleig i el dolent",
-    "description": "Aquesta xerrada explora com l'aprenentatge automàtic i el modelatge molecular poden contribuir al descobriment i a l'enginyeria d'enzims en sistemes diversos a partir de l'experiència del nostre laboratori. S'hi presenten casos reals de bioprospecció guiada per simulació, predicció d'expressió, disseny d'activitat i interpretació de dades experimentals, destacant tant els èxits com les limitacions recurrents i quan l'ús de la IA no justifica l'esforç. L'objectiu és oferir una visió crítica i aplicada del seu valor pràctic.",
+    "title": "IA para el descubrimiento de enzimas: lo bueno, lo feo y lo malo",
+    "description": "Esta charla explora cómo el aprendizaje automático y el modelado molecular pueden contribuir al descubrimiento y la ingeniería de enzimas en sistemas diversos, a partir de la experiencia de nuestro laboratorio. Se presentan casos reales de bioprospección guiada por simulación, predicción de expresión, diseño de actividad e interpretación de datos experimentales, destacando tanto los éxitos como las limitaciones recurrentes y los casos en que el uso de la IA no justifica el esfuerzo. El objetivo es ofrecer una visión crítica y aplicada de su valor práctico.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-10T10:45:00",
+    "end_time": "2026-07-10T11:30:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_011"
-    ]
+    ],
+    "language": "spanish"
   },
   {
     "id": "evt_029",
-    "title": "MELiSSA: Regenerative Life Support for Humans in Space",
-    "description": "MELiSSA (Micro Ecological Life Support System Alternative) is developing regenerative Life Support technologies for long-term human Space exploration missions. In the scenario of missions targeting longer distances and presence in Space (Moon, Mars) there is the need to decrease the dependency from Earth resupply. The MELiSSA loop is conceived as a circular system with several compartments, each one performing a specific function, providing all together the basic functions in life support: food production, atmosphere regeneration, water recovery.",
+    "title": "MELiSSA: Soporte Vital Regenerativo para Humanos en el Espacio",
+    "description": "MELiSSA (Micro Ecological Life Support System Alternative) está desarrollando tecnologías regenerativas de soporte vital para misiones de exploración espacial humana de larga duración. En el escenario de misiones hacia mayores distancias y presencia en el espacio (Luna, Marte), es necesario reducir la dependencia del suministro desde la Tierra. El bucle MELiSSA está concebido como un sistema circular con varios compartimentos, cada uno realizando una función específica y proporcionando en conjunto las funciones básicas del soporte vital: producción de alimentos, regeneración de la atmósfera y recuperación del agua.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-08T10:00:00",
+    "end_time": "2026-07-08T11:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_012"
-    ]
+    ],
+    "language": "english"
   },
   {
     "id": "evt_030",
-    "title": "Engineering microenvironments for biomedical applications",
-    "description": "Biomaterials have long been used in regenerative medicine as scaffolds or delivery vehicles. Increasing evidence shows, however, that they actively interact with their biological milieu. By understanding how cells sense material properties and how degradation products drive metabolic and transcriptional responses, we engineer microenvironments that control cell fate. This strategy applies not only to regeneration, but also to disease microenvironments such as tumor niches.",
+    "title": "Ingeniería de microentornos para aplicaciones biomédicas",
+    "description": "Los biomateriales se han utilizado durante mucho tiempo en medicina regenerativa como andamios o vehículos de administración. Sin embargo, evidencias crecientes demuestran que interactúan activamente con su entorno biológico. Comprendiendo cómo las células detectan las propiedades de los materiales y cómo los productos de degradación impulsan respuestas metabólicas y transcripcionales, diseñamos microentornos que controlan el destino celular. Esta estrategia se aplica no solo a la regeneración, sino también a microentornos de enfermedad como los nichos tumorales.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-08T13:15:00",
+    "end_time": "2026-07-08T14:00:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_013"
-    ]
+    ],
+    "language": "english"
   },
   {
     "id": "evt_031",
-    "title": "From Metabolic Fluxes to Genome‑Scale Modeling: Targeting Cancer Vulnerabilities",
-    "description": "Metabolic reprogramming is a hallmark of cancer, yet functional interpretation remains limited. This presentation shows how quantitative metabolic flux analysis reveals relevant metabolic adaptations in colorectal cancer that are not captured by gene expression or metabolite levels alone. Integration of flux data into genome‑scale metabolic models uncovered metabolic rewiring linked to therapy response, drug resistance, and metastatic progression, identifying actionable vulnerabilities and enabling metabolic subtyping and prediction of differential drug sensitivity.",
+    "title": "De los Flujos Metabólicos al Modelado a Escala Genómica: Identificando Vulnerabilidades del Cáncer",
+    "description": "La reprogramación metabólica es una característica distintiva del cáncer, pero su interpretación funcional sigue siendo limitada. Esta presentación muestra cómo el análisis cuantitativo del flujo metabólico revela adaptaciones relevantes en el cáncer colorrectal que no se capturan mediante la expresión génica o los niveles de metabolitos por sí solos. La integración de datos de flujo en modelos metabólicos a escala genómica descubrió una reorganización metabólica vinculada a la respuesta terapéutica, la resistencia a fármacos y la progresión metastásica, identificando vulnerabilidades accionables y permitiendo la subtipificación metabólica y la predicción de sensibilidad diferencial a fármacos.",
     "category": "bioBAC",
     "activity_type": "talk",
-    "start_time": "FALTA",
-    "end_time": "FALTA",
+    "start_time": "2026-07-09T12:45:00",
+    "end_time": "2026-07-09T13:30:00",
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_014"
-    ]
+    ],
+    "language": "english"
   },
   {
     "id": "evt_032",
@@ -380,6 +383,60 @@
     "local_location": "FALTA",
     "exhibitor_ids": [
       "spk_027"
-    ]
+    ],
+    "language": "spanish"
+  },
+  {
+    "id": "evt_034",
+    "title": "Diseño y validación de activos cosméticos biotecnológicos: del mecanismo de acción al claim",
+    "description": "Ariadna Grau, Responsable de I+D en LipoTrue, presentará cómo se diseñan y validan ingredientes activos innovadores para la industria dermocosmética, desde la identificación del mecanismo de acción molecular hasta la generación de evidencia científica que sustenta las claims del producto final. Una visión aplicada que conecta la química orgánica, la biología celular y la evaluación funcional en el desarrollo industrial de activos cosméticos.",
+    "category": "businessBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-09T09:45:00",
+    "end_time": "2026-07-09T10:30:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_016"
+    ],
+    "language": "spanish"
+  },
+  {
+    "id": "evt_033",
+    "title": "Preparación frente a futuras pandemias y el periodo post-pandémico",
+    "description": "La charla abordará cómo la biotecnología contribuye a la preparación frente a futuras pandemias y a la gestión del periodo post‑pandémico. Se revisarán lecciones clave del COVID‑19, con especial atención al desarrollo rápido de vacunas, la vigilancia genómica, los diagnósticos avanzados y el uso de plataformas tecnológicas como el ARNm. También se tratarán los desafíos de producción, equidad y transferencia tecnológica. Finalmente, se analizará el papel de la biotecnología en la prevención, la salud pública y la construcción de sociedades más resilientes.",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-09T12:00:00",
+    "end_time": "2026-07-09T12:45:00",
+    "local_location": "FALTA",
+    "exhibitor_ids": [
+      "spk_028"
+    ],
+    "language": "spanish"
+  },
+  {
+    "id": "evt_035",
+    "title": "Diseño de nuevas funciones proteicas mediante aprendizaje profundo",
+    "description": "David Baker presentará cómo el aprendizaje profundo ha revolucionado el diseño de proteínas de novo. Su grupo ha desarrollado métodos capaces de crear proteínas con estructuras y funciones inexistentes en la naturaleza, desde nuevas enzimas y proteínas de unión hasta máquinas moleculares. Esta plenaria mostrará el estado del arte del diseño computacional de proteínas, trabajo que le valió el Premio Nobel de Química 2024.",
+    "category": "bioBAC",
+    "activity_type": "talk",
+    "start_time": "2026-07-09T18:00:00",
+    "end_time": "2026-07-09T19:00:00",
+    "local_location": "Auditorium",
+    "exhibitor_ids": [
+      "spk_029"
+    ],
+    "language": "english"
+  },
+  {
+    "id": "evt_036",
+    "title": "Registro",
+    "description": "Recogida de acreditaciones y material del congreso.",
+    "category": "viveBAC",
+    "activity_type": "activity",
+    "start_time": "2026-07-08T09:00:00",
+    "end_time": "2026-07-08T09:30:00",
+    "local_location": "Entrada Facultad de Biociencias",
+    "language": "spanish"
   }
 ]
