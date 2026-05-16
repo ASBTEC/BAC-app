@@ -27,7 +27,11 @@ export default function AboutScreen() {
             style={styles.linkRow}
             onPress={() => {
               const url = 'mailto:amarine@asbtec.cat';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Text style={[styles.linkText, { color: BACColors.teal }]}>
               ✉️  amarine@asbtec.cat
@@ -38,7 +42,11 @@ export default function AboutScreen() {
             style={styles.linkRow}
             onPress={() => {
               const url = 'https://github.com/AleixMT';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Text style={[styles.linkText, { color: BACColors.teal }]}>
               🐙  GitHub — @AleixMT
@@ -49,7 +57,11 @@ export default function AboutScreen() {
             style={styles.linkRow}
             onPress={() => {
               const url = 'https://www.linkedin.com/in/aleixmt/';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Text style={[styles.linkText, { color: BACColors.teal }]}>
               💼  LinkedIn — @AleixMT
@@ -64,7 +76,11 @@ export default function AboutScreen() {
             style={styles.linkRow}
             onPress={() => {
               const url = 'mailto:apadilla@asbtec.cat';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Text style={[styles.body, { color: colors.text }]}>{'• Anna Padilla Figuerola  '}<Text style={[styles.linkText, { color: BACColors.teal }]}>✉️ apadilla@asbtec.cat</Text></Text>
           </Pressable>
@@ -79,7 +95,11 @@ export default function AboutScreen() {
             style={styles.logoWrap}
             onPress={() => {
               const url = 'https://bac.febiotec.es/';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Image source={require('@/assets/images/logo-bac.png')} style={styles.logo} resizeMode="contain" />
           </Pressable>
@@ -87,7 +107,11 @@ export default function AboutScreen() {
             style={styles.logoWrap}
             onPress={() => {
               const url = 'https://asbtec.cat/';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Image source={require('@/assets/images/logo-asbtec.png')} style={styles.logo} resizeMode="contain" />
           </Pressable>
@@ -95,7 +119,11 @@ export default function AboutScreen() {
             style={styles.logoWrap}
             onPress={() => {
               const url = 'https://febiotec.es/';
-              Platform.OS === 'web' ? window.open(url, '_blank') : Linking.openURL(url);
+              if (Platform.OS === 'web') {
+                window.open(url, '_blank');
+              } else {
+                Linking.openURL(url);
+              }
             }}>
             <Image source={require('@/assets/images/logo-febiotec.png')} style={styles.logo} resizeMode="contain" />
           </Pressable>

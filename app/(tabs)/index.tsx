@@ -5,7 +5,6 @@ import {
   Image,
   Platform,
   Pressable,
-  ScrollView,
   SectionList,
   StyleSheet,
   Text,
@@ -17,7 +16,7 @@ import { EventCard } from '@/components/EventCard';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { TimetableView } from '@/components/TimetableView';
 import { CATEGORY_ICONS } from '@/constants/categoryIcons';
-import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';

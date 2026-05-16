@@ -20,13 +20,6 @@ import BusinessBACLogo from '@/assets/images/event_types/logo businessbac.svg';
 import ExpoBACLogo     from '@/assets/images/event_types/logo expobac.svg';
 import ViveBACLogo     from '@/assets/images/event_types/logo vivebac.svg';
 import { SvgProps } from 'react-native-svg';
-
-const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
-  bioBAC:      BioBACLogo,
-  businessBAC: BusinessBACLogo,
-  expoBAC:     ExpoBACLogo,
-  viveBAC:     ViveBACLogo,
-};
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -34,6 +27,13 @@ import { Event, EventCategory, Exhibitor } from '@/types';
 import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 import allEvents from '@/data/events.json';
 import allExhibitors from '@/data/exhibitors.json';
+
+const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
+  bioBAC:      BioBACLogo,
+  businessBAC: BusinessBACLogo,
+  expoBAC:     ExpoBACLogo,
+  viveBAC:     ViveBACLogo,
+};
 
 const EVENTS: Event[] = allEvents as Event[];
 const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];

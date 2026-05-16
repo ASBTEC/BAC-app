@@ -139,7 +139,7 @@ export function TimetableView({
   const initialDay = useMemo(() => {
     const today = now.toISOString().slice(0, 10);
     return CONGRESS_DAYS.find((d) => d.date === today)?.date ?? CONGRESS_DAYS[0].date;
-  }, []);
+  }, [now]);
 
   const [selectedDay, setSelectedDay] = useState<string>(initialDay);
 
@@ -176,7 +176,7 @@ export function TimetableView({
       80,
     );
     return () => clearTimeout(timer);
-  }, [selectedDay]);
+  }, [selectedDay, nowTop, layoutItems]);
 
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>

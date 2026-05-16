@@ -12,7 +12,7 @@ import {
 import { EventCard } from '@/components/EventCard';
 import { TimetableView } from '@/components/TimetableView';
 import { CATEGORY_ICONS } from '@/constants/categoryIcons';
-import { ActivityTypeColors, BACColors, CategoryColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
