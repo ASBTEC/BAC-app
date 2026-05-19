@@ -24,7 +24,7 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": "bac-app-project-key.json",
+        "serviceAccountKeyPath": "secrets/bac-app-project-key.json",
         "track": "production"
       }
     }

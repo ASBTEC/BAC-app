@@ -10,12 +10,16 @@ jobs:
   trigger:
     name: Trigger EAS workflow
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       triggered-at: ${{ steps.trigger.outputs.triggered-at }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node 20
         uses: actions/setup-node@v4
@@ -25,6 +29,24 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          VERSION=$(jq -r '.expo.version' app.json)
+          NEW_VERSION=$(echo "$VERSION" | awk -F. '{$3+=1; print $1"."$2"."$3}')
+          jq --arg v "$NEW_VERSION" '.expo.version = $v' app.json > app.json.tmp
+          mv app.json.tmp app.json
+          echo "Bumped: $VERSION → $NEW_VERSION"
+          echo "new-version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app.json
+          git commit -m "chore: bump version to ${{ steps.bump.outputs.new-version }} [skip ci]"
+          git push
 
       - name: Set up EAS CLI
         uses: expo/expo-github-action@v8
@@ -198,10 +220,11 @@ jobs:
       - name: Write Google service account key
         env:
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
-        run: echo "$GOOGLE_SERVICE_ACCOUNT_KEY" > /tmp/google-service-account.json
+        run: |
+          mkdir -p secrets
+          echo "$GOOGLE_SERVICE_ACCOUNT_KEY" > secrets/bac-app-project-key.json
 
       - name: Submit to Google Play
         run: eas submit --platform android --profile production --latest --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          GOOGLE_SERVICE_ACCOUNT_KEY_PATH: /tmp/google-service-account.json
