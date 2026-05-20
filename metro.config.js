@@ -2,6 +2,10 @@ const { getDefaultConfig } = require('expo/metro-config');
 
 module.exports = (() => {
   const config = getDefaultConfig(__dirname);
+
+  // expo's getDefaultConfig sets this but upstream metro-config doesn't recognise it yet
+  delete config.watcher?.unstable_workerThreads;
+
   const { transformer, resolver } = config;
 
   config.transformer = {
