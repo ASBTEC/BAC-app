@@ -2,10 +2,11 @@ name: Create Production Builds
 
 jobs:
   build_android:
-    type: build # This job type creates a production build for Android
+    type: build
     params:
       platform: android
-  build_ios:
-    type: build # This job type creates a production build for iOS
-    params:
-      platform: ios
+  # build_ios is disabled until Apple Developer account is verified
+  # build_ios:
+  #   type: build
+  #   params:
+  #     platform: ios

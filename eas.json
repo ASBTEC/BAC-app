@@ -25,7 +25,8 @@
     "production": {
       "android": {
         "serviceAccountKeyPath": "secrets/bac-app-project-key.json",
-        "track": "production"
+        "track": "production",
+        "releaseStatus": "draft"
       }
     }
   }
