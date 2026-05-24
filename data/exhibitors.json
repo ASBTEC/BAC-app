@@ -332,5 +332,36 @@
     "name": "UAB",
     "photo": "uab.png",
     "description": "La Universitat Autònoma de Barcelona (UAB) es la institución anfitriona del BAC Barcelona 2026, acogiendo el congreso en su Facultad de Biociencias. Reconocida internacionalmente por su excelencia investigadora en ciencias de la vida, biotecnología y biomedicina, es una de las universidades más importantes de España y Europa."
+  },
+  {
+    "id": "biz_012",
+    "exhibitor_type": "business",
+    "name": "CESIF",
+    "photo": "CESIF.svg",
+    "sponsor_tier": "silver",
+    "description": "Patrocinador Plata del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_013",
+    "exhibitor_type": "business",
+    "name": "Universidad Francisco de Vitoria",
+    "photo": "UFV.jpg",
+    "sponsor_tier": "silver",
+    "description": "Patrocinador Plata del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_014",
+    "exhibitor_type": "business",
+    "name": "CEU",
+    "sponsor_tier": "bronze",
+    "description": "Patrocinador Bronce del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_015",
+    "exhibitor_type": "business",
+    "name": "FarmaLeaders",
+    "photo": "FarmaLeaders.png",
+    "sponsor_tier": "silver",
+    "description": "Patrocinador Plata del BAC Barcelona 2026."
   }
 ]

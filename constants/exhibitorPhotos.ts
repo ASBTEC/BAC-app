@@ -37,4 +37,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'biz_009': require('@/assets/images/exhibitors/sponsors/hipra.jpg'),
   'biz_010': require('@/assets/images/exhibitors/sponsors/splicebio.png'),
   'biz_011': require('@/assets/images/exhibitors/sponsors/uab.png'),
+  'biz_012': require('@/assets/images/exhibitors/sponsors/CESIF.svg'),
+  'biz_013': require('@/assets/images/exhibitors/sponsors/UFV.jpg'),
+  'biz_015': require('@/assets/images/exhibitors/sponsors/FarmaLeaders.png'),
 };
