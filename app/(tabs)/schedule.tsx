@@ -8,13 +8,9 @@ import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import { sortByProximity } from '@/utils/temporal';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
-
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type ViewMode = 'list' | 'timetable';
 type FilterCategory = EventCategory | 'all';
@@ -42,14 +38,15 @@ function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): bo
   return exhibitors.some((ex) => ex.name.toLowerCase().includes(q));
 }
 
-function getExhibitorsForEvent(event: Event): Exhibitor[] {
+function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
   return event.exhibitor_ids
-    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .map((id) => exhibitors.find((e) => e.id === id))
     .filter(Boolean) as Exhibitor[];
 }
 
 export default function ScheduleScreen() {
+  const { events, exhibitors } = useData();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { savedIds, isSaved, toggleEvent, loaded } = useSchedule();
@@ -70,19 +67,19 @@ export default function ScheduleScreen() {
   }, []);
 
   const savedEvents = useMemo(() => {
-    const saved = EVENTS.filter((e) => {
+    const saved = events.filter((e) => {
       if (!savedIds.has(e.id)) return false;
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
-      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e))) return false;
+      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors))) return false;
       return true;
     });
     return sortByProximity(saved, now);
-  }, [savedIds, now, search, activeCategory, activeType]);
+  }, [events, exhibitors, savedIds, now, search, activeCategory, activeType]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
-      const event = EVENTS.find((e) => e.id === id);
+      const event = events.find((e) => e.id === id);
       if (!event) return;
       const willSave = !isSaved(id);
       toggleEvent(id);
@@ -92,7 +89,7 @@ export default function ScheduleScreen() {
         cancelEventNotification(id);
       }
     },
-    [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
+    [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
   if (!loaded) return null;
@@ -182,7 +179,7 @@ export default function ScheduleScreen() {
             renderItem={({ item }) => (
               <EventCard
                 event={item}
-                exhibitors={getExhibitorsForEvent(item)}
+                exhibitors={getExhibitorsForEvent(item, exhibitors)}
                 showTemporalLabel
                 isSaved={isSaved(item.id)}
                 onToggleSave={handleToggleSave}

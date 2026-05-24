@@ -21,10 +21,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import { getTemporalStatus } from '@/utils/temporal';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
 
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
@@ -61,15 +60,13 @@ const GCAL_URL =
   '&location=Faculty+of+Biosciences%2C+UAB%2C+Barcelona' +
   '&details=https%3A%2F%2Fmaps.app.goo.gl%2FhZKM9e8Mg6i52DPA8';
 
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
-
-function getExhibitorsForEvent(event: Event): Exhibitor[] {
+function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
-  return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
+  return event.exhibitor_ids.map((id) => exhibitors.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
 }
 
 export default function HomeScreen() {
+  const { events, exhibitors } = useData();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { width: screenWidth } = useWindowDimensions();
@@ -95,10 +92,10 @@ export default function HomeScreen() {
   }, []);
 
   const sections = useMemo(() => {
-    const nonStand = EVENTS.filter((e) => {
+    const nonStand = events.filter((e) => {
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
-      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e))) return false;
+      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors))) return false;
       return true;
     });
 
@@ -130,7 +127,7 @@ export default function HomeScreen() {
     if (upcoming.length > 0) result.push({ title: 'Próximos eventos', data: upcoming });
     if (past.length > 0) result.push({ title: 'Eventos pasados', data: past });
     return result;
-  }, [now, activeCategory, activeType, search]);
+  }, [events, exhibitors, now, activeCategory, activeType, search]);
 
   const filteredEvents = useMemo(
     () => sections.flatMap((s) => s.data),
@@ -139,7 +136,7 @@ export default function HomeScreen() {
 
   const handleToggleSave = useCallback(
     (id: string) => {
-      const event = EVENTS.find((e) => e.id === id);
+      const event = events.find((e) => e.id === id);
       if (!event) return;
       const willSave = !isSaved(id);
       toggleEvent(id);
@@ -149,7 +146,7 @@ export default function HomeScreen() {
         cancelEventNotification(id);
       }
     },
-    [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
+    [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
   return (
@@ -257,7 +254,7 @@ export default function HomeScreen() {
             renderItem={({ item }) => (
               <EventCard
                 event={item}
-                exhibitors={getExhibitorsForEvent(item)}
+                exhibitors={getExhibitorsForEvent(item, exhibitors)}
                 showTemporalLabel
                 isSaved={isSaved(item.id)}
                 onToggleSave={handleToggleSave}

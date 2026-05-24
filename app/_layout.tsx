@@ -8,6 +8,7 @@ import { LogBox, Platform, Pressable } from 'react-native';
 import 'react-native-reanimated';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { BACColors, OrbitronFonts } from '@/constants/theme';
+import { DataProvider } from '@/context/data-context';
 import { ScheduleProvider } from '@/context/schedule-context';
 import { ThemeProvider } from '@/context/theme-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -45,11 +46,13 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <ThemeProvider>
-      <ScheduleProvider>
-        <RootNavigator />
-      </ScheduleProvider>
-    </ThemeProvider>
+    <DataProvider>
+      <ThemeProvider>
+        <ScheduleProvider>
+          <RootNavigator />
+        </ScheduleProvider>
+      </ThemeProvider>
+    </DataProvider>
   );
 }
 

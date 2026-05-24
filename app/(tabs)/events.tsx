@@ -16,12 +16,8 @@ import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
-
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
@@ -43,10 +39,10 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
 ];
 
-function getExhibitorsForEvent(event: Event): Exhibitor[] {
+function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
   return event.exhibitor_ids
-    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .map((id) => exhibitors.find((e) => e.id === id))
     .filter(Boolean) as Exhibitor[];
 }
 
@@ -57,6 +53,7 @@ function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): bo
 }
 
 export default function EventsScreen() {
+  const { events, exhibitors } = useData();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { isSaved, toggleEvent } = useSchedule();
@@ -69,22 +66,22 @@ export default function EventsScreen() {
   const [showFilters, setShowFilters] = useState(true);
 
   const filteredEvents = useMemo(() => {
-    let result = [...EVENTS].sort(
+    let result = [...events].sort(
       (a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime(),
     );
     if (activeCategory !== 'all') result = result.filter((e) => e.category === activeCategory);
     if (activeType !== 'all') result = result.filter((e) => e.activity_type === activeType);
     if (search.trim()) {
       result = result.filter((e) =>
-        matchesSearch(e, search.trim(), getExhibitorsForEvent(e)),
+        matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors)),
       );
     }
     return result;
-  }, [search, activeCategory, activeType]);
+  }, [events, exhibitors, search, activeCategory, activeType]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
-      const event = EVENTS.find((e) => e.id === id);
+      const event = events.find((e) => e.id === id);
       if (!event) return;
       const willSave = !isSaved(id);
       toggleEvent(id);
@@ -94,7 +91,7 @@ export default function EventsScreen() {
         cancelEventNotification(id);
       }
     },
-    [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
+    [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
   const filterHeader = (
@@ -172,7 +169,7 @@ export default function EventsScreen() {
           renderItem={({ item }) => (
             <EventCard
               event={item}
-              exhibitors={getExhibitorsForEvent(item)}
+              exhibitors={getExhibitorsForEvent(item, exhibitors)}
               showTemporalLabel={false}
               isSaved={isSaved(item.id)}
               onToggleSave={handleToggleSave}

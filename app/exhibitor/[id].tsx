@@ -8,39 +8,36 @@ import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { Event, Exhibitor } from '@/types';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
 
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
-
-function getExhibitorsForEvent(event: Event): Exhibitor[] {
+function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
-  return event.exhibitor_ids.map((id) => EXHIBITORS.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
+  return event.exhibitor_ids.map((id) => exhibitors.find((e) => e.id === id)).filter(Boolean) as Exhibitor[];
 }
 
 
 export default function ExhibitorDetailScreen() {
+  const { events, exhibitors } = useData();
   const { id } = useLocalSearchParams<{ id: string }>();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
 
-  const exhibitor = useMemo(() => EXHIBITORS.find((e) => e.id === id), [id]);
+  const exhibitor = useMemo(() => exhibitors.find((e) => e.id === id), [exhibitors, id]);
 
   const associatedEvents = useMemo(
     () =>
-      EVENTS.filter((e) => e.exhibitor_ids?.includes(id ?? '')).sort(
+      events.filter((e) => e.exhibitor_ids?.includes(id ?? '')).sort(
         (a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime(),
       ),
-    [id],
+    [events, id],
   );
 
   const handleToggleSave = useCallback(
     (eventId: string) => {
-      const event = EVENTS.find((e) => e.id === eventId);
+      const event = events.find((e) => e.id === eventId);
       if (!event) return;
       const willSave = !isSaved(eventId);
       toggleEvent(eventId);
@@ -50,7 +47,7 @@ export default function ExhibitorDetailScreen() {
         cancelEventNotification(eventId);
       }
     },
-    [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
+    [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
   if (!exhibitor) {
@@ -114,7 +111,7 @@ export default function ExhibitorDetailScreen() {
       renderItem={({ item }) => (
         <EventCard
           event={item}
-          exhibitors={getExhibitorsForEvent(item)}
+          exhibitors={getExhibitorsForEvent(item, exhibitors)}
           showTemporalLabel={false}
           isSaved={isSaved(item.id)}
           onToggleSave={handleToggleSave}

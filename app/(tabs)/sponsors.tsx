@@ -11,10 +11,8 @@ import {
 import { ExhibitorCard } from '@/components/ExhibitorCard';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useData } from '@/context/data-context';
 import { Exhibitor, ExhibitorType } from '@/types';
-import allExhibitors from '@/data/exhibitors.json';
-
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type TypeFilter = ExhibitorType | 'all';
 
@@ -40,19 +38,20 @@ function sortExhibitors(list: Exhibitor[]): Exhibitor[] {
 }
 
 export default function SponsorsScreen() {
+  const { exhibitors } = useData();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all');
   const filteredExhibitors = useMemo(() => {
-    let result = [...EXHIBITORS];
+    let result = [...exhibitors];
     if (typeFilter !== 'all') result = result.filter((e) => e.exhibitor_type === typeFilter);
     if (search.trim()) {
       const q = search.toLowerCase();
       result = result.filter((e) => e.name.toLowerCase().includes(q));
     }
     return sortExhibitors(result);
-  }, [search, typeFilter]);
+  }, [exhibitors, search, typeFilter]);
 
   const listHeader = (
     <View>

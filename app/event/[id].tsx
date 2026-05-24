@@ -23,10 +23,9 @@ import { SvgProps } from 'react-native-svg';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { Event, EventCategory, Exhibitor } from '@/types';
 import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
 
 const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
   bioBAC:      BioBACLogo,
@@ -34,9 +33,6 @@ const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
   expoBAC:     ExpoBACLogo,
   viveBAC:     ViveBACLogo,
 };
-
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 function openInMaps(url: string) {
   if (Platform.OS === 'web') {
@@ -58,6 +54,7 @@ function getMapSpace(event: Event): string | null {
 
 
 export default function EventDetailScreen() {
+  const { events, exhibitors: allExhibitors } = useData();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const scheme = useColorScheme() ?? 'light';
@@ -65,13 +62,13 @@ export default function EventDetailScreen() {
   const { isSaved, toggleEvent } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
 
-  const event = useMemo(() => EVENTS.find((e) => e.id === id), [id]);
+  const event = useMemo(() => events.find((e) => e.id === id), [events, id]);
   const exhibitors = useMemo<Exhibitor[]>(() => {
     if (!event?.exhibitor_ids) return [];
     return event.exhibitor_ids
-      .map((eid) => EXHIBITORS.find((ex) => ex.id === eid))
+      .map((eid) => allExhibitors.find((ex) => ex.id === eid))
       .filter(Boolean) as Exhibitor[];
-  }, [event]);
+  }, [event, allExhibitors]);
 
   const saved = event ? isSaved(event.id) : false;
 

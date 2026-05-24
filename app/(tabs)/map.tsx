@@ -16,13 +16,9 @@ import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
+import { useData } from '@/context/data-context';
 import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 import { getTemporalStatus } from '@/utils/temporal';
-import allEvents from '@/data/events.json';
-import allExhibitors from '@/data/exhibitors.json';
-
-const EVENTS: Event[] = allEvents as Event[];
-const EXHIBITORS: Exhibitor[] = allExhibitors as Exhibitor[];
 
 type ViewMode = 'list' | 'timetable';
 type FilterCategory = EventCategory | 'all';
@@ -43,10 +39,10 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
 ];
 
-function getExhibitorsForEvent(event: Event): Exhibitor[] {
+function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
   return event.exhibitor_ids
-    .map((id) => EXHIBITORS.find((e) => e.id === id))
+    .map((id) => exhibitors.find((e) => e.id === id))
     .filter(Boolean) as Exhibitor[];
 }
 
@@ -71,8 +67,8 @@ const SPACE_BG: Record<string, string> = {
   outdoor:   BACColors.green,
 };
 
-function getSpaceEvents(spaceId: string, now: Date): Event[] {
-  return EVENTS.filter((e) => {
+function getSpaceEvents(spaceId: string, now: Date, events: Event[]): Event[] {
+  return events.filter((e) => {
     if (spaceId === 'Outdoor') {
       if (e.activity_type !== 'outdoor_activity') return false;
     } else {
@@ -94,6 +90,7 @@ const ROWS = INDOOR_SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
 }, []);
 
 export default function MapScreen() {
+  const { events, exhibitors } = useData();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { isSaved, toggleEvent } = useSchedule();
@@ -112,22 +109,22 @@ export default function MapScreen() {
   }, [space]);
 
   const spaceEvents = useMemo<Event[]>(
-    () => (selectedSpace ? getSpaceEvents(selectedSpace, now) : []),
-    [selectedSpace, now],
+    () => (selectedSpace ? getSpaceEvents(selectedSpace, now, events) : []),
+    [selectedSpace, now, events],
   );
 
   const filteredEvents = useMemo(() => {
     return spaceEvents.filter((e) => {
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
-      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e))) return false;
+      if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors))) return false;
       return true;
     });
-  }, [spaceEvents, activeCategory, activeType, search]);
+  }, [spaceEvents, exhibitors, activeCategory, activeType, search]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
-      const event = EVENTS.find((e) => e.id === id);
+      const event = events.find((e) => e.id === id);
       if (!event) return;
       const willSave = !isSaved(id);
       toggleEvent(id);
@@ -137,7 +134,7 @@ export default function MapScreen() {
         cancelEventNotification(id);
       }
     },
-    [isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
+    [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
   return (
@@ -332,7 +329,7 @@ export default function MapScreen() {
                   <EventCard
                     key={item.id}
                     event={item}
-                    exhibitors={getExhibitorsForEvent(item)}
+                    exhibitors={getExhibitorsForEvent(item, exhibitors)}
                     showTemporalLabel
                     isSaved={isSaved(item.id)}
                     onToggleSave={handleToggleSave}
