@@ -14,6 +14,7 @@ jobs:
       contents: write
     outputs:
       triggered-at: ${{ steps.trigger.outputs.triggered-at }}
+      new-version: ${{ steps.bump.outputs.new-version }}
 
     steps:
       - name: Checkout
@@ -98,23 +99,34 @@ jobs:
           echo "Waiting for Android build created after $SINCE …"
           for i in $(seq 1 40); do
             sleep 60
-            URL=$(npx eas-cli@latest build:list \
+            BUILD=$(npx eas-cli@latest build:list \
               --platform android \
               --profile production \
-              --status finished \
               --limit 5 \
               --json \
               --non-interactive 2>/dev/null \
-              | jq -r --arg t "$SINCE" \
-                '[.[] | select(.createdAt >= $t)] | first | .artifacts.applicationArchiveUrl // empty' \
+              | jq --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first // empty' \
               2>/dev/null || true)
-            if [ -n "$URL" ] && [ "$URL" != "null" ]; then
-              echo "Android build ready: $URL"
-              echo "$URL" > android-build-url.txt
-              echo "url=$URL" >> "$GITHUB_OUTPUT"
-              exit 0
+            if [ -z "$BUILD" ] || [ "$BUILD" = "null" ]; then
+              echo "Attempt $i/40: no build found yet…"
+              continue
             fi
-            echo "Attempt $i/40: not finished yet…"
+            STATUS=$(echo "$BUILD" | jq -r '.status')
+            if [ "$STATUS" = "finished" ]; then
+              URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
+              if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+                echo "Android build ready: $URL"
+                echo "$URL" > android-build-url.txt
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            elif [ "$STATUS" = "errored" ] || [ "$STATUS" = "cancelled" ]; then
+              echo "Android build failed with status: $STATUS"
+              exit 1
+            else
+              echo "Attempt $i/40: build status is '$STATUS', waiting…"
+            fi
           done
           echo "Timed out waiting for Android build" && exit 1
         env:
@@ -161,23 +173,34 @@ jobs:
           echo "Waiting for iOS build created after $SINCE …"
           for i in $(seq 1 40); do
             sleep 60
-            URL=$(npx eas-cli@latest build:list \
+            BUILD=$(npx eas-cli@latest build:list \
               --platform ios \
               --profile production \
-              --status finished \
               --limit 5 \
               --json \
               --non-interactive 2>/dev/null \
-              | jq -r --arg t "$SINCE" \
-                '[.[] | select(.createdAt >= $t)] | first | .artifacts.applicationArchiveUrl // empty' \
+              | jq --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first // empty' \
               2>/dev/null || true)
-            if [ -n "$URL" ] && [ "$URL" != "null" ]; then
-              echo "iOS build ready: $URL"
-              echo "$URL" > ios-build-url.txt
-              echo "url=$URL" >> "$GITHUB_OUTPUT"
-              exit 0
+            if [ -z "$BUILD" ] || [ "$BUILD" = "null" ]; then
+              echo "Attempt $i/40: no build found yet…"
+              continue
             fi
-            echo "Attempt $i/40: not finished yet…"
+            STATUS=$(echo "$BUILD" | jq -r '.status')
+            if [ "$STATUS" = "finished" ]; then
+              URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
+              if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+                echo "iOS build ready: $URL"
+                echo "$URL" > ios-build-url.txt
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            elif [ "$STATUS" = "errored" ] || [ "$STATUS" = "cancelled" ]; then
+              echo "iOS build failed with status: $STATUS"
+              exit 1
+            else
+              echo "Attempt $i/40: build status is '$STATUS', waiting…"
+            fi
           done
           echo "Timed out waiting for iOS build" && exit 1
         env:
@@ -228,3 +251,70 @@ jobs:
         run: eas submit --platform android --profile production --latest --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # ── 4. GitHub Release ─────────────────────────────────────────────────────
+  release:
+    name: GitHub Release
+    needs: [trigger, wait-android, wait-ios]
+    runs-on: ubuntu-latest
+    if: always() && needs.trigger.result == 'success'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download Android build metadata
+        id: dl-android-meta
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: android-build-metadata
+
+      - name: Download iOS build metadata
+        id: dl-ios-meta
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-build-metadata
+
+      - name: Download APK from EAS
+        id: dl-apk
+        if: steps.dl-android-meta.outcome == 'success'
+        continue-on-error: true
+        run: |
+          URL=$(cat android-build-url.txt)
+          curl -fL "$URL" -o bac-app.apk
+          echo "path=bac-app.apk" >> "$GITHUB_OUTPUT"
+
+      - name: Download IPA from EAS
+        id: dl-ipa
+        if: steps.dl-ios-meta.outcome == 'success'
+        continue-on-error: true
+        run: |
+          URL=$(cat ios-build-url.txt)
+          curl -fL "$URL" -o bac-app.ipa
+          echo "path=bac-app.ipa" >> "$GITHUB_OUTPUT"
+
+      - name: Build release body
+        id: body
+        run: |
+          ANDROID_LINE=""
+          IOS_LINE=""
+          [ -f bac-app.apk ] && ANDROID_LINE="**Android:** download \`bac-app.apk\` and open it on your device (enable \"Install from unknown sources\" if prompted)."
+          [ -f bac-app.ipa ] && IOS_LINE="**iOS:** download \`bac-app.ipa\` and install via TestFlight or [AltStore](https://altstore.io)."
+          cat > release-body.md << EOF
+          Automated release from commit ${{ github.sha }}.
+
+          ${ANDROID_LINE}
+          ${IOS_LINE}
+          EOF
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.trigger.outputs.new-version }}-${{ github.run_number }}
+          name: BAC App v${{ needs.trigger.outputs.new-version }} (#${{ github.run_number }})
+          body_path: release-body.md
+          files: |
+            ${{ steps.dl-apk.outputs.path }}
+            ${{ steps.dl-ipa.outputs.path }}
+          generate_release_notes: true
