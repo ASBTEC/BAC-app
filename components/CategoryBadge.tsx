@@ -15,7 +15,7 @@ const LABELS: Record<EventCategory, string> = {
   viveBAC:     'ViveBAC',
 };
 
-const ICONS: Partial<Record<EventCategory, React.FC<{ width?: number; height?: number }>>> = {
+const ICONS: Partial<Record<EventCategory, React.FC<{ width?: number; height?: number; color?: string }>>> = {
   bioBAC:      BioBACLogo,
   businessBAC: BusinessBACLogo,
   expoBAC:     ExpoBACLogo,
