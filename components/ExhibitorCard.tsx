@@ -15,22 +15,34 @@ export function ExhibitorCard({ exhibitor }: Props) {
   const router = useRouter();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
+  const photo = getExhibitorPhoto(exhibitor.id, scheme);
+  const isBusiness = exhibitor.exhibitor_type === 'business';
+
+  let avatarContent: React.ReactNode;
+  if (photo) {
+    if (typeof photo === 'function') {
+      const SvgPhoto = photo as React.ComponentType<{ width: number; height: number }>;
+      avatarContent = <SvgPhoto width={48} height={48} />;
+    } else {
+      avatarContent = <Image source={photo} style={styles.avatarImage} resizeMode={isBusiness ? 'contain' : 'cover'} />;
+    }
+  } else {
+    avatarContent = (
+      <MaterialIcons
+        name={isBusiness ? 'business' : 'person'}
+        size={28}
+        color={BACColors.navyDark}
+      />
+    );
+  }
 
   return (
     <Pressable
       style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
       {/* Avatar */}
-      <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue, borderRadius: exhibitor.exhibitor_type === 'business' ? 6 : 24 }]}>
-        {getExhibitorPhoto(exhibitor.id, scheme) ? (
-          <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.avatarImage} resizeMode={exhibitor.exhibitor_type === 'business' ? 'contain' : 'cover'} />
-        ) : (
-          <MaterialIcons
-            name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
-            size={28}
-            color={BACColors.navyDark}
-          />
-        )}
+      <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 6 : 24 }]}>
+        {avatarContent}
       </View>
 
       <View style={styles.content}>
@@ -41,9 +53,9 @@ export function ExhibitorCard({ exhibitor }: Props) {
         </View>
 
         <View style={styles.tagRow}>
-          <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal + '22' : BACColors.navyDark + '22', borderColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.navyDark }]}>
-            <Text style={[styles.typeLabel, { color: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.navyDark }]}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
+          <View style={[styles.typeBadge, { backgroundColor: isBusiness ? BACColors.navyDark + '22' : BACColors.teal + '22', borderColor: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
+            <Text style={[styles.typeLabel, { color: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
+              {isBusiness ? 'Empresa' : 'Ponente'}
             </Text>
           </View>
         </View>

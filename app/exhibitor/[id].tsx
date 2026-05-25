@@ -58,20 +58,33 @@ export default function ExhibitorDetailScreen() {
     );
   }
 
+  const photo = getExhibitorPhoto(exhibitor.id, scheme);
+  const isBusiness = exhibitor.exhibitor_type === 'business';
+
+  let heroAvatarContent: React.ReactNode;
+  if (photo) {
+    if (typeof photo === 'function') {
+      const SvgPhoto = photo as React.ComponentType<{ width: number; height: number }>;
+      heroAvatarContent = <SvgPhoto width={80} height={80} />;
+    } else {
+      heroAvatarContent = <Image source={photo} style={styles.heroAvatarImage} resizeMode={isBusiness ? 'contain' : 'cover'} />;
+    }
+  } else {
+    heroAvatarContent = (
+      <MaterialIcons
+        name={isBusiness ? 'business' : 'person'}
+        size={48}
+        color={BACColors.navyDark}
+      />
+    );
+  }
+
   const ListHeader = (
     <View>
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
-        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: exhibitor.exhibitor_type === 'business' ? 8 : 40 }]}>
-          {getExhibitorPhoto(exhibitor.id, scheme) ? (
-            <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.heroAvatarImage} resizeMode={exhibitor.exhibitor_type === 'business' ? 'contain' : 'cover'} />
-          ) : (
-            <MaterialIcons
-              name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
-              size={48}
-              color={BACColors.navyDark}
-            />
-          )}
+        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 8 : 40 }]}>
+          {heroAvatarContent}
         </View>
         <Text style={styles.heroName}>{exhibitor.name}</Text>
 
