@@ -363,5 +363,13 @@
     "photo": "FarmaLeaders.png",
     "sponsor_tier": "silver",
     "description": "Patrocinador Plata del BAC Barcelona 2026."
+  },
+  {
+    "id": "biz_016",
+    "exhibitor_type": "business",
+    "name": "UNESCO",
+    "photo": "unesco_natcom_esp_flag_spa_W.png",
+    "sponsor_tier": "platinum",
+    "description": "Patrocinador Platino del BAC Barcelona 2026."
   }
 ]

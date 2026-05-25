@@ -3,7 +3,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { EventCard } from '@/components/EventCard';
-import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
+import { getExhibitorPhoto } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -63,8 +63,8 @@ export default function ExhibitorDetailScreen() {
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
         <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue }]}>
-          {EXHIBITOR_PHOTOS[exhibitor.id] ? (
-            <Image source={EXHIBITOR_PHOTOS[exhibitor.id]} style={styles.heroAvatarImage} resizeMode="cover" />
+          {getExhibitorPhoto(exhibitor.id, scheme) ? (
+            <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.heroAvatarImage} resizeMode="cover" />
           ) : (
             <MaterialIcons
               name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}

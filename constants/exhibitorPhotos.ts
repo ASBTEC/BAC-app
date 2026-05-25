@@ -1,3 +1,15 @@
+export const EXHIBITOR_PHOTOS_THEMED: Record<string, { light: ReturnType<typeof require>; dark: ReturnType<typeof require> }> = {
+  'biz_016': {
+    light: require('@/assets/images/exhibitors/sponsors/unesco_natcom_esp_flag_spa_W.png'),
+    dark: require('@/assets/images/exhibitors/sponsors/unesco_natcom_esp_flag_spa_B.png'),
+  },
+};
+
+export function getExhibitorPhoto(id: string, scheme: 'light' | 'dark'): ReturnType<typeof require> | undefined {
+  if (EXHIBITOR_PHOTOS_THEMED[id]) return EXHIBITOR_PHOTOS_THEMED[id][scheme];
+  return EXHIBITOR_PHOTOS[id];
+}
+
 export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   // Speakers
   'spk_001': require('@/assets/images/exhibitors/speakers/antonio ferrer montiel.jpg'),

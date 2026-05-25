@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
+import { getExhibitorPhoto } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Exhibitor } from '@/types';
@@ -22,8 +22,8 @@ export function ExhibitorCard({ exhibitor }: Props) {
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
       {/* Avatar */}
       <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue }]}>
-        {EXHIBITOR_PHOTOS[exhibitor.id] ? (
-          <Image source={EXHIBITOR_PHOTOS[exhibitor.id]} style={styles.avatarImage} resizeMode="cover" />
+        {getExhibitorPhoto(exhibitor.id, scheme) ? (
+          <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.avatarImage} resizeMode="cover" />
         ) : (
           <MaterialIcons
             name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
