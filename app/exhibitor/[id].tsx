@@ -62,9 +62,9 @@ export default function ExhibitorDetailScreen() {
     <View>
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
-        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue }]}>
+        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: exhibitor.exhibitor_type === 'business' ? 8 : 40 }]}>
           {getExhibitorPhoto(exhibitor.id, scheme) ? (
-            <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.heroAvatarImage} resizeMode="cover" />
+            <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.heroAvatarImage} resizeMode={exhibitor.exhibitor_type === 'business' ? 'contain' : 'cover'} />
           ) : (
             <MaterialIcons
               name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
   heroAvatar: {
     width: 80,
     height: 80,
-    borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',

@@ -21,9 +21,9 @@ export function ExhibitorCard({ exhibitor }: Props) {
       style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
       {/* Avatar */}
-      <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue }]}>
+      <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue, borderRadius: exhibitor.exhibitor_type === 'business' ? 6 : 24 }]}>
         {getExhibitorPhoto(exhibitor.id, scheme) ? (
-          <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.avatarImage} resizeMode="cover" />
+          <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.avatarImage} resizeMode={exhibitor.exhibitor_type === 'business' ? 'contain' : 'cover'} />
         ) : (
           <MaterialIcons
             name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
   avatar: {
     width: 48,
     height: 48,
-    borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
