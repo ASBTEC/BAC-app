@@ -58,27 +58,40 @@ export default function ExhibitorDetailScreen() {
     );
   }
 
+  const photo = getExhibitorPhoto(exhibitor.id, scheme);
+  const isBusiness = exhibitor.exhibitor_type === 'business';
+
+  let heroAvatarContent: React.ReactNode;
+  if (photo) {
+    if (typeof photo === 'function') {
+      const SvgPhoto = photo as React.ComponentType<{ width: number; height: number }>;
+      heroAvatarContent = <SvgPhoto width={80} height={80} />;
+    } else {
+      heroAvatarContent = <Image source={photo} style={styles.heroAvatarImage} resizeMode={isBusiness ? 'contain' : 'cover'} />;
+    }
+  } else {
+    heroAvatarContent = (
+      <MaterialIcons
+        name={isBusiness ? 'business' : 'person'}
+        size={80}
+        color={BACColors.navyDark}
+      />
+    );
+  }
+
   const ListHeader = (
     <View>
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
-        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: exhibitor.exhibitor_type === 'business' ? 8 : 40 }]}>
-          {getExhibitorPhoto(exhibitor.id, scheme) ? (
-            <Image source={getExhibitorPhoto(exhibitor.id, scheme)} style={styles.heroAvatarImage} resizeMode={exhibitor.exhibitor_type === 'business' ? 'contain' : 'cover'} />
-          ) : (
-            <MaterialIcons
-              name={exhibitor.exhibitor_type === 'speaker' ? 'person' : 'business'}
-              size={48}
-              color={BACColors.navyDark}
-            />
-          )}
+        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 12 : 70 }]}>
+          {heroAvatarContent}
         </View>
         <Text style={styles.heroName}>{exhibitor.name}</Text>
 
         <View style={styles.heroTags}>
           <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.amber }]}>
             <Text style={styles.typeBadgeText}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
+              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Patrocinador'}
             </Text>
           </View>
         </View>
@@ -134,15 +147,15 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   heroAvatar: {
-    width: 80,
-    height: 80,
+    width: 140,
+    height: 140,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
   },
   heroAvatarImage: {
-    width: 80,
-    height: 80,
+    width: 140,
+    height: 140,
   },
   heroName: {
     color: '#fff',
