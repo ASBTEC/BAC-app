@@ -73,7 +73,7 @@ export default function ExhibitorDetailScreen() {
     heroAvatarContent = (
       <MaterialIcons
         name={isBusiness ? 'business' : 'person'}
-        size={48}
+        size={80}
         color={BACColors.navyDark}
       />
     );
@@ -83,7 +83,7 @@ export default function ExhibitorDetailScreen() {
     <View>
       {/* Hero header */}
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
-        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 8 : 40 }]}>
+        <View style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 12 : 70 }]}>
           {heroAvatarContent}
         </View>
         <Text style={styles.heroName}>{exhibitor.name}</Text>
@@ -91,7 +91,7 @@ export default function ExhibitorDetailScreen() {
         <View style={styles.heroTags}>
           <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.amber }]}>
             <Text style={styles.typeBadgeText}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Empresa'}
+              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Patrocinador'}
             </Text>
           </View>
         </View>
@@ -147,15 +147,15 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   heroAvatar: {
-    width: 80,
-    height: 80,
+    width: 140,
+    height: 140,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
   },
   heroAvatarImage: {
-    width: 80,
-    height: 80,
+    width: 140,
+    height: 140,
   },
   heroName: {
     color: '#fff',

@@ -55,7 +55,7 @@ export function ExhibitorCard({ exhibitor }: Props) {
         <View style={styles.tagRow}>
           <View style={[styles.typeBadge, { backgroundColor: isBusiness ? BACColors.navyDark + '22' : BACColors.teal + '22', borderColor: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
             <Text style={[styles.typeLabel, { color: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
-              {isBusiness ? 'Empresa' : 'Ponente'}
+              {isBusiness ? 'Patrocinador' : 'Ponente'}
             </Text>
           </View>
         </View>
