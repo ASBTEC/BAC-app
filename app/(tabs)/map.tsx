@@ -48,7 +48,7 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
 // PNG crop dimensions (487,0)→(1115,2200) of the original map
 const MAP_W = 628;
 const MAP_H = 2200;
-const MAP_VIEWPORT_H = 300;
+const MAP_VIEWPORT_H_FALLBACK = 300;
 
 const EXTERIOR_ID = 'Exterior de la facultat de biociencies';
 
@@ -116,11 +116,24 @@ export default function MapScreen() {
   const [showFilters, setShowFilters] = useState(true);
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
-  const { width: screenWidth } = useWindowDimensions();
+  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
   useEffect(() => {
     if (space) setSelectedSpace(space);
   }, [space]);
+
+  // Image dimensions as shared values so pan worklet can access them
+  const imgW = screenWidth - 24; // 12px padding each side from buildingPanel margin
+  const imgH = imgW * (MAP_H / MAP_W);
+  const imgWShared = useSharedValue(imgW);
+  const imgHShared = useSharedValue(imgH);
+  useEffect(() => {
+    imgWShared.value = screenWidth - 24;
+    imgHShared.value = (screenWidth - 24) * (MAP_H / MAP_W);
+  }, [screenWidth]);
+
+  // Actual rendered viewport height — updated via onLayout, used in pan clamping
+  const viewportH = useSharedValue(MAP_VIEWPORT_H_FALLBACK);
 
   // Pan + pinch-to-zoom shared values
   const scale = useSharedValue(1);
@@ -130,18 +143,35 @@ export default function MapScreen() {
   const savedX = useSharedValue(0);
   const savedY = useSharedValue(0);
 
+  const clampTranslation = (tx: number, ty: number, s: number, iw: number, ih: number, vh: number) => {
+    'worklet';
+    const maxX = iw * (s - 1) / 2;
+    const maxY = ih * (s - 1) / 2;
+    const minY = vh - ih * (s + 1) / 2;
+    return {
+      x: Math.max(-maxX, Math.min(maxX, tx)),
+      y: Math.max(minY, Math.min(maxY, ty)),
+    };
+  };
+
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
       scale.value = Math.max(0.5, Math.min(8, savedScale.value * e.scale));
     })
     .onEnd(() => {
       savedScale.value = scale.value;
+      const clamped = clampTranslation(translateX.value, translateY.value, scale.value, imgWShared.value, imgHShared.value, viewportH.value);
+      translateX.value = clamped.x;
+      translateY.value = clamped.y;
+      savedX.value = clamped.x;
+      savedY.value = clamped.y;
     });
 
   const panGesture = Gesture.Pan()
     .onUpdate((e) => {
-      translateX.value = savedX.value + e.translationX;
-      translateY.value = savedY.value + e.translationY;
+      const clamped = clampTranslation(savedX.value + e.translationX, savedY.value + e.translationY, scale.value, imgWShared.value, imgHShared.value, viewportH.value);
+      translateX.value = clamped.x;
+      translateY.value = clamped.y;
     })
     .onEnd(() => {
       savedX.value = translateX.value;
@@ -157,10 +187,6 @@ export default function MapScreen() {
       { scale: scale.value },
     ],
   }));
-
-  // Image fills screen width; height follows aspect ratio
-  const imgW = screenWidth - 24; // 12px padding each side from buildingPanel margin
-  const imgH = imgW * (MAP_H / MAP_W);
 
   const spaceEvents = useMemo<Event[]>(
     () => (selectedSpace ? getSpaceEvents(selectedSpace, now, events) : []),
@@ -192,19 +218,19 @@ export default function MapScreen() {
   );
 
   return (
-    <View style={[styles.screen, { backgroundColor: colors.background }]}>
-      {/* ── Map area (fixed) ── */}
-      <View style={[styles.mapArea, { borderBottomColor: colors.border }]}>
+    <ScrollView style={[styles.screen, { backgroundColor: colors.background }]} contentContainerStyle={styles.screenContent}>
+      {/* ── Map area — 80% of screen height ── */}
+      <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.6), borderBottomColor: colors.border }]}>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
           Toca un espacio para ver sus eventos
         </Text>
 
-        <View style={[styles.buildingPanel, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
+        <View style={[styles.buildingPanel, { flex: 1, borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
           <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
             FACULTAD DE BIOCIENCIAS — UAB
           </Text>
 
-          <View style={styles.mapViewport}>
+          <View style={styles.mapViewport} onLayout={(e) => { viewportH.value = e.nativeEvent.layout.height; }}>
             <GestureDetector gesture={mapGesture}>
               <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
                 <Image
@@ -285,7 +311,7 @@ export default function MapScreen() {
 
       {/* ── Event panel (scrollable, only when a space is selected) ── */}
       {selectedSpace && (
-        <ScrollView style={styles.eventPanel} contentContainerStyle={styles.eventPanelContent}>
+        <View style={styles.eventPanel}>
           <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
             <Text style={[styles.panelTitle, { color: colors.text }]}>
               {ALL_SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
@@ -401,14 +427,15 @@ export default function MapScreen() {
               emptyMessage="No hay eventos que coincidan con los filtros activos este día."
             />
           )}
-        </ScrollView>
+        </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
+  screenContent: { paddingBottom: Platform.select({ web: 32, default: 48 }) },
 
   mapArea: {
     borderBottomWidth: 1,
@@ -435,7 +462,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   mapViewport: {
-    height: MAP_VIEWPORT_H,
+    flex: 1,
     overflow: 'hidden',
     borderRadius: 6,
   },
@@ -463,8 +490,7 @@ const styles = StyleSheet.create({
   legendText: { fontSize: 11 },
 
   /* Event panel */
-  eventPanel: { flex: 1 },
-  eventPanelContent: { paddingBottom: Platform.select({ web: 32, default: 48 }) },
+  eventPanel: {},
   panelHeader: {
     paddingHorizontal: 16,
     paddingVertical: 10,
