@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { LogBox, Platform, Pressable } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { BACColors, OrbitronFonts } from '@/constants/theme';
@@ -46,13 +47,15 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <DataProvider>
-      <ThemeProvider>
-        <ScheduleProvider>
-          <RootNavigator />
-        </ScheduleProvider>
-      </ThemeProvider>
-    </DataProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <DataProvider>
+        <ThemeProvider>
+          <ScheduleProvider>
+            <RootNavigator />
+          </ScheduleProvider>
+        </ThemeProvider>
+      </DataProvider>
+    </GestureHandlerRootView>
   );
 }
 

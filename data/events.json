@@ -7,7 +7,7 @@
     "activity_type": "talk",
     "start_time": "2026-07-08T09:30:00",
     "end_time": "2026-07-08T10:00:00",
-    "local_location": "Auditorium",
+    "local_location": "Sala de Graus",
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
     "language": "spanish"
   },
@@ -19,7 +19,7 @@
     "activity_type": "stand",
     "start_time": "2026-07-07T10:00:00",
     "end_time": "2026-07-11T18:00:00",
-    "local_location": "Stand Area",
+    "local_location": "Espacio BusinessBAC (C1)",
     "exhibitor_ids": [
       "biz_001",
       "biz_002",
@@ -40,7 +40,7 @@
     "activity_type": "talk",
     "start_time": "2026-07-10T14:15:00",
     "end_time": "2026-07-10T15:00:00",
-    "local_location": "Auditorium",
+    "local_location": "Sala de Graus",
     "location": "https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8",
     "language": "spanish"
   },
@@ -422,7 +422,7 @@
     "activity_type": "talk",
     "start_time": "2026-07-09T18:00:00",
     "end_time": "2026-07-09T19:00:00",
-    "local_location": "Auditorium",
+    "local_location": "Sala de Graus",
     "exhibitor_ids": [
       "spk_029"
     ],
@@ -436,7 +436,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-08T09:00:00",
     "end_time": "2026-07-08T09:30:00",
-    "local_location": "Entrada Facultad de Biociencias",
+    "local_location": "Exterior de la facultat de biociencies",
     "language": "spanish"
   },
   {
@@ -447,7 +447,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-08T11:00:00",
     "end_time": "2026-07-08T11:30:00",
-    "local_location": "Hall",
+    "local_location": "Espacio BusinessBAC (C1)",
     "language": "spanish"
   },
   {
@@ -458,7 +458,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-08T14:00:00",
     "end_time": "2026-07-08T15:00:00",
-    "local_location": "Comedor",
+    "local_location": "Catering (C0)",
     "language": "spanish"
   },
   {
@@ -469,7 +469,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-09T10:30:00",
     "end_time": "2026-07-09T11:00:00",
-    "local_location": "Hall",
+    "local_location": "Espacio BusinessBAC (C1)",
     "language": "spanish"
   },
   {
@@ -480,7 +480,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-09T14:15:00",
     "end_time": "2026-07-09T15:45:00",
-    "local_location": "Comedor",
+    "local_location": "Catering (C0)",
     "language": "spanish"
   },
   {
@@ -491,7 +491,7 @@
     "activity_type": "activity",
     "start_time": "2026-07-10T12:15:00",
     "end_time": "2026-07-10T13:15:00",
-    "local_location": "Hall",
+    "local_location": "Espacio BusinessBAC (C1)",
     "language": "spanish"
   }
 ]

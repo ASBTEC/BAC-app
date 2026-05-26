@@ -1,12 +1,18 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Svg, { Rect as SvgRect } from 'react-native-svg';
 import {
+  Image,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { EventCard } from '@/components/EventCard';
@@ -39,6 +45,36 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
 ];
 
+// PNG crop dimensions (487,0)→(1115,2200) of the original map
+const MAP_W = 628;
+const MAP_H = 2200;
+const MAP_VIEWPORT_H = 300;
+
+const EXTERIOR_ID = 'Exterior de la facultat de biociencies';
+
+// Coordinates are in the cropped PNG space (original x − 487, y unchanged)
+const SPACES = [
+  { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 98,  y: 160,  w: 154, h: 74,  type: 'classroom' },
+  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 99,  y: 251,  w: 390, h: 133, type: 'stand' },
+  { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x: 208, y: 473,  w: 158, h: 65,  type: 'classroom' },
+  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 313, y: 373,  w: 175, h: 363, type: 'classroom' },
+  { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 346, y: 755,  w: 232, h: 785, type: 'expo' },
+  { id: 'Catering (C0)',                label: 'Catering (C0)',                 x: 228, y: 1660, w: 154, h: 117, type: 'catering' },
+  { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x: 83,  y: 1785, w: 194, h: 162, type: 'stand' },
+] as const;
+
+const ALL_SPACES = [
+  ...SPACES,
+  { id: EXTERIOR_ID, label: 'Exterior de la Facultat de Biociències' },
+];
+
+const ROOM_COLOR: Record<string, string> = {
+  classroom: BACColors.lightBlue,
+  stand:     BACColors.amber,
+  expo:      '#F4A259',
+  catering:  '#9B7B5C',
+};
+
 function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
   return event.exhibitor_ids
@@ -52,42 +88,19 @@ function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): bo
   return exhibitors.some((ex) => ex.name.toLowerCase().includes(q));
 }
 
-const SPACES = [
-  { id: 'Auditorium',  label: 'Auditorio',      type: 'classroom' as const, row: 0, col: 0, span: 2 },
-  { id: 'Classroom 1', label: 'Aula 1',          type: 'classroom' as const, row: 1, col: 0, span: 1 },
-  { id: 'Classroom 2', label: 'Aula 2',          type: 'classroom' as const, row: 1, col: 1, span: 1 },
-  { id: 'Laboratory',  label: 'Laboratorio',     type: 'classroom' as const, row: 2, col: 0, span: 1 },
-  { id: 'Stand Area',  label: 'Zona de Stands',  type: 'stand'     as const, row: 2, col: 1, span: 1 },
-  { id: 'Outdoor',     label: 'Exterior',        type: 'outdoor'   as const, row: 3, col: 0, span: 2 },
-];
-
-const SPACE_BG: Record<string, string> = {
-  classroom: BACColors.lightBlue,
-  stand:     BACColors.amber,
-  outdoor:   BACColors.green,
-};
-
 function getSpaceEvents(spaceId: string, now: Date, events: Event[]): Event[] {
-  return events.filter((e) => {
-    if (spaceId === 'Outdoor') {
-      if (e.activity_type !== 'outdoor_activity') return false;
-    } else {
-      if (e.activity_type === 'stand') return false;
-      if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
-    }
-    const s = getTemporalStatus(e, now);
-    return s === 'now' || s === 'upcoming' || s === 'future';
-  }).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
+  return events
+    .filter((e) => {
+      if (spaceId === EXTERIOR_ID) {
+        if (e.activity_type !== 'outdoor_activity') return false;
+      } else {
+        if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
+      }
+      const s = getTemporalStatus(e, now);
+      return s === 'now' || s === 'upcoming' || s === 'future';
+    })
+    .sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
 }
-
-const INDOOR_SPACES = SPACES.filter((s) => s.type !== 'outdoor');
-const OUTDOOR_SPACES = SPACES.filter((s) => s.type === 'outdoor');
-
-const ROWS = INDOOR_SPACES.reduce<(typeof SPACES[number])[][]>((acc, s) => {
-  if (!acc[s.row]) acc[s.row] = [];
-  acc[s.row].push(s);
-  return acc;
-}, []);
 
 export default function MapScreen() {
   const { events, exhibitors } = useData();
@@ -103,10 +116,51 @@ export default function MapScreen() {
   const [showFilters, setShowFilters] = useState(true);
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const { width: screenWidth } = useWindowDimensions();
 
   useEffect(() => {
     if (space) setSelectedSpace(space);
   }, [space]);
+
+  // Pan + pinch-to-zoom shared values
+  const scale = useSharedValue(1);
+  const savedScale = useSharedValue(1);
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const savedX = useSharedValue(0);
+  const savedY = useSharedValue(0);
+
+  const pinchGesture = Gesture.Pinch()
+    .onUpdate((e) => {
+      scale.value = Math.max(0.5, Math.min(8, savedScale.value * e.scale));
+    })
+    .onEnd(() => {
+      savedScale.value = scale.value;
+    });
+
+  const panGesture = Gesture.Pan()
+    .onUpdate((e) => {
+      translateX.value = savedX.value + e.translationX;
+      translateY.value = savedY.value + e.translationY;
+    })
+    .onEnd(() => {
+      savedX.value = translateX.value;
+      savedY.value = translateY.value;
+    });
+
+  const mapGesture = Gesture.Simultaneous(pinchGesture, panGesture);
+
+  const mapAnimStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: translateX.value },
+      { translateY: translateY.value },
+      { scale: scale.value },
+    ],
+  }));
+
+  // Image fills screen width; height follows aspect ratio
+  const imgW = screenWidth - 24; // 12px padding each side from buildingPanel margin
+  const imgH = imgW * (MAP_H / MAP_W);
 
   const spaceEvents = useMemo<Event[]>(
     () => (selectedSpace ? getSpaceEvents(selectedSpace, now, events) : []),
@@ -138,83 +192,89 @@ export default function MapScreen() {
   );
 
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={styles.container}>
-      {/* Map area */}
-      <View style={styles.mapArea}>
+    <View style={[styles.screen, { backgroundColor: colors.background }]}>
+      {/* ── Map area (fixed) ── */}
+      <View style={[styles.mapArea, { borderBottomColor: colors.border }]}>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
           Toca un espacio para ver sus eventos
         </Text>
 
-        {/* Indoor building */}
-        <View style={[styles.building, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
+        <View style={[styles.buildingPanel, { borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
           <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
             FACULTAD DE BIOCIENCIAS — UAB
           </Text>
-          {ROWS.map((row, rowIdx) => (
-            <View key={rowIdx} style={styles.row}>
-              {row.map((space) => {
-                const selected = selectedSpace === space.id;
-                const bg = selected ? BACColors.teal : SPACE_BG[space.type];
-                return (
-                  <Pressable
-                    key={space.id}
-                    style={[
-                      styles.spaceBtn,
-                      { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.navyDark + '44', borderWidth: selected ? 2 : 1.5 },
-                    ]}
-                    onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
-                    <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
-                      {space.label}
-                    </Text>
-                    <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
-                      {space.type === 'classroom' ? 'Aula' : 'Zona de Stands'}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          ))}
-        </View>
 
-        {/* Outdoor panel — separate from the building */}
-        <View style={[styles.outdoorPanel, { borderColor: BACColors.green + '88', backgroundColor: scheme === 'dark' ? '#1E2427' : '#F4FBF4' }]}>
-          <Text style={[styles.buildingLabel, { color: BACColors.green }]}>
-            EXTERIOR DE LA FACULTAD DE BIOCIENCIAS
-          </Text>
-          <View style={styles.row}>
-            {OUTDOOR_SPACES.map((space) => {
-              const selected = selectedSpace === space.id;
-              const bg = selected ? BACColors.teal : SPACE_BG[space.type];
-              return (
-                <Pressable
-                  key={space.id}
-                  style={[
-                    styles.spaceBtn,
-                    { flex: space.span, backgroundColor: bg, borderColor: selected ? BACColors.navyDark : BACColors.green + '66', borderWidth: selected ? 2 : 1.5 },
-                  ]}
-                  onPress={() => setSelectedSpace(space.id === selectedSpace ? null : space.id)}>
-                  <Text style={[styles.spaceLabel, { color: selected ? '#fff' : BACColors.navyDark }]}>
-                    {space.label}
-                  </Text>
-                  <Text style={[styles.spaceType, { color: selected ? '#ffffffcc' : BACColors.navyDark + 'aa' }]}>
-                    Zona exterior
-                  </Text>
-                </Pressable>
-              );
-            })}
+          <View style={styles.mapViewport}>
+            <GestureDetector gesture={mapGesture}>
+              <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
+                <Image
+                  source={require('@/assets/images/map/mapa.png')}
+                  style={{ width: imgW, height: imgH }}
+                  resizeMode="stretch"
+                />
+                <Svg
+                  viewBox={`0 0 ${MAP_W} ${MAP_H}`}
+                  width={imgW}
+                  height={imgH}
+                  style={StyleSheet.absoluteFill}
+                >
+                  {SPACES.map((room) => {
+                    const sel = selectedSpace === room.id;
+                    const color = ROOM_COLOR[room.type] ?? BACColors.lightBlue;
+                    return (
+                      <SvgRect
+                        key={room.id}
+                        x={room.x}
+                        y={room.y}
+                        width={room.w}
+                        height={room.h}
+                        rx={4}
+                        fill={sel ? color + 'bb' : color + '44'}
+                        stroke={sel ? BACColors.teal : BACColors.navyDark + '88'}
+                        strokeWidth={sel ? 4 : 2}
+                        onPress={() => setSelectedSpace(room.id === selectedSpace ? null : room.id)}
+                      />
+                    );
+                  })}
+                </Svg>
+              </Animated.View>
+            </GestureDetector>
           </View>
+
+          {/* Exterior — below the building map */}
+          <Pressable
+            style={[
+              styles.exteriorBtn,
+              {
+                backgroundColor: selectedSpace === EXTERIOR_ID ? BACColors.green + '33' : 'transparent',
+                borderColor: selectedSpace === EXTERIOR_ID ? BACColors.green : BACColors.green + '66',
+              },
+            ]}
+            onPress={() => setSelectedSpace(selectedSpace === EXTERIOR_ID ? null : EXTERIOR_ID)}>
+            <MaterialIcons name="park" size={14} color={BACColors.green} />
+            <Text style={[styles.exteriorLabel, { color: selectedSpace === EXTERIOR_ID ? BACColors.green : colors.text }]}>
+              Exterior de la Facultat de Biociències
+            </Text>
+          </Pressable>
         </View>
 
+        {/* Legend */}
         <View style={styles.legend}>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Aula / Auditorio</Text>
+            <Text style={[styles.legendText, { color: colors.text }]}>Aula</Text>
           </View>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Zona de Stands</Text>
+            <Text style={[styles.legendText, { color: colors.text }]}>Stands</Text>
+          </View>
+          <View style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: '#F4A259' }]} />
+            <Text style={[styles.legendText, { color: colors.text }]}>ExpoBAC</Text>
+          </View>
+          <View style={styles.legendItem}>
+            <View style={[styles.legendDot, { backgroundColor: '#9B7B5C' }]} />
+            <Text style={[styles.legendText, { color: colors.text }]}>Catering</Text>
           </View>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: BACColors.green }]} />
@@ -223,23 +283,21 @@ export default function MapScreen() {
         </View>
       </View>
 
-      {/* Event list — shown below the map when a space is selected */}
+      {/* ── Event panel (scrollable, only when a space is selected) ── */}
       {selectedSpace && (
-        <View style={[styles.eventPanel, { borderTopColor: colors.border }]}>
-
-          {/* Space name header */}
+        <ScrollView style={styles.eventPanel} contentContainerStyle={styles.eventPanelContent}>
           <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
             <Text style={[styles.panelTitle, { color: colors.text }]}>
-              {SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
+              {ALL_SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
             </Text>
           </View>
 
-          {/* Search bar + filter button + view toggle */}
+          {/* Search bar + filter toggle + view toggle */}
           <View style={styles.searchRow}>
             <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
               <TextInput
                 style={[styles.searchInput, { color: colors.text }]}
-                placeholder="Buscar eventos en mapa"
+                placeholder="Buscar eventos en este espacio"
                 placeholderTextColor={colors.icon}
                 value={search}
                 onChangeText={setSearch}
@@ -269,7 +327,7 @@ export default function MapScreen() {
             </View>
           </View>
 
-          {/* Category + type filter chips */}
+          {/* Category + type chips */}
           {showFilters && (
             <>
               <View style={styles.filterRow}>
@@ -285,9 +343,7 @@ export default function MapScreen() {
                       ]}
                       onPress={() => setActiveCategory(active ? 'all' : key)}>
                       {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
-                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                        {label}
-                      </Text>
+                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
                     </Pressable>
                   );
                 })}
@@ -307,9 +363,7 @@ export default function MapScreen() {
                       ]}
                       onPress={() => setActiveType(active ? 'all' : key)}>
                       <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.text} />
-                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>
-                        {label}
-                      </Text>
+                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
                     </Pressable>
                   );
                 })}
@@ -347,57 +401,70 @@ export default function MapScreen() {
               emptyMessage="No hay eventos que coincidan con los filtros activos este día."
             />
           )}
-        </View>
+        </ScrollView>
       )}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { paddingBottom: 40 },
-  mapArea: { alignItems: 'center', paddingBottom: 12 },
-  subtitle: { fontSize: 12, marginTop: 12, marginBottom: 12, textAlign: 'center', paddingHorizontal: 16 },
-  building: {
-    width: 300,
-    borderWidth: 2,
-    borderRadius: 10,
-    padding: 10,
-    gap: 8,
+  screen: { flex: 1 },
+
+  mapArea: {
+    borderBottomWidth: 1,
+    paddingBottom: 8,
   },
-  outdoorPanel: {
-    width: 300,
+  subtitle: {
+    fontSize: 12,
+    marginTop: 12,
+    marginBottom: 8,
+    textAlign: 'center',
+    paddingHorizontal: 16,
+  },
+  buildingPanel: {
+    marginHorizontal: 12,
     borderWidth: 2,
-    borderStyle: 'dashed',
     borderRadius: 10,
     padding: 10,
     gap: 8,
-    marginTop: 10,
   },
   buildingLabel: {
     fontSize: 10,
     fontWeight: '700',
     textAlign: 'center',
     letterSpacing: 0.3,
-    marginBottom: 4,
   },
-  row: { flexDirection: 'row', gap: 8 },
-  spaceBtn: {
-    borderRadius: 8,
-    paddingVertical: 20,
-    paddingHorizontal: 8,
+  mapViewport: {
+    height: MAP_VIEWPORT_H,
+    overflow: 'hidden',
+    borderRadius: 6,
+  },
+  exteriorBtn: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 4,
+    gap: 6,
+    borderWidth: 1.5,
+    borderStyle: 'dashed',
+    borderRadius: 8,
+    paddingVertical: 12,
   },
-  spaceLabel: { fontSize: 12, fontWeight: '700', textAlign: 'center' },
-  spaceType: { fontSize: 10, textAlign: 'center' },
-  legend: { flexDirection: 'row', gap: 20, marginTop: 16 },
-  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  legendDot: { width: 12, height: 12, borderRadius: 6 },
-  legendText: { fontSize: 12 },
+  exteriorLabel: { fontSize: 12, fontWeight: '600' },
+  legend: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginTop: 8,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+  },
+  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  legendDot: { width: 10, height: 10, borderRadius: 5 },
+  legendText: { fontSize: 11 },
 
   /* Event panel */
-  eventPanel: { borderTopWidth: 1 },
+  eventPanel: { flex: 1 },
+  eventPanelContent: { paddingBottom: Platform.select({ web: 32, default: 48 }) },
   panelHeader: {
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -462,6 +529,6 @@ const styles = StyleSheet.create({
   filterChipText: { fontSize: 13, fontWeight: '600' },
 
   /* List */
-  listContent: { paddingVertical: 8, paddingBottom: 24 },
+  listContent: { paddingVertical: 8, paddingBottom: 16 },
   empty: { textAlign: 'center', marginTop: 24, fontSize: 14, paddingHorizontal: 24 },
 });
