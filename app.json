@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "cat.asbtec.bac2026",
+      "bundleIdentifier": "es.febiotec.bac",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }

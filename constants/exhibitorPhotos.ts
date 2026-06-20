@@ -14,7 +14,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   // Speakers
   'spk_001': require('@/assets/images/exhibitors/speakers/antonio ferrer montiel.jpg'),
   'spk_002': require('@/assets/images/exhibitors/speakers/Benedetta bolognesi.jpg'),
-  'spk_003': require('@/assets/images/exhibitors/speakers/benjamí oller-salvia.jpg'),
+  'spk_003': require('@/assets/images/exhibitors/speakers/benjami_oller-salvia.jpg'),
   'spk_004': require('@/assets/images/exhibitors/speakers/Juan J. calvete.jpg'),
   'spk_005': require('@/assets/images/exhibitors/speakers/nuria sanchez coll.jpg'),
   'spk_006': require('@/assets/images/exhibitors/speakers/Silvia Osuna.jpg'),
