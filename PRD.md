@@ -1,9 +1,9 @@
 # Product Requirements Document (PRD) — BAC 2026 App
 
-**Version:** 0.5 (Draft)
-**Status:** In Review
-**Last Updated:** 2026-03-27
-**Author:** Aleix Mariné-Tena, IT Officer at ASBTEC
+**Version:** 1.0 (Shipped)
+**Status:** In Production — Pending Apple App Store approval
+**Last Updated:** 2026-06-20
+**Author:** Aleix Mariné-Tena, IT Officer at ASBTEC, Informatic's coordinator at BAC 2026
 **Stakeholders:** ASBTEC Board, FEBIOTEC Board, BAC 2026 Organising Committee
 
 ---
@@ -44,7 +44,7 @@ The app centralises all key congress information — schedule, venue map, events
 
 The design is inspired by the **Cambridge Healthtech Institute (CHI) Events App** — a well-regarded conference app in the life sciences industry — adapted to BAC's simpler scope and no-login architecture.
 
-The app will be **fully in English**.
+The app is **fully in Spanish**.
 
 ---
 
@@ -57,7 +57,7 @@ The app will be **fully in English**.
 - Display a venue map of the UAB campus with congress spaces (Map).
 - Allow attendees to save events to a personal schedule stored locally on-device (My Schedule).
 - List congress sponsors and speakers (Sponsors & Speakers).
-- Be fast, intuitive, and partially usable offline.
+- Be fast, intuitive, and usable offline.
 - Be available on the opening day of BAC 2026.
 
 ### Non-Goals
@@ -89,7 +89,7 @@ The result is a congress companion app: lightweight, public, and easy to update 
 **Congress attendees** — biotech students, researchers, and professionals at BAC 2026. They want to:
 
 - Know in real time what is happening now and what is coming up next.
-- Browse the full congress programme and filter by event category.
+- Browse the full congress programme and filter by event category and activity type.
 - Find which room a session is in and read its description.
 - See the venue map and know which events are happening in each space.
 - Save events to their personal schedule.
@@ -100,6 +100,7 @@ The result is a congress companion app: lightweight, public, and easy to update 
 **Congress organisers / ASBTEC Board** — they want to:
 
 - Prepare and publish the complete event and exhibitor data before the congress opens.
+- Push data corrections during the congress without requiring users to reinstall.
 - Ensure sponsors and speakers receive clear visibility in the app.
 
 ---
@@ -108,15 +109,15 @@ The result is a congress companion app: lightweight, public, and easy to update 
 
 Tabs are ordered left to right in the bottom navigation bar:
 
-| Position | Tab | Icon | Default |
-|---|---|---|---|
-| 1 (leftmost) | **My Schedule** | Bookmark / star | No |
-| 2 | **Map** | Location pin | No |
-| 3 (centre) | **Home** | House | **Yes** |
-| 4 | **Events** | Calendar | No |
-| 5 (rightmost) | **Sponsors & Speakers** | Person silhouette | No |
+| Position | Tab | Label | Icon | Default |
+|---|---|---|---|---|
+| 1 (leftmost) | **My Schedule** | Agenda | Bookmark | No |
+| 2 | **Map** | Mapa | Map | No |
+| 3 (centre) | **Home** | Inicio | House | **Yes** |
+| 4 | **Events** | Eventos | Calendar | No |
+| 5 (rightmost) | **Sponsors & Speakers** | Personas | People | No |
 
-A **three-dot button (⋮)** is permanently visible in the top-right corner across all tabs and opens a global sliding menu.
+A **three-dot button (⋮)** is permanently visible in the top-right corner across all tabs and opens a global sliding side drawer.
 
 ---
 
@@ -124,7 +125,7 @@ A **three-dot button (⋮)** is permanently visible in the top-right corner acro
 
 The **Cambridge Healthtech Institute (CHI) Events App** (available on iOS and Android) is the primary UX and visual design reference for this project. It is a leading conference app in the life sciences sector, recognised for its clean navigation and agenda experience.
 
-### Key patterns to adopt from CHI
+### Key patterns adopted from CHI
 
 - **Bottom navigation bar** with clearly labelled tabs and icons.
 - **Event cards** showing title, time slot, location, and event type coded by colour.
@@ -146,9 +147,9 @@ The **Cambridge Healthtech Institute (CHI) Events App** (available on iOS and An
 
 ## 7. Data Model
 
-All congress data is **bundled directly inside the app** as static **JSON files** embedded in the APK/IPA at build time. There is no remote server or backend. There are two core entities: **Event** and **Exhibitor**.
+All congress data is **bundled directly inside the app** as static **JSON files** (`data/events.json` and `data/exhibitors.json`). On startup the app fetches the latest versions from the public GitHub repository (`ASBTEC/BAC-app`, `master` branch) and caches them in AsyncStorage. If the device is offline, the last cached version (or the bundled version on first launch) is used. There are two core entities: **Event** and **Exhibitor**.
 
-> **MVP data update policy:** There are no live data updates during the congress. If a correction is needed, a new app build must be released and users must reinstall. This is an accepted constraint for the MVP.
+> **Data update policy:** Corrections can be pushed at any time by updating `data/events.json` or `data/exhibitors.json` on GitHub. Users will receive the update automatically on their next app launch without reinstalling.
 
 ### 7.1 Entity: Event
 
@@ -159,33 +160,33 @@ Represents any activity at the congress. All events share the following fields:
 | `id` | string | Yes | Unique event identifier |
 | `title` | string | Yes | Event title |
 | `description` | string | No | Full event description |
-| `category` | enum | Yes | Main category: `viveBAC`, `bioBAC`, `expoBAC`, `businessBAC`, `other` |
+| `category` | enum | Yes | Main category: `viveBAC`, `bioBAC`, `expoBAC`, `businessBAC`, `general` |
 | `activity_type` | enum | Yes | Activity type: `stand`, `talk`, `activity`, `outdoor_activity`, `round_table` |
 | `start_time` | datetime (ISO 8601) | Yes | Start time |
 | `end_time` | datetime (ISO 8601) | Yes | End time |
-| `local_location` | string | Yes | Room or physical space within the venue (e.g. "Main Auditorium", "Room B2") |
+| `local_location` | string | Yes | Room or physical space within the venue (must match a space ID from the Map tab) |
 | `location` | string (URL) | No | Google Maps URL for the exact location |
 | `exhibitor_ids` | array of strings | No | IDs of associated exhibitors (speakers, company running a stand, etc.) |
 
 **`category` values:**
 
-| Value | Description |
-|---|---|
-| `viveBAC` | Congress experience events: social, cultural, and networking activities |
-| `bioBAC` | Scientific events: talks, workshops, and academic sessions |
-| `expoBAC` | Exhibition events: sponsor stands and company showcases |
-| `businessBAC` | Professional events: round tables, career sessions, and networking |
-| `other` | Any event that does not fit the above categories |
+| Value | Display label | Description |
+|---|---|---|
+| `viveBAC` | ViveBAC | Congress experience events: social, cultural, and networking activities |
+| `bioBAC` | BioBAC | Scientific events: talks, workshops, and academic sessions |
+| `expoBAC` | ExpoBAC | Exhibition events: sponsor stands and company showcases |
+| `businessBAC` | BusinessBAC | Professional events: round tables, career sessions, and networking |
+| `general` | General | Any event that does not fit the above categories |
 
 **`activity_type` values:**
 
-| Value | Description |
-|---|---|
-| `stand` | Company or institution exhibition stand |
-| `talk` | Keynote, lecture, or presentation |
-| `activity` | Participatory activity in an indoor space |
-| `outdoor_activity` | Participatory activity in an outdoor space |
-| `round_table` | Round table discussion or panel debate |
+| Value | Display label | Icon |
+|---|---|---|
+| `stand` | Stand | storefront |
+| `talk` | Ponencia | mic |
+| `round_table` | Mesa Redonda | groups |
+| `activity` | Actividad | extension |
+| `outdoor_activity` | Al Aire Libre | park |
 
 **Example JSON:**
 
@@ -196,9 +197,9 @@ Represents any activity at the congress. All events share the following fields:
   "description": "Inaugural keynote of BAC 2026 delivered by...",
   "category": "viveBAC",
   "activity_type": "talk",
-  "start_time": "2026-05-15T09:00:00",
-  "end_time": "2026-05-15T10:00:00",
-  "local_location": "Main Auditorium",
+  "start_time": "2026-07-07T09:00:00",
+  "end_time": "2026-07-07T10:00:00",
+  "local_location": "Sala de Graus",
   "location": "https://maps.google.com/?q=...",
   "exhibitor_ids": ["exhibitor_042"]
 }
@@ -215,7 +216,7 @@ Represents a person (speaker) or a company/institution (stand, sponsor) associat
 | `id` | string | Yes | Unique exhibitor identifier |
 | `exhibitor_type` | enum | Yes | `speaker` or `business` |
 | `name` | string | Yes | Speaker name or company/institution name |
-| `photo` | string (URL) | No | Profile photo URL (speaker) or logo URL (company) |
+| `photo` | string (URL) | No | Profile photo or logo URL — in practice, photos are bundled as local assets referenced via `constants/exhibitorPhotos.ts` |
 | `description` | string | No | Short biography (speaker) or company description |
 | `sponsor_tier` | enum | No | Sponsorship tier (only for `business` type): `platinum`, `gold`, `silver`, `bronze`, or omitted if not a sponsor |
 
@@ -228,6 +229,8 @@ Represents a person (speaker) or a company/institution (stand, sponsor) associat
 | `silver` | Third tier |
 | `bronze` | Entry-level sponsorship tier |
 
+> **Note on photos:** Speaker photos and sponsor logos are bundled as local image assets (PNG/JPEG/SVG) and mapped by exhibitor ID in `constants/exhibitorPhotos.ts`. The `photo` field in the JSON is not currently used at runtime; `exhibitorPhotos.ts` is the authoritative source for visual assets. SVG logos support automatic light/dark variants.
+
 **Example JSON:**
 
 ```json
@@ -236,14 +239,12 @@ Represents a person (speaker) or a company/institution (stand, sponsor) associat
     "id": "exhibitor_042",
     "exhibitor_type": "speaker",
     "name": "Dr. Maria Puig",
-    "photo": "https://cdn.bac2026.cat/speakers/maria_puig.jpg",
     "description": "Principal investigator at CRG, specialising in genome editing."
   },
   {
     "id": "exhibitor_101",
     "exhibitor_type": "business",
     "name": "BioTechCorp S.L.",
-    "photo": "https://cdn.bac2026.cat/sponsors/biotechcorp_logo.png",
     "description": "Leading supplier of reagents for molecular biology.",
     "sponsor_tier": "gold"
   }
@@ -254,44 +255,56 @@ Represents a person (speaker) or a company/institution (stand, sponsor) associat
 
 ## 8. Shared Component: Event Card
 
-All event lists in the app (Home, Events, My Schedule, Map space detail) use the **same event card component**. Search, filter, sort, and temporal label widgets are shown or hidden depending on the tab that renders the component.
+All event lists in the app use the **same `EventCard` component** (`components/EventCard.tsx`). Search, filter, sort, and temporal label widgets are shown or hidden depending on the tab that renders the component.
 
 ### Card Content
 
 Each event card displays:
 
-- Full date and time slot (e.g. `Tuesday 7 July · 10:00 – 11:00`)
+- Full date and time slot (e.g. `Martes 7 julio · 10:00 – 11:00`)
 - Event title
 - Local location (`local_location`)
 - Activity type badge (`activity_type`), colour-coded
 - Category badge (`category`)
 - Primary exhibitor name (if any)
-- "Add to My Schedule" button (bookmark icon)
+- "Add to My Schedule" bookmark icon button
 
-Tapping a card opens the **event detail view**, which includes:
+Tapping a card opens the **event detail view** (`app/event/[id].tsx`), which includes:
 
-- All card fields
+- Status banner: "● En curso ahora" (teal) or "⏳ Comienza pronto" (amber)
+- Dark navy header with activity type badge, category badge, event title, date/time, and category logo
+- Location row — tappable if the `local_location` matches a known map space (deep-links to Map tab); "Abrir en Google Maps" button if `location` URL is set
 - Full description
-- Associated exhibitor(s): photo/logo, name, and description
-- "Open in Google Maps" button (if `location` is present)
-- "Add to My Schedule" / "Remove from My Schedule" toggle
+- Associated exhibitor(s): avatar/logo, name, description — tappable, navigates to exhibitor detail
+- "Añadir/Eliminar de mi agenda" button
+
+### Timetable View
+
+All tabs that list events also offer a **Timetable View** (`components/TimetableView.tsx`) toggled via a segmented list/calendar-grid control. The timetable shows:
+
+- Day selector chips (Martes 7 through Sábado 11 July)
+- Hourly time grid from 08:00 to 24:00
+- Event blocks colour-coded by category; overlapping events placed in adjacent columns
+- Multi-day event banners above the grid
+- Real-time current-time indicator (red line with dot), scrolled to on load
+- Bookmark icon on each block to toggle My Schedule without opening the detail view
 
 ### Per-tab Configuration
 
-| Tab | Search bar | Quick filters | Sort | Temporal labels |
-|---|---|---|---|---|
-| Home | ❌ | ❌ | By time proximity | ✅ (now / upcoming / past) |
-| My Schedule | ❌ | ❌ | By time proximity | ✅ (now / upcoming / past) |
-| Map (space detail) | ❌ | ❌ | By start time | ✅ (now / upcoming) |
-| Events | ✅ | ✅ (category) | By start time | ❌ |
+| Tab | Search bar | Category filters | Type filters | Timetable view | Temporal labels |
+|---|---|---|---|---|---|
+| Home | ✅ | ✅ | ✅ | ✅ | ✅ (now / upcoming / past) |
+| My Schedule | ✅ | ✅ | ✅ | ✅ | ✅ (now / upcoming / past) |
+| Map (space panel) | ✅ | ✅ | ✅ | ✅ | ✅ (now / upcoming) |
+| Events | ✅ | ✅ | ✅ | ✅ | ❌ |
 
 ### Temporal Labels
 
-Events can display visual temporal labels:
+Events display visual temporal labels:
 
 - **NOW** — event is currently in progress (`start_time` ≤ current time ≤ `end_time`)
 - **UPCOMING** — starts within the next 30 minutes
-- **PAST** — already finished (shown with reduced opacity)
+- **PAST** — already finished (shown with reduced opacity when `dimPast` is enabled)
 
 ---
 
@@ -302,169 +315,216 @@ Events can display visual temporal labels:
 The app uses a **bottom navigation bar** with five tabs:
 
 ```
-[ ★ My Schedule ]  [ 📍 Map ]  [ 🏠 Home ]  [ 📅 Events ]  [ 👤 Sponsors & Speakers ]
+[ 🔖 Agenda ]  [ 🗺 Mapa ]  [ 🏠 Inicio ]  [ 📅 Eventos ]  [ 👤 Personas ]
 ```
 
-- The app opens on the **Home** tab by default.
+- The app opens on the **Inicio (Home)** tab by default.
 - Navigation is persistent — switching tabs does not reset the scroll position or view state within a tab.
-- Icons follow a consistent icon set (e.g. Material Symbols or Phosphor Icons).
-- The **three-dot button (⋮)** is permanently visible in the top-right corner of every screen.
+- Icons use **Material Icons** (`@expo/vector-icons`).
+- The **three-dot button (⋮)** is permanently visible in the top-right corner of every tab's header. The Home tab renders its own custom header (no system navigation bar), so it places the ⋮ button manually in the hero section.
 
 ---
 
 ### 9.2 Global Menu (Three-dot button)
 
-The **⋮** button in the top-right corner of the app opens a **sliding side drawer** with the following options:
+The **⋮** button opens a **sliding right-side drawer** (`components/GlobalMenu.tsx`) animated with a spring transition. It contains the following sections:
 
-#### Notification Settings
+#### Apariencia (Appearance)
 
-- Toggle to enable or disable push notifications for events saved to My Schedule.
-- Explanatory subtitle: *"Receive reminders before events you have added to your personal schedule."*
-- **Lead time selector:** Configurable reminder time before the event. Default: **5 minutes**. Options: 5 / 10 / 15 / 30 minutes.
-- Notifications are scheduled locally on-device — no internet connection is required.
+- Three-button segmented control: **Sistema** (auto) / **Claro** (light) / **Oscuro** (dark).
+- Preference is stored via `context/theme-context.tsx` and persisted in AsyncStorage.
 
-#### Privacy Notice
+#### Notificaciones (Notifications)
 
-- Static page with the app privacy notice.
-- Content: *"This app does not collect any personal data from its users. All saved information (personal schedule) is stored exclusively on your device and is never transmitted to any server."*
+- Toggle to enable or disable local event reminders for events saved to My Schedule.
+- Subtitle: *"Recibe recordatorios antes de los eventos que hayas añadido a tu agenda personal."*
+- **Lead time selector** (visible only when notifications are enabled): 5 / 10 / 15 / 30 minutes. Default: 5 minutes.
+- Notifications are scheduled locally on-device; no internet connection or push service required.
 
-#### Help & Support
+#### Información (About)
 
-- Contact section with the following information:
-  - Email: **amarine@asbtec.cat**
-  - Description: *"For any technical issues with the app, contact the ASBTEC IT Officer."*
+A grouped navigation list with four items:
+
+| Item | Route | Content |
+|---|---|---|
+| Acerca de la aplicación | `/about` | Credits (developer, beta testers), participating organisations (BAC, ASBTEC, FEBIOTEC) with logos and links |
+| Aviso de privacidad | `/privacy` | Static privacy notice |
+| Licenciamiento | `/license` | License information |
+| Ayuda y soporte | `/support` | Contact information for technical support |
 
 ---
 
 ### 9.3 Tab: My Schedule (leftmost)
 
-**Icon:** Bookmark / star
-**Purpose:** Display all events the user has saved via "Add to My Schedule", sorted by time proximity.
+**Tab label:** Agenda  
+**Icon:** bookmark  
+**Purpose:** Display all events the user has saved via the bookmark icon, sorted by time proximity.
 
 #### Behaviour
 
-- Saved events are displayed ordered by `start_time` ascending, with past events shown last (reduced opacity).
-- Uses the event card component with no search bar and no filters.
-- Temporal labels (NOW / UPCOMING / PAST) are visible.
-- If no events have been saved: empty state with the message *"You haven't added any events to your schedule yet. Browse Events and tap the bookmark icon to save them here."*
+- **Global empty state** (no saved events at all): shows a centred message — *"Aún no tienes eventos guardados / Explora los eventos y pulsa el marcador para guardarlos aquí."*
+- When saved events exist, displays the full filter header (see below) and the event list.
+- Saved events sorted by time proximity (in-progress first, then upcoming by start time, then past events).
+- Temporal labels (NOW / UPCOMING / PAST) visible. Past events shown with reduced opacity.
+
+#### Filter Header
+
+- Search bar filtering by event title or exhibitor name.
+- Collapsible filter panel (toggle via filter icon button):
+  - Category chips: BioBAC / BusinessBAC / ExpoBAC / General / ViveBAC (toggle; "all" when none active).
+  - Activity type chips: Ponencia / Mesa Redonda / Actividad / Al Aire Libre / Stand.
+- View toggle: list / timetable.
 
 #### Storage
 
-- Saved event IDs are stored on-device (AsyncStorage / SharedPreferences equivalent).
+- Saved event IDs are stored on-device via AsyncStorage (`context/schedule-context.tsx`).
 - Not synchronised with any server.
 
 ---
 
 ### 9.4 Tab: Map
 
-**Icon:** Location pin
-**Purpose:** Display a local map of the congress venue at UAB, with all spaces and rooms labelled, to help attendees navigate the site.
+**Tab label:** Mapa  
+**Icon:** map  
+**Purpose:** Display an interactive map of the congress venue at UAB, with tappable spaces that reveal current and upcoming events.
 
-#### Content
+#### Map Implementation
 
-- An **interactive SVG map** of the Faculty of Biosciences, UAB, bundled as a local app asset.
-- The SVG has tappable zones defined for each labelled space.
+- A **PNG floor plan** (`assets/images/map/mapa.png`) rendered as a full-width image, with an invisible **SVG overlay** of tappable `<Rect>` zones aligned to rooms in the image.
+- The image/overlay supports **pinch-to-zoom** (scale 0.5×–8×) and **pan** with boundary clamping, using `react-native-gesture-handler` and `react-native-reanimated`.
+- The map panel occupies 60% of the screen height; the event panel expands below when a space is selected.
 
-The following spaces must be labelled on the map:
+#### Spaces
 
-| Space | Type |
-|---|---|
-| Auditorium | Classroom |
-| Classroom 1 | Classroom |
-| Classroom 2 | Classroom |
-| Laboratory | Classroom |
-| Stand area(s) | Stand location |
+The following spaces are defined and tappable on the map:
 
-Only classrooms and stand locations are labelled. General services, toilets, and circulation areas are not required for the MVP.
+| Space ID | Display label | Type | Colour |
+|---|---|---|---|
+| `Sala de Graus` | Sala de Graus | Aula | Light blue |
+| `Espacio BusinessBAC (C1)` | Espacio BusinessBAC (C1) | Stand | Amber |
+| `Sala d'Actes (C0)` | Sala d'Actes (C0) | Aula | Light blue |
+| `Aula PEP Vendrell (C0/1434.)` | Aula PEP Vendrell (C0/1434.) | Aula | Light blue |
+| `Pasillo ExpoBAC (C2-C1)` | Pasillo ExpoBAC | ExpoBAC corridor | Orange |
+| `Catering (C0)` | Catering (C0) | Catering | Brown |
+| `Espacio BusinessBAC (C2)` | Espacio BusinessBAC (C2) | Stand | Amber |
+| `Exterior de la facultat de biociencies` | Exterior de la Facultat de Biociències | Outdoor | Green |
 
-#### Interaction
+The **Exterior** space is a separate tappable button below the building panel (dashed border, green). Tapping it shows all events with `activity_type: outdoor_activity`.
 
-- Tapping any **labelled space** on the SVG map opens a **bottom sheet panel** showing current or upcoming events in that space, using the event card component (no search, no filters, sorted by start time, with NOW / UPCOMING labels).
-- If no current or upcoming events exist for a space: *"No upcoming events in this space."*
+A colour **legend** below the map identifies space types: Aula / Stands / ExpoBAC / Catering / Exterior.
 
-#### Open Items
+#### Space-to-event Matching
 
-- [ ] Confirm the exact room names/numbers for Classroom 1, Classroom 2, and the Laboratory.
-- [ ] Obtain or produce the interactive SVG floor plan of the Faculty of Biosciences.
+Events are associated with a space by matching `event.local_location` to the space's `id`. For the Exterior, events with `activity_type === 'outdoor_activity'` are matched regardless of `local_location`.
+
+#### Event Panel
+
+When a space is tapped, an event panel appears below the map showing current and upcoming events for that space (past events are excluded). The panel includes:
+
+- Space name header
+- Search bar, collapsible category/type filter chips, and list/timetable view toggle
+- Event cards with NOW/UPCOMING labels
+- Empty state: *"No hay eventos actuales ni próximos en este espacio."*
+
+#### Deep-link Support
+
+The Map tab accepts a `space` URL param (`/(tabs)/map?space=<spaceId>`), used by the Event Detail screen to link directly to the relevant space.
 
 ---
 
 ### 9.5 Tab: Home (centre, default)
 
-**Icon:** House
-**Purpose:** Serve as the congress home screen, showing key identification information at a glance and real-time current and upcoming events.
+**Tab label:** Inicio  
+**Icon:** house  
+**Header:** Custom hero header (no system navigation bar on this tab)  
+**Purpose:** Serve as the congress home screen with key identification information and real-time event tracking.
 
-#### Top Section — Congress Header
+#### Hero Header
 
-The top of the screen prominently displays:
+The dark navy hero section displays:
 
-- **Congress title:** Biotechnology Annual Congress (BAC) 2026
-- **Location:** "UAB Barcelona" — **tappable**, opens Google Maps at: `https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8`
-- **Congress dates:** 7–11 July 2026, displayed as pills or labels — each date (or the full date range) is **tappable** and allows adding the congress to the device calendar (Google Calendar, Apple Calendar, etc.) via the native OS calendar integration.
+- **BAC logo** (left, from `assets/images/logo-in-app.png`)
+- **Congress title:** "Congreso Anual de Biotecnología" (in Orbitron / light blue)
+- **Congress year:** "BAC Barcelona 2026" (large, Orbitron Black / white)
+- **Location:** "Facultad de Biociencias UAB, Barcelona" — tappable, opens Google Maps (`https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8`)
+- **Date pill:** "7 – 11 de julio de 2026" (amber background) — tappable, opens Google Calendar with congress details pre-filled
 
-#### Bottom Section — Current & Upcoming Events
+The ⋮ menu button is overlaid on the top-right of the hero.
 
-- Event list sorted by **time proximity** (in-progress and soonest-to-start events first).
-- All event types are included, sorted by start time.
-- Uses the event card component with no search bar and no quick filters.
-- Temporal labels (NOW / UPCOMING / PAST) are visible.
-- The list refreshes automatically in the background.
+#### Filter Header (below hero)
+
+- Search bar filtering by event title or exhibitor name.
+- Filter toggle button; collapsible filter panel with:
+  - Category chips: BioBAC / BusinessBAC / ExpoBAC / General / ViveBAC.
+  - Divider line.
+  - Activity type chips: Ponencia / Mesa Redonda / Actividad / Al Aire Libre / Stand.
+- View toggle: list / timetable.
+
+#### Event List
+
+- SectionList with three sections: **Eventos en curso** / **Próximos eventos** / **Eventos pasados**.
+- Current events sorted by start time; upcoming by start time; past in reverse chronological order.
+- Temporal labels visible. Past events shown with reduced opacity.
+- Updates automatically every 60 seconds (interval-based).
+- Empty state: *"No se han encontrado eventos."*
 
 ---
 
 ### 9.6 Tab: Events
 
-**Icon:** Calendar
-**Purpose:** List all congress events with search and category filtering, allowing attendees to explore the full programme.
+**Tab label:** Eventos  
+**Icon:** event (calendar)  
+**Purpose:** Browse the full congress programme with search, category, and type filtering.
 
-#### Header
+#### Filter Header
 
-- **Search bar** at the top: filters by event title, speaker name, or company in real time.
-- **Quick filter buttons** by category, displayed horizontally:
-  - All (default)
-  - ViveBAC
-  - BioBAC
-  - ExpoBAC
-  - BusinessBAC
-  - Other
-- Category filters are mutually exclusive (only one active at a time).
+- Search bar filtering by event title or exhibitor name.
+- Filter toggle button; collapsible filter panel with:
+  - Category chips: BioBAC / BusinessBAC / ExpoBAC / General / ViveBAC.
+  - Divider line.
+  - Activity type chips: Ponencia / Mesa Redonda / Actividad / Al Aire Libre / Stand.
+- View toggle: list / timetable.
 
 #### Event List
 
-- All congress events, sorted by `start_time` ascending by default.
-- Uses the event card component with search bar and filters visible.
-- Temporal labels are not shown in this view (full programme view, not real-time).
+- All congress events sorted by `start_time` ascending.
+- No temporal labels shown.
+- Empty state: *"No hay eventos que coincidan con tu búsqueda."*
 
 ---
 
 ### 9.7 Tab: Sponsors & Speakers (rightmost)
 
-**Icon:** Person silhouette
-**Purpose:** List all congress exhibitors — both speakers and companies/institutions — allowing attendees to discover and learn about them.
+**Tab label:** Personas  
+**Icon:** people  
+**Purpose:** List all congress exhibitors — speakers and companies/institutions.
 
-#### Header
+#### Filter Header
 
-- **Search bar** filtering by name.
-- **Quick filter** by type: All / Speakers / Companies.
-- When filtering by Companies, an additional **tier filter** is available: All / Platinum / Gold / Silver / Bronze.
+- Search bar filtering by name.
+- Type filter chips: **Todos** / **Ponentes** / **Patrocinadores** (mutually exclusive).
 
-#### Exhibitor Card
+#### Sorting
 
-Each exhibitor is shown on a card with:
+- Businesses sorted by sponsor tier (Platinum → Gold → Silver → Bronze → untiered), then alphabetically within each tier.
+- Speakers sorted alphabetically.
+- When showing "Todos", businesses appear before speakers.
 
-- Profile photo or logo (`photo`)
-- Name (`name`)
-- Type badge (`exhibitor_type`): "Speaker" or "Company"
-- Sponsor tier badge (`sponsor_tier`) — displayed only for businesses that have a tier set (e.g. "Gold Sponsor")
-- Short description (`description`)
+#### Exhibitor Card (`components/ExhibitorCard.tsx`)
 
-Companies are sorted by sponsor tier (Platinum first, then Gold, Silver, Bronze, then non-tiered) and then alphabetically within each tier. Speakers are sorted alphabetically.
+Each card shows:
 
-Tapping an exhibitor card opens the **exhibitor detail view**, which includes:
+- Profile photo or logo (from bundled assets via `constants/exhibitorPhotos.ts`)
+- Name
+- Type badge: "Ponente" (teal) or "Patrocinador" (amber)
+- Sponsor tier badge (if applicable)
+- Short description
 
-- Full-size photo or logo
-- Name, sponsor tier (if applicable), and full description
-- List of events associated with this exhibitor (using the event card component with no search and no filters)
+Tapping navigates to the **Exhibitor Detail screen** (`app/exhibitor/[id].tsx`), which shows:
+
+- Large hero section (dark navy) with avatar/logo, name, and type badge
+- Full description
+- List of all events associated with this exhibitor (sorted by start time, no temporal labels)
 
 ---
 
@@ -476,23 +536,31 @@ No login, registration, or server-side session management. The app is fully anon
 
 ### 10.2 FEBIOTEC Platform Integration
 
-The app will not connect to the FEBIOTEC website backend, user database, or ticket purchasing system.
+The app does not connect to the FEBIOTEC website backend, user database, or ticket purchasing system.
 
 ### 10.3 In-App Messaging / Networking
 
-No attendee messaging, meeting scheduling, or contact exchange in v1. Candidate for v2.
+No attendee messaging, meeting scheduling, or contact exchange in v1.
 
 ### 10.4 Custom Activity / Quiz Engine
 
-No in-app quiz, voting, or gamification engine. Interactive activity content is hosted on external URLs.
+No in-app quiz, voting, or gamification engine.
 
 ### 10.5 Multi-Congress / Multi-Event Support
 
-The app is built exclusively for BAC 2026. A generalised FEBIOTEC events platform is out of scope for this version.
+The app is built exclusively for BAC 2026.
 
 ### 10.6 User Profile
 
-A local user profile tab was considered in earlier versions of this PRD. It has been removed from the v1 scope, as the app is fully anonymous and no use case requires a local identity.
+Removed from v1 scope — the app is fully anonymous.
+
+### 10.7 Native Calendar Integration
+
+Calendar integration is implemented as a **Google Calendar deep link** (pre-filled event URL). Native OS calendar APIs (iOS `EventKit` / Android `CalendarContract`) are not used. This is accepted for v1.
+
+### 10.8 Sponsor Tier Sub-filter
+
+The Sponsors & Speakers tab does not offer a tier sub-filter (Platinum / Gold / Silver / Bronze). Sponsors are sorted by tier visually but there is no filter chip to show only a specific tier. Considered for a future update.
 
 ---
 
@@ -500,92 +568,92 @@ A local user profile tab was considered in earlier versions of this PRD. It has 
 
 ### Platform
 
-- **Target platforms:** iOS and Android.
-- **Tech stack:** **React Native** (cross-platform, single codebase).
+- **Target platforms:** iOS, Android, and Web.
+- **Tech stack:** **React Native + Expo** (Expo Router for file-based navigation, EAS for cloud builds).
+- **New Architecture:** enabled (`newArchEnabled: true`).
+- **React Compiler:** enabled (`reactCompiler: true`).
+- **TypeScript strict mode:** on.
 
 ### Data Layer
 
-- All events and exhibitors are **bundled as static JSON files inside the app binary** (embedded in the APK / IPA at build time).
-- There is **no backend, no CMS, and no remote server** for the MVP. All data is available offline from first launch with no network request required.
-- **MVP update policy:** If event or exhibitor data needs to be corrected, a new app build must be released and users must reinstall the app. This is an accepted trade-off for the MVP.
-- Local storage (AsyncStorage) is used only for user preferences: saved event IDs (My Schedule) and notification settings.
+- Events and exhibitors are **bundled as static JSON files** (`data/events.json`, `data/exhibitors.json`) inside the app binary.
+- On every startup, `context/data-context.tsx` fetches the latest JSON from GitHub (`https://raw.githubusercontent.com/ASBTEC/BAC-app/master/data/`), validates it, caches it in AsyncStorage, and replaces the in-memory state. If the network request fails, the cached or bundled version is used.
+- **Update policy:** Push a corrected JSON to GitHub. Users receive the update on their next app launch, with no reinstall required.
 
 ### Local Storage
 
-- Saved event IDs (My Schedule) and notification preferences are stored on-device via AsyncStorage.
+- **Saved event IDs** (My Schedule): `context/schedule-context.tsx` via AsyncStorage.
+- **Notification settings** (enabled flag + lead time): `hooks/use-notifications.ts` via AsyncStorage.
+- **Theme preference** (light / dark / system): `context/theme-context.tsx` via AsyncStorage.
 - No sensitive data is stored locally.
-
-### No Server Authentication
-
-- No backend means no auth layer of any kind. All data is local to the device.
 
 ### Push Notifications
 
-- Push notifications are **triggered locally on-device** by the app, with no backend or push notification service (e.g. no Firebase Cloud Messaging required for the MVP).
-- React Native's local notification library (e.g. `notifee` or `react-native-push-notification`) schedules a notification for each event saved to My Schedule.
-- **Default lead time:** 5 minutes before the event start time.
-- **User-configurable:** The lead time can be adjusted in the Notification Settings drawer. Options to be defined (e.g. 5 / 10 / 15 / 30 minutes).
-- Notifications are only fired if the user has granted notification permission on their device.
+- **Local on-device notifications** via `expo-notifications`. No backend or FCM/APNs push service required.
+- A notification is scheduled when an event is added to My Schedule and cancelled when it is removed.
+- Default lead time: 5 minutes. User-configurable: 5 / 10 / 15 / 30 minutes.
+- Requires the user to grant notification permission on their device.
 
-### Calendar Integration
+### Iconography
 
-- Adding congress dates to the device calendar uses the native OS calendar API (iOS: `EventKit`; Android: `CalendarContract`), with no third-party services required.
-- A React Native bridge library such as `react-native-calendar-events` can be used.
+- **Material Icons** (`@expo/vector-icons / MaterialIcons`) used throughout (tab icons, UI icons, event detail icons).
 
 ### App Distribution
 
-- **Primary channels:** Apple App Store and Google Play Store (public listings).
-- **Static landing page:** A simple web page hosted on Vercel, Netlify, or similar, linking to both stores. This is a secondary channel and a lower priority than the store listings.
-- Brand assets are available in the `brand_assets` folder and should be used for store listing graphics (icon, screenshots, feature graphic).
+- **iOS:** Apple App Store (pending review as of 2026-06-20). EAS submit configured with Apple Team ID `Q664H69PXD`.
+- **Android:** Google Play Store. EAS submit configured with service account key.
+- **Web:** Expo web build (secondary channel).
+- EAS build profiles: `development` (internal), `preview` (APK/internal IPA), `production` (store release with auto-increment versioning).
+
+### Routing App Coverage File
+
+- `routing_app_coverage.geojson` is included in the project root for the Apple App Store submission. It is a GeoJSON `MultiPolygon` covering all Spanish territory (mainland, Balearic Islands, Canary Islands, Ceuta, and Melilla).
 
 ### Design Assets
 
-- Brand assets (colours, typography, logos) are available in the `brand_assets` folder in the project repository.
+- Brand assets (colours, typography, logos) are in the `brand_assets` folder and `assets/images/`.
+- Colour palette and typography are defined in `constants/theme.ts` (`BACColors`, `Colors`, `OrbitronFonts`, `CategoryColors`).
 
 ---
 
 ## 12. Design Guidelines
 
-### Design Reference
-
-The visual style follows the CHI Events App conventions: light card-based layouts, strong typographic hierarchy, and colour-coded event types. Specific brand colours, typography, and graphic assets will be provided by the BAC 2026 organising committee.
-
 ### Branding
 
-- The app must follow the **BAC 2026, ASBTEC, and FEBIOTEC visual identity** guidelines.
-- Brand assets (colours, typography, logos, and guidelines) are available in the **`brand_assets` folder** in the project repository.
+The app follows the **BAC 2026, ASBTEC, and FEBIOTEC visual identity**:
 
-### UX Principles
-
-- **Two-tap rule:** Any key action (find an event, view the map, look up a speaker) must be reachable within 2 taps from the default screen.
-- **Legible:** Minimum 14pt body text; high-contrast text on all backgrounds.
-- **Graceful degradation:** Cached content shown when offline; clear, non-intrusive error states when live data is unavailable.
-- **Fast launch:** The app must be interactive within 2 seconds on a mid-range device.
+- **Primary dark:** `BACColors.navyDark` (`#102A43`) — used for headers and hero backgrounds.
+- **Accent teal:** `BACColors.teal` (`#0D9488`) — active states, primary CTAs, NOW labels.
+- **Light blue:** `BACColors.lightBlue` (`#63B3ED`) — supporting text in dark headers, classroom map zones.
+- **Amber:** `BACColors.amber` (`#F6AD55`) — date pills, business badges, stand map zones.
+- **Typography:** Orbitron (Regular, Bold, Black) for headings and section titles; system font for body text.
 
 ### Activity Type Colour Coding
 
-| Activity Type | Suggested Colour |
+| Activity Type | Colour |
 |---|---|
-| Talk | Primary brand colour |
+| Talk | `BACColors.teal` (#0D9488) |
 | Round table | Secondary brand colour |
-| Activity | Warm accent (e.g. amber) |
-| Outdoor activity | Green |
+| Activity | Amber |
+| Outdoor activity | `BACColors.green` |
 | Stand | Neutral grey |
 
-### Category Colour Coding
+### Category Colour Coding (`constants/theme.ts → CategoryColors`)
 
-| Category | Suggested Colour |
+| Category | Colour |
 |---|---|
 | ViveBAC | Brand accent |
 | BioBAC | Dark blue / navy |
 | ExpoBAC | Purple / violet |
 | BusinessBAC | Teal / green |
-| Other | Light grey |
+| General | Light grey |
 
-### Iconography
+### UX Principles
 
-- Use a consistent icon library throughout (e.g. Material Symbols or Phosphor Icons).
-- Tab bar icons must be clearly recognisable at 24px.
+- **Two-tap rule:** Any key action reachable within 2 taps from the default screen.
+- **Legible:** Minimum 14pt body text; high-contrast text on all backgrounds.
+- **Graceful degradation:** Bundled/cached content shown offline; no blocking network errors.
+- **Fast launch:** Interactive within 2 seconds on a mid-range device (bundled data, no required network call).
 
 ---
 
@@ -594,37 +662,36 @@ The visual style follows the CHI Events App conventions: light card-based layout
 | # | Question | Owner | Status | Resolution |
 |---|---|---|---|---|
 | 1 | Exact congress dates and number of days? | Organising Committee | ✅ Resolved | Tuesday 7 July – Saturday 11 July 2026 (5 days) |
-| 2 | Exact UAB venue and floor plan of congress spaces? | Organising Committee | ✅ Resolved | Faculty of Biosciences, UAB. Spaces: Auditorium, 2 classrooms, 1 laboratory, stand area(s) |
-| 3 | Map format: static image with tappable zones vs. interactive SVG? | Tech Lead | ✅ Resolved | Interactive SVG |
-| 4 | Which spaces need to be labelled on the map? | Organising Committee | ✅ Resolved | Classrooms and stand locations only |
-| 5 | Backend / CMS for the event and exhibitor JSON files? | Tech Lead | ✅ Resolved | No backend. JSON files embedded in the APK/IPA at build time |
-| 6 | Who manages event data updates during the congress? | Organising Committee | ✅ Resolved | No live updates. If needed, a new build must be released and users must reinstall |
-| 7 | App distribution: public stores or internal? | Tech Lead | ✅ Resolved | Apple App Store + Google Play Store (primary). Static web page on Vercel/Netlify (secondary) |
-| 8 | BAC 2026 brand assets and design guidelines available? | Organising Committee | ✅ Resolved | Available in the `brand_assets` folder |
-| 9 | Tech stack preference? | Tech Lead | ✅ Resolved | React Native |
+| 2 | Exact UAB venue and floor plan of congress spaces? | Organising Committee | ✅ Resolved | Faculty of Biosciences, UAB. PNG floor plan in `assets/images/map/mapa.png` |
+| 3 | Map format: static image with tappable zones vs. interactive SVG? | Tech Lead | ✅ Resolved | PNG image with SVG overlay for tap zones + pinch/pan gesture support |
+| 4 | Which spaces need to be labelled on the map? | Organising Committee | ✅ Resolved | See space table in §9.4 |
+| 5 | Backend / CMS for the event and exhibitor JSON files? | Tech Lead | ✅ Resolved | No backend. JSON files in GitHub repo, fetched on startup for OTA updates |
+| 6 | Who manages event data updates during the congress? | Organising Committee | ✅ Resolved | Update `data/events.json` or `data/exhibitors.json` on GitHub master; users receive changes on next launch |
+| 7 | App distribution: public stores or internal? | Tech Lead | ✅ Resolved | Apple App Store + Google Play Store (primary). Web build (secondary) |
+| 8 | BAC 2026 brand assets and design guidelines available? | Organising Committee | ✅ Resolved | Available in `brand_assets/` and `assets/images/` |
+| 9 | Tech stack preference? | Tech Lead | ✅ Resolved | React Native + Expo |
 | 10 | How far in advance should push notifications fire? | Organising Committee | ✅ Resolved | Default: 5 minutes. User-configurable (5 / 10 / 15 / 30 min) |
-| 11 | Push notification provider? | Tech Lead | ✅ Resolved | Local on-device notifications only (no backend / FCM required) |
+| 11 | Push notification provider? | Tech Lead | ✅ Resolved | `expo-notifications` — local on-device only (no backend / FCM required) |
 | 12 | Google Maps URL for the congress location at UAB? | Organising Committee | ✅ Resolved | https://maps.app.goo.gl/hZKM9e8Mg6i52DPA8 |
-| 13 | Sponsor tier structure and display obligations? | Organising Committee | ✅ Resolved | Tiers: Platinum, Gold, Silver, Bronze. No contractual obligations; tier stored as `sponsor_tier` field on the exhibitor entity |
+| 13 | Sponsor tier structure and display obligations? | Organising Committee | ✅ Resolved | Tiers: Platinum, Gold, Silver, Bronze. Displayed as badge and used for sorting. No tier sub-filter chip (§10.8) |
+| 14 | Apple App Store routing coverage geographic scope? | Tech Lead | ✅ Resolved | All of Spain (mainland + Balearic Islands + Canary Islands + Ceuta + Melilla). See `routing_app_coverage.geojson` |
 
-> ✅ All open questions resolved. No blockers remaining for development to begin.
+> ✅ All open questions resolved.
 
 ---
 
 ## 14. Milestones & Timeline
 
-> ⚠️ Target dates are placeholders and must be set relative to the BAC 2026 opening date of **7 July 2026**.
-
-| Milestone | Target Date | Notes |
+| Milestone | Target Date | Status |
 |---|---|---|
-| PRD finalised and approved | TBD | ✅ All open questions resolved |
-| SVG floor plan of Faculty of Biosciences ready | TBD | Blocker for Map tab development |
-| Design mockups ready (all 5 tabs) | TBD | Brand assets available in `brand_assets` folder |
-| Alpha build — navigation + Home + Events | TBD | Internal testing only |
-| Beta build — all 5 tabs, real event/exhibitor data | TBD | Organiser UAT with final JSON content |
-| App Store / Play Store submission | TBD | Allow 1–2 weeks for review |
-| **App live — BAC 2026 opening day** | **7 July 2026** | Hard deadline |
+| PRD finalised and approved | 2026-03-27 | ✅ Done |
+| PNG floor plan of Faculty of Biosciences ready | — | ✅ Done (`assets/images/map/mapa.png`) |
+| Design mockups / brand assets | — | ✅ Done |
+| Alpha build — navigation + Home + Events | — | ✅ Done |
+| Beta build — all 5 tabs, real event/exhibitor data | — | ✅ Done |
+| App Store / Play Store submission | 2026-06-20 | ✅ Submitted — pending Apple review |
+| **App live — BAC 2026 opening day** | **7 July 2026** | ⏳ Target hard deadline |
 
 ---
 
-*This document is a living draft. Please add corrections or comments via the designated review channel or directly in this file.*
+*This document reflects the shipped state of the app as of 2026-06-20. Update it when features change or new scope is agreed.*

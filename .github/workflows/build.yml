@@ -146,6 +146,8 @@ jobs:
     needs: trigger
     runs-on: ubuntu-latest
     continue-on-error: true   # Android failure must not block iOS release
+    outputs:
+      build-url: ${{ steps.poll.outputs.url }}
 
     steps:
       - name: Checkout
@@ -249,6 +251,37 @@ jobs:
 
       - name: Submit to Google Play
         run: eas submit --platform android --profile production --latest --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # ── 3b. Submit iOS build to App Store ────────────────────────────────────
+  submit-ios:
+    name: Submit iOS to App Store
+    needs: wait-ios
+    runs-on: ubuntu-latest
+    if: ${{ needs.wait-ios.outputs.build-url != '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Submit to App Store
+        run: eas submit --platform ios --profile production --latest --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 

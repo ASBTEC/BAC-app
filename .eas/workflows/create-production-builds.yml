@@ -5,8 +5,7 @@ jobs:
     type: build
     params:
       platform: android
-  # build_ios is disabled until Apple Developer account is verified
-  # build_ios:
-  #   type: build
-  #   params:
-  #     platform: ios
+  build_ios:
+    type: build
+    params:
+      platform: ios
