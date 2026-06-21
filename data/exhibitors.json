@@ -370,6 +370,223 @@
     "name": "UNESCO",
     "photo": "unesco_natcom_esp_flag_spa_W.png",
     "sponsor_tier": "platinum",
-    "description": "Con el patrocinio de UNESCO. \n\nLa UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura) es una agencia especializada de las Naciones Unidas fundada en 1945. Su misión principal es contribuir a la paz y la seguridad internacional mediante la promoción de la cooperación entre las naciones en los ámbitos de la educación, la ciencia, la cultura y la comunicación",
+    "description": "Con el patrocinio de UNESCO. \n\nLa UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura) es una agencia especializada de las Naciones Unidas fundada en 1945. Su misión principal es contribuir a la paz y la seguridad internacional mediante la promoción de la cooperación entre las naciones en los ámbitos de la educación, la ciencia, la cultura y la comunicación"
+  },
+  {
+    "id": "spk_039",
+    "exhibitor_type": "speaker",
+    "name": "Esther Julián",
+    "photo": "20250709_EstherJulian_UAB.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_040",
+    "exhibitor_type": "speaker",
+    "name": "Antonio José Trujillo",
+    "photo": "Antonio Jose Trujillo.png",
+    "description": ""
+  },
+  {
+    "id": "spk_041",
+    "exhibitor_type": "speaker",
+    "name": "Arturo Blázquez",
+    "photo": "Arturo Blazquez.png",
+    "description": ""
+  },
+  {
+    "id": "spk_042",
+    "exhibitor_type": "speaker",
+    "name": "Eliana Carolina Bianucci Ovando",
+    "photo": "Eliana Carolina Bianucci Ovando.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_043",
+    "exhibitor_type": "speaker",
+    "name": "LASA",
+    "photo": "Foto_LASA.png",
+    "description": ""
+  },
+  {
+    "id": "spk_044",
+    "exhibitor_type": "speaker",
+    "name": "Francisco Valero",
+    "photo": "Francisco Valero.JPG",
+    "description": ""
+  },
+  {
+    "id": "spk_045",
+    "exhibitor_type": "speaker",
+    "name": "François Chauvigné",
+    "photo": "Francois_Chauvigne.png",
+    "description": ""
+  },
+  {
+    "id": "spk_046",
+    "exhibitor_type": "speaker",
+    "name": "Inmaculada Ponte Marull",
+    "photo": "Inmaculada Ponte Marull.jpeg",
+    "description": ""
+  },
+  {
+    "id": "spk_047",
+    "exhibitor_type": "speaker",
+    "name": "Joan Cerdà",
+    "photo": "Joan Cerda.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_048",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Barbé",
+    "photo": "Jordi Barbe.JPG",
+    "description": ""
+  },
+  {
+    "id": "spk_049",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Saldo",
+    "photo": "Jordi Saldo.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_050",
+    "exhibitor_type": "speaker",
+    "name": "Marc Bravo",
+    "photo": "Marc Bravo.png",
+    "description": ""
+  },
+  {
+    "id": "spk_051",
+    "exhibitor_type": "speaker",
+    "name": "Margarida Julià",
+    "photo": "Margarida Julia.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_052",
+    "exhibitor_type": "speaker",
+    "name": "FALTA",
+    "photo": "NRA_2_Foto.jpeg",
+    "description": ""
+  },
+  {
+    "id": "spk_053",
+    "exhibitor_type": "speaker",
+    "name": "Olga Sánchez",
+    "photo": "Olga Sanchez.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_054",
+    "exhibitor_type": "speaker",
+    "name": "Aroa Casado",
+    "photo": "Aroa Casado.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_055",
+    "exhibitor_type": "speaker",
+    "name": "Luis G. Mérida",
+    "photo": "Luis G. Merida.png",
+    "description": ""
+  },
+  {
+    "id": "spk_056",
+    "exhibitor_type": "speaker",
+    "name": "Gemma Marfany",
+    "photo": "Gemma Marfany.png",
+    "description": ""
+  },
+  {
+    "id": "spk_057",
+    "exhibitor_type": "speaker",
+    "name": "Marco Mariotti",
+    "photo": "Marco Mariotti.png",
+    "description": ""
+  },
+  {
+    "id": "biz_018",
+    "exhibitor_type": "business",
+    "name": "Kuhner",
+    "photo": "Kuhner.png",
+    "description": ""
+  },
+  {
+    "id": "biz_019",
+    "exhibitor_type": "business",
+    "name": "UVic",
+    "photo": "logo_3linies_uvic_color.jpg",
+    "description": ""
+  },
+  {
+    "id": "biz_017",
+    "exhibitor_type": "business",
+    "name": "FEBIOTEC",
+    "photo": "febiotec_color.png",
+    "description": ""
+  },
+  {
+    "id": "spk_030",
+    "exhibitor_type": "speaker",
+    "name": "Antonio Molina",
+    "photo": "FotoAmolina - Antonio Molina.png",
+    "description": ""
+  },
+  {
+    "id": "spk_031",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Martorell",
+    "photo": "JordiMartorell.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_032",
+    "exhibitor_type": "speaker",
+    "name": "Juan Carlos",
+    "photo": "JuanCarlos.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_033",
+    "exhibitor_type": "speaker",
+    "name": "Lara Cobacho Lluesma",
+    "photo": "Lara Cobacho Lluesma.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_034",
+    "exhibitor_type": "speaker",
+    "name": "Luca Caprera",
+    "photo": "LucaCaprera.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_035",
+    "exhibitor_type": "speaker",
+    "name": "Maria Lois",
+    "photo": "MariaLois.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_036",
+    "exhibitor_type": "speaker",
+    "name": "Rocío Vázquez",
+    "photo": "RocioVazquez.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_037",
+    "exhibitor_type": "speaker",
+    "name": "Xavier Aldeguer",
+    "photo": "Xavier_Aldeguer.jpg",
+    "description": ""
+  },
+  {
+    "id": "spk_038",
+    "exhibitor_type": "speaker",
+    "name": "Xavier Rovira",
+    "photo": "xavier_rovira.jpg",
+    "description": ""
   }
 ]
