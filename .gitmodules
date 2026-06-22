@@ -1,0 +1,3 @@
+[submodule "tools/bac-app-csv-to-json-converter"]
+	path = tools/bac-app-csv-to-json-converter
+	url = https://github.com/ASBTEC/bac-app-csv-to-json-converter
