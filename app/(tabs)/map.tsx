@@ -38,11 +38,18 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
 ];
 
 const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
-  { key: 'talk',             label: 'Ponencia',      iconName: 'mic' },
-  { key: 'round_table',      label: 'Mesa Redonda',  iconName: 'groups' },
-  { key: 'activity',         label: 'Actividad',     iconName: 'extension' },
-  { key: 'outdoor_activity', label: 'Al Aire Libre', iconName: 'park' },
-  { key: 'stand',            label: 'Stand',         iconName: 'storefront' },
+  { key: 'Ponencia',                label: 'Ponencia',                iconName: 'mic' },
+  { key: 'Presentación flash',      label: 'Presentación flash',      iconName: 'mic' },
+  { key: 'Acto institucional',      label: 'Acto institucional',      iconName: 'mic' },
+  { key: 'Mesa redonda',            label: 'Mesa redonda',            iconName: 'groups' },
+  { key: 'Debate',                  label: 'Debate',                  iconName: 'groups' },
+  { key: 'Stand',                   label: 'Stand',                   iconName: 'storefront' },
+  { key: 'Curso',                   label: 'Curso',                   iconName: 'school' },
+  { key: 'Taller',                  label: 'Taller',                  iconName: 'build' },
+  { key: 'Comidas y coffee breaks', label: 'Comidas y coffee breaks', iconName: 'restaurant' },
+  { key: 'Presentación de poster',  label: 'Presentación de poster',  iconName: 'article' },
+  { key: 'Speed Meeting',           label: 'Speed Meeting',           iconName: 'speed' },
+  { key: 'Visita',                  label: 'Visita',                  iconName: 'park' },
 ];
 
 // PNG crop dimensions (487,0)→(1115,2200) of the original map
@@ -92,7 +99,7 @@ function getSpaceEvents(spaceId: string, now: Date, events: Event[]): Event[] {
   return events
     .filter((e) => {
       if (spaceId === EXTERIOR_ID) {
-        if (e.activity_type !== 'outdoor_activity') return false;
+        if (e.activity_type !== 'Visita') return false;
       } else {
         if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
       }

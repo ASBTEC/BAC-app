@@ -57,7 +57,7 @@ jobs:
   build-web:
     name: Export web app
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' #&& startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v4
 

@@ -1,6 +1,18 @@
 export type EventCategory = 'bioBAC' | 'businessBAC' | 'expoBAC' | 'general' | 'viveBAC';
 
-export type ActivityType = 'stand' | 'talk' | 'activity' | 'outdoor_activity' | 'round_table';
+export type ActivityType =
+  | 'Ponencia'
+  | 'Presentación flash'
+  | 'Acto institucional'
+  | 'Mesa redonda'
+  | 'Debate'
+  | 'Stand'
+  | 'Curso'
+  | 'Taller'
+  | 'Comidas y coffee breaks'
+  | 'Presentación de poster'
+  | 'Speed Meeting'
+  | 'Visita';
 
 export type ExhibitorType = 'speaker' | 'business';
 

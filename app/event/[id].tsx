@@ -48,7 +48,7 @@ const MAP_SPACE_IDS = new Set(['Auditorium', 'Classroom 1', 'Classroom 2', 'Labo
 /** Returns the map tab space ID for an event, or null if no match. */
 function getMapSpace(event: Event): string | null {
   if (MAP_SPACE_IDS.has(event.local_location)) return event.local_location;
-  if (event.activity_type === 'outdoor_activity') return 'Outdoor';
+  if (event.activity_type === 'Visita') return 'Outdoor';
   return null;
 }
 

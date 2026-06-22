@@ -48,11 +48,18 @@ export const BACColors = {
 
 // Activity type color coding (per PRD §12)
 export const ActivityTypeColors: Record<string, string> = {
-  talk: BACColors.teal,
-  round_table: BACColors.navyDark,
-  activity: BACColors.amber,
-  outdoor_activity: BACColors.green,
-  stand: BACColors.grey,
+  'Ponencia':                BACColors.teal,
+  'Presentación flash':      BACColors.teal,
+  'Acto institucional':      BACColors.teal,
+  'Mesa redonda':            BACColors.navyDark,
+  'Debate':                  BACColors.navyDark,
+  'Stand':                   BACColors.grey,
+  'Curso':                   BACColors.amber,
+  'Taller':                  BACColors.amber,
+  'Comidas y coffee breaks': BACColors.amber,
+  'Presentación de poster':  BACColors.amber,
+  'Speed Meeting':           BACColors.amber,
+  'Visita':                  BACColors.green,
 };
 
 // Category color coding (per PRD §12)
