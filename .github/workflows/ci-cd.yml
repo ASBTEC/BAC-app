@@ -1,0 +1,372 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+    tags: ['v[0-9]*']
+
+jobs:
+  # ── 1. Lint & type-check ──────────────────────────────────────────────────
+  # Runs on PRs targeting master and direct pushes to master.
+  lint:
+    name: Lint & type-check
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npx tsc --noEmit
+
+  # ── 2. Release Please ─────────────────────────────────────────────────────
+  # Runs after lint passes on master. Creates/updates the Release PR that
+  # accumulates conventional commits and proposes the next version bump.
+  # When that PR is merged, release-please pushes a vX.Y.Z tag which
+  # triggers jobs 3-8 below.
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    needs: lint
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  # ── 3. Export web app ─────────────────────────────────────────────────────
+  build-web:
+    name: Export web app
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx expo export --platform web
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # ── 4. Deploy to GitHub Pages ─────────────────────────────────────────────
+  deploy-web:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build-web
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
+
+  # ── 5. Trigger EAS builds (both platforms in parallel) ────────────────────
+  trigger-eas:
+    name: Trigger EAS workflow
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    outputs:
+      triggered-at: ${{ steps.trigger.outputs.triggered-at }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Run EAS workflow
+        id: trigger
+        run: |
+          echo "triggered-at=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          npx eas-cli@latest workflow:run .eas/workflows/create-production-builds.yml \
+            --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # ── 6a. Wait for Android build ────────────────────────────────────────────
+  wait-android:
+    name: Wait for Android build
+    runs-on: ubuntu-latest
+    needs: trigger-eas
+    continue-on-error: true
+    outputs:
+      build-url: ${{ steps.poll.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Poll until Android build finishes
+        id: poll
+        run: |
+          SINCE="${{ needs.trigger-eas.outputs.triggered-at }}"
+          echo "Waiting for Android build created after $SINCE …"
+          for i in $(seq 1 40); do
+            sleep 60
+            BUILD=$(npx eas-cli@latest build:list \
+              --platform android \
+              --profile production \
+              --limit 5 \
+              --json \
+              --non-interactive 2>/dev/null \
+              | jq --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first // empty' \
+              2>/dev/null || true)
+            if [ -z "$BUILD" ] || [ "$BUILD" = "null" ]; then
+              echo "Attempt $i/40: no build found yet…"
+              continue
+            fi
+            STATUS=$(echo "$BUILD" | jq -r '.status')
+            if [ "$STATUS" = "FINISHED" ]; then
+              URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
+              if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+                echo "Android build ready: $URL"
+                echo "$URL" > android-build-url.txt
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            elif [ "$STATUS" = "ERRORED" ] || [ "$STATUS" = "CANCELLED" ]; then
+              echo "Android build failed with status: $STATUS"
+              exit 1
+            else
+              echo "Attempt $i/40: build status is '$STATUS', waiting…"
+            fi
+          done
+          echo "Timed out waiting for Android build" && exit 1
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload Android build URL
+        if: steps.poll.outputs.url != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-metadata
+          path: android-build-url.txt
+          retention-days: 1
+
+  # ── 6b. Wait for iOS build ────────────────────────────────────────────────
+  wait-ios:
+    name: Wait for iOS build
+    runs-on: ubuntu-latest
+    needs: trigger-eas
+    continue-on-error: true
+    outputs:
+      build-url: ${{ steps.poll.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Poll until iOS build finishes
+        id: poll
+        run: |
+          SINCE="${{ needs.trigger-eas.outputs.triggered-at }}"
+          echo "Waiting for iOS build created after $SINCE …"
+          for i in $(seq 1 40); do
+            sleep 60
+            BUILD=$(npx eas-cli@latest build:list \
+              --platform ios \
+              --profile production \
+              --limit 5 \
+              --json \
+              --non-interactive 2>/dev/null \
+              | jq --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first // empty' \
+              2>/dev/null || true)
+            if [ -z "$BUILD" ] || [ "$BUILD" = "null" ]; then
+              echo "Attempt $i/40: no build found yet…"
+              continue
+            fi
+            STATUS=$(echo "$BUILD" | jq -r '.status')
+            if [ "$STATUS" = "FINISHED" ]; then
+              URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
+              if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+                echo "iOS build ready: $URL"
+                echo "$URL" > ios-build-url.txt
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            elif [ "$STATUS" = "ERRORED" ] || [ "$STATUS" = "CANCELLED" ]; then
+              echo "iOS build failed with status: $STATUS"
+              exit 1
+            else
+              echo "Attempt $i/40: build status is '$STATUS', waiting…"
+            fi
+          done
+          echo "Timed out waiting for iOS build" && exit 1
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload iOS build URL
+        if: steps.poll.outputs.url != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-metadata
+          path: ios-build-url.txt
+          retention-days: 1
+
+  # ── 7a. Submit Android to Google Play ────────────────────────────────────
+  submit-android:
+    name: Submit Android to Google Play
+    runs-on: ubuntu-latest
+    needs: wait-android
+    if: needs.wait-android.outputs.build-url != ''
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Write Google service account key
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          mkdir -p secrets
+          echo "$GOOGLE_SERVICE_ACCOUNT_KEY" > secrets/bac-app-project-key.json
+
+      - run: eas submit --platform android --profile production --latest --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # ── 7b. Submit iOS to App Store ──────────────────────────────────────────
+  submit-ios:
+    name: Submit iOS to App Store
+    runs-on: ubuntu-latest
+    needs: wait-ios
+    if: needs.wait-ios.outputs.build-url != ''
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: eas submit --platform ios --profile production --latest --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # ── 8. Attach build artifacts to the GitHub Release ───────────────────────
+  # release-please already created the release when it pushed the tag.
+  # This job downloads the APK/IPA from EAS and attaches them to it.
+  attach-artifacts:
+    name: Attach builds to release
+    runs-on: ubuntu-latest
+    needs: [wait-android, wait-ios]
+    if: always() && github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - name: Download Android build metadata
+        id: dl-android
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: android-build-metadata
+
+      - name: Download iOS build metadata
+        id: dl-ios
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-build-metadata
+
+      - name: Download APK from EAS
+        id: dl-apk
+        if: steps.dl-android.outcome == 'success'
+        continue-on-error: true
+        run: curl -fL "$(cat android-build-url.txt)" -o bac-app.apk
+
+      - name: Download IPA from EAS
+        id: dl-ipa
+        if: steps.dl-ios.outcome == 'success'
+        continue-on-error: true
+        run: curl -fL "$(cat ios-build-url.txt)" -o bac-app.ipa
+
+      - name: Attach APK to GitHub Release
+        if: steps.dl-apk.outcome == 'success'
+        run: gh release upload "${{ github.ref_name }}" bac-app.apk --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Attach IPA to GitHub Release
+        if: steps.dl-ipa.outcome == 'success'
+        run: gh release upload "${{ github.ref_name }}" bac-app.ipa --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
