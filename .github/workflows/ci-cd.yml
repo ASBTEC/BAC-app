@@ -96,7 +96,7 @@ jobs:
   trigger-eas:
     name: Trigger EAS workflow
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' #&& startsWith(github.ref, 'refs/tags/v')
     outputs:
       triggered-at: ${{ steps.trigger.outputs.triggered-at }}
     steps:
