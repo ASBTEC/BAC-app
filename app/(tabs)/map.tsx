@@ -44,10 +44,10 @@ const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
 
 const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'Ponencia',                label: 'Ponencia',                iconName: 'mic' },
-  { key: 'Presentación flash',      label: 'Presentación flash',      iconName: 'mic' },
-  { key: 'Acto institucional',      label: 'Acto institucional',      iconName: 'mic' },
+  { key: 'Presentación flash',      label: 'Presentación flash',      iconName: 'bolt' },
+  { key: 'Acto institucional',      label: 'Acto institucional',      iconName: 'account-balance' },
   { key: 'Mesa redonda',            label: 'Mesa redonda',            iconName: 'groups' },
-  { key: 'Debate',                  label: 'Debate',                  iconName: 'groups' },
+  { key: 'Debate',                  label: 'Debate',                  iconName: 'forum' },
   { key: 'Stand',                   label: 'Stand',                   iconName: 'storefront' },
   { key: 'Curso',                   label: 'Curso',                   iconName: 'school' },
   { key: 'Taller',                  label: 'Taller',                  iconName: 'build' },
