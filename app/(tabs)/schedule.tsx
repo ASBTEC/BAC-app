@@ -201,16 +201,14 @@ export default function ScheduleScreen() {
             }
           />
         ) : (
-          <>
-            {filterHeader}
-            <TimetableView
-              events={savedEvents}
-              now={now}
-              isSaved={isSaved}
-              onToggleSave={handleToggleSave}
-              emptyMessage="No tienes eventos guardados para este día."
-            />
-          </>
+          <TimetableView
+            events={savedEvents}
+            now={now}
+            isSaved={isSaved}
+            onToggleSave={handleToggleSave}
+            header={filterHeader}
+            emptyMessage="No tienes eventos guardados para este día."
+          />
         );
       })()}
     </View>

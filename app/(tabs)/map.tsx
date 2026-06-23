@@ -5,10 +5,10 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import Svg, { Rect as SvgRect } from 'react-native-svg';
 import {
+  FlatList,
   Image,
   Platform,
   Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -224,9 +224,90 @@ export default function MapScreen() {
     [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
+  const filterHeader = (
+    <View>
+      <View style={styles.searchRow}>
+        <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <TextInput
+            style={[styles.searchInput, { color: colors.text }]}
+            placeholder="Buscar eventos en este espacio"
+            placeholderTextColor={colors.icon}
+            value={search}
+            onChangeText={setSearch}
+            clearButtonMode="while-editing"
+            returnKeyType="search"
+          />
+        </View>
+        <Pressable
+          style={[
+            styles.filterBtn,
+            { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
+          ]}
+          onPress={() => setShowFilters((v) => !v)}>
+          <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
+        </Pressable>
+        <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <Pressable
+            style={[styles.toggleBtn, viewMode === 'list' && { backgroundColor: BACColors.teal }]}
+            onPress={() => setViewMode('list')}>
+            <MaterialIcons name="view-list" size={18} color={viewMode === 'list' ? '#fff' : colors.icon} />
+          </Pressable>
+          <Pressable
+            style={[styles.toggleBtn, viewMode === 'timetable' && { backgroundColor: BACColors.teal }]}
+            onPress={() => setViewMode('timetable')}>
+            <MaterialIcons name="view-week" size={18} color={viewMode === 'timetable' ? '#fff' : colors.icon} />
+          </Pressable>
+        </View>
+      </View>
+
+      {showFilters && (
+        <>
+          <View style={styles.filterRow}>
+            {CATEGORY_FILTERS.map(({ key, label }) => {
+              const active = activeCategory === key;
+              const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border },
+                  ]}
+                  onPress={() => setActiveCategory(active ? 'all' : key)}>
+                  {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          <View style={styles.filterDivider} />
+
+          <View style={styles.filterRow}>
+            {TYPE_FILTERS.map(({ key, label, iconName }) => {
+              const active = activeType === key;
+              return (
+                <Pressable
+                  key={key}
+                  style={[
+                    styles.filterChip,
+                    { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border },
+                  ]}
+                  onPress={() => setActiveType(active ? 'all' : key)}>
+                  <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.text} />
+                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </>
+      )}
+    </View>
+  );
+
   return (
-    <ScrollView style={[styles.screen, { backgroundColor: colors.background }]} contentContainerStyle={styles.screenContent}>
-      {/* ── Map area — 80% of screen height ── */}
+    <View style={[styles.screen, { backgroundColor: colors.background }]}>
+      {/* ── Map area — 60% of screen height ── */}
       <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.6), borderBottomColor: colors.border }]}>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
           Toca un espacio para ver sus eventos
@@ -316,7 +397,7 @@ export default function MapScreen() {
         </View>
       </View>
 
-      {/* ── Event panel (scrollable, only when a space is selected) ── */}
+      {/* ── Event panel (only when a space is selected) ── */}
       {selectedSpace && (
         <View style={styles.eventPanel}>
           <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
@@ -325,124 +406,47 @@ export default function MapScreen() {
             </Text>
           </View>
 
-          {/* Search bar + filter toggle + view toggle */}
-          <View style={styles.searchRow}>
-            <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
-              <TextInput
-                style={[styles.searchInput, { color: colors.text }]}
-                placeholder="Buscar eventos en este espacio"
-                placeholderTextColor={colors.icon}
-                value={search}
-                onChangeText={setSearch}
-                clearButtonMode="while-editing"
-                returnKeyType="search"
-              />
-            </View>
-            <Pressable
-              style={[
-                styles.filterBtn,
-                { backgroundColor: showFilters ? BACColors.teal : colors.card, borderColor: showFilters ? BACColors.teal : colors.border },
-              ]}
-              onPress={() => setShowFilters((v) => !v)}>
-              <MaterialIcons name="filter-alt" size={18} color={showFilters ? '#fff' : colors.icon} />
-            </Pressable>
-            <View style={[styles.viewToggle, { backgroundColor: colors.card, borderColor: colors.border }]}>
-              <Pressable
-                style={[styles.toggleBtn, viewMode === 'list' && { backgroundColor: BACColors.teal }]}
-                onPress={() => setViewMode('list')}>
-                <MaterialIcons name="view-list" size={18} color={viewMode === 'list' ? '#fff' : colors.icon} />
-              </Pressable>
-              <Pressable
-                style={[styles.toggleBtn, viewMode === 'timetable' && { backgroundColor: BACColors.teal }]}
-                onPress={() => setViewMode('timetable')}>
-                <MaterialIcons name="view-week" size={18} color={viewMode === 'timetable' ? '#fff' : colors.icon} />
-              </Pressable>
-            </View>
-          </View>
-
-          {/* Category + type chips */}
-          {showFilters && (
-            <>
-              <View style={styles.filterRow}>
-                {CATEGORY_FILTERS.map(({ key, label }) => {
-                  const active = activeCategory === key;
-                  const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
-                  return (
-                    <Pressable
-                      key={key}
-                      style={[
-                        styles.filterChip,
-                        { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border },
-                      ]}
-                      onPress={() => setActiveCategory(active ? 'all' : key)}>
-                      {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
-                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-
-              <View style={styles.filterDivider} />
-
-              <View style={styles.filterRow}>
-                {TYPE_FILTERS.map(({ key, label, iconName }) => {
-                  const active = activeType === key;
-                  return (
-                    <Pressable
-                      key={key}
-                      style={[
-                        styles.filterChip,
-                        { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border },
-                      ]}
-                      onPress={() => setActiveType(active ? 'all' : key)}>
-                      <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.text} />
-                      <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-            </>
-          )}
-
-          {/* Events */}
           {viewMode === 'list' ? (
-            <View style={styles.listContent}>
-              {filteredEvents.length === 0 ? (
+            <FlatList
+              style={{ flex: 1 }}
+              contentContainerStyle={styles.listContent}
+              data={filteredEvents}
+              keyExtractor={(item) => item.id}
+              ListHeaderComponent={filterHeader}
+              renderItem={({ item }) => (
+                <EventCard
+                  event={item}
+                  exhibitors={getExhibitorsForEvent(item, exhibitors)}
+                  showTemporalLabel
+                  isSaved={isSaved(item.id)}
+                  onToggleSave={handleToggleSave}
+                  now={now}
+                  dimPast={false}
+                />
+              )}
+              ListEmptyComponent={
                 <Text style={[styles.empty, { color: colors.icon }]}>
                   No hay eventos actuales ni próximos en este espacio.
                 </Text>
-              ) : (
-                filteredEvents.map((item) => (
-                  <EventCard
-                    key={item.id}
-                    event={item}
-                    exhibitors={getExhibitorsForEvent(item, exhibitors)}
-                    showTemporalLabel
-                    isSaved={isSaved(item.id)}
-                    onToggleSave={handleToggleSave}
-                    now={now}
-                    dimPast={false}
-                  />
-                ))
-              )}
-            </View>
+              }
+            />
           ) : (
             <TimetableView
               events={filteredEvents}
               isSaved={isSaved}
               onToggleSave={handleToggleSave}
+              header={filterHeader}
               emptyMessage="No hay eventos que coincidan con los filtros activos este día."
             />
           )}
         </View>
       )}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
-  screenContent: { paddingBottom: Platform.select({ web: 32, default: 48 }) },
 
   mapArea: {
     borderBottomWidth: 1,
@@ -497,7 +501,7 @@ const styles = StyleSheet.create({
   legendText: { fontSize: 11 },
 
   /* Event panel */
-  eventPanel: {},
+  eventPanel: { flex: 1 },
   panelHeader: {
     paddingHorizontal: 16,
     paddingVertical: 10,
@@ -562,6 +566,6 @@ const styles = StyleSheet.create({
   filterChipText: { fontSize: 13, fontWeight: '600' },
 
   /* List */
-  listContent: { paddingVertical: 8, paddingBottom: 16 },
+  listContent: { paddingTop: 4, paddingBottom: Platform.select({ web: 32, default: 48 }) },
   empty: { textAlign: 'center', marginTop: 24, fontSize: 14, paddingHorizontal: 24 },
 });

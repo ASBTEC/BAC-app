@@ -190,19 +190,17 @@ export default function EventsScreen() {
           }
         />
       ) : (
-        <>
-          {filterHeader}
-          <TimetableView
-            events={filteredEvents}
-            isSaved={isSaved}
-            onToggleSave={handleToggleSave}
-            emptyMessage={
-              search.trim() || activeCategory !== 'all' || activeType !== 'all'
-                ? 'No hay eventos que coincidan con los filtros activos este día.'
-                : 'No hay eventos este día.'
-            }
-          />
-        </>
+        <TimetableView
+          events={filteredEvents}
+          isSaved={isSaved}
+          onToggleSave={handleToggleSave}
+          header={filterHeader}
+          emptyMessage={
+            search.trim() || activeCategory !== 'all' || activeType !== 'all'
+              ? 'No hay eventos que coincidan con los filtros activos este día.'
+              : 'No hay eventos este día.'
+          }
+        />
       )}
     </View>
   );
