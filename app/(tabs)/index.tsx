@@ -228,14 +228,14 @@ export default function HomeScreen() {
                   options={CATEGORY_FILTERS}
                   onChange={setActiveCategory}
                 />
-                <View style={styles.filterDivider} />
+
                 <FilterDropdown
                   value={activeType}
                   options={TYPE_FILTERS}
                   onChange={setActiveType}
                   allLabel="Todos los tipos"
                 />
-                <View style={styles.filterDivider} />
+
                 <FilterDropdown
                   value={activeTrack}
                   options={TRACK_FILTERS}
@@ -351,11 +351,6 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 6,
     gap: 8,
-  },
-  filterDivider: {
-    height: 1,
-    marginHorizontal: 16,
-    backgroundColor: BACColors.lightBlue,
   },
   filterChip: {
     flexDirection: 'row',

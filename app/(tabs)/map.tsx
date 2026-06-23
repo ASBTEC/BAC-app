@@ -373,7 +373,7 @@ export default function MapScreen() {
             onChange={setActiveCategory}
           />
 
-          <View style={styles.filterDivider} />
+
 
           <FilterDropdown
             value={activeType}
@@ -382,7 +382,7 @@ export default function MapScreen() {
             allLabel="Todos los tipos"
           />
 
-          <View style={styles.filterDivider} />
+
 
           <FilterDropdown
             value={activeTrack}
@@ -548,11 +548,6 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 6,
     gap: 8,
-  },
-  filterDivider: {
-    height: 1,
-    marginHorizontal: 16,
-    backgroundColor: BACColors.lightBlue,
   },
   filterChip: {
     flexDirection: 'row',
