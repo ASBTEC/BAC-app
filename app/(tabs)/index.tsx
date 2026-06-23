@@ -274,21 +274,18 @@ export default function HomeScreen() {
             }
           />
         ) : (
-          <>
-            {heroHeader}
-            {filterHeader}
-            <TimetableView
-              events={filteredEvents}
-              now={now}
-              isSaved={isSaved}
-              onToggleSave={handleToggleSave}
-              emptyMessage={
-                search.trim() || activeCategory !== 'all' || activeType !== 'all'
-                  ? 'No hay eventos que coincidan con los filtros activos este día.'
-                  : 'No hay eventos este día.'
-              }
-            />
-          </>
+          <TimetableView
+            events={filteredEvents}
+            now={now}
+            isSaved={isSaved}
+            onToggleSave={handleToggleSave}
+            header={<>{heroHeader}{filterHeader}</>}
+            emptyMessage={
+              search.trim() || activeCategory !== 'all' || activeType !== 'all'
+                ? 'No hay eventos que coincidan con los filtros activos este día.'
+                : 'No hay eventos este día.'
+            }
+          />
         );
       })()}
     </View>

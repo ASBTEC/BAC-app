@@ -49,6 +49,8 @@ export interface TimetableViewProps {
   onToggleSave: (id: string) => void;
   /** Message shown when a day has no events in the grid */
   emptyMessage?: string;
+  /** Optional content rendered above the day selector, scrolling together with the grid */
+  header?: React.ReactNode;
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -128,12 +130,14 @@ export function TimetableView({
   isSaved,
   onToggleSave,
   emptyMessage = 'No hay eventos este día.',
+  header,
 }: TimetableViewProps) {
   const router = useRouter();
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { width: screenWidth } = useWindowDimensions();
   const scrollRef = useRef<ScrollView>(null);
+  const gridOffsetRef = useRef<number>(0);
 
   // Auto-select the current congress day; fall back to the first day
   const initialDay = useMemo(() => {
@@ -163,13 +167,16 @@ export function TimetableView({
     return pos >= 0 && pos <= (END_HOUR - START_HOUR) * HOUR_HEIGHT ? pos : null;
   }, [now, selectedDay]);
 
-  // Scroll to current time (or the first event) whenever the selected day changes
+  // Scroll to current time (or the first event) whenever the selected day changes.
+  // gridOffsetRef tracks the Y position of the time grid within the outer ScrollView
+  // so we can account for any header/daybar content rendered above it.
   useEffect(() => {
+    const offset = gridOffsetRef.current;
     const targetY =
       nowTop != null
-        ? Math.max(0, nowTop - 80)
+        ? Math.max(0, offset + nowTop - 80)
         : layoutItems.length > 0
-        ? Math.max(0, layoutItems[0].top - 48)
+        ? Math.max(0, offset + layoutItems[0].top - 48)
         : 0;
     const timer = setTimeout(
       () => scrollRef.current?.scrollTo({ y: targetY, animated: false }),
@@ -181,63 +188,70 @@ export function TimetableView({
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>
 
-      {/* ── Day selector ──────────────────────────────────────── */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={[styles.dayWrap, { borderBottomColor: colors.border }]}
-        contentContainerStyle={styles.dayRow}>
-        {CONGRESS_DAYS.map((d) => {
-          const active = d.date === selectedDay;
-          return (
-            <Pressable
-              key={d.date}
-              style={[
-                styles.dayChip,
-                active
-                  ? { backgroundColor: BACColors.teal }
-                  : { borderWidth: 1, borderColor: colors.border },
-              ]}
-              onPress={() => setSelectedDay(d.date)}>
-              <Text style={[styles.dayChipText, { color: active ? '#fff' : colors.text }]}>
-                {d.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
-
-      {/* ── Multi-day event banners ────────────────────────────── */}
-      {banners.length > 0 && (
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[styles.bannerWrap, { borderBottomColor: colors.border }]}
-          contentContainerStyle={styles.bannerRow}>
-          {banners.map((ev) => {
-            const c = CategoryColors[ev.category] ?? BACColors.teal;
-            return (
-              <Pressable
-                key={ev.id}
-                style={[styles.bannerChip, { backgroundColor: c + '22', borderColor: c }]}
-                onPress={() => router.push(`/event/${ev.id}` as never)}>
-                <MaterialIcons name="event" size={11} color={c} />
-                <Text style={[styles.bannerText, { color: c }]} numberOfLines={1}>
-                  {ev.title}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-      )}
-
-      {/* ── Time grid ─────────────────────────────────────────── */}
+      {/* Single outer ScrollView — contains header, day selector, banners, and the
+          fixed-height time grid so that every part of the screen is scrollable. */}
       <ScrollView
         ref={scrollRef}
         style={styles.gridScroll}
         showsVerticalScrollIndicator={false}>
 
-        <View style={[styles.grid, { height: (END_HOUR - START_HOUR) * HOUR_HEIGHT }]}>
+        {/* ── Optional header (hero + filter passed from parent) ── */}
+        {header}
+
+        {/* ── Day selector ──────────────────────────────────────── */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={[styles.dayWrap, { borderBottomColor: colors.border }]}
+          contentContainerStyle={styles.dayRow}>
+          {CONGRESS_DAYS.map((d) => {
+            const active = d.date === selectedDay;
+            return (
+              <Pressable
+                key={d.date}
+                style={[
+                  styles.dayChip,
+                  active
+                    ? { backgroundColor: BACColors.teal }
+                    : { borderWidth: 1, borderColor: colors.border },
+                ]}
+                onPress={() => setSelectedDay(d.date)}>
+                <Text style={[styles.dayChipText, { color: active ? '#fff' : colors.text }]}>
+                  {d.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+
+        {/* ── Multi-day event banners ────────────────────────────── */}
+        {banners.length > 0 && (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={[styles.bannerWrap, { borderBottomColor: colors.border }]}
+            contentContainerStyle={styles.bannerRow}>
+            {banners.map((ev) => {
+              const c = CategoryColors[ev.category] ?? BACColors.teal;
+              return (
+                <Pressable
+                  key={ev.id}
+                  style={[styles.bannerChip, { backgroundColor: c + '22', borderColor: c }]}
+                  onPress={() => router.push(`/event/${ev.id}` as never)}>
+                  <MaterialIcons name="event" size={11} color={c} />
+                  <Text style={[styles.bannerText, { color: c }]} numberOfLines={1}>
+                    {ev.title}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        )}
+
+        {/* ── Time grid (fixed height, not a ScrollView) ─────────── */}
+        <View
+          style={[styles.grid, { height: (END_HOUR - START_HOUR) * HOUR_HEIGHT }]}
+          onLayout={(e) => { gridOffsetRef.current = e.nativeEvent.layout.y; }}>
 
           {/* Hour labels + divider lines */}
           {HOURS.map((h) => (
