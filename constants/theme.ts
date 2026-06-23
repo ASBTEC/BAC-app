@@ -22,6 +22,7 @@ export const BACColors = {
   blueLight: '#F0FEFF',
 
   // Navy shades
+  navyDeep: '#0f1e2a',   // deep navy for dark header panels
   navyBase: '#2A4D61',   // close to navyDark
   navyMid: '#457082',
   navyLight: '#679EB2',
