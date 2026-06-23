@@ -71,6 +71,20 @@ export const CategoryColors: Record<string, string> = {
   viveBAC:     BACColors.amber,
 };
 
+// Congress track color coding
+export const TrackColors: Record<string, string> = {
+  'Salud':                '#a01313',
+  'Computacional':     '#d1a32f',
+  'Vegetal':                       '#199e49',
+  'Bioetica':                                    '#7d15c5',
+  'Bio Sintetica':                          '#bbbcbc',
+  'Industrial':      '#ffffff',
+  'Alimentaria':                   '#ffd72d',
+  'Biobusiness':                                 '#2b4e62',
+  'Sostenibilidad':    '#bac6d0',
+  'Desarrollo Profesional':                      '#1e9aaa',
+};
+
 export const Colors = {
   light: {
     text: BACColors.textDark,
