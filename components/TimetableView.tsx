@@ -64,13 +64,18 @@ function dayMs(dateStr: string, hourOffset = 0): number {
 function occursOnDay(event: Event, dateStr: string): boolean {
   return (
     new Date(event.start_time).getTime() < dayMs(dateStr, 24) &&
-    new Date(event.end_time).getTime() > dayMs(dateStr, 0)
+    new Date(event.end_time).getTime() > dayMs(dateStr, START_HOUR)
   );
 }
 
-/** True if the event spans more than one calendar day */
+/** True if the event spans more than one calendar day in a way visible in the timetable.
+ *  Events that only cross midnight into the early morning (before START_HOUR) are treated
+ *  as single-day timed blocks so they appear clipped to midnight on their start day. */
 function isMultiDay(event: Event): boolean {
-  return event.start_time.slice(0, 10) !== event.end_time.slice(0, 10);
+  const startDate = event.start_time.slice(0, 10);
+  const endDate = event.end_time.slice(0, 10);
+  if (startDate === endDate) return false;
+  return new Date(event.end_time).getHours() >= START_HOUR;
 }
 
 // ─── Layout algorithm (greedy interval coloring) ────────────────────────────
