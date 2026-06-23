@@ -38,6 +38,9 @@ export default function CreditsScreen() {
             <Text style={[styles.linkText, { color: BACColors.teal }]}>💼  LinkedIn — @AleixMT</Text>
           </Pressable>
         </View>
+      </View>
+
+      <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Agradecimientos</Text>
 
         <View style={styles.linkList}>
