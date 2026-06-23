@@ -97,7 +97,7 @@ export default function EventDetailScreen() {
   const statusColor = statusColors[status];
 
   return (
-    <ScrollView style={{ backgroundColor: colors.background }} contentContainerStyle={styles.content}>
+    <ScrollView style={{ backgroundColor: colors.background }} contentContainerStyle={[styles.content, { flexGrow: 1 }]}>
       {/* Status banner */}
       {(status === 'now' || status === 'upcoming') && (
         <View style={[styles.statusBanner, { backgroundColor: statusColor }]}>
@@ -165,7 +165,7 @@ export default function EventDetailScreen() {
 
       {/* Description */}
       {event.description && (
-        <View style={styles.section}>
+        <View style={[styles.section, { flex: 1 }]}>
           <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Acerca de</Text>
           <Text style={[styles.description, { color: colors.text }]}>{event.description}</Text>
         </View>
