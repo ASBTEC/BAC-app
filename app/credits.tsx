@@ -42,15 +42,136 @@ export default function CreditsScreen() {
 
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>Agradecimientos</Text>
+        <Text style={[styles.ackNote, { color: colors.icon }]}>Ordenado según la importancia de las contribuciones.</Text>
 
-        <View style={styles.linkList}>
-          <Text style={[styles.body, { color: colors.text }]}>• Meritxell Tardà, coordinadora del area de comunicacións de BAC Barcelona 2026 </Text>
-          <Pressable style={styles.linkRow} onPress={() => openLink('mailto:apadilla@asbtec.cat')}>
-            <Text style={[styles.body, { color: colors.text }]}>
-              {'• Anna Padilla Figuerola  '}
-              <Text style={[styles.linkText, { color: BACColors.teal }]}>✉️ apadilla@asbtec.cat</Text>
-            </Text>
-          </Pressable>
+        <View style={styles.ackList}>
+          {([
+            {
+              name: 'Jordi Codinach Simó',
+              role: 'Coordinador del área de BusinessBAC del BAC Barcelona 2026',
+              contributions: [
+                'Idea original de la aplicación',
+                'Diseño inicial de la aplicación',
+                'Aportación de datos de eventos, colaboradores y ponentes de BusinessBAC',
+                'Beta-testing',
+              ],
+            },
+            {
+              name: 'Mireia Farré',
+              role: 'Colaboradora del área de comunicación del BAC Barcelona 2026',
+              contributions: [
+                'Diseño de la paleta de colores de la aplicación',
+                'Beta-testing',
+              ],
+            },
+            {
+              name: 'Meritxell Tardà',
+              role: 'Coordinadora del área de informática del BAC Barcelona 2026',
+              contributions: ['Beta-testing'],
+            },
+            {
+              name: 'Anna Padilla Figuerola',
+              role: 'Autora del vídeo promocional y colaboradora del área de comunicación del BAC Barcelona 2026',
+              contributions: ['Beta-testing'],
+            },
+            {
+              name: 'Enrique Vázquez Pereira',
+              role: 'Exmiembro de la junta directiva de FEBIOTEC',
+              contributions: ['Beta-testing'],
+            },
+            {
+              name: 'Mònica Gutiérrez',
+              role: 'Presidenta de la junta directiva de FEBIOTEC',
+              contributions: [
+                'Diseño de la hoja de cálculo de datos intermedia',
+                'Parseo del JSON de datos históricos',
+                'Aportación de los datos de colaboradores de FEBIOTEC',
+                'Soporte institucional para la publicación en la Apple App Store',
+              ],
+            },
+            {
+              name: 'Alba Tomás Sitjes',
+              role: 'Coordinadora general del BAC Barcelona 2026',
+              contributions: [
+                'Coordinación en la creación de la aplicación',
+                'Recogida de datos',
+                'Compra de herramientas de desarrollo',
+              ],
+            },
+            {
+              name: 'Juan Antonio Castro',
+              role: 'Coordinador general del BAC Barcelona 2026',
+              contributions: [
+                'Coordinación en la creación de la aplicación',
+                'Recogida de datos',
+                'Compra de herramientas de desarrollo',
+              ],
+            },
+            {
+              name: 'Joaquim Ventura Calabuig',
+              role: 'Coordinador del área de logística del BAC Barcelona 2026',
+              contributions: [
+                'Diseño del plano de la Facultad de Biociencias de la UAB',
+              ],
+            },
+            {
+              name: 'Jaime Serra',
+              role: 'Coordinador del área de BioBAC del BAC Barcelona 2026',
+              contributions: [
+                'Aportación de datos de eventos y ponentes de BioBAC',
+              ],
+            },
+            {
+              name: 'Amaia Virgós Vicuña',
+              role: 'Coordinadora del área de ExpoBAC del BAC Barcelona 2026',
+              contributions: [
+                'Aportación de datos de eventos y ponentes de ExpoBAC',
+              ],
+            },
+            {
+              name: 'Marc Piqué',
+              role: 'Coordinador del área de ViveBAC del BAC Barcelona 2026',
+              contributions: [
+                'Aportación de datos de eventos y ponentes de ViveBAC',
+              ],
+            },
+            {
+              name: 'Geovani Fuentes',
+              role: 'Colaborador del área de ViveBAC del BAC Barcelona 2026',
+              contributions: [
+                'Aportación de datos de eventos y ponentes de ViveBAC',
+              ],
+            },
+            {
+              name: 'Carlos Lozano',
+              role: 'Colaborador del área de ViveBAC del BAC Barcelona 2026',
+              contributions: [
+                'Aportación de datos de eventos y ponentes de ViveBAC',
+              ],
+            },
+            {
+              name: 'David Álvarez',
+              role: 'Director de relaciones institucionales en FEBIOTEC',
+              contributions: [
+                'Guía y soporte institucional, informático y legal para la publicación en Google Play Store',
+              ],
+            },
+            {
+              name: 'Todos los demás colaboradores del BAC',
+              role: null,
+              contributions: ['Por su trabajo en la organización del congreso; sin ellos esta aplicación no hubiera sido posible'],
+            },
+          ] as { name: string; role: string | null; contributions: string[] }[]).map(({ name, role, contributions }) => (
+            <View key={name} style={[styles.ackEntry, { borderTopColor: colors.border }]}>
+              <Text style={[styles.ackName, { color: colors.text }]}>{name}</Text>
+              {role && <Text style={[styles.ackRole, { color: colors.icon }]}>{role}</Text>}
+              <View style={styles.ackContribs}>
+                {contributions.map((c, i) => (
+                  <Text key={i} style={[styles.ackContrib, { color: colors.text }]}>• {c}</Text>
+                ))}
+              </View>
+            </View>
+          ))}
         </View>
       </View>
 
@@ -110,13 +231,37 @@ const styles = StyleSheet.create({
     width: 360,
     height: 140,
   },
-  linkList: {
-    gap: 10,
+  ackNote: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    marginTop: -8,
   },
-  betaTitle: {
+  ackList: {
+    gap: 0,
+  },
+  ackEntry: {
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    gap: 3,
+  },
+  ackName: {
     fontSize: 15,
     fontWeight: '700',
-    marginBottom: 4,
+  },
+  ackRole: {
+    fontSize: 12,
+    fontStyle: 'italic',
+  },
+  ackContribs: {
+    marginTop: 4,
+    gap: 3,
+  },
+  ackContrib: {
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  linkList: {
+    gap: 10,
   },
   linkRow: {},
   linkText: {
