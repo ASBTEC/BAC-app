@@ -59,7 +59,7 @@ export default function ScheduleScreen() {
   const { savedIds, isSaved, toggleEvent, loaded } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
   const [now, setNow] = useState(new Date());
-  const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [search, setSearch] = useState('');
   const [showFilters, setShowFilters] = useState(true);
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');

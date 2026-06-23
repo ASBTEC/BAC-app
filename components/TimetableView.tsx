@@ -20,7 +20,6 @@ const CONGRESS_DAYS = [
   { date: '2026-07-08', label: 'Mié 8' },
   { date: '2026-07-09', label: 'Jue 9' },
   { date: '2026-07-10', label: 'Vie 10' },
-  { date: '2026-07-11', label: 'Sáb 11' },
 ] as const;
 
 const START_HOUR = 8;
@@ -199,11 +198,7 @@ export function TimetableView({
         {header}
 
         {/* ── Day selector ──────────────────────────────────────── */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[styles.dayWrap, { borderBottomColor: colors.border }]}
-          contentContainerStyle={styles.dayRow}>
+        <View style={[styles.dayWrap, { borderBottomColor: colors.border }]}>
           {CONGRESS_DAYS.map((d) => {
             const active = d.date === selectedDay;
             return (
@@ -222,7 +217,7 @@ export function TimetableView({
               </Pressable>
             );
           })}
-        </ScrollView>
+        </View>
 
         {/* ── Multi-day event banners ────────────────────────────── */}
         {banners.length > 0 && (
@@ -347,17 +342,18 @@ const styles = StyleSheet.create({
   root: { flex: 1 },
 
   /* Day selector */
-  dayWrap: { flexGrow: 0, borderBottomWidth: 1 },
-  dayRow: {
+  dayWrap: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
     paddingHorizontal: 12,
     paddingVertical: 8,
     gap: 8,
-    alignItems: 'center',
   },
   dayChip: {
+    flex: 1,
     borderRadius: 20,
-    paddingHorizontal: 14,
     paddingVertical: 6,
+    alignItems: 'center',
   },
   dayChipText: { fontSize: 13, fontWeight: '600' },
 

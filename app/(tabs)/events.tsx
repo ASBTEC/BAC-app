@@ -69,7 +69,7 @@ export default function EventsScreen() {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
-  const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [showFilters, setShowFilters] = useState(true);
 
   const filteredEvents = useMemo(() => {

@@ -118,7 +118,7 @@ export default function MapScreen() {
   const [selectedSpace, setSelectedSpace] = useState<string | null>(null);
   const [now] = useState(new Date());
   const { space } = useLocalSearchParams<{ space?: string }>();
-  const [viewMode, setViewMode] = useState<ViewMode>('list');
+  const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [search, setSearch] = useState('');
   const [showFilters, setShowFilters] = useState(true);
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
