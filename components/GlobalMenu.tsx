@@ -181,6 +181,12 @@ export function GlobalMenu({ visible, onClose, notificationSettings, onUpdateNot
                   <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
                 </Pressable>
                 <Pressable
+                  style={[styles.navRow, { borderBottomColor: colors.border }]}
+                  onPress={() => { onClose(); router.push('/credits'); }}>
+                  <Text style={[styles.navRowLabel, { color: colors.text }]}>Créditos y agradecimientos</Text>
+                  <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
+                </Pressable>
+                <Pressable
                   style={[styles.navRow, { borderBottomWidth: 0 }]}
                   onPress={() => { onClose(); router.push('/support'); }}>
                   <Text style={[styles.navRowLabel, { color: colors.text }]}>Ayuda y soporte</Text>

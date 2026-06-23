@@ -94,6 +94,10 @@ function RootNavigator() {
           options={{ title: 'Acerca de', headerBackTitle: 'Atrás' }}
         />
         <Stack.Screen
+          name="credits"
+          options={{ title: 'Créditos y agradecimientos', headerBackTitle: 'Atrás' }}
+        />
+        <Stack.Screen
           name="privacy"
           options={{ title: 'Aviso de privacidad', headerBackTitle: 'Atrás' }}
         />

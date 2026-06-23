@@ -15,13 +15,13 @@ export default function SupportScreen() {
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>Soporte BAC Barcelona 2026</Text>
         <View style={styles.contactRow}>
-          <Text style={[styles.label, { color: colors.text }]}>Soporte WhatsApp (09:00–15:00)</Text>
+          <Text style={[styles.label, { color: colors.text }]}>Soporte telefónico y WhatsApp</Text>
           <Pressable onPress={() => Linking.openURL('https://wa.me/34624820026')}>
             <Text style={[styles.link, { color: BACColors.teal }]}>+34 624 820 026</Text>
           </Pressable>
         </View>
         <View style={styles.contactRow}>
-          <Text style={[styles.label, { color: colors.text }]}>Soporte email 24h</Text>
+          <Text style={[styles.label, { color: colors.text }]}>Soporte email</Text>
           <Pressable onPress={() => Platform.OS === 'web'
               ? window.open('mailto:contacta.bac2026@febiotec.es', '_blank')
               : Linking.openURL('mailto:contacta.bac2026@febiotec.es')}>

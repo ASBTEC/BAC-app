@@ -13,7 +13,7 @@ export default function PrivacyScreen() {
       contentContainerStyle={styles.container}>
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.body, { color: colors.text }]}>
-          Esta aplicación funciona sin conexión a Internet, por lo que no recopila ningún dato
+          Esta aplicación puede funcionar sin conexión a Internet y no recopila ningún dato
           personal de sus usuarios. Toda la
           información guardada (agenda personal) se almacena exclusivamente en tu
           dispositivo y nunca se transmite a ningún servidor.
