@@ -39,6 +39,7 @@ interface LayoutItem {
   height: number;
   col: number;
   numCols: number;
+  colSpan: number;
 }
 
 export interface TimetableViewProps {
@@ -103,20 +104,57 @@ function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
     colEnds[c] = item.endMs;
   }
 
-  // numCols = max column index among all events that overlap with this one + 1
-  return items.map((item, i) => {
+  // Initial numCols: max column index among directly overlapping events + 1
+  const numColsArr = items.map((item, i) => {
     let maxCol = cols[i];
     for (let j = 0; j < items.length; j++) {
       if (items[j].startMs < item.endMs && items[j].endMs > item.startMs) {
         maxCol = Math.max(maxCol, cols[j]);
       }
     }
+    return maxCol + 1;
+  });
+
+  // Propagate: any two events that overlap in time must use the same numCols,
+  // otherwise their different colW values cause blocks to render on top of each other.
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (let i = 0; i < items.length; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        if (items[i].startMs < items[j].endMs && items[j].startMs < items[i].endMs) {
+          const maxNC = Math.max(numColsArr[i], numColsArr[j]);
+          if (numColsArr[i] !== maxNC) { numColsArr[i] = maxNC; changed = true; }
+          if (numColsArr[j] !== maxNC) { numColsArr[j] = maxNC; changed = true; }
+        }
+      }
+    }
+  }
+
+  // colSpan = how many consecutive columns to the right are free during this event
+  return items.map((item, i) => {
+    const numCols = numColsArr[i];
+
+    let colSpan = 1;
+    for (let c = cols[i] + 1; c < numCols; c++) {
+      const blocked = items.some(
+        (other, j) =>
+          j !== i &&
+          cols[j] === c &&
+          other.startMs < item.endMs &&
+          other.endMs > item.startMs,
+      );
+      if (blocked) break;
+      colSpan++;
+    }
+
     return {
       event: item.event,
       top: item.top,
       height: item.height,
       col: cols[i],
-      numCols: maxCol + 1,
+      numCols,
+      colSpan,
     };
   });
 }
@@ -275,6 +313,7 @@ export function TimetableView({
             const gapTotal = (item.numCols - 1) * COL_GAP;
             const colW = (screenWidth - TIME_COL - gapTotal) / item.numCols;
             const left = TIME_COL + item.col * (colW + COL_GAP);
+            const width = item.colSpan * colW + (item.colSpan - 1) * COL_GAP;
             const color = CategoryColors[item.event.category] ?? BACColors.teal;
             const saved = isSaved(item.event.id);
 
@@ -286,7 +325,7 @@ export function TimetableView({
                   {
                     top: item.top + 1,
                     left,
-                    width: colW,
+                    width,
                     height: item.height - 2,
                     backgroundColor: color + 'E0',
                     borderLeftColor: color,
