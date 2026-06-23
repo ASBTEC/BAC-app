@@ -224,6 +224,105 @@ export default function MapScreen() {
     [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
+  const mapSection = (
+    <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.6), borderBottomColor: colors.border }]}>
+      <Text style={[styles.subtitle, { color: colors.icon }]}>
+        Toca un espacio para ver sus eventos
+      </Text>
+
+      <View style={[styles.buildingPanel, { flex: 1, borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
+        <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
+          FACULTAD DE BIOCIENCIAS — UAB
+        </Text>
+
+        <View style={styles.mapViewport} onLayout={(e) => { viewportH.value = e.nativeEvent.layout.height; }}>
+          <GestureDetector gesture={mapGesture}>
+            <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
+              <Image
+                source={require('@/assets/images/map/mapa.png')}
+                style={{ width: imgW, height: imgH }}
+                resizeMode="stretch"
+              />
+              <Svg
+                viewBox={`0 0 ${MAP_W} ${MAP_H}`}
+                width={imgW}
+                height={imgH}
+                style={StyleSheet.absoluteFill}
+              >
+                {SPACES.map((room) => {
+                  const sel = selectedSpace === room.id;
+                  const color = ROOM_COLOR[room.type] ?? BACColors.lightBlue;
+                  return (
+                    <SvgRect
+                      key={room.id}
+                      x={room.x}
+                      y={room.y}
+                      width={room.w}
+                      height={room.h}
+                      rx={4}
+                      fill={sel ? color + 'bb' : color + '44'}
+                      stroke={sel ? BACColors.teal : BACColors.navyDark + '88'}
+                      strokeWidth={sel ? 4 : 2}
+                      onPress={() => setSelectedSpace(room.id === selectedSpace ? null : room.id)}
+                    />
+                  );
+                })}
+              </Svg>
+            </Animated.View>
+          </GestureDetector>
+        </View>
+
+        {/* Exterior — below the building map */}
+        <Pressable
+          style={[
+            styles.exteriorBtn,
+            {
+              backgroundColor: selectedSpace === EXTERIOR_ID ? BACColors.green + '33' : 'transparent',
+              borderColor: selectedSpace === EXTERIOR_ID ? BACColors.green : BACColors.green + '66',
+            },
+          ]}
+          onPress={() => setSelectedSpace(selectedSpace === EXTERIOR_ID ? null : EXTERIOR_ID)}>
+          <MaterialIcons name="park" size={14} color={BACColors.green} />
+          <Text style={[styles.exteriorLabel, { color: selectedSpace === EXTERIOR_ID ? BACColors.green : colors.text }]}>
+            Exterior de la Facultat de Biociències
+          </Text>
+        </Pressable>
+      </View>
+
+      {/* Legend */}
+      <View style={styles.legend}>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Aula</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Stands</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: '#F4A259' }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>ExpoBAC</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: '#9B7B5C' }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Catering</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: BACColors.green }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Exterior</Text>
+        </View>
+      </View>
+    </View>
+  );
+
+  const spaceHeader = selectedSpace ? (
+    <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
+      <Text style={[styles.panelTitle, { color: colors.text }]}>
+        {ALL_SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
+      </Text>
+    </View>
+  ) : null;
+
   const filterHeader = (
     <View>
       <View style={styles.searchRow}>
@@ -307,139 +406,40 @@ export default function MapScreen() {
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.background }]}>
-      {/* ── Map area — 60% of screen height ── */}
-      <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.6), borderBottomColor: colors.border }]}>
-        <Text style={[styles.subtitle, { color: colors.icon }]}>
-          Toca un espacio para ver sus eventos
-        </Text>
-
-        <View style={[styles.buildingPanel, { flex: 1, borderColor: BACColors.navyDark, backgroundColor: scheme === 'dark' ? '#1E2427' : '#F0F4F8' }]}>
-          <Text style={[styles.buildingLabel, { color: BACColors.navyDark }]}>
-            FACULTAD DE BIOCIENCIAS — UAB
-          </Text>
-
-          <View style={styles.mapViewport} onLayout={(e) => { viewportH.value = e.nativeEvent.layout.height; }}>
-            <GestureDetector gesture={mapGesture}>
-              <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
-                <Image
-                  source={require('@/assets/images/map/mapa.png')}
-                  style={{ width: imgW, height: imgH }}
-                  resizeMode="stretch"
-                />
-                <Svg
-                  viewBox={`0 0 ${MAP_W} ${MAP_H}`}
-                  width={imgW}
-                  height={imgH}
-                  style={StyleSheet.absoluteFill}
-                >
-                  {SPACES.map((room) => {
-                    const sel = selectedSpace === room.id;
-                    const color = ROOM_COLOR[room.type] ?? BACColors.lightBlue;
-                    return (
-                      <SvgRect
-                        key={room.id}
-                        x={room.x}
-                        y={room.y}
-                        width={room.w}
-                        height={room.h}
-                        rx={4}
-                        fill={sel ? color + 'bb' : color + '44'}
-                        stroke={sel ? BACColors.teal : BACColors.navyDark + '88'}
-                        strokeWidth={sel ? 4 : 2}
-                        onPress={() => setSelectedSpace(room.id === selectedSpace ? null : room.id)}
-                      />
-                    );
-                  })}
-                </Svg>
-              </Animated.View>
-            </GestureDetector>
-          </View>
-
-          {/* Exterior — below the building map */}
-          <Pressable
-            style={[
-              styles.exteriorBtn,
-              {
-                backgroundColor: selectedSpace === EXTERIOR_ID ? BACColors.green + '33' : 'transparent',
-                borderColor: selectedSpace === EXTERIOR_ID ? BACColors.green : BACColors.green + '66',
-              },
-            ]}
-            onPress={() => setSelectedSpace(selectedSpace === EXTERIOR_ID ? null : EXTERIOR_ID)}>
-            <MaterialIcons name="park" size={14} color={BACColors.green} />
-            <Text style={[styles.exteriorLabel, { color: selectedSpace === EXTERIOR_ID ? BACColors.green : colors.text }]}>
-              Exterior de la Facultat de Biociències
-            </Text>
-          </Pressable>
-        </View>
-
-        {/* Legend */}
-        <View style={styles.legend}>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Aula</Text>
-          </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Stands</Text>
-          </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: '#F4A259' }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>ExpoBAC</Text>
-          </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: '#9B7B5C' }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Catering</Text>
-          </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: BACColors.green }]} />
-            <Text style={[styles.legendText, { color: colors.text }]}>Exterior</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* ── Event panel (only when a space is selected) ── */}
-      {selectedSpace && (
-        <View style={styles.eventPanel}>
-          <View style={[styles.panelHeader, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.panelTitle, { color: colors.text }]}>
-              {ALL_SPACES.find((s) => s.id === selectedSpace)?.label ?? selectedSpace}
-            </Text>
-          </View>
-
-          {viewMode === 'list' ? (
-            <FlatList
-              style={{ flex: 1 }}
-              contentContainerStyle={styles.listContent}
-              data={filteredEvents}
-              keyExtractor={(item) => item.id}
-              ListHeaderComponent={filterHeader}
-              renderItem={({ item }) => (
-                <EventCard
-                  event={item}
-                  exhibitors={getExhibitorsForEvent(item, exhibitors)}
-                  showTemporalLabel
-                  isSaved={isSaved(item.id)}
-                  onToggleSave={handleToggleSave}
-                  now={now}
-                  dimPast={false}
-                />
-              )}
-              ListEmptyComponent={
-                <Text style={[styles.empty, { color: colors.icon }]}>
-                  No hay eventos actuales ni próximos en este espacio.
-                </Text>
-              }
-            />
-          ) : (
-            <TimetableView
-              events={filteredEvents}
-              isSaved={isSaved}
+      {!selectedSpace ? (
+        mapSection
+      ) : viewMode === 'list' ? (
+        <FlatList
+          style={{ flex: 1 }}
+          contentContainerStyle={styles.listContent}
+          data={filteredEvents}
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={<>{mapSection}{spaceHeader}{filterHeader}</>}
+          renderItem={({ item }) => (
+            <EventCard
+              event={item}
+              exhibitors={getExhibitorsForEvent(item, exhibitors)}
+              showTemporalLabel
+              isSaved={isSaved(item.id)}
               onToggleSave={handleToggleSave}
-              header={filterHeader}
-              emptyMessage="No hay eventos que coincidan con los filtros activos este día."
+              now={now}
+              dimPast={false}
             />
           )}
-        </View>
+          ListEmptyComponent={
+            <Text style={[styles.empty, { color: colors.icon }]}>
+              No hay eventos actuales ni próximos en este espacio.
+            </Text>
+          }
+        />
+      ) : (
+        <TimetableView
+          events={filteredEvents}
+          isSaved={isSaved}
+          onToggleSave={handleToggleSave}
+          header={<>{mapSection}{spaceHeader}{filterHeader}</>}
+          emptyMessage="No hay eventos que coincidan con los filtros activos este día."
+        />
       )}
     </View>
   );
@@ -501,7 +501,6 @@ const styles = StyleSheet.create({
   legendText: { fontSize: 11 },
 
   /* Event panel */
-  eventPanel: { flex: 1 },
   panelHeader: {
     paddingHorizontal: 16,
     paddingVertical: 10,
