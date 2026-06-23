@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
+import { BiotechTrackBadge } from '@/components/BiotechTrackBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { TemporalBadge } from '@/components/TemporalBadge';
 import { BACColors, Colors } from '@/constants/theme';
@@ -83,6 +84,9 @@ export function EventCard({
         <View style={styles.badgeRow}>
           <ActivityTypeBadge type={event.activity_type} />
           <CategoryBadge category={event.category} />
+          {event.biotech_color?.map((track) => (
+            <BiotechTrackBadge key={track} track={track} />
+          ))}
         </View>
         <Pressable
           hitSlop={8}
@@ -167,6 +171,7 @@ const styles = StyleSheet.create({
   },
   badgeRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 6,
     flexShrink: 1,
   },

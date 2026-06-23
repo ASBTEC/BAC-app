@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
+import { BiotechTrackBadge } from '@/components/BiotechTrackBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
@@ -111,6 +112,9 @@ export default function EventDetailScreen() {
         <View style={styles.badgeRow}>
           <ActivityTypeBadge type={event.activity_type} />
           <CategoryBadge category={event.category} />
+          {event.biotech_color?.map((track) => (
+            <BiotechTrackBadge key={track} track={track} />
+          ))}
         </View>
         <Text style={styles.title}>{event.title}</Text>
         {(() => {
@@ -230,7 +234,7 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     gap: 8,
   },
-  badgeRow: { flexDirection: 'row', gap: 8, marginBottom: 4 },
+  badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 4 },
   title: { color: '#fff', fontSize: 20, fontFamily: OrbitronFonts.bold, lineHeight: 28 },
   dateTimeRow: {
     flexDirection: 'row',
