@@ -108,7 +108,7 @@ export default function EventDetailScreen() {
       )}
 
       {/* Header */}
-      <View style={[styles.header, { backgroundColor: BACColors.navyDark }]}>
+      <View style={[styles.header, { backgroundColor: '#0f1e2a' }]}>
         <View style={styles.badgeRow}>
           <ActivityTypeBadge type={event.activity_type} />
           <CategoryBadge category={event.category} />
