@@ -13,7 +13,7 @@ import { CategoryDropdown } from '@/components/CategoryDropdown';
 import { EventCard } from '@/components/EventCard';
 import { FilterDropdown } from '@/components/FilterDropdown';
 import { TimetableView } from '@/components/TimetableView';
-import { BACColors, Colors } from '@/constants/theme';
+import { BACColors, Colors, TrackColors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -22,7 +22,10 @@ import { ActivityType, Event, EventCategory, Exhibitor } from '@/types';
 
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
+type FilterTrack = string | 'all';
 type ViewMode = 'list' | 'timetable';
+
+const TRACK_FILTERS = Object.keys(TrackColors).map((key) => ({ key, label: key }));
 
 const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'bioBAC',      label: 'BioBAC' },
@@ -70,6 +73,7 @@ export default function EventsScreen() {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const [activeTrack, setActiveTrack] = useState<FilterTrack>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [showFilters, setShowFilters] = useState(true);
 
@@ -79,13 +83,14 @@ export default function EventsScreen() {
     );
     if (activeCategory !== 'all') result = result.filter((e) => e.category === activeCategory);
     if (activeType !== 'all') result = result.filter((e) => e.activity_type === activeType);
+    if (activeTrack !== 'all') result = result.filter((e) => e.biotech_color?.includes(activeTrack));
     if (search.trim()) {
       result = result.filter((e) =>
         matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors)),
       );
     }
     return result;
-  }, [events, exhibitors, search, activeCategory, activeType]);
+  }, [events, exhibitors, search, activeCategory, activeType, activeTrack]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -147,6 +152,23 @@ export default function EventsScreen() {
             options={TYPE_FILTERS}
             onChange={setActiveType}
             allLabel="Todos los tipos"
+          />
+          <View style={styles.filterDivider} />
+          <FilterDropdown
+            value={activeTrack}
+            options={TRACK_FILTERS}
+            onChange={setActiveTrack}
+            allLabel="Todas las temáticas"
+            renderIcon={(key, _color, size) => (
+              <View style={{
+                width: size * 0.75,
+                height: size * 0.75,
+                borderRadius: size * 0.375,
+                backgroundColor: TrackColors[key] ?? colors.icon,
+                borderWidth: 1.5,
+                borderColor: 'rgba(128,128,128,0.35)',
+              }} />
+            )}
           />
         </>
       )}

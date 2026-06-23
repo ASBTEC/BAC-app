@@ -29,6 +29,7 @@ export interface Event {
   local_location: string;
   location?: string;  // Google Maps URL
   exhibitor_ids?: string[];
+  biotech_color?: string[];
 }
 
 export interface Exhibitor {

@@ -19,7 +19,7 @@ import { CategoryDropdown } from '@/components/CategoryDropdown';
 import { EventCard } from '@/components/EventCard';
 import { FilterDropdown } from '@/components/FilterDropdown';
 import { TimetableView } from '@/components/TimetableView';
-import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts, TrackColors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -30,6 +30,9 @@ import { getTemporalStatus } from '@/utils/temporal';
 type ViewMode = 'list' | 'timetable';
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
+type FilterTrack = string | 'all';
+
+const TRACK_FILTERS = Object.keys(TrackColors).map((key) => ({ key, label: key }));
 
 const CATEGORY_FILTERS: { key: FilterCategory; label: string }[] = [
   { key: 'bioBAC',      label: 'BioBAC' },
@@ -124,6 +127,7 @@ export default function MapScreen() {
   const [showFilters, setShowFilters] = useState(true);
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const [activeTrack, setActiveTrack] = useState<FilterTrack>('all');
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
   useEffect(() => {
@@ -205,10 +209,11 @@ export default function MapScreen() {
     return spaceEvents.filter((e) => {
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
+      if (activeTrack !== 'all' && !e.biotech_color?.includes(activeTrack)) return false;
       if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors))) return false;
       return true;
     });
-  }, [spaceEvents, exhibitors, activeCategory, activeType, search]);
+  }, [spaceEvents, exhibitors, activeCategory, activeType, activeTrack, search]);
 
   const handleToggleSave = useCallback(
     (id: string) => {
@@ -375,6 +380,25 @@ export default function MapScreen() {
             options={TYPE_FILTERS}
             onChange={setActiveType}
             allLabel="Todos los tipos"
+          />
+
+          <View style={styles.filterDivider} />
+
+          <FilterDropdown
+            value={activeTrack}
+            options={TRACK_FILTERS}
+            onChange={setActiveTrack}
+            allLabel="Todas las temáticas"
+            renderIcon={(key, _color, size) => (
+              <View style={{
+                width: size * 0.75,
+                height: size * 0.75,
+                borderRadius: size * 0.375,
+                backgroundColor: TrackColors[key] ?? colors.icon,
+                borderWidth: 1.5,
+                borderColor: 'rgba(128,128,128,0.35)',
+              }} />
+            )}
           />
         </>
       )}

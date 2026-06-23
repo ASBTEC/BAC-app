@@ -71,18 +71,18 @@ export const CategoryColors: Record<string, string> = {
   viveBAC:     BACColors.amber,
 };
 
-// Congress track color coding
+// Congress track color coding — keys match the biotech_color values in events.json exactly
 export const TrackColors: Record<string, string> = {
-  'Salud':                '#a01313',
-  'Computacional':     '#d1a32f',
-  'Vegetal':                       '#199e49',
-  'Bioetica':                                    '#7d15c5',
-  'Bio Sintetica':                          '#bbbcbc',
-  'Industrial':      '#ffffff',
-  'Alimentaria':                   '#ffd72d',
-  'Biobusiness':                                 '#2b4e62',
-  'Sostenibilidad':    '#bac6d0',
-  'Desarrollo Profesional':                      '#1e9aaa',
+  'Salud':                  '#a01313',
+  'Computacional':          '#d1a32f',
+  'Vegetal':                '#199e49',
+  'Bioética':               '#7d15c5',
+  'Bio sintética':          '#bbbcbc',
+  'Industrial':             '#ffffff',
+  'Alimentaria':            '#ffd72d',
+  'Biobusiness':            '#2b4e62',
+  'Sostenibilidad':         '#bac6d0',
+  'Desarrollo profesional': '#1e9aaa',
 };
 
 export const Colors = {

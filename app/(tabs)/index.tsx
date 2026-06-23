@@ -17,7 +17,7 @@ import { EventCard } from '@/components/EventCard';
 import { FilterDropdown } from '@/components/FilterDropdown';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { TimetableView } from '@/components/TimetableView';
-import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { BACColors, Colors, OrbitronFonts, TrackColors } from '@/constants/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -28,7 +28,10 @@ import { getTemporalStatus } from '@/utils/temporal';
 
 type FilterCategory = EventCategory | 'all';
 type FilterType = ActivityType | 'all';
+type FilterTrack = string | 'all';
 type ViewMode = 'list' | 'timetable';
+
+const TRACK_FILTERS = Object.keys(TrackColors).map((key) => ({ key, label: key }));
 
 function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): boolean {
   const q = query.toLowerCase();
@@ -86,6 +89,7 @@ export default function HomeScreen() {
   const [now, setNow] = useState(new Date());
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('all');
   const [activeType, setActiveType] = useState<FilterType>('all');
+  const [activeTrack, setActiveTrack] = useState<FilterTrack>('all');
   const [search, setSearch] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [showFilters, setShowFilters] = useState(true);
@@ -103,6 +107,7 @@ export default function HomeScreen() {
     const nonStand = events.filter((e) => {
       if (activeCategory !== 'all' && e.category !== activeCategory) return false;
       if (activeType !== 'all' && e.activity_type !== activeType) return false;
+      if (activeTrack !== 'all' && !e.biotech_color?.includes(activeTrack)) return false;
       if (search.trim() && !matchesSearch(e, search.trim(), getExhibitorsForEvent(e, exhibitors))) return false;
       return true;
     });
@@ -135,7 +140,7 @@ export default function HomeScreen() {
     if (upcoming.length > 0) result.push({ title: 'Próximos eventos', data: upcoming });
     if (past.length > 0) result.push({ title: 'Eventos pasados', data: past });
     return result;
-  }, [events, exhibitors, now, activeCategory, activeType, search]);
+  }, [events, exhibitors, now, activeCategory, activeType, activeTrack, search]);
 
   const filteredEvents = useMemo(
     () => sections.flatMap((s) => s.data),
@@ -229,6 +234,23 @@ export default function HomeScreen() {
                   options={TYPE_FILTERS}
                   onChange={setActiveType}
                   allLabel="Todos los tipos"
+                />
+                <View style={styles.filterDivider} />
+                <FilterDropdown
+                  value={activeTrack}
+                  options={TRACK_FILTERS}
+                  onChange={setActiveTrack}
+                  allLabel="Todas las temáticas"
+                  renderIcon={(key, _color, size) => (
+                    <View style={{
+                      width: size * 0.75,
+                      height: size * 0.75,
+                      borderRadius: size * 0.375,
+                      backgroundColor: TrackColors[key] ?? colors.icon,
+                      borderWidth: 1.5,
+                      borderColor: 'rgba(128,128,128,0.35)',
+                    }} />
+                  )}
                 />
               </>
             )}
