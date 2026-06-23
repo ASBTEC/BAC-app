@@ -3,7 +3,6 @@ import * as Linking from 'expo-linking';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useMemo } from 'react';
 import {
-  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -14,7 +13,7 @@ import {
 import { ActivityTypeBadge } from '@/components/ActivityTypeBadge';
 import { BiotechTrackBadge } from '@/components/BiotechTrackBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
-import { EXHIBITOR_PHOTOS } from '@/constants/exhibitorPhotos';
+import { ExhibitorCard } from '@/components/ExhibitorCard';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import BioBACLogo      from '@/assets/images/event_types/logo biobac.svg';
 import BusinessBACLogo from '@/assets/images/event_types/logo businessbac.svg';
@@ -173,36 +172,12 @@ export default function EventDetailScreen() {
 
       {/* Exhibitors */}
       {exhibitors.length > 0 && (
-        <View style={styles.section}>
+        <View style={styles.exhibitorSection}>
           <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>
             {exhibitors.some((e) => e.exhibitor_type === 'speaker') ? 'Ponentes' : 'Organizadores'}
           </Text>
           {exhibitors.map((ex) => (
-            <Pressable
-              key={ex.id}
-              style={[styles.exhibitorRow, { backgroundColor: colors.card, borderColor: colors.border }]}
-              onPress={() => router.push(`/exhibitor/${ex.id}` as never)}>
-              <View style={[styles.exhibitorAvatar, { backgroundColor: BACColors.lightBlue }]}>
-                {EXHIBITOR_PHOTOS[ex.id] ? (
-                  <Image source={EXHIBITOR_PHOTOS[ex.id]} style={styles.exhibitorAvatarImage} resizeMode="cover" />
-                ) : (
-                  <MaterialIcons
-                    name={ex.exhibitor_type === 'speaker' ? 'person' : 'business'}
-                    size={24}
-                    color={BACColors.navyDark}
-                  />
-                )}
-              </View>
-              <View style={styles.exhibitorInfo}>
-                <Text style={[styles.exhibitorName, { color: colors.text }]}>{ex.name}</Text>
-                {ex.description && (
-                  <Text style={[styles.exhibitorDesc, { color: colors.icon }]} numberOfLines={2}>
-                    {ex.description}
-                  </Text>
-                )}
-              </View>
-              <MaterialIcons name="chevron-right" size={20} color={colors.icon} />
-            </Pressable>
+            <ExhibitorCard key={ex.id} exhibitor={ex} />
           ))}
         </View>
       )}
@@ -272,32 +247,9 @@ const styles = StyleSheet.create({
   },
   mapsBtnText: { fontSize: 12, fontWeight: '600' },
   section: { paddingHorizontal: 20, paddingTop: 20, gap: 12 },
-  sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5 },
+  exhibitorSection: { paddingTop: 20, gap: 4 },
+  sectionTitle: { fontSize: 11, fontFamily: OrbitronFonts.bold, textTransform: 'uppercase', letterSpacing: 0.5, paddingHorizontal: 20 },
   description: { fontSize: 15, lineHeight: 22 },
-  exhibitorRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    padding: 12,
-  },
-  exhibitorAvatar: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-    overflow: 'hidden',
-  },
-  exhibitorAvatarImage: {
-    width: 44,
-    height: 44,
-  },
-  exhibitorInfo: { flex: 1, gap: 2 },
-  exhibitorName: { fontSize: 15, fontWeight: '700' },
-exhibitorDesc: { fontSize: 12, lineHeight: 16 },
   saveBtn: {
     flexDirection: 'row',
     alignItems: 'center',

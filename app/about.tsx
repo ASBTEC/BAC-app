@@ -19,7 +19,7 @@ export default function AboutScreen() {
         <Text style={[styles.body, { color: colors.text }]}>
           Aplicación desarrollada con amor ❤️ por{' '}
           <Text style={{ fontWeight: '700' }}>Aleix Mariné-Tena</Text>
-          {', vocal de informàtica de ASBTEC.'}
+          {', vocal de informàtica de ASBTEC y coordinador del área de Informática del BAC Barcelona 2026.'}
         </Text>
 
         <View style={styles.linkList}>
