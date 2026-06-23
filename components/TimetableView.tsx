@@ -75,10 +75,11 @@ function isMultiDay(event: Event): boolean {
 
 // ─── Layout algorithm (greedy interval coloring) ────────────────────────────
 
-// Events whose clamped duration is ≥ this value are "backdrop" events (e.g. all-day
-// exhibition stands). They are placed in columns after all regular events so regular
-// events can expand rightward and the backdrop appears as a narrow strip on the right.
-const BACKDROP_MIN_MS = 6 * 3_600_000;
+// Events that overlap with ≥ this many other events are treated as "backdrop" events
+// (e.g. all-day exhibition stands, open-room sessions spanning many parallel talks).
+// Backdrops are placed in columns after all regular events so regular events can
+// expand rightward and the backdrop appears as a narrow strip on the far right.
+const BACKDROP_OVERLAP_COUNT = 6;
 
 function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
   if (!events.length) return [];
@@ -99,7 +100,11 @@ function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
     })
     .sort((a, b) => a.startMs - b.startMs);
 
-  const isBackdrop = items.map((item) => item.endMs - item.startMs >= BACKDROP_MIN_MS);
+  const isBackdrop = items.map((item, i) =>
+    items.reduce((cnt, other, j) =>
+      j !== i && other.startMs < item.endMs && other.endMs > item.startMs ? cnt + 1 : cnt, 0,
+    ) >= BACKDROP_OVERLAP_COUNT,
+  );
 
   // First pass: greedy column assignment for regular (non-backdrop) events
   const colEnds: number[] = [];
