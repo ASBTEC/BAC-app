@@ -12,10 +12,11 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { CategoryDropdown } from '@/components/CategoryDropdown';
 import { EventCard } from '@/components/EventCard';
+import { FilterDropdown } from '@/components/FilterDropdown';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { TimetableView } from '@/components/TimetableView';
-import { CATEGORY_ICONS } from '@/constants/categoryIcons';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -182,7 +183,7 @@ export default function HomeScreen() {
 
                 <Pressable onPress={() => Platform.OS === 'web' ? window.open(GCAL_URL, '_blank') : Linking.openURL(GCAL_URL)} style={styles.datePill}>
                   <MaterialIcons name="calendar-today" size={14} color={BACColors.navyDark} />
-                  <Text style={styles.dateText}>7 – 11 de julio de 2026</Text>
+                  <Text style={styles.dateText}>7 – 10 de julio de 2026</Text>
                 </Pressable>
               </View>
             </View>
@@ -217,30 +218,18 @@ export default function HomeScreen() {
             </View>
             {showFilters && (
               <>
-                <View style={styles.filterRow}>
-                  {CATEGORY_FILTERS.map(({ key, label }) => {
-                    const active = activeCategory === key;
-                    const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
-                    return (
-                      <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border }]} onPress={() => setActiveCategory(active ? 'all' : key)}>
-                        {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
-                        <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                      </Pressable>
-                    );
-                  })}
-                </View>
+                <CategoryDropdown
+                  value={activeCategory}
+                  options={CATEGORY_FILTERS}
+                  onChange={setActiveCategory}
+                />
                 <View style={styles.filterDivider} />
-                <View style={styles.filterRow}>
-                  {TYPE_FILTERS.map(({ key, label, iconName }) => {
-                    const active = activeType === key;
-                    return (
-                      <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border }]} onPress={() => setActiveType(active ? 'all' : key)}>
-                        <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.text} />
-                        <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                      </Pressable>
-                    );
-                  })}
-                </View>
+                <FilterDropdown
+                  value={activeType}
+                  options={TYPE_FILTERS}
+                  onChange={setActiveType}
+                  allLabel="Todos los tipos"
+                />
               </>
             )}
           </View>

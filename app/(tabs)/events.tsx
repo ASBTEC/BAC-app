@@ -9,9 +9,10 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { CategoryDropdown } from '@/components/CategoryDropdown';
 import { EventCard } from '@/components/EventCard';
+import { FilterDropdown } from '@/components/FilterDropdown';
 import { TimetableView } from '@/components/TimetableView';
-import { CATEGORY_ICONS } from '@/constants/categoryIcons';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -135,30 +136,18 @@ export default function EventsScreen() {
       {/* Category + type filter chips */}
       {showFilters && (
         <>
-          <View style={styles.filterRow}>
-            {CATEGORY_FILTERS.map(({ key, label }) => {
-              const active = activeCategory === key;
-              const Icon = CATEGORY_ICONS[key as keyof typeof CATEGORY_ICONS];
-              return (
-                <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border }]} onPress={() => setActiveCategory(active ? 'all' : key)}>
-                  {Icon && <Icon width={18} height={18} color={active ? '#fff' : colors.text} />}
-                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
+          <CategoryDropdown
+            value={activeCategory}
+            options={CATEGORY_FILTERS}
+            onChange={setActiveCategory}
+          />
           <View style={styles.filterDivider} />
-          <View style={styles.filterRow}>
-            {TYPE_FILTERS.map(({ key, label, iconName }) => {
-              const active = activeType === key;
-              return (
-                <Pressable key={key} style={[styles.filterChip, { backgroundColor: active ? BACColors.teal : colors.card, borderColor: active ? BACColors.teal : colors.border }]} onPress={() => setActiveType(active ? 'all' : key)}>
-                  <MaterialIcons name={iconName as any} size={14} color={active ? '#fff' : colors.text} />
-                  <Text style={[styles.filterChipText, { color: active ? '#fff' : colors.text }]}>{label}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
+          <FilterDropdown
+            value={activeType}
+            options={TYPE_FILTERS}
+            onChange={setActiveType}
+            allLabel="Todos los tipos"
+          />
         </>
       )}
     </View>
