@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { CategoryColors, BACColors, Colors } from '@/constants/theme';
+import { CategoryColors, BACColors, Colors, TrackColors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Event } from '@/types';
 
@@ -342,6 +342,19 @@ export function TimetableView({
             const color = CategoryColors[item.event.category] ?? BACColors.teal;
             const saved = isSaved(item.event.id);
 
+            // Available vertical content space (paddingTop=3, height-2 rendered)
+            const contentH = item.height - 5;
+            const hasBiotech = (item.event.biotech_color?.length ?? 0) > 0;
+            // Allocate metadata greedily after 2 reserved title lines (28px).
+            // Each text row uses lineHeight:9 + marginTop:1 ≈ 9px budget here.
+            let rem = contentH - 28;
+            const showType     = rem >= 9; if (showType) rem -= 9;
+            const showBiotech  = hasBiotech && rem >= 8; if (showBiotech) rem -= 8;
+            const showCategory = rem >= 9; if (showCategory) rem -= 9;
+            const showLocation = rem >= 9; if (showLocation) rem -= 9;
+            // Title takes remaining space (at least 2 lines, at most 8)
+            const titleLines = Math.max(2, Math.min(8, Math.floor((28 + rem) / 14)));
+
             return (
               <Pressable
                 key={item.event.id}
@@ -357,16 +370,34 @@ export function TimetableView({
                   },
                 ]}
                 onPress={() => router.push(`/event/${item.event.id}` as never)}>
-                <Text
-                  style={styles.blockTitle}
-                  numberOfLines={item.height >= 56 ? 2 : 1}>
+                <Text style={styles.blockTitle} numberOfLines={titleLines}>
                   {item.event.title}
                 </Text>
-                {item.height >= 54 && (
-                  <Text style={styles.blockLocation} numberOfLines={1}>
+                {showType && item.event.activity_type ? (
+                  <Text style={styles.blockMeta} numberOfLines={1}>
+                    {item.event.activity_type}
+                  </Text>
+                ) : null}
+                {showBiotech ? (
+                  <View style={styles.blockDots}>
+                    {item.event.biotech_color!.map((track) => (
+                      <View
+                        key={track}
+                        style={[styles.blockDot, { backgroundColor: TrackColors[track] ?? '#9BA1A6' }]}
+                      />
+                    ))}
+                  </View>
+                ) : null}
+                {showCategory ? (
+                  <Text style={styles.blockMeta} numberOfLines={1}>
+                    {item.event.category}
+                  </Text>
+                ) : null}
+                {showLocation && item.event.local_location ? (
+                  <Text style={styles.blockMeta} numberOfLines={1}>
                     {item.event.local_location}
                   </Text>
-                )}
+                ) : null}
                 <Pressable
                   hitSlop={6}
                   style={styles.blockBookmark}
@@ -501,11 +532,22 @@ const styles = StyleSheet.create({
     lineHeight: 14,
     marginRight: 16, // leave space for the bookmark icon
   },
-  blockLocation: {
+  blockMeta: {
     color: 'rgba(255,255,255,0.85)',
-    fontSize: 10,
-    lineHeight: 13,
+    fontSize: 9,
+    lineHeight: 9,
+    marginTop: 1,
+  },
+  blockDots: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 3,
     marginTop: 2,
+  },
+  blockDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
   },
   blockBookmark: {
     position: 'absolute',
