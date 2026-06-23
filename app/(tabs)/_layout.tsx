@@ -70,7 +70,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="sponsors"
           options={{
-            title: 'Patrocinadores y Ponentes',
+            title: 'Colaboradores y Ponentes',
             tabBarLabel: 'Personas',
             tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color={color} />,
           }}

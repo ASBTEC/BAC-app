@@ -19,7 +19,7 @@ type TypeFilter = ExhibitorType | 'all';
 const TYPE_FILTERS: { key: TypeFilter; label: string }[] = [
   { key: 'all',      label: 'Todos' },
   { key: 'speaker',  label: 'Ponentes' },
-  { key: 'business', label: 'Patrocinadores' },
+  { key: 'business', label: 'Colaboradores' },
 ];
 
 const TIER_ORDER: Record<string, number> = { platinum: 0, gold: 1, silver: 2, bronze: 3 };
