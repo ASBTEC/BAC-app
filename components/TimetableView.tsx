@@ -75,6 +75,11 @@ function isMultiDay(event: Event): boolean {
 
 // ─── Layout algorithm (greedy interval coloring) ────────────────────────────
 
+// Events whose clamped duration is ≥ this value are "backdrop" events (e.g. all-day
+// exhibition stands). They are placed in columns after all regular events so regular
+// events can expand rightward and the backdrop appears as a narrow strip on the right.
+const BACKDROP_MIN_MS = 6 * 3_600_000;
+
 function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
   if (!events.length) return [];
 
@@ -94,14 +99,29 @@ function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
     })
     .sort((a, b) => a.startMs - b.startMs);
 
-  // Assign each event to the first column whose last event already ended
+  const isBackdrop = items.map((item) => item.endMs - item.startMs >= BACKDROP_MIN_MS);
+
+  // First pass: greedy column assignment for regular (non-backdrop) events
   const colEnds: number[] = [];
-  const cols: number[] = [];
-  for (const item of items) {
-    let c = colEnds.findIndex((end) => end <= item.startMs);
+  const cols: number[] = new Array(items.length).fill(0);
+  for (let i = 0; i < items.length; i++) {
+    if (isBackdrop[i]) continue;
+    let c = colEnds.findIndex((end) => end <= items[i].startMs);
     if (c === -1) c = colEnds.length;
-    cols.push(c);
-    colEnds[c] = item.endMs;
+    cols[i] = c;
+    colEnds[c] = items[i].endMs;
+  }
+
+  // Second pass: greedy column assignment for backdrop events, placed in columns
+  // after all regular events so they form a thin strip on the far-right side.
+  const backdropOffset = colEnds.length; // = max regular col + 1 (0 if no regular events)
+  const backdropColEnds: number[] = [];
+  for (let i = 0; i < items.length; i++) {
+    if (!isBackdrop[i]) continue;
+    let c = backdropColEnds.findIndex((end) => end <= items[i].startMs);
+    if (c === -1) c = backdropColEnds.length;
+    cols[i] = backdropOffset + c;
+    backdropColEnds[c] = items[i].endMs;
   }
 
   // Initial numCols: max column index among directly overlapping events + 1
