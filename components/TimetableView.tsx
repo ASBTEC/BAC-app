@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -203,9 +203,6 @@ export function TimetableView({
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { width: screenWidth } = useWindowDimensions();
-  const scrollRef = useRef<ScrollView>(null);
-  const gridOffsetRef = useRef<number>(0);
-
   // Auto-select the current congress day; fall back to the first day
   const initialDay = useMemo(() => {
     const today = now.toISOString().slice(0, 10);
@@ -234,31 +231,12 @@ export function TimetableView({
     return pos >= 0 && pos <= (END_HOUR - START_HOUR) * HOUR_HEIGHT ? pos : null;
   }, [now, selectedDay]);
 
-  // Scroll to current time (or the first event) whenever the selected day changes.
-  // gridOffsetRef tracks the Y position of the time grid within the outer ScrollView
-  // so we can account for any header/daybar content rendered above it.
-  useEffect(() => {
-    const offset = gridOffsetRef.current;
-    const targetY =
-      nowTop != null
-        ? Math.max(0, offset + nowTop - 80)
-        : layoutItems.length > 0
-        ? Math.max(0, offset + layoutItems[0].top - 48)
-        : 0;
-    const timer = setTimeout(
-      () => scrollRef.current?.scrollTo({ y: targetY, animated: false }),
-      80,
-    );
-    return () => clearTimeout(timer);
-  }, [selectedDay, nowTop, layoutItems]);
-
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>
 
       {/* Single outer ScrollView — contains header, day selector, banners, and the
           fixed-height time grid so that every part of the screen is scrollable. */}
       <ScrollView
-        ref={scrollRef}
         style={styles.gridScroll}
         showsVerticalScrollIndicator={false}>
 
@@ -313,8 +291,7 @@ export function TimetableView({
 
         {/* ── Time grid (fixed height, not a ScrollView) ─────────── */}
         <View
-          style={[styles.grid, { height: (END_HOUR - START_HOUR) * HOUR_HEIGHT }]}
-          onLayout={(e) => { gridOffsetRef.current = e.nativeEvent.layout.y; }}>
+          style={[styles.grid, { height: (END_HOUR - START_HOUR) * HOUR_HEIGHT }]}>
 
           {/* Hour labels + divider lines */}
           {HOURS.map((h) => (

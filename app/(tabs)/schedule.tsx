@@ -6,6 +6,7 @@ import { EventCard } from '@/components/EventCard';
 import { FilterDropdown } from '@/components/FilterDropdown';
 import { TimetableView } from '@/components/TimetableView';
 import { BACColors, Colors, OrbitronFonts, TrackColors } from '@/constants/theme';
+import { useGlobalMenu } from '@/context/global-menu-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
@@ -62,6 +63,7 @@ export default function ScheduleScreen() {
   const colors = Colors[scheme];
   const { savedIds, isSaved, toggleEvent, loaded } = useSchedule();
   const { settings, scheduleEventNotification, cancelEventNotification } = useNotifications();
+  const { openMenu } = useGlobalMenu();
   const [now, setNow] = useState(new Date());
   const [viewMode, setViewMode] = useState<ViewMode>('timetable');
   const [search, setSearch] = useState('');
@@ -127,6 +129,16 @@ export default function ScheduleScreen() {
       {(() => {
         const filterHeader = (
           <View>
+            <Pressable
+              style={[styles.notifBtn, { backgroundColor: colors.card, borderColor: colors.border }]}
+              onPress={openMenu}
+            >
+              <MaterialIcons name="notifications" size={16} color={BACColors.teal} />
+              <Text style={[styles.notifBtnText, { color: BACColors.teal }]}>
+                Configurar notificaciones
+              </Text>
+              <MaterialIcons name="chevron-right" size={16} color={BACColors.teal} />
+            </Pressable>
             <View style={styles.searchRow}>
               <View style={[styles.searchWrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
                 <TextInput
@@ -228,6 +240,25 @@ export default function ScheduleScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
+
+  /* Notification shortcut */
+  notifBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginHorizontal: 16,
+    marginTop: 12,
+    marginBottom: 4,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  notifBtnText: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: '600',
+  },
 
   /* Search row */
   searchRow: {

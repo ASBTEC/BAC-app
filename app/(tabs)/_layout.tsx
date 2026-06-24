@@ -1,21 +1,22 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React, { useState } from 'react';
+import React from 'react';
 import { Pressable } from 'react-native';
 import { GlobalMenu } from '@/components/GlobalMenu';
 import { HapticTab } from '@/components/haptic-tab';
 import { BACColors, Colors, OrbitronFonts } from '@/constants/theme';
+import { GlobalMenuProvider, useGlobalMenu } from '@/context/global-menu-context';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useNotifications } from '@/hooks/use-notifications';
 
-export default function TabLayout() {
+function TabLayoutInner() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { menuOpen, openMenu, closeMenu } = useGlobalMenu();
   const { settings, updateSettings } = useNotifications();
 
   const menuButton = (
-    <Pressable hitSlop={12} onPress={() => setMenuOpen(true)} style={{ marginRight: 16 }}>
+    <Pressable hitSlop={12} onPress={openMenu} style={{ marginRight: 16 }}>
       <MaterialIcons name="more-vert" size={24} color="#fff" />
     </Pressable>
   );
@@ -79,10 +80,18 @@ export default function TabLayout() {
 
       <GlobalMenu
         visible={menuOpen}
-        onClose={() => setMenuOpen(false)}
+        onClose={closeMenu}
         notificationSettings={settings}
         onUpdateNotifications={updateSettings}
       />
     </>
+  );
+}
+
+export default function TabLayout() {
+  return (
+    <GlobalMenuProvider>
+      <TabLayoutInner />
+    </GlobalMenuProvider>
   );
 }
