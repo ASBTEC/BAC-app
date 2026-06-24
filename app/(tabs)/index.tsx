@@ -91,7 +91,7 @@ export default function HomeScreen() {
   const [activeType, setActiveType] = useState<FilterType>('all');
   const [activeTrack, setActiveTrack] = useState<FilterTrack>('all');
   const [search, setSearch] = useState('');
-  const [viewMode, setViewMode] = useState<ViewMode>('timetable');
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [showFilters, setShowFilters] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);

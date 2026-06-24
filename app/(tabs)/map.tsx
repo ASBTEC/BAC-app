@@ -1,8 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { runOnUI, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Rect as SvgRect } from 'react-native-svg';
 import {
   FlatList,
@@ -62,14 +62,16 @@ const MAP_W = 628;
 const MAP_H = 2200;
 const MAP_VIEWPORT_H_FALLBACK = 300;
 
-const EXTERIOR_ID = 'Exterior de la facultat de biociencies';
+const EXTERIOR_ID  = 'Exterior de la facultat de biociencies';
+const AUDITORI_ID  = 'Auditori de Lletres';
+const AUDITORI_COLOR = '#7C3AED';
 
 // Coordinates are in the cropped PNG space (original x − 487, y unchanged)
 const SPACES = [
   { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 98,  y: 160,  w: 154, h: 74,  type: 'classroom' },
-  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 99,  y: 251,  w: 390, h: 133, type: 'stand' },
+  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 99,  y: 251,  w: 390, h: 153, type: 'stand' },
   { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x: 208, y: 473,  w: 158, h: 65,  type: 'classroom' },
-  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 313, y: 373,  w: 175, h: 363, type: 'classroom' },
+  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 313, y: 633,  w: 175, h: 111, type: 'classroom' },
   { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 346, y: 755,  w: 232, h: 785, type: 'expo' },
   { id: 'Catering (C0)',                label: 'Catering (C0)',                 x: 228, y: 1660, w: 154, h: 117, type: 'catering' },
   { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x: 83,  y: 1785, w: 194, h: 162, type: 'stand' },
@@ -77,14 +79,15 @@ const SPACES = [
 
 const ALL_SPACES = [
   ...SPACES,
-  { id: EXTERIOR_ID, label: 'Exterior de la Facultat de Biociències' },
+  { id: AUDITORI_ID, label: 'Auditori de Lletres' },
+  { id: EXTERIOR_ID, label: 'Exterior de la UAB' },
 ];
 
 const ROOM_COLOR: Record<string, string> = {
   classroom: BACColors.lightBlue,
-  stand:     BACColors.amber,
-  expo:      '#F4A259',
-  catering:  '#9B7B5C',
+  stand:     '#EF4444',   // red
+  expo:      '#EAB308',   // pink
+  catering:  '#F97316',   // orange
 };
 
 function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
@@ -99,6 +102,27 @@ function matchesSearch(event: Event, query: string, exhibitors: Exhibitor[]): bo
   if (event.title.toLowerCase().includes(q)) return true;
   return exhibitors.some((ex) => ex.name.toLowerCase().includes(q));
 }
+
+// Clamp translation so the map always fills (or is centered in) the viewport.
+// Works correctly for any scale, including scale < 1 where the map is smaller than the viewport.
+function clampTranslation(tx: number, ty: number, s: number, iw: number, ih: number, vh: number) {
+  'worklet';
+  const scaledW = iw * s;
+  const scaledH = ih * s;
+  // X: center horizontally when map is narrower than viewport; constrain when wider
+  const x = scaledW < iw
+    ? 0
+    : Math.max(-(scaledW - iw) / 2, Math.min((scaledW - iw) / 2, tx));
+  // Y: center vertically when map is shorter than viewport; constrain when taller
+  const y = scaledH < vh
+    ? (vh - ih) / 2
+    : Math.max(vh - ih * (s + 1) / 2, Math.min(ih * (s - 1) / 2, ty));
+  return { x, y };
+}
+
+const ZOOM_FACTOR = 1.6;
+const MIN_SCALE = 0.1;
+const MAX_SCALE = 8;
 
 function getSpaceEvents(spaceId: string, now: Date, events: Event[]): Event[] {
   return events
@@ -136,40 +160,38 @@ export default function MapScreen() {
   }, [space]);
 
   // Image dimensions as shared values so pan worklet can access them
-  const imgW = screenWidth - 24; // 12px padding each side from buildingPanel margin
+  // mapViewport width = screen - 2×margin(12) - 2×border(2) - 2×padding(10) = screen - 48
+  const imgW = screenWidth - 48;
   const imgH = imgW * (MAP_H / MAP_W);
   const imgWShared = useSharedValue(imgW);
   const imgHShared = useSharedValue(imgH);
   useEffect(() => {
-    imgWShared.value = screenWidth - 24;
-    imgHShared.value = (screenWidth - 24) * (MAP_H / MAP_W);
+    imgWShared.value = screenWidth - 48;
+    imgHShared.value = (screenWidth - 48) * (MAP_H / MAP_W);
   }, [screenWidth]);
 
   // Actual rendered viewport height — updated via onLayout, used in pan clamping
   const viewportH = useSharedValue(MAP_VIEWPORT_H_FALLBACK);
 
-  // Pan + pinch-to-zoom shared values
-  const scale = useSharedValue(1);
-  const savedScale = useSharedValue(1);
-  const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
-  const savedX = useSharedValue(0);
-  const savedY = useSharedValue(0);
+  // Estimate initial scale so the whole map fits in view (approx viewport height = 60% screen - UI chrome)
+  const estimatedViewportH = Math.max(80, Math.round(screenHeight * 0.7) - 175);
+  const initialScale = estimatedViewportH / imgH;
+  const initialY = (estimatedViewportH - imgH) / 2; // center vertically at initial scale
 
-  const clampTranslation = (tx: number, ty: number, s: number, iw: number, ih: number, vh: number) => {
-    'worklet';
-    const maxX = iw * (s - 1) / 2;
-    const maxY = ih * (s - 1) / 2;
-    const minY = vh - ih * (s + 1) / 2;
-    return {
-      x: Math.max(-maxX, Math.min(maxX, tx)),
-      y: Math.max(minY, Math.min(maxY, ty)),
-    };
-  };
+  // Pan + pinch-to-zoom shared values
+  const scale = useSharedValue(initialScale);
+  const savedScale = useSharedValue(initialScale);
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(initialY);
+  const savedX = useSharedValue(0);
+  const savedY = useSharedValue(initialY);
+
+  // Set precise initial scale/position once the real viewport height is known
+  const hasInitialized = useRef(false);
 
   const pinchGesture = Gesture.Pinch()
     .onUpdate((e) => {
-      scale.value = Math.max(0.5, Math.min(8, savedScale.value * e.scale));
+      scale.value = Math.max(MIN_SCALE, Math.min(MAX_SCALE, savedScale.value * e.scale));
     })
     .onEnd(() => {
       savedScale.value = scale.value;
@@ -181,6 +203,8 @@ export default function MapScreen() {
     });
 
   const panGesture = Gesture.Pan()
+    .activeOffsetX([-10, 10])
+    .activeOffsetY([-10, 10])
     .onUpdate((e) => {
       const clamped = clampTranslation(savedX.value + e.translationX, savedY.value + e.translationY, scale.value, imgWShared.value, imgHShared.value, viewportH.value);
       translateX.value = clamped.x;
@@ -192,6 +216,20 @@ export default function MapScreen() {
     });
 
   const mapGesture = Gesture.Simultaneous(pinchGesture, panGesture);
+
+  const handleZoom = (factor: number) => {
+    runOnUI(() => {
+      'worklet';
+      const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, savedScale.value * factor));
+      scale.value = withTiming(newScale, { duration: 250 });
+      savedScale.value = newScale;
+      const clamped = clampTranslation(translateX.value, translateY.value, newScale, imgWShared.value, imgHShared.value, viewportH.value);
+      translateX.value = withTiming(clamped.x, { duration: 250 });
+      translateY.value = withTiming(clamped.y, { duration: 250 });
+      savedX.value = clamped.x;
+      savedY.value = clamped.y;
+    })();
+  };
 
   const mapAnimStyle = useAnimatedStyle(() => ({
     transform: [
@@ -232,8 +270,8 @@ export default function MapScreen() {
   );
 
   const mapSection = (
-    <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.6), borderBottomColor: colors.border }]}>
-      <Text style={[styles.subtitle, { color: colors.icon }]}>
+    <View style={[styles.mapArea, { height: Math.round(screenHeight * 0.7), borderBottomColor: colors.border }]}>
+      <Text style={[styles.subtitle, { color: colors.text }]}>
         Toca un espacio para ver sus eventos
       </Text>
 
@@ -242,7 +280,24 @@ export default function MapScreen() {
           FACULTAD DE BIOCIENCIAS — UAB
         </Text>
 
-        <View style={styles.mapViewport} onLayout={(e) => { viewportH.value = e.nativeEvent.layout.height; }}>
+        <View
+          style={styles.mapViewport}
+          onLayout={(e) => {
+            const h = e.nativeEvent.layout.height;
+            viewportH.value = h;
+            if (!hasInitialized.current && imgHShared.value > 0) {
+              hasInitialized.current = true;
+              const fitScale = h / imgHShared.value;
+              scale.value = fitScale;
+              savedScale.value = fitScale;
+              const clamped = clampTranslation(0, 0, fitScale, imgWShared.value, imgHShared.value, h);
+              translateX.value = clamped.x;
+              translateY.value = clamped.y;
+              savedX.value = clamped.x;
+              savedY.value = clamped.y;
+            }
+          }}
+        >
           <GestureDetector gesture={mapGesture}>
             <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
               <Image
@@ -277,23 +332,50 @@ export default function MapScreen() {
               </Svg>
             </Animated.View>
           </GestureDetector>
+
+          {/* Zoom buttons */}
+          <View style={styles.zoomControls}>
+            <Pressable style={styles.zoomBtn} onPress={() => handleZoom(ZOOM_FACTOR)}>
+              <MaterialIcons name="add" size={16} color="#fff" />
+            </Pressable>
+            <Pressable style={styles.zoomBtn} onPress={() => handleZoom(1 / ZOOM_FACTOR)}>
+              <MaterialIcons name="remove" size={16} color="#fff" />
+            </Pressable>
+          </View>
         </View>
 
-        {/* Exterior — below the building map */}
-        <Pressable
-          style={[
-            styles.exteriorBtn,
-            {
-              backgroundColor: selectedSpace === EXTERIOR_ID ? BACColors.green + '33' : 'transparent',
-              borderColor: selectedSpace === EXTERIOR_ID ? BACColors.green : BACColors.green + '66',
-            },
-          ]}
-          onPress={() => setSelectedSpace(selectedSpace === EXTERIOR_ID ? null : EXTERIOR_ID)}>
-          <MaterialIcons name="park" size={14} color={BACColors.green} />
-          <Text style={[styles.exteriorLabel, { color: selectedSpace === EXTERIOR_ID ? BACColors.green : colors.text }]}>
-            Exterior de la Facultat de Biociències
-          </Text>
-        </Pressable>
+        {/* Auditori de Lletres + Exterior — same row */}
+        <View style={styles.externalBtnsRow}>
+          <Pressable
+            style={[
+              styles.exteriorBtn,
+              { flex: 1,
+                backgroundColor: selectedSpace === AUDITORI_ID ? AUDITORI_COLOR + '22' : 'transparent',
+                borderColor: selectedSpace === AUDITORI_ID ? AUDITORI_COLOR : AUDITORI_COLOR + '66',
+              },
+            ]}
+            onPress={() => setSelectedSpace(selectedSpace === AUDITORI_ID ? null : AUDITORI_ID)}>
+            <MaterialIcons name="theater-comedy" size={14} color={AUDITORI_COLOR} />
+            <Text style={[styles.exteriorLabel, { color: selectedSpace === AUDITORI_ID ? AUDITORI_COLOR : colors.text }]}>
+              Auditori de Lletres
+            </Text>
+          </Pressable>
+
+          <Pressable
+            style={[
+              styles.exteriorBtn,
+              { flex: 1,
+                backgroundColor: selectedSpace === EXTERIOR_ID ? BACColors.green + '33' : 'transparent',
+                borderColor: selectedSpace === EXTERIOR_ID ? BACColors.green : BACColors.green + '66',
+              },
+            ]}
+            onPress={() => setSelectedSpace(selectedSpace === EXTERIOR_ID ? null : EXTERIOR_ID)}>
+            <MaterialIcons name="park" size={14} color={BACColors.green} />
+            <Text style={[styles.exteriorLabel, { color: selectedSpace === EXTERIOR_ID ? BACColors.green : colors.text }]}>
+              Exterior de la UAB
+            </Text>
+          </Pressable>
+        </View>
       </View>
 
       {/* Legend */}
@@ -303,16 +385,20 @@ export default function MapScreen() {
           <Text style={[styles.legendText, { color: colors.text }]}>Aula</Text>
         </View>
         <View style={styles.legendItem}>
-          <View style={[styles.legendDot, { backgroundColor: BACColors.amber }]} />
+          <View style={[styles.legendDot, { backgroundColor: '#EF4444' }]} />
           <Text style={[styles.legendText, { color: colors.text }]}>Stands</Text>
         </View>
         <View style={styles.legendItem}>
-          <View style={[styles.legendDot, { backgroundColor: '#F4A259' }]} />
+          <View style={[styles.legendDot, { backgroundColor: '#EAB308' }]} />
           <Text style={[styles.legendText, { color: colors.text }]}>ExpoBAC</Text>
         </View>
         <View style={styles.legendItem}>
-          <View style={[styles.legendDot, { backgroundColor: '#9B7B5C' }]} />
+          <View style={[styles.legendDot, { backgroundColor: '#F97316' }]} />
           <Text style={[styles.legendText, { color: colors.text }]}>Catering</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: AUDITORI_COLOR }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Auditori</Text>
         </View>
         <View style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: BACColors.green }]} />
@@ -455,7 +541,8 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   subtitle: {
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: '600',
     marginTop: 12,
     marginBottom: 8,
     textAlign: 'center',
@@ -478,6 +565,26 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
     borderRadius: 6,
+  },
+  zoomControls: {
+    position: 'absolute',
+    bottom: 10,
+    right: 8,
+    gap: 5,
+  },
+  zoomBtn: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: 'rgba(0,0,0,0.32)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  externalBtnsRow: {
+    flexDirection: 'row',
+    gap: 8,
   },
   exteriorBtn: {
     flexDirection: 'row',

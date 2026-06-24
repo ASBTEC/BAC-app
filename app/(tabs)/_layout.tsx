@@ -72,7 +72,7 @@ function TabLayoutInner() {
           name="sponsors"
           options={{
             title: 'Colaboradores y Ponentes',
-            tabBarLabel: 'Personas',
+            tabBarLabel: 'Participantes',
             tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color={color} />,
           }}
         />
