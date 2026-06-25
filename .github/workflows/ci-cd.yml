@@ -361,14 +361,42 @@ jobs:
         continue-on-error: true
         run: curl -fL "$(cat ios-build-url.txt)" -o bac-app.ipa
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Resolve release tag
+        id: resolve-tag
+        run: |
+          TAG="${{ github.ref_name }}"
+          if [[ "$TAG" != v* ]]; then
+            VERSION=$(node -p "require('./package.json').version")
+            TAG="v${VERSION}"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release if missing
+        if: steps.dl-apk.outcome == 'success' || steps.dl-ipa.outcome == 'success'
+        run: |
+          TAG="${{ steps.resolve-tag.outputs.tag }}"
+          gh release view "$TAG" 2>/dev/null || \
+          gh release create "$TAG" \
+            --title "BAC App $TAG" \
+            --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Attach APK to GitHub Release
         if: steps.dl-apk.outcome == 'success'
-        run: gh release upload "${{ github.ref_name }}" bac-app.apk --clobber
+        run: gh release upload "${{ steps.resolve-tag.outputs.tag }}" bac-app.apk --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Attach IPA to GitHub Release
         if: steps.dl-ipa.outcome == 'success'
-        run: gh release upload "${{ github.ref_name }}" bac-app.ipa --clobber
+        run: gh release upload "${{ steps.resolve-tag.outputs.tag }}" bac-app.ipa --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
