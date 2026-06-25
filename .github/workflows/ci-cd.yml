@@ -123,9 +123,9 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-  # ── 6a. Wait for Android build ────────────────────────────────────────────
-  wait-android:
-    name: Wait for Android build
+  # ── 6a. Wait for Android APK (preview profile — sideloadable) ───────────────
+  wait-android-apk:
+    name: Wait for Android APK
     runs-on: ubuntu-latest
     needs: trigger-eas
     continue-on-error: true
@@ -146,11 +146,82 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Poll until Android build finishes
+      - name: Poll until Android APK build finishes
         id: poll
         run: |
           SINCE="${{ needs.trigger-eas.outputs.triggered-at }}"
-          echo "Waiting for Android build created after $SINCE …"
+          echo "Waiting for Android APK (preview) build created after $SINCE …"
+          for i in $(seq 1 40); do
+            sleep 60
+            BUILD=$(npx eas-cli@latest build:list \
+              --platform android \
+              --profile preview \
+              --limit 5 \
+              --json \
+              --non-interactive 2>/dev/null \
+              | jq --arg t "$SINCE" \
+                '[.[] | select(.createdAt >= $t)] | first // empty' \
+              2>/dev/null || true)
+            if [ -z "$BUILD" ] || [ "$BUILD" = "null" ]; then
+              echo "Attempt $i/40: no build found yet…"
+              continue
+            fi
+            STATUS=$(echo "$BUILD" | jq -r '.status')
+            if [ "$STATUS" = "FINISHED" ]; then
+              URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
+              if [ -n "$URL" ] && [ "$URL" != "null" ]; then
+                echo "Android APK ready: $URL"
+                echo "$URL" > android-build-url.txt
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+            elif [ "$STATUS" = "ERRORED" ] || [ "$STATUS" = "CANCELLED" ]; then
+              echo "Android APK build failed with status: $STATUS"
+              exit 1
+            else
+              echo "Attempt $i/40: build status is '$STATUS', waiting…"
+            fi
+          done
+          echo "Timed out waiting for Android APK build" && exit 1
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Upload Android APK URL
+        if: steps.poll.outputs.url != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-metadata
+          path: android-build-url.txt
+          retention-days: 1
+
+  # ── 6b. Wait for Android AAB (production — for Play Store submit) ─────────
+  wait-android:
+    name: Wait for Android AAB
+    runs-on: ubuntu-latest
+    needs: trigger-eas
+    continue-on-error: true
+    outputs:
+      build-url: ${{ steps.poll.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Poll until Android AAB build finishes
+        id: poll
+        run: |
+          SINCE="${{ needs.trigger-eas.outputs.triggered-at }}"
+          echo "Waiting for Android AAB (production) build created after $SINCE …"
           for i in $(seq 1 40); do
             sleep 60
             BUILD=$(npx eas-cli@latest build:list \
@@ -170,29 +241,20 @@ jobs:
             if [ "$STATUS" = "FINISHED" ]; then
               URL=$(echo "$BUILD" | jq -r '.artifacts.applicationArchiveUrl // empty')
               if [ -n "$URL" ] && [ "$URL" != "null" ]; then
-                echo "Android build ready: $URL"
-                echo "$URL" > android-build-url.txt
+                echo "Android AAB ready: $URL"
                 echo "url=$URL" >> "$GITHUB_OUTPUT"
                 exit 0
               fi
             elif [ "$STATUS" = "ERRORED" ] || [ "$STATUS" = "CANCELLED" ]; then
-              echo "Android build failed with status: $STATUS"
+              echo "Android AAB build failed with status: $STATUS"
               exit 1
             else
               echo "Attempt $i/40: build status is '$STATUS', waiting…"
             fi
           done
-          echo "Timed out waiting for Android build" && exit 1
+          echo "Timed out waiting for Android AAB build" && exit 1
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Upload Android build URL
-        if: steps.poll.outputs.url != ''
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-build-metadata
-          path: android-build-url.txt
-          retention-days: 1
 
   # ── 6b. Wait for iOS build ────────────────────────────────────────────────
   wait-ios:
@@ -328,7 +390,7 @@ jobs:
   attach-artifacts:
     name: Attach builds to release
     runs-on: ubuntu-latest
-    needs: [wait-android, wait-ios]
+    needs: [wait-android-apk, wait-ios]
     if: always() && github.event_name == 'push' #&& startsWith(github.ref, 'refs/tags/v')
     permissions:
       contents: write
