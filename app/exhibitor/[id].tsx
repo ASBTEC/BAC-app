@@ -50,6 +50,8 @@ export default function ExhibitorDetailScreen() {
     [events, isSaved, toggleEvent, settings, scheduleEventNotification, cancelEventNotification],
   );
 
+  const [photoVisible, setPhotoVisible] = useState(false);
+
   if (!exhibitor) {
     return (
       <View style={[styles.center, { backgroundColor: colors.background }]}>
@@ -57,8 +59,6 @@ export default function ExhibitorDetailScreen() {
       </View>
     );
   }
-
-  const [photoVisible, setPhotoVisible] = useState(false);
   const photo = getExhibitorPhoto(exhibitor.id, scheme);
   const isBusiness = exhibitor.exhibitor_type === 'business';
   const isImagePhoto = photo && typeof photo !== 'function';
