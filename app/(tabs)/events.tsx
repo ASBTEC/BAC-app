@@ -150,7 +150,7 @@ export default function EventsScreen() {
           <FilterDropdown
             value={activeType}
             options={TYPE_FILTERS}
-            onChange={setActiveType}
+            onChange={(k) => setActiveType(k as FilterType)}
             allLabel="Todos los tipos"
           />
 
