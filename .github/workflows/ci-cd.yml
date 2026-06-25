@@ -333,6 +333,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download Android build metadata
         id: dl-android
         continue-on-error: true
