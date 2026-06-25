@@ -78,6 +78,19 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'cc_013': require('@/assets/images/exhibitors/speakers/20250709_EstherJulian_UAB.jpg'),
   'cc_014': require('@/assets/images/exhibitors/speakers/NRA_2_Foto.jpeg'),
   'cc_015': require('@/assets/images/exhibitors/speakers/Foto_LASA.png'),
+  // Comité de Honor
+  'ch_01': require('@/assets/images/exhibitors/speakers/diana_morant.jpeg'),
+  // Mesa Clausura
+  'mc_01': require('@/assets/images/exhibitors/SIN_FOTO.png'),
+  'mc_02': require('@/assets/images/exhibitors/speakers/teresa-sanchis.webp'),
+  'mc_03': require('@/assets/images/exhibitors/speakers/monicagutierrez.jpg'),
+  // Mesa Inaugural
+  'mi_01': require('@/assets/images/exhibitors/speakers/alba_tomas.jpg'),
+  'mi_02': require('@/assets/images/exhibitors/speakers/Javier_Lafuente.jpeg'),
+  'mi_03': require('@/assets/images/exhibitors/speakers/eva-ortega-paino.jpg'),
+  // New speakers
+  'spk_049': require('@/assets/images/exhibitors/SIN_FOTO.png'),
+  'spk_050': require('@/assets/images/exhibitors/SIN_FOTO.png'),
   // Sponsors
   'biz_001': require('@/assets/images/exhibitors/sponsors/Farmandome.webp'),
   'biz_002': require('@/assets/images/exhibitors/sponsors/pharmax.png'),
@@ -99,4 +112,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'biz_020': require('@/assets/images/exhibitors/sponsors/Kuhner.png'),
   'biz_021': require('@/assets/images/exhibitors/sponsors/logo_3linies_uvic_color.jpg'),
   'biz_022': require('@/assets/images/exhibitors/sponsors/febiotec_color.png'),
+  // Organizadores
+  'org_022': require('@/assets/images/exhibitors/sponsors/febiotec_color.png'),
+  'org_023': require('@/assets/images/exhibitors/sponsors/asbtec.jpg'),
 };

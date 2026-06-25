@@ -17,7 +17,7 @@
     "id": "spk_003",
     "exhibitor_type": "speaker",
     "name": "Benjamí Oller-Salvia",
-    "photo": "benjamí oller-salvia.jpg",
+    "photo": "benjami_oller-salvia.jpg",
     "description": "Benjamí Oller‑Salvia es profesor asociado en IQS-Ramon Llull, donde lidera el grupo de Biología Química y Sintética para Bioterapias (ChemSynBio). Doctor por el IRB Barcelona y formado en el MRC-LMB de Cambridge, posee una ERC Starting Grant. Su trabajo se enfoca en el desarrollo de biofármacos inteligentes y sistemas avanzados de transporte de fármacos al sistema nervioso central."
   },
   {
@@ -46,14 +46,14 @@
     "exhibitor_type": "speaker",
     "name": "Alberto Prats Galino",
     "photo": "SIN_FOTO.png",
-    "description": "FALTA DADES PROFE Curso de Neurobioingenería: Introducción a la Tractografía"
+    "description": "Alberto Prats Galino es catedrático de Anatomía y Embriología Humana en la Universitat de Barcelona. Especialista en neuroanatomía quirúrgica, neuroimagen y simulación anatómica, dirige iniciativas de investigación orientadas a mejorar la planificación y precisión de intervenciones neuroquirúrgicas complejas. Su trabajo combina el conocimiento anatómico con tecnologías avanzadas de visualización y modelización, contribuyendo al desarrollo de abordajes quirúrgicos mínimamente invasivos y a la formación de profesionales de la salud."
   },
   {
     "id": "spk_008",
     "exhibitor_type": "speaker",
-    "name": "Ignasi Folch",
+    "name": "Ignasi Folch i Casanovas",
     "photo": "SIN_FOTO.png",
-    "description": "FALTA DADES PROFE Introducción a RStudio aplicado a datos ómicos"
+    "description": "Ignasi Folch i Casanovas es investigador y especialista en proteómica y bioinformática en el IRB Barcelona. Su actividad se centra en el análisis de proteínas mediante espectrometría de masas y en la aplicación de herramientas computacionales para interpretar grandes volúmenes de datos biológicos. Con una trayectoria que integra bioquímica, análisis de datos y tecnologías ómicas, contribuye a impulsar la investigación biomédica a través de plataformas científicas de alto nivel."
   },
   {
     "id": "spk_009",
@@ -235,7 +235,7 @@
     "exhibitor_type": "speaker",
     "name": "Gemma Marfany",
     "photo": "Gemma Marfany.png",
-    "description": "La Dra. Gemma Marfany Nadal es catedrática de Genética en la UB, miembro de su Comisión de Bioética y del Instituto de Biomedicina (IBUB). Su investigación lidera el estudio de enfermedades raras visuales mediante edición genética con CRISPR-Cas9. Destaca enormemente por su faceta como divulgadora científica —reconocida por el Claustre de Doctors de la UB—, siendo columnista habitual y coautora de documentos clave sobre la regulación ética genómica. Además, cuenta con una vertiente emprendedora como cofundadora de la spin-off de diagnóstico ocular DBGen."
+    "description": "La Dra. Gemma Marfany Nadal es catedrática de Genética en la UB, miembro de su Comisión de Bioética y del Instituto de Biomedicina (IBUB). Su investigación lidera el estudio de enfermedades raras visuales mediante edición genética con CRISPR-Cas9. Destaca enormemente por su faceta como divulgadora científica —reconocida por el Claustre de Doctors de la UB—, siendo columnista habitual y coautora de documentos clave sobre la regulación ética genómica. Además, cuenta con una vertiente emprendedora como cofundadora de la spin-off de diagnóstico ocular DBGen. Secretària acadèmica de la Comissió de Bioètica de la Universitat de Barcelona i Catedrática de Genética en la Universidad de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
   },
   {
     "id": "spk_179",
@@ -357,6 +357,20 @@
     "description": "SIN DESCRIPCIÓN"
   },
   {
+    "id": "spk_049",
+    "exhibitor_type": "speaker",
+    "name": "Federico Álvarez Villarreal",
+    "photo": "SIN_FOTO.png",
+    "description": "Federico Álvarez Villarreal forma parte del equipo de Cervesa del Montseny, donde desarrolla su actividad en el ámbito de la elaboración cervecera y los procesos de fermentación. Con formación científica y una trayectoria vinculada a la producción artesanal, combina conocimientos técnicos y control de procesos para desarrollar cervezas de calidad. Su trabajo se centra en optimizar la fermentación y la producción, contribuyendo a la innovación y excelencia de una de las cerveceras artesanas de referencia en Cataluña."
+  },
+  {
+    "id": "spk_050",
+    "exhibitor_type": "speaker",
+    "name": "Marcos Palomo Fernández",
+    "photo": "SIN_FOTO.png",
+    "description": "Subdirector General de Organismos y Entidades Publicas de Investigación - Ministerio de Ciencia, Innovación y Universidades que dará una charla sobre Empleo Público y Oportunidades Laborales en España"
+  },
+  {
     "id": "biz_001",
     "exhibitor_type": "business",
     "name": "Farmandome",
@@ -473,7 +487,7 @@
     "exhibitor_type": "business",
     "name": "UNESCO",
     "photo": "unesco_natcom_esp_flag_spa_W.png",
-    "description": "Con el patrocinio de UNESCO. \\n\\nLa UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura) es una agencia especializada de las Naciones Unidas fundada en 1945. Su misión principal es contribuir a la paz y la seguridad internacional mediante la promoción de la cooperación entre las naciones en los ámbitos de la educación, la ciencia, la cultura y la comunicación",
+    "description": "Con el patrocinio de UNESCO. \n\nLa UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura) es una agencia especializada de las Naciones Unidas fundada en 1945. Su misión principal es contribuir a la paz y la seguridad internacional mediante la promoción de la cooperación entre las naciones en los ámbitos de la educación, la ciencia, la cultura y la comunicación",
     "sponsor_tier": "platinum"
   },
   {
@@ -517,18 +531,26 @@
     "sponsor_tier": "bronze"
   },
   {
+    "id": "org_023",
+    "exhibitor_type": "Organizadores",
+    "name": "ASBTEC",
+    "photo": "asbtec.jpg",
+    "description": "La Associació de Biotecnòlegs de Catalunya (ASBTEC) es una entidad sin ánimo de lucro que reúne a estudiantes, graduados y profesionales de la biotecnología en Cataluña. Su objetivo es impulsar el desarrollo académico, profesional y social del sector biotecnológico mediante la organización de congresos, actividades formativas, eventos de divulgación científica y oportunidades de networking. Además, actúa como punto de conexión entre estudiantes, investigadores, empresas e instituciones, fomentando el crecimiento de la comunidad biotecnológica catalana y acercando la biotecnología a la sociedad.",
+    "sponsor_tier": "platinum"
+  },
+  {
     "id": "cc_001",
     "exhibitor_type": "speaker",
     "name": "Eliana Carolina Bianucci Ovando",
     "photo": "Eliana Carolina Bianucci Ovando.jpg",
-    "description": "\"\"\"Mi investigación se centra en los mecanismos fisiológicos, bioquímicos y moleculares\nimplicados en las respuestas de las plantas al estrés abiótico, con especial énfasis en la\nseñalización redox, el metabolismo antioxidante y las interacciones planta-microorganismo. Mi\ntrabajo integra biología redox, anatomía radicular, homeostasis de nutrientes y expresión\ngénica para comprender cómo cultivos como cacahuete, maíz y soja, así como especies de\nBrassicaceae, responden frente a estreses abióticos.\nUna contribución central de mi investigación ha sido caracterizar cómo las bacterias\npromotoras del crecimiento vegetal (PGPB) y los microorganismos simbióticos modulan la\nhomeostasis redox y la tolerancia al estrés, incluyendo efectos dependientes de la cepa sobre\nel metabolismo del glutatión y la señalización por ROS. Más recientemente, he extendido este\nmarco a agroecosistemas mediterráneos, desarrollando estrategias biotecnológicas basadas en\nmicroorganismos halotolerantes para mejorar la resiliencia de los cultivos expuestos a\nsalinidad, sequía, metales y metaloides, y escenarios de estrés combinado.\nA lo largo de una trayectoria científica desarrollada entre Argentina y España, he liderado cinco\nproyectos competitivos y participado en proyectos europeos H2020 y Horizon Europe,\ncontribuyendo al desarrollo de soluciones sostenibles basadas en el microbioma para la\nagricultura bajo escenarios de cambio climático.\"\"\"\n"
+    "description": "Mi investigación se centra en los mecanismos fisiológicos, bioquímicos y moleculares implicados en las respuestas de las plantas al estrés abiótico, con especial énfasis en la señalización redox, el metabolismo antioxidante y las interacciones planta-microorganismo. Mi trabajo integra biología redox, anatomía radicular, homeostasis de nutrientes y expresión génica para comprender cómo cultivos como cacahuete, maíz y soja, así como especies de Brassicaceae, responden frente a estreses abióticos.\n\nUna contribución central de mi investigación ha sido caracterizar cómo las bacterias promotoras del crecimiento vegetal (PGPB) y los microorganismos simbióticos modulan la homeostasis redox y la tolerancia al estrés, incluyendo efectos dependientes de la cepa sobre el metabolismo del glutatión y la señalización por ROS. Más recientemente, he extendido este marco a agroecosistemas mediterráneos, desarrollando estrategias biotecnológicas basadas en microorganismos halotolerantes para mejorar la resiliencia de los cultivos expuestos a salinidad, sequía, metales y metaloides, y escenarios de estrés combinado.\n\nA lo largo de una trayectoria científica desarrollada entre Argentina y España, he liderado cinco proyectos competitivos y participado en proyectos europeos H2020 y Horizon Europe, contribuyendo al desarrollo de soluciones sostenibles basadas en el microbioma para la agricultura bajo escenarios de cambio climático."
   },
   {
     "id": "cc_002",
     "exhibitor_type": "speaker",
     "name": "Jordi Saldo Periago",
     "photo": "Jordi Saldo.jpg",
-    "description": "\"Jordi Saldo Periago és professor titular de la Universitat Autònoma de Barcelona (UAB), al Departament de Ciència Animal i dels Aliments, i coordinador del Doctorat en Ciència dels Aliments des de 2022. Desenvolupa activitat docent en els graus de Ciència i Tecnologia dels Aliments, Veterinària i Microbiologia, així com en diversos programes de màster en l’àmbit de la qualitat, la seguretat i la tecnologia alimentària.\n \n La seva trajectòria investigadora se centra en les noves tecnologies de processat d’aliments, l’aplicació de metodologies avançades d’anàlisi de dades i la valorització de subproductes agroalimentaris, amb especial atenció als compostos bioactius i als ingredients funcionals. El seu treball recent destaca per l’ús de tècniques espectroscòpiques i anàlisis multivariants per estudiar els efectes del processat sobre la qualitat, el valor nutricional i la funcionalitat dels aliments.\n \n Ha dirigit nombroses tesis doctorals, participa regularment com a avaluador de projectes i revistes científiques, i col·labora activament amb la indústria agroalimentària en projectes d’R+D i innovació orientats al desenvolupament d’aliments funcionalment millorats basats en evidència científica.\""
+    "description": "Jordi Saldo Periago és professor titular de la Universitat Autònoma de Barcelona (UAB), al Departament de Ciència Animal i dels Aliments, i coordinador del Doctorat en Ciència dels Aliments des de 2022. Desenvolupa activitat docent en els graus de Ciència i Tecnologia dels Aliments, Veterinària i Microbiologia, així com en diversos programes de màster en l’àmbit de la qualitat, la seguretat i la tecnologia alimentària.\n \n La seva trajectòria investigadora se centra en les noves tecnologies de processat d’aliments, l’aplicació de metodologies avançades d’anàlisi de dades i la valorització de subproductes agroalimentaris, amb especial atenció als compostos bioactius i als ingredients funcionals. El seu treball recent destaca per l’ús de tècniques espectroscòpiques i anàlisis multivariants per estudiar els efectes del processat sobre la qualitat, el valor nutricional i la funcionalitat dels aliments.\n \n Ha dirigit nombroses tesis doctorals, participa regularment com a avaluador de projectes i revistes científiques, i col·labora activament amb la indústria agroalimentària en projectes d’R+D i innovació orientats al desenvolupament d’aliments funcionalment millorats basats en evidència científica."
   },
   {
     "id": "cc_003",
@@ -556,21 +578,21 @@
     "exhibitor_type": "speaker",
     "name": "Dr. Francesc Valero",
     "photo": "Francisco Valero.jpg",
-    "description": "\"El Dr. Francisco Valero Barranco es catedrático de Ingeniería Química en el Departamento de Ingeniería Química, Biológica y Ambiental de la Universitat Autònoma de Barcelona. Su carrera investigadora se ha centrado en la Ingeniería Bioquímica, especialmente en los campos de la ingeniería de bioprocesos, la producción de proteínas recombinantes en la fábrica celular Pichia pastoris, la monitorización, modelado y control de bioprocesos, y la biocatálisis aplicada.\n \n Ha codirigido el Grupo de Investigación en Ingeniería de Bioprocesos y Biocatalización Aplicada (ENG4BIO) y cuenta con una amplia experiencia como gestor de proyectos, habiendo liderado 50 proyectos públicos y privados. Ha publicado más de 140 artículos científicos en revistas indexadas, con un índice H de 38, y ha dirigido más de 25 tesis doctorales en el ámbito de la biotecnología. Actualmente, es el secretario de la Sociedad Española de Biotecnología (SEBiot) y miembro de la EFB (Federación Europea de Biotecnología) y de la PDA (Parenteral Drug Association).\""
+    "description": "El Dr. Francisco Valero Barranco es catedrático de Ingeniería Química en el Departamento de Ingeniería Química, Biológica y Ambiental de la Universitat Autònoma de Barcelona. Su carrera investigadora se ha centrado en la Ingeniería Bioquímica, especialmente en los campos de la ingeniería de bioprocesos, la producción de proteínas recombinantes en la fábrica celular Pichia pastoris, la monitorización, modelado y control de bioprocesos, y la biocatálisis aplicada.\n \n Ha codirigido el Grupo de Investigación en Ingeniería de Bioprocesos y Biocatalización Aplicada (ENG4BIO) y cuenta con una amplia experiencia como gestor de proyectos, habiendo liderado 50 proyectos públicos y privados. Ha publicado más de 140 artículos científicos en revistas indexadas, con un índice H de 38, y ha dirigido más de 25 tesis doctorales en el ámbito de la biotecnología. Actualmente, es el secretario de la Sociedad Española de Biotecnología (SEBiot) y miembro de la EFB (Federación Europea de Biotecnología) y de la PDA (Parenteral Drug Association)."
   },
   {
     "id": "cc_007",
     "exhibitor_type": "speaker",
     "name": "Dr. Jordi Barbé",
     "photo": "Jordi Barbe.jpg",
-    "description": "\"Mis líneas de investigación han sido fundamentalmente dos. Por un lado el análisis filogenético de los\n mecanismos de reparación del DNA en bacterias especialmente sobre el sistema de reparación de\n emergencia (conocido como SOS) y por otro la captación de hierro por las células de bacterias\n patógenas y la conexión con sus procesos infectivos. En la primera hemos constatado la variabilidad de\n la composición génica del regulón SOS y la relación existente entre los diferentes operadores que lo\n controlan. Hemos demostrado la dinámica de expansión del sistema SOS y que su proteína represora\n proviene en muchos casos de un represor de genes fágicos. También hemos evidenciado que este\n sistema controla la movilización de los elementos genéticos conocidos como integrones que son una de\n las bases sobre la que se ha generado la transferencia genética lateral de la resistencia a los\n antibióticos. Con respecto los procesos de captación de hierro hemos determinado que muchas cepas\n bacterianas patógenas tienen diversas estrategias que coexisten en sus células lo que les permite obviar\n los mecanismos de defensa del huésped. Esta cuestión es muy relevante para el diseño de sistemas\n vacunales basados en la inmunogenicidad de las proteínas captadores de hierro de las envueltas\n bacterianas.\""
+    "description": "Mis líneas de investigación han sido fundamentalmente dos. Por un lado el análisis filogenético de los mecanismos de reparación del DNA en bacterias especialmente sobre el sistema de reparación de emergencia (conocido como SOS) y por otro la captación de hierro por las células de bacterias patógenas y la conexión con sus procesos infectivos. En la primera hemos constatado la variabilidad de la composición génica del regulón SOS y la relación existente entre los diferentes operadores que lo controlan. Hemos demostrado la dinámica de expansión del sistema SOS y que su proteína represora proviene en muchos casos de un represor de genes fágicos. También hemos evidenciado que este sistema controla la movilización de los elementos genéticos conocidos como integrones que son una de las bases sobre la que se ha generado la transferencia genética lateral de la resistencia a los antibióticos. Con respecto los procesos de captación de hierro hemos determinado que muchas cepas bacterianas patógenas tienen diversas estrategias que coexisten en sus células lo que les permite obviar los mecanismos de defensa del huésped. Esta cuestión es muy relevante para el diseño de sistemas vacunales basados en la inmunogenicidad de las proteínas captadores de hierro de las envueltas bacterianas."
   },
   {
     "id": "cc_008",
     "exhibitor_type": "speaker",
     "name": "Olga Sánchez Martínez",
     "photo": "Olga Sanchez.jpg",
-    "description": "\"Catedrática de Microbiología (2024) y Doctora por la Universitat Autònoma de Barcelona (1996, Premio Extraordinario de Doctorado), está especializada en ecología microbiana y microbiología ambiental. A lo largo de una trayectoria de 30 años, ha liderado y colaborado en proyectos de investigación competitivos, tanto nacionales como internacionales, centrados en la biorremediación de contaminantes y en el estudio de la estructura y función de las comunidades microbianas en entornos naturales.\n \n Ha sido pionera en la aplicación de microorganismos fotótrofos en sistemas de ingeniería para la eliminación de contaminantes, obteniendo financiación tanto del Ministerio español como de la Comisión Europea. Su trabajo ha permitido avanzar en la integración de herramientas moleculares y dependientes de cultivo para caracterizar y optimizar comunidades microbianas en biorreactores y entornos contaminados. Desde 2007, también ha contribuido a iniciativas interdisciplinarias en microbiología aplicada, incluyendo el desarrollo de biosensores para la monitorización ambiental e industrial. Paralelamente, ha consolidado una sólida línea de investigación en ecología microbiana marina a través de colaboraciones continuas con el ICM-CSIC y la KAUST, liderando proyectos europeos e internacionales sobre la biorremediación de mercurio y la dinámica de las comunidades microbianas.\n \n Su producción científica incluye 92 publicaciones y la supervisión de 113 estudiantes. Forma parte del comité editorial de la revista Scientific Reports y evalúa regularmente propuestas de investigación a nivel nacional e internacional.\""
+    "description": "Catedrática de Microbiología (2024) y Doctora por la Universitat Autònoma de Barcelona (1996, Premio Extraordinario de Doctorado), está especializada en ecología microbiana y microbiología ambiental. A lo largo de una trayectoria de 30 años, ha liderado y colaborado en proyectos de investigación competitivos, tanto nacionales como internacionales, centrados en la biorremediación de contaminantes y en el estudio de la estructura y función de las comunidades microbianas en entornos naturales.\n \nHa sido pionera en la aplicación de microorganismos fotótrofos en sistemas de ingeniería para la eliminación de contaminantes, obteniendo financiación tanto del Ministerio español como de la Comisión Europea. Su trabajo ha permitido avanzar en la integración de herramientas moleculares y dependientes de cultivo para caracterizar y optimizar comunidades microbianas en biorreactores y entornos contaminados. Desde 2007, también ha contribuido a iniciativas interdisciplinarias en microbiología aplicada, incluyendo el desarrollo de biosensores para la monitorización ambiental e industrial. Paralelamente, ha consolidado una sólida línea de investigación en ecología microbiana marina a través de colaboraciones continuas con el ICM-CSIC y la KAUST, liderando proyectos europeos e internacionales sobre la biorremediación de mercurio y la dinámica de las comunidades microbianas.\n \nSu producción científica incluye 92 publicaciones y la supervisión de 113 estudiantes. Forma parte del comité editorial de la revista Scientific Reports y evalúa regularmente propuestas de investigación a nivel nacional e internacional."
   },
   {
     "id": "cc_009",
@@ -584,21 +606,21 @@
     "exhibitor_type": "speaker",
     "name": "Arturo Blázquez Soro",
     "photo": "Arturo Blazquez.png",
-    "description": "\"\"\"Arturo B. Soro es profesor lector Serra Húnter en la Universitat Autònoma de Barcelona, donde desarrolla actividad docente, investigadora y de transferencia en el ámbito de la ciencia y tecnología de los alimentos y de la biotecnología alimentaria. Es graduado en Ciencia y Tecnología de los Alimentos por la Universidad de Zaragoza, máster en Calidad, Seguridad y Tecnología Alimentaria (Premio Extraordinario) y doctor en Veterinary Public Health por la University College Dublin. Su trayectoria científica se ha desarrollado en entornos internacionales como Irlanda, Bélgica y Austria, con experiencia como investigador predoctoral, postdoctoral e investigador independiente en centros de referencia.\nSu línea de investigación se centra en el desarrollo y aplicación de tecnologías innovadoras y sostenibles para mejorar la seguridad, calidad y funcionalidad de los alimentos, con especial énfasis en tecnologías físicas emergentes (como UV-LED, ultrasonidos o plasma frío), control de patógenos alimentarios y evaluación del impacto de estas tecnologías sobre la calidad y aceptación del producto. Ha participado en numerosos proyectos competitivos nacionales y europeos, así como en contratos de investigación con la industria y administraciones públicas. Es autor de más de 20 artículos científicos en revistas internacionales indexadas, varios como primer autor, y colabora activamente en iniciativas alineadas con los objetivos de sostenibilidad y la Agenda 2030.\"\"\"\n"
+    "description": "Arturo B. Soro es profesor lector Serra Húnter en la Universitat Autònoma de Barcelona, donde desarrolla actividad docente, investigadora y de transferencia en el ámbito de la ciencia y tecnología de los alimentos y de la biotecnología alimentaria. Es graduado en Ciencia y Tecnología de los Alimentos por la Universidad de Zaragoza, máster en Calidad, Seguridad y Tecnología Alimentaria (Premio Extraordinario) y doctor en Veterinary Public Health por la University College Dublin. Su trayectoria científica se ha desarrollado en entornos internacionales como Irlanda, Bélgica y Austria, con experiencia como investigador predoctoral, postdoctoral e investigador independiente en centros de referencia.\nSu línea de investigación se centra en el desarrollo y aplicación de tecnologías innovadoras y sostenibles para mejorar la seguridad, calidad y funcionalidad de los alimentos, con especial énfasis en tecnologías físicas emergentes (como UV-LED, ultrasonidos o plasma frío), control de patógenos alimentarios y evaluación del impacto de estas tecnologías sobre la calidad y aceptación del producto. Ha participado en numerosos proyectos competitivos nacionales y europeos, así como en contratos de investigación con la industria y administraciones públicas. Es autor de más de 20 artículos científicos en revistas internacionales indexadas, varios como primer autor, y colabora activamente en iniciativas alineadas con los objetivos de sostenibilidad y la Agenda 2030.\"\"\"\n"
   },
   {
     "id": "cc_011",
     "exhibitor_type": "speaker",
     "name": "François Chauvigné",
-    "photo": "François Chauvigne.png",
-    "description": "\"Dr. François Chauvigné earned a PhD in Biology at University of Rennes I, studying\n trout embryonic muscle development. After a postdoc at INSERM on phthalate toxicity\n in rats, he became a Marie Curie fellow at the IRTA–ICM–CSIC joint lab in Barcelona.\n He later held a Juan de la Cierva fellowship there. In 2013, he joined the University of\n Bergen to study aquaporins in Atlantic salmon, and in 2016 obtained a Ramón y Cajal\n position at IRTA. Since 2020, he is Tenured Scientist at CSIC in the “Molecular\n Physiology and Biotechnology of Marine Organisms” group at ICM-CSIC/IBB-UAB.\n His research focuses on molecular and endocrine regulation of spermatogenesis in fish,\n especially Senegalese sole, developing tools (recombinant hormones, ELISAs) and\n therapies for reproductive dysfunctions. He has also collaborated with industry (e.g.,\n Stolt Seafarm, Sea8). He has supervised various PhD and master students, contributes to\n teaching in aquaculture programs, and reviews for international journals.\""
+    "photo": "Francois_Chauvigne.png",
+    "description": "Dr. François Chauvigné earned a PhD in Biology at University of Rennes I, studying trout embryonic muscle development. After a postdoc at INSERM on phthalate toxicity in rats, he became a Marie Curie fellow at the IRTA–ICM–CSIC joint lab in Barcelona. He later held a Juan de la Cierva fellowship there. In 2013, he joined the University of Bergen to study aquaporins in Atlantic salmon, and in 2016 obtained a Ramón y Cajal position at IRTA. Since 2020, he is Tenured Scientist at CSIC in the “Molecular Physiology and Biotechnology of Marine Organisms” group at ICM-CSIC/IBB-UAB.\n\nHis research focuses on molecular and endocrine regulation of spermatogenesis in fish, especially Senegalese sole, developing tools (recombinant hormones, ELISAs) and therapies for reproductive dysfunctions. He has also collaborated with industry (e.g., Stolt Seafarm, Sea8). He has supervised various PhD and master students, contributes to teaching in aquaculture programs, and reviews for international journals.\""
   },
   {
     "id": "cc_012",
     "exhibitor_type": "speaker",
     "name": "Joan Cerda",
     "photo": "Joan Cerda.jpg",
-    "description": "\"Dr. Joan Cerdà (1965, Barcelona) obtained the PhD in Physiology and Biochemistry from the\n University of Barcelona (Spain) in 1993, and has been a researcher at the Whitney Laboratory\n for Marine Bioscience (University of Florida, USA), the German Cancer Research Center\n (Heidelberg, Germany), and the Institute of Agrifood Research and Technology (IRTA, Spain).\n He is currently Research Scientist at the Spanish National Research Council (CSIC), and his\n laboratory is currently associated to the Institute of Biotechnology and Biomedicine (IBB) from\n the Universitat Autònoma de Barcelona (UAB, Spain). His major research interests are the\n evolutionary and developmental physiology of aquaporins, particularly in female and male\n gametes, the molecular basis of spermiogenesis and sperm maturation, and the development of\n new biotechnological methods for long-term cell preservation. Dr. Cerdà has been the\n coordinator or principal investigator of more than 20 national and international research\n projects, and has participated in different contracts with the industry. He has published 130 SCI\n peer-reviewed articles and 14 book chapters, and is inventor of one patent.\""
+    "description": "Dr. Joan Cerdà (1965, Barcelona) obtained the PhD in Physiology and Biochemistry from the University of Barcelona (Spain) in 1993, and has been a researcher at the Whitney Laboratory for Marine Bioscience (University of Florida, USA), the German Cancer Research Center (Heidelberg, Germany), and the Institute of Agrifood Research and Technology (IRTA, Spain). He is currently Research Scientist at the Spanish National Research Council (CSIC), and his laboratory is currently associated to the Institute of Biotechnology and Biomedicine (IBB) from the Universitat Autònoma de Barcelona (UAB, Spain). His major research interests are the evolutionary and developmental physiology of aquaporins, particularly in female and male gametes, the molecular basis of spermiogenesis and sperm maturation, and the development of new biotechnological methods for long-term cell preservation. Dr. Cerdà has been the coordinator or principal investigator of more than 20 national and international research projects, and has participated in different contracts with the industry. He has published 130 SCI peer-reviewed articles and 14 book chapters, and is inventor of one patent."
   },
   {
     "id": "cc_013",
@@ -619,14 +641,63 @@
     "exhibitor_type": "speaker",
     "name": "Iñigo Lasa Uzcudun",
     "photo": "Foto_LASA.png",
-    "description": "I completed my undergraduate studies in Biological Sciences at the University of\n Navarra in 1988 and earned a PhD in Microbiology from the Center for Molecular\n Biology (CSIC-UAM) at the Autonomous University of Madrid in 1992. I\n subsequently spent three years conducting research in the laboratory of Professor\n Pascale Cossart at the Pasteur Institute, focusing on the genetics of Listeria\n monocytogenes actin-based motility. In 1997, I returned to Spain to join the Public\n University of Navarra (UPNA) in Pamplona as a professor of Microbiology. The\n following year, I was appointed Associate Professor and established my own\n laboratory at the Center for Agrobiotechnology, where my research focused on the\n genetics of bacterial biofilm formation. From 2010 to 2013, I served as Director of the\n Center. In 2008, I became a Full Professor of Microbiology at UPNA, and between\n 2015 and 2022, I was Director of Navarrabiomed, a newly established biomedical\n research institute in Pamplona. As a principal investigator, I have led nine consecutive\n research projects funded by the Spanish Ministry of Economy, Industry, and\n Competitiveness, as well as five grants from the European Union’s 6th, 7th, and\n Horizon Europe Framework Programmes. I have supervised 20 doctoral students and\n 12 postdoctoral researchers, several of whom now lead their own research groups. My\n laboratory is dedicated to studying the genetic mechanisms underlying biofilm\n formation in pathogenic bacteria. Currently, our work focuses on the global function\n of the two-component sensory network in Staphylococcus aureus, transcriptional gene\n regulation through overlapping mRNAs of adjacent genes, and the development of\n recombinant phages for therapeutic applications. Among our major scientific\n contributions are: (i) the identification of a family of proteins, termed Bap, that\n promote biofilm formation in various bacterial species through amyloid\n conformations; (ii) the demonstration that the two-component sensory system is\n dispensable for S. aureus growth under laboratory conditions; (iii) the discovery of a\n transcriptional control mechanism based on overlapping mRNAs processed by RNase\n III; and (iv) the identification of a novel bacterial gene organization, which we have\n termed the non-contiguous operon. Throughout my career, I have been deeply\n committed to translating scientific discoveries into tangible benefits for society. In\n 2011, I co-founded RECOMBINA S.L. (Pamplona), a biotechnology company\n specialising in customised genetic engineering services and the development of\n attenuated microorganisms for veterinary vaccine production."
+    "description": "I completed my undergraduate studies in Biological Sciences at the University of Navarra in 1988 and earned a PhD in Microbiology from the Center for Molecular Biology (CSIC-UAM) at the Autonomous University of Madrid in 1992. I subsequently spent three years conducting research in the laboratory of Professor Pascale Cossart at the Pasteur Institute, focusing on the genetics of Listeria monocytogenes actin-based motility. In 1997, I returned to Spain to join the Public University of Navarra (UPNA) in Pamplona as a professor of Microbiology. The following year, I was appointed Associate Professor and established my own laboratory at the Center for Agrobiotechnology, where my research focused on the genetics of bacterial biofilm formation. From 2010 to 2013, I served as Director of the Center. In 2008, I became a Full Professor of Microbiology at UPNA, and between 2015 and 2022, I was Director of Navarrabiomed, a newly established biomedical research institute in Pamplona. As a principal investigator, I have led nine consecutive research projects funded by the Spanish Ministry of Economy, Industry, and Competitiveness, as well as five grants from the European Union’s 6th, 7th, and Horizon Europe Framework Programmes. I have supervised 20 doctoral students and 12 postdoctoral researchers, several of whom now lead their own research groups. My laboratory is dedicated to studying the genetic mechanisms underlying biofilm formation in pathogenic bacteria. Currently, our work focuses on the global function of the two-component sensory network in Staphylococcus aureus, transcriptional gene regulation through overlapping mRNAs of adjacent genes, and the development of recombinant phages for therapeutic applications. Among our major scientific contributions are: (i) the identification of a family of proteins, termed Bap, that promote biofilm formation in various bacterial species through amyloid conformations; (ii) the demonstration that the two-component sensory system is dispensable for S. aureus growth under laboratory conditions; (iii) the discovery of a transcriptional control mechanism based on overlapping mRNAs processed by RNase III; and (iv) the identification of a novel bacterial gene organization, which we have termed the non-contiguous operon. Throughout my career, I have been deeply committed to translating scientific discoveries into tangible benefits for society. In 2011, I co-founded RECOMBINA S.L. (Pamplona), a biotechnology company specialising in customised genetic engineering services and the development of attenuated microorganisms for veterinary vaccine production."
   },
   {
-    "id": "biz_022",
-    "exhibitor_type": "business",
+    "id": "org_022",
+    "exhibitor_type": "Organizadores",
     "name": "FEBiotec",
     "photo": "febiotec_color.png",
     "description": "La Federación Española de Biotecnólogos (FEBiotec) fue fundada en 2008 para agrupar a las Asociaciones de Biotecnólogos de toda España. Hoy, contamos con 14 asociaciones miembro para trabajar en la defensa, promoción y difusión de los biotecnólogos y la biotecnología, con actividades como el Congreso Anual de Biotecnología (BAC), BioNorth, BioSouth, Biotechnofarm y reivindicaciones a administraciones públicas.  ",
     "sponsor_tier": "platinum"
+  },
+  {
+    "id": "ch_01",
+    "exhibitor_type": "Comité de Honor",
+    "name": "Diana Morant",
+    "photo": "diana_morant.jpeg",
+    "description": "Ministra de Ciencia, Innovación y Universidades. Miembro del Comité de Honor del BAC Barcelona 2026."
+  },
+  {
+    "id": "mi_02",
+    "exhibitor_type": "Mesa Inaugural",
+    "name": "Javier Lafuente",
+    "photo": "Javier_Lafuente.jpeg",
+    "description": "Rector Universitat Autonoma de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
+  },
+  {
+    "id": "mc_03",
+    "exhibitor_type": "Mesa Clausura",
+    "name": "Mónica Gutiérrez",
+    "photo": "monicagutierrez.jpg",
+    "description": "Mónica Gutiérrez es doctora en Nanociencia y Nanotecnología por la Universidad de Valencia y graduada en Biotecnología en la Universidad Politécnica de Valencia. Tras su experiencia en investigación en cultivos celulares, biología sintética en plantas y el estudio del plegamiento de proteínas de membrana, ahora se dedica a la gestión de proyectos de investigación en el Instituto de Ciencia Molecular. Con un interés por la divulgación científica, la biotecnología y el asociacionismo profesional, desde 2017 forma parte de la Asociación de Biotecnólogos de Valencia (ABiVa), y desde 2023 es presidenta de la Federación Española de Biotecnólogos (FEBiotec). "
+  },
+  {
+    "id": "mc_01",
+    "exhibitor_type": "Mesa Clausura",
+    "name": "Juan Antonio Castro",
+    "photo": "SIN_FOTO.png",
+    "description": "SIN DESCRIPCIÓN"
+  },
+  {
+    "id": "mi_01",
+    "exhibitor_type": "Mesa Inaugural",
+    "name": "Alba Tomás",
+    "photo": "alba_tomas.jpg",
+    "description": "Alba Tomás es graduada en Biotecnología por la Universitat Autònoma de Barcelona y cuenta con un máster multidisciplinar en ciencias experimentales organizado por Barcelona Institute of Science and Technology (BIST). Actualmente realiza su doctorado en Genética en el Institut de Biologia Molecular de Barcelona (IBMB-CSIC). Comprometida con la divulgación científica y el impulso de la comunidad biotecnológica, ejerce como Coordinadora General del Congreso Anual de Biotecnología (BAC)."
+  },
+  {
+    "id": "mi_03",
+    "exhibitor_type": "Mesa Inaugural",
+    "name": "Eva Ortega Paíno",
+    "photo": "eva-ortega-paino.jpg",
+    "description": "Eva Ortega Paíno es doctora en Bioquímica y Biología Molecular por la Universidad Complutense de Madrid y cuenta con más de 30 años de experiencia en investigación, gestión científica e industria biotecnológica, especialmente en los ámbitos de la oncología y la inmunología. Actualmente ocupa el cargo de Secretaria General de Investigación del Ministerio de Ciencia, Innovación y Universidades. Anteriormente fue directora científica del Biobanco del CNIO y ha desempeñado diversos cargos de liderazgo en infraestructuras científicas nacionales e internacionales, consolidándose como una de las figuras de referencia en la gestión y promoción de la investigación en España."
+  },
+  {
+    "id": "mc_02",
+    "exhibitor_type": "Mesa Clausura",
+    "name": "Teresa Sanchis Estruch",
+    "photo": "teresa-sanchis.webp",
+    "description": "Teresa Sanchis Estruch es la directora general de Investigación de la Generalitat de Catalunya. Con una amplia trayectoria en gestión y política científica, trabaja en el impulso del sistema catalán de investigación e innovación, promoviendo la excelencia científica, la captación de talento y el fortalecimiento de la colaboración entre universidades, centros de investigación y empresas para afrontar los retos científicos y tecnológicos de la sociedad."
   }
 ]
