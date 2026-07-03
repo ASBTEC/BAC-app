@@ -42,13 +42,22 @@ function openInMaps(url: string) {
   }
 }
 
-// Space IDs that exist on the Map tab — must match the `id` field in SPACES (map.tsx)
-const MAP_SPACE_IDS = new Set(['Auditorium', 'Classroom 1', 'Classroom 2', 'Laboratory', 'Stand Area', 'Outdoor']);
+// Location strings that exist on the Map tab (from events.json local_location field)
+const MAP_LOCATIONS = new Set([
+  'Sala de Graus',
+  'Espacio BusinessBAC (C1)',
+  "Sala d'Actes (C0)",
+  'Aula PEP Vendrell (C0/1434.)',
+  'Pasillo ExpoBAC',
+  'Catering (C0)',
+  'Espacio BusinessBAC (C2)',
+  'Auditori de Lletres',
+  'Exterior de la facultat de biociencies',
+]);
 
-/** Returns the map tab space ID for an event, or null if no match. */
+/** Returns the map tab location string for an event, or null if not on the map. */
 function getMapSpace(event: Event): string | null {
-  if (MAP_SPACE_IDS.has(event.local_location)) return event.local_location;
-  if (event.activity_type === 'Visita') return 'Outdoor';
+  if (MAP_LOCATIONS.has(event.local_location)) return event.local_location;
   return null;
 }
 
