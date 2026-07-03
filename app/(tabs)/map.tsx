@@ -57,7 +57,7 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'Visita',                  label: 'Visita',                  iconName: 'park' },
 ];
 
-// Full map image dimensions (Plano completo.png — 1587×2245)
+// Full map image dimensions (biociencies.png — 1587×2245)
 // Old mapa.png was a crop of this: (487,0)→(1115,2200); x coords below are x_crop + 487
 const MAP_W = 1587;
 const MAP_H = 2245;
@@ -67,7 +67,7 @@ const EXTERIOR_ID  = 'Exterior de la facultat de biociencies';
 const AUDITORI_ID  = 'Auditori de Lletres';
 const AUDITORI_COLOR = '#7C3AED';
 
-// Coordinates in Plano completo.png space: x = x_crop + 487, y = y_crop × (2245/2200)
+// Coordinates in biociencies.png space: x = x_crop + 487, y = y_crop × (2245/2200)
 const SPACES = [
   { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 585, y: 163,  w: 154, h: 75,  type: 'classroom' },
   { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 586, y: 256,  w: 390, h: 156, type: 'stand' },
@@ -131,7 +131,7 @@ function getSpaceEvents(spaceId: string, now: Date, events: Event[]): Event[] {
       if (spaceId === EXTERIOR_ID) {
         if (e.activity_type !== 'Visita') return false;
       } else {
-        if (e.local_location !== spaceId && !e.local_location.includes(spaceId)) return false;
+        if (e.local_location !== spaceId && !e.local_location.includes(spaceId) && !spaceId.includes(e.local_location)) return false;
       }
       const s = getTemporalStatus(e, now);
       return s === 'now' || s === 'upcoming' || s === 'future';
@@ -302,7 +302,7 @@ export default function MapScreen() {
           <GestureDetector gesture={mapGesture}>
             <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
               <Image
-                source={require('@/assets/images/map/Plano completo.png')}
+                source={require('@/assets/images/map/biociencies.png')}
                 style={{ width: imgW, height: imgH }}
                 resizeMode="stretch"
               />

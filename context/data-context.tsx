@@ -6,8 +6,12 @@ import { Event, Exhibitor } from '@/types';
 
 const EVENTS_URL = 'https://raw.githubusercontent.com/ASBTEC/BAC-app/master/data/events.json';
 const EXHIBITORS_URL = 'https://raw.githubusercontent.com/ASBTEC/BAC-app/master/data/exhibitors.json';
-const STORAGE_KEY_EVENTS = '@bac_events';
-const STORAGE_KEY_EXHIBITORS = '@bac_exhibitors';
+
+// Bump this string whenever a breaking data change is deployed (e.g. ID remap).
+// Any cached data stored under a different version is silently dropped.
+const CACHE_VERSION = 'v2';
+const STORAGE_KEY_EVENTS = `@bac_events_${CACHE_VERSION}`;
+const STORAGE_KEY_EXHIBITORS = `@bac_exhibitors_${CACHE_VERSION}`;
 
 interface DataContextValue {
   events: Event[];
@@ -41,6 +45,15 @@ function isValidExhibitors(data: unknown): data is Exhibitor[] {
   );
 }
 
+function deduplicateById<T extends { id: string }>(items: T[]): T[] {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+}
+
 export function DataProvider({ children }: { children: React.ReactNode }) {
   const [events, setEvents] = useState<Event[]>(bundledEvents as Event[]);
   const [exhibitors, setExhibitors] = useState<Exhibitor[]>(bundledExhibitors as Exhibitor[]);
@@ -55,11 +68,11 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         ]);
         if (cachedEvents) {
           const parsed = JSON.parse(cachedEvents);
-          if (isValidEvents(parsed)) setEvents(parsed);
+          if (isValidEvents(parsed)) setEvents(deduplicateById(parsed));
         }
         if (cachedExhibitors) {
           const parsed = JSON.parse(cachedExhibitors);
-          if (isValidExhibitors(parsed)) setExhibitors(parsed);
+          if (isValidExhibitors(parsed)) setExhibitors(deduplicateById(parsed));
         }
       } catch {
         // ignore cache errors, bundled data remains active
@@ -76,12 +89,14 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           exhibitorsRes.json(),
         ]);
         if (isValidEvents(eventsJson)) {
-          setEvents(eventsJson);
-          AsyncStorage.setItem(STORAGE_KEY_EVENTS, JSON.stringify(eventsJson)).catch(() => {});
+          const deduped = deduplicateById(eventsJson);
+          setEvents(deduped);
+          AsyncStorage.setItem(STORAGE_KEY_EVENTS, JSON.stringify(deduped)).catch(() => {});
         }
         if (isValidExhibitors(exhibitorsJson)) {
-          setExhibitors(exhibitorsJson);
-          AsyncStorage.setItem(STORAGE_KEY_EXHIBITORS, JSON.stringify(exhibitorsJson)).catch(() => {});
+          const deduped = deduplicateById(exhibitorsJson);
+          setExhibitors(deduped);
+          AsyncStorage.setItem(STORAGE_KEY_EXHIBITORS, JSON.stringify(deduped)).catch(() => {});
         }
       } catch {
         // fail silently — cached or bundled data remains active

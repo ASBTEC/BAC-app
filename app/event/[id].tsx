@@ -170,17 +170,35 @@ export default function EventDetailScreen() {
         </View>
       )}
 
-      {/* Exhibitors */}
-      {exhibitors.length > 0 && (
-        <View style={styles.exhibitorSection}>
-          <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>
-            {exhibitors.some((e) => e.exhibitor_type === 'speaker') ? 'Ponentes' : 'Organizadores'}
-          </Text>
-          {exhibitors.map((ex) => (
-            <ExhibitorCard key={ex.id} exhibitor={ex} />
-          ))}
-        </View>
-      )}
+      {/* Exhibitors — grouped by ID prefix */}
+      {exhibitors.length > 0 && (() => {
+        const PREFIX_LABEL: Record<string, string> = {
+          mi:  'Mesa inaugural',
+          mc:  'Mesa clausura',
+          ch:  'Comité de Honor',
+          cc:  'Comité Científico',
+          spk: 'Ponentes',
+          biz: 'Colaboradores',
+          org: 'Organizadores',
+        };
+        const ORDER = ['mi', 'mc', 'ch', 'cc', 'spk', 'biz', 'org'];
+        const groups: Record<string, Exhibitor[]> = {};
+        for (const ex of exhibitors) {
+          const prefix = ex.id.replace(/_.*/, '');
+          const key = ORDER.includes(prefix) ? prefix : 'org';
+          (groups[key] ??= []).push(ex);
+        }
+        return ORDER.filter((p) => groups[p]?.length).map((prefix) => (
+          <View key={prefix} style={styles.exhibitorSection}>
+            <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>
+              {PREFIX_LABEL[prefix]}
+            </Text>
+            {groups[prefix].map((ex) => (
+              <ExhibitorCard key={ex.id} exhibitor={ex} />
+            ))}
+          </View>
+        ));
+      })()}
 
       {/* Save button */}
       <Pressable
