@@ -1,38 +1,357 @@
 [
   {
-    "id": "evt_049",
-    "title": "Cómo los procesos Biotech pueden ayudarnos a desarrollar los ingredientes del futuro",
-    "description": "La idea de la ponencia es alentar de las posibilidades de la Biotecnología en el desarrollo de nuevos procesos e ingredientes para la industria alimentaria. Son innumerables los ejemplos que podemos encontrar en el sector farma, pero en alimentación hay un gran campo por explorar, más aún en los tiempos actuales, y sobre todo en el área socio-económica en la que vivimos  en los que la \"calidad de los alimentos\" se impone a la \"cantidad\".",
-    "category": "businessBAC",
+    "id": "evt_001",
+    "title": "Mesa inaugural",
+    "description": "La apertura oficial del BAC 2026. Palabras de bienvenida del presidente de ASBTEC, el presidente de FEBIOTEC y el Rector de la Universitat Autonoma de Barcelona. Marca el comienzo de cinco días de ciencia, networking y desarrollo profesional.",
+    "category": "general",
+    "activity_type": "Acto institucional",
+    "start_time": "2026-07-08T09:30:00",
+    "end_time": "2026-07-08T10:00:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "mi_01",
+      "mi_02",
+      "mi_03",
+      "mi_04",
+      "org_022",
+      "biz_023"
+    ]
+  },
+  {
+    "id": "evt_003",
+    "title": "Mesa Clausura i Entrega de premios de cursos pharmavolution y merch sponsors",
+    "description": "Palabras de cierre de la junta de ASBTEC, anuncio de la próxima asociación anfitriona del BAC y despedida a los participantes. Incluye un breve vídeo resumen de los mejores momentos del BAC 2026. Se entregará un diploma personalizado a cada uno de los 4 ganadores y cada ganador podrá elegir 2 cursos de los ofertados",
+    "category": "general",
+    "activity_type": "Acto institucional",
+    "start_time": "2026-07-10T14:15:00",
+    "end_time": "2026-07-10T15:00:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "mc_01",
+      "mc_02",
+      "org_022",
+      "biz_023"
+    ],
+    "biotech_color": [
+      "Biobusiness"
+    ]
+  },
+  {
+    "id": "evt_004",
+    "title": "Curso de Neurobioingenería: Introducción a la Tractografía",
+    "description": "Curso teórico-práctico dedicado a la tractografía por DTI, orientado a comprender en profundidad los fundamentos de la imagen por tensor de difusión y su aplicación en la reconstrucción de haces de sustancia blanca. En la parte teórica se revisarán las principales técnicas tractográficas, la interpretación de mapas de FA y mapas RGB, el cálculo de tensores a partir de estudios de DTI y el uso de ROIs mediante operaciones lógicas OR, AND y NOT. La parte práctica se desarrollará con el programa DtiStudio y consistirá en localizar, delimitar y reconstruir tractos, con especial atención al tracto corticoespinal, así como en la supresión de fibras aberrantes y la obtención de parámetros cuantitativos del fascículo, incluyendo la FA (Fractional Anisotropy).",
+    "category": "viveBAC",
+    "activity_type": "Curso",
+    "start_time": "2026-07-08T17:00:00",
+    "end_time": "2026-07-08T20:00:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_007"
+    ],
+    "biotech_color": [
+      "Salud",
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_005",
+    "title": "Introducción a RStudio aplicado a datos ómicos",
+    "description": "En este taller aprenderás los fundamentos del lenguaje de programación R. Darás tus primeros pasos en la escritura y ejecución de código en RStudio, abarcando desde la importación y gestión de datos hasta el análisis estadístico y la visualización. Esta introducción intensiva culminará con el análisis de un conjunto de datos proteómicos real.",
+    "category": "viveBAC",
+    "activity_type": "Curso",
+    "start_time": "2026-07-07T10:00:00",
+    "end_time": "2026-07-07T13:00:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_008"
+    ],
+    "biotech_color": [
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_007",
+    "title": "Concurso de Pósteres ",
+    "description": "Exposición de trabajos en formato póster de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán echar un vistazo a las infografias preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. ",
+    "category": "expoBAC",
+    "activity_type": "Presentación de poster",
+    "start_time": "2026-07-08T11:30:00",
+    "end_time": "2026-07-08T12:30:00",
+    "local_location": "Pasillo ExpoBAC",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "cc_001",
+      "cc_002",
+      "cc_003",
+      "cc_004",
+      "cc_005",
+      "cc_006",
+      "cc_007",
+      "cc_008",
+      "cc_009",
+      "cc_010",
+      "cc_011",
+      "cc_012",
+      "cc_013",
+      "cc_014",
+      "cc_015"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional"
+    ]
+  },
+  {
+    "id": "evt_009",
+    "title": "Comunicaciones Orales — Estudios de grado y máster",
+    "description": "Exposición de trabajos en formato presentación oral de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán escuchar breves exposiciones orales de 10 minutos preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El evento està organizado para dar cabida a 12 comunicaciones orales divididas por area temàtica en 3 aulas distintas. Dentro de cada aula, 4 participantes constaran de 10 minutos para exponer sus trabajos más su respectivo turno de preguntas. ",
+    "category": "expoBAC",
+    "activity_type": "Presentación flash",
+    "start_time": "2026-07-08T11:30:00",
+    "end_time": "2026-07-08T12:30:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "cc_001",
+      "cc_002",
+      "cc_003",
+      "cc_004",
+      "cc_005",
+      "cc_006",
+      "cc_007",
+      "cc_008",
+      "cc_009",
+      "cc_010",
+      "cc_012",
+      "cc_013",
+      "cc_014"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional"
+    ]
+  },
+  {
+    "id": "evt_011",
+    "title": "Understanding protein aggregation at scale",
+    "description": "La agregación de proteínas juega un papel central en muchas enfermedades, pero sus orígenes genéticos y moleculares son difíciles de determinar. Los ensayos multiplexados de efectos de variantes nos permiten medir miles de variantes a la vez. Este enfoque a gran escala posibilita tres avances clave: (1) mejorar la interpretación clínica de variantes genéticas halladas en pacientes o individuos sanos; (2) descubrir los mecanismos fundamentales que gobiernan el plegamiento, mal plegamiento y agregación de proteínas; y (3) generar conjuntos de datos grandes y de alta calidad que permitan entrenar modelos de IA de próxima generación para predecir el comportamiento de las proteínas con mayor precisión.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T13:15:00",
+    "end_time": "2026-07-08T14:00:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_002"
+    ],
+    "biotech_color": [
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_012",
+    "title": "Omics platforms for the preclinical assessment of snake antivenom",
+    "description": "El envenenamiento por mordedura de serpiente es una enfermedad desatendida que provoca un enorme sufrimiento, discapacidad y muerte prematura, especialmente en Asia y África. La 71.ª Asamblea Mundial de la Salud adoptó una resolución que insta a una respuesta coordinada para mitigar su impacto. Hemos desarrollado plataformas para caracterizar las composiciones del veneno («Venómica»), determinar la toxicidad de las toxinas individuales («Toxicovénomica»), evaluar la capacidad de unión a toxinas de los antivenenos («Antivénomica») y determinar su potencia neutralizante in vivo. Se presentará la participación de nuestro laboratorio en el Plan de Acción de la OMS.",
+    "category": "bioBAC",
     "activity_type": "Ponencia",
     "start_time": "2026-07-10T10:00:00",
     "end_time": "2026-07-10T10:45:00",
     "local_location": "Sala d'Actes (C0)",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_033"
+      "spk_004"
     ],
     "biotech_color": [
-      "Alimentaria"
+      "Salud",
+      "Bio sintética"
     ]
   },
   {
-    "id": "evt_062",
-    "title": "Taller de cerveza artesanal con Cervesa del Montseny",
-    "description": "Descripción del proceso cervesero, descripcion de la empresa y su funcionamiento, y una cata final.",
-    "category": "viveBAC",
-    "activity_type": "Taller",
-    "start_time": "2026-07-07T10:00:00",
-    "end_time": "2026-07-07T12:30:00",
-    "local_location": "Exterior de la facultat de biociencies",
+    "id": "evt_013",
+    "title": "Bringing Science to the Patient",
+    "description": "Se abordará el proceso de transformar el conocimiento biológico y biomédico en productos y servicios de valor para los pacientes. La ponencia se centrará en los avances logrados en el traslado de soluciones innovadoras para el cuidado continuo del paciente oncológico, destacando cómo la investigación básica puede culminar en aplicaciones clínicas que mejoren significativamente la calidad de vida.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T10:00:00",
+    "end_time": "2026-07-10T10:45:00",
+    "local_location": "Sala de Graus",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_049"
+      "spk_001"
     ],
     "biotech_color": [
-      "Alimentaria"
+      "Salud"
+    ]
+  },
+  {
+    "id": "evt_014",
+    "title": "Computational design of enzymes for a more sustainable world",
+    "description": "Esta ponencia destaca la importancia de la catálisis enzimática y las ventajas de la biocatálisis para construir un futuro industrial más sostenible. Se analizarán los últimos avances en el campo de la inteligencia artificial aplicada a la biología, mostrando cómo estas herramientas computacionales están revolucionando el diseño de nuevas enzimas y optimizando procesos biotecnológicos clave para la sociedad actual.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T12:30:00",
+    "end_time": "2026-07-08T13:15:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_006"
     ],
-    "location": "https://maps.app.goo.gl/1HYkrefPnxrxFGDq8"
+    "biotech_color": [
+      "Computacional",
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_015",
+    "title": "Toward selective and brain-permeable protein therapeutics",
+    "description": "Los bioterapéuticos han logrado avances clínicos importantes en cáncer y otras enfermedades, pero persisten retos clave. Muchas dianas terapéuticas se expresan tanto en tejidos enfermos como sanos, generando toxicidades limitantes de dosis. Para las indicaciones neurológicas, la administración eficiente a través de la barrera hematoencefálica (BHE) supone un obstáculo adicional. En esta ponencia presentaré los esfuerzos de nuestro grupo para diseñar bioterapéuticos de activación condicional y potenciar su transporte a través de la BHE, con el objetivo de mejorar la eficacia y minimizar los efectos fuera de la diana.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T09:45:00",
+    "end_time": "2026-07-09T10:30:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_003"
+    ],
+    "biotech_color": [
+      "Salud"
+    ]
+  },
+  {
+    "id": "evt_016",
+    "title": "Metabolic engineering for resistance against pathogens in plants",
+    "description": "Las enfermedades causadas por patógenos vasculares son un grave problema para la agricultura porque bloquean el sistema de transporte de agua de las plantas, provocando su marchitamiento y muerte. Mediante ingeniería genética y metabólica mostraremos cómo introducir la resistencia a patógenos vasculares en variedades comerciales de tomate, reforzando las paredes de los vasos conductores y produciendo compuestos de defensa que frenan la propagación del patógeno. Modificar estos mecanismos de defensa puede aumentar la resistencia y contribuir al desarrollo de cultivos más resilientes.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T12:00:00",
+    "end_time": "2026-07-09T12:45:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_005"
+    ],
+    "biotech_color": [
+      "Vegetal"
+    ]
+  },
+  {
+    "id": "evt_017",
+    "title": "Mesa Redonda: Ecosistema Emprendedor e Inversión",
+    "description": "Un espacio dedicado a la innovación y el negocio. Contaremos con la participación de Venture Capitals y fundadores de Startups, quienes desgranarán las claves del emprendimiento, las rondas de financiación y cómo transformar una idea científica en un proyecto empresarial viable.",
+    "category": "businessBAC",
+    "activity_type": "Mesa redonda",
+    "start_time": "2026-07-09T15:45:00",
+    "end_time": "2026-07-09T17:15:00",
+    "local_location": "Auditori de Lletres",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_020",
+      "spk_023",
+      "spk_025",
+      "spk_202"
+    ],
+    "biotech_color": [
+      "Biobusiness"
+    ]
+  },
+  {
+    "id": "evt_018",
+    "title": "Mesa Redonda: Del grado al mundo profesional",
+    "description": "Explora la transición de la universidad a la empresa de la mano de expertos consolidados en diversos sectores de la industria. A través de sus trayectorias, analizaremos las distintas salidas profesionales y los retos actuales para ayudarte a trazar tu propio camino estratégico en el sector biotecnológico.",
+    "category": "businessBAC",
+    "activity_type": "Mesa redonda",
+    "start_time": "2026-07-08T15:00:00",
+    "end_time": "2026-07-08T16:30:00",
+    "local_location": "Auditori de Lletres",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_021",
+      "spk_030",
+      "spk_031",
+      "spk_203"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional"
+    ]
+  },
+  {
+    "id": "evt_020",
+    "title": "Visita al Sincrotón ALBA",
+    "description": "Descubre el instrumento científico más complejo de España. El Sincrotrón ALBA, situado en Cerdanyola del Vallès, es una infraestructura de investigación de tercera generación que funciona como un microscopio gigante. Acelerando electrones a velocidades cercanas a la de la luz, ALBA genera una luz extraordinariamente brillante que permite a los investigadores observar la estructura atómica y molecular de todo tipo de materiales. Durante este recorrido guiado, te adentrarás en las entrañas de esta fascinante instalación científica. De la mano de expertos, descubrirás cómo se produce esta luz de sincrotrón y cómo se aplica para resolver los grandes retos de nuestra sociedad en campos como la medicina, la biología, la ciencia de materiales y el medio ambiente.",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-07T15:00:00",
+    "end_time": "2026-07-07T17:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "biotech_color": [
+      "Sostenibilidad",
+      "Salud",
+      "Bio sintética",
+      "Computacional",
+      "Industrial"
+    ],
+    "location": "https://maps.app.goo.gl/dojFo5CtN3Z76h9y7"
+  },
+  {
+    "id": "evt_021",
+    "title": "Curso dermocosmética y formulación galénica",
+    "description": "El curso de dermocosmética es un curso teórico-práctico que consiste, principalmente, en la introducción al sector cosmético a los estudiantes mediante la formulación de una crema con aceite de rosa mosqueta en el laboratorio, donde los estudiantes aprenderán conceptos básicos de la formulación galénica y los controles necesarios durante la elaboración del producto, mediante una explicación teórica por parte de profesionales y profesores del máster de Cosmética y Perfumería de IQS. <br><br> El aceite de rosa mosqueta es un aceite 100% natural, extraído por prensado frio, sin proceso químico, rico en omega 3 y 6, linoleico, vitamina A, E y antioxidantes como carotenoides, los cuales otorgan muchas propiedades, como: hidratar en profundidad, regenerar piel, reducir arrugas, cicatrices y manchas estimulando la producción de colágeno, además de que otorga un aroma muy suave a la crema.",
+    "category": "viveBAC",
+    "activity_type": "Curso",
+    "start_time": "2026-07-07T17:00:00",
+    "end_time": "2026-07-07T20:00:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_036"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_023",
+    "title": "Inteligencia Artifical aplicada a biotecnología y desarrollo profesional",
+    "description": "La inteligencia artificial está transformando la forma en la que se investiga, se trabaja y se accede a oportunidades profesionales dentro del ámbito de la biotecnología. Sin embargo, la mayoría de usuarios se limita a un uso superficial de herramientas como ChatGPT, sin aprovechar su verdadero potencial. \n\nEsta actividad formativa tiene como objetivo proporcionar una visión clara, práctica y aplicable de la inteligencia artificial, y enseñar a los participantes a utilizarla como una herramienta estratégica tanto en su día a día académico/profesional como en el desarrollo de su carrera.A lo largo de la sesión, los asistentes descubrirán cómo funciona realmente la IA más allá de ChatGPT, aprenderán a interactuar correctamente con estos sistemas mediante técnicas de prompting, explorarán aplicaciones reales en ciencia y productividad, y verán cómo integrar estas herramientas en la búsqueda de prácticas, empleo o doctorado. Además, se abordará el uso de la inteligencia artificial para optimizar el perfil profesional en LinkedIn, mejorar la comunicación con reclutadores y preparar procesos de selección de forma más eficiente.",
+    "category": "viveBAC",
+    "activity_type": "Taller",
+    "start_time": "2026-07-08T17:00:00",
+    "end_time": "2026-07-08T19:00:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "biotech_color": [
+      "Desarrollo profesional",
+      "Bioética"
+    ]
+  },
+  {
+    "id": "evt_024",
+    "title": "Debate: Transhumanismo - El Gran Cisma Biotecnológico",
+    "description": "¿Estamos diseñando nuestra propia divinidad o nuestra obsolescencia?Ya no se trata solo de usar tecnología; estamos a un paso de ser la tecnología. La unión de la Inteligencia Artificial cerebral y la edición genética (CRISPR) nos sitúa ante el dilema ético más grande de nuestra historia: ¿Es la evolución un destino biológico o una decisión de mercado?\n\nAquí te dejo los 3 puntos clave para entender este \"Gran Cisma\":\n\n1. ⚡ La Desigualdad Definitiva\nSi el acceso a la \"mejora humana\" depende del patrimonio, no solo habrá brecha económica, sino segregación biológica. ¿Estamos creando una élite de súper-humanos frente a una clase \"natural\" que será vista como discapacitada o negligente?\n\n2. 🧠 El Algoritmo del Deseo\nCon una IA integrada en el cerebro para \"optimizar\" nuestras decisiones: ¿Dónde termina tu conciencia y dónde empieza el código? Si un software elimina tu capacidad de equivocarte, ¿sigue existiendo el libre albedrío o eres solo biomasa ejecutando un programa?\n\n3. 🥀 El Valor de la Fragilidad\nSi extirpamos la vulnerabilidad, la duda y, eventualmente, la muerte... ¿qué queda de la experiencia humana? ",
+    "category": "viveBAC",
+    "activity_type": "Debate",
+    "start_time": "2026-07-07T18:00:00",
+    "end_time": "2026-07-07T21:00:00",
+    "local_location": "Auditori de Lletres",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_178",
+      "spk_179",
+      "spk_180",
+      "spk_181",
+      "spk_182",
+      "spk_051",
+      "biz_023"
+    ],
+    "biotech_color": [
+      "Bioética",
+      "Bio sintética",
+      "Salud"
+    ]
   },
   {
     "id": "evt_025",
@@ -52,40 +371,459 @@
     ]
   },
   {
-    "id": "evt_077",
-    "title": "SIN TÍTULO",
-    "description": "SIN DESCRIPCIÓN",
+    "id": "evt_028",
+    "title": "The Good, the Bad and the Ugly: AI for Enzyme Discovery",
+    "description": "Esta charla explora cómo el aprendizaje automático y el modelado molecular pueden contribuir al descubrimiento y la ingeniería de enzimas en sistemas diversos, a partir de la experiencia de nuestro laboratorio. Se presentan casos reales de bioprospección guiada por simulación, predicción de expresión, diseño de actividad e interpretación de datos experimentales, destacando tanto los éxitos como las limitaciones recurrentes y los casos en que el uso de la IA no justifica el esfuerzo. El objetivo es ofrecer una visión crítica y aplicada de su valor práctico.",
     "category": "bioBAC",
     "activity_type": "Ponencia",
     "start_time": "2026-07-10T10:45:00",
     "end_time": "2026-07-10T11:30:00",
-    "local_location": "Sala de Graus",
+    "local_location": "Sala d'Actes (C0)",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_047"
+      "spk_011"
     ],
     "biotech_color": [
-      "Bio sintética",
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_029",
+    "title": "MELiSSA: Regenerative Life Support for Humans in Space",
+    "description": "MELiSSA (Micro Ecological Life Support System Alternative) está desarrollando tecnologías regenerativas de soporte vital para misiones de exploración espacial humana de larga duración. En el escenario de misiones hacia mayores distancias y presencia en el espacio (Luna, Marte), es necesario reducir la dependencia del suministro desde la Tierra. El bucle MELiSSA está concebido como un sistema circular con varios compartimentos, cada uno realizando una función específica y proporcionando en conjunto las funciones básicas del soporte vital: producción de alimentos, regeneración de la atmósfera y recuperación del agua.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T10:00:00",
+    "end_time": "2026-07-08T11:00:00",
+    "local_location": "Auditori de Lletres",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_012"
+    ],
+    "biotech_color": [
       "Industrial"
     ]
   },
   {
-    "id": "evt_017",
-    "title": "Mesa Redonda: Ecosistema Emprendedor e Inversión",
-    "description": "Un espacio dedicado a la innovación y el negocio. Contaremos con la participación de Venture Capitals y fundadores de Startups, quienes desgranarán las claves del emprendimiento, las rondas de financiación y cómo transformar una idea científica en un proyecto empresarial viable.",
+    "id": "evt_030",
+    "title": "Engineering microenviroments for biomedical applications",
+    "description": "Los biomateriales se han utilizado durante mucho tiempo en medicina regenerativa como andamios o vehículos de administración. Sin embargo, evidencias crecientes demuestran que interactúan activamente con su entorno biológico. Comprendiendo cómo las células detectan las propiedades de los materiales y cómo los productos de degradación impulsan respuestas metabólicas y transcripcionales, diseñamos microentornos que controlan el destino celular. Esta estrategia se aplica no solo a la regeneración, sino también a microentornos de enfermedad como los nichos tumorales.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T13:15:00",
+    "end_time": "2026-07-08T14:00:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_013"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_031",
+    "title": "From Metabolic Fluxes to Genome‑Scale Modeling: Targeting Cancer Vulnerabilities",
+    "description": "La reprogramación metabólica es una característica distintiva del cáncer, pero su interpretación funcional sigue siendo limitada. Esta presentación muestra cómo el análisis quantitative del flujo metabólico revela adaptaciones relevantes en el cáncer colorrectal que no se capturan mediante la expresión génica o los niveles de metabolitos por sí solos. La integración de datos de flujo en modelos metabólicos a escala genómica descubrió una reorganización metabólica vinculada a la respuesta terapéutica, la resistencia a fármacos y la progresión metastásica, identificando vulnerabilidades accionables y permitiendo la subtipificación metabólica y la predicción de sensibilidad diferencial a fármacos.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T12:45:00",
+    "end_time": "2026-07-09T13:30:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_014"
+    ],
+    "biotech_color": [
+      "Salud"
+    ]
+  },
+  {
+    "id": "evt_032",
+    "title": "Agrobiotecnología aplicada a los cultivos de árboles frutales: de la mejora genética al vivero, la producción sostenible y el consumidor.",
+    "description": "Ignasi dará una visión de lo que la innovación y las nuevas tecnologías pueden aportar en una producción más sostenible de alimentos, concretamente frutas, más adaptada a las demandas del consumidor y en un entorno de crisis climática. Desde la mejora genética, selección clonal y procesos de micropropagación in vitro, hasta como esta innovación se transforma en soliciones reales para el productor y un modelo de negocio global.",
     "category": "businessBAC",
-    "activity_type": "Mesa redonda",
-    "start_time": "2026-07-09T15:45:00",
-    "end_time": "2026-07-09T17:15:00",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T10:45:00",
+    "end_time": "2026-07-10T11:30:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_027"
+    ],
+    "biotech_color": [
+      "Vegetal"
+    ]
+  },
+  {
+    "id": "evt_033",
+    "title": "Preparing for future pandemics and post-pandemics",
+    "description": "La charla abordará cómo la biotecnología contribuye a la preparación frente a futuras pandemias y a la gestión del periodo post‑pandémico. Se revisarán lecciones clave del COVID‑19, con especial atención al desarrollo rápido de vacunas, la vigilancia genómica, los diagnósticos avanzados y el uso de plataformas tecnológicas como el ARNm. También se tratarán los desafíos de producción, equidad y transferencia tecnológica. Finalmente, se analizará el papel de la biotecnología en la prevención, la salud pública y la construcción de sociedades más resilientes.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T12:00:00",
+    "end_time": "2026-07-09T12:45:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_028"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_034",
+    "title": "Design and validation in biotechnological cosmetic active ingredients: from mechanism of action to claim",
+    "description": "Ariadna Grau, Responsable de I+D en LipoTrue, presentará cómo se diseñan y validan ingredientes activos innovadores para la industria dermocosmética, desde la identificación del mecanismo de acción molecular hasta la generación de evidencia científica que sustenta las claims del producto final. Una visión aplicada que conecta la química orgánica, la biología celular y la evaluación funcional en el desarrollo industrial de activos cosméticos.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T09:45:00",
+    "end_time": "2026-07-09T10:30:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "english",
+    "exhibitor_ids": [
+      "spk_016"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_035",
+    "title": "Design of new protein functions using deep learning",
+    "description": "David Baker presentará cómo el aprendizaje profundo ha revolucionado el diseño de proteínas de novo. Su grupo ha desarrollado métodos capaces de crear proteínas con estructuras y funciones inexistentes en la naturaleza, desde nuevas enzimas y proteínas de unión hasta máquinas moleculares. Esta plenaria mostrará el estado del arte del diseño computacional de proteínas, trabajo que le valió el Premio Nobel de Química 2024.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T18:00:00",
+    "end_time": "2026-07-09T19:00:00",
+    "local_location": "Auditori de Lletres",
+    "language": "english",
+    "exhibitor_ids": [
+      "spk_029"
+    ],
+    "biotech_color": [
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_036",
+    "title": "Registro",
+    "description": "Recogida de acreditaciones y material del congreso.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-08T09:00:00",
+    "end_time": "2026-07-08T09:30:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_037",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-08T11:00:00",
+    "end_time": "2026-07-08T11:30:00",
+    "local_location": "Espacio BusinessBAC (C1)",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_038",
+    "title": "Comida",
+    "description": "Pausa para comer. Tiempo libre para networking.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-08T14:00:00",
+    "end_time": "2026-07-08T15:00:00",
+    "local_location": "Catering (C0)",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_039",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-09T10:30:00",
+    "end_time": "2026-07-09T11:00:00",
+    "local_location": "Espacio BusinessBAC (C1)",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_040",
+    "title": "Comida",
+    "description": "Pausa para comer. Tiempo libre para networking.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-09T14:15:00",
+    "end_time": "2026-07-09T15:45:00",
+    "local_location": "Catering (C0)",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_041",
+    "title": "Coffee break",
+    "description": "Pausa para café y networking entre sesiones.",
+    "category": "general",
+    "activity_type": "Comidas y coffee breaks",
+    "start_time": "2026-07-10T12:15:00",
+    "end_time": "2026-07-10T13:15:00",
+    "local_location": "Espacio BusinessBAC (C1)",
+    "language": "spanish"
+  },
+  {
+    "id": "evt_042",
+    "title": "De la investigación al impacto global liderando el bioproceso en la era One Health",
+    "description": "Jordi Ruano, actual Executive Director de Operaciones para la División de Salud Humana en HIPRA, cuenta con más de 25 años de experiencia liderando el diseño, escalado y operación de bioprocesos complejos bajo normativas GMP, abarcando desde la fabricación de antígenos y proteínas recombinantes hasta el llenado aséptico de vacunas. Su trayectoria se alinea directamente con su ponencia, \"De la investigación al impacto global liderando el bioproceso en la era One Health\", ya que su rol actual consiste precisamente en traducir la innovación científica en una estrategia operativa y escalable. Al gestionar la fabricación y el suministro global de soluciones preventivas en HIPRA —una compañía enfocada en la salud animal y humana—, Ruano ejemplifica cómo la excelencia en el bioproceso es la clave para conectar la investigación en el laboratorio con un impacto real y global en la salud pública.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T13:15:00",
+    "end_time": "2026-07-10T14:15:00",
     "local_location": "Auditori de Lletres",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_020",
-      "spk_023",
-      "spk_025"
+      "spk_022"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ],
+    "location": "Auditori de Filosofia i Lletres (UAB)"
+  },
+  {
+    "id": "evt_043",
+    "title": "AI-ready data en la industria farmacéutica: retos y oportunidades",
+    "description": "Coté Falaguera es Senior Data Developer en el hub de AstraZeneca de Barcelona, donde trabaja en el desarrollo y preparación de datos para productos de inteligencia artificial. Biotecnóloga de formación, cuenta con un máster y un doctorado en Bioinformática por la Universidad Pompeu Fabra, y ha desarrollado su trayectoria profesional entre la academia y la industria, incluyendo etapas en el Instituto Europeo de Bioinformática (EMBL-EBI) y la Universidad de Stanford. Su perfil multidisciplinar, en la intersección entre las ciencias de la vida, la bioinformática y la inteligencia artificial, se vincula directamente con su ponencia, “AI-ready data en la industria farmacéutica: retos y oportunidades”, en la que compartirá su experiencia en uno de los ámbitos de mayor crecimiento dentro del sector farmacéutico y biotecnológico.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T12:30:00",
+    "end_time": "2026-07-08T13:15:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_018"
+    ],
+    "biotech_color": [
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_044",
+    "title": "Emprender en biotech: de la visión a la realidad industrial",
+    "description": "La charla abordará los desafíos de crear y escalar una CDMO desde cero: financiación, construcción de equipo, decisiones técnicas críticas y cómo convertir una necesidad del mercado en una empresa viable.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T12:45:00",
+    "end_time": "2026-07-09T13:30:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_015"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_045",
+    "title": "Aceleradora de Innovación. La historia de Integra como ejemplo de transferencia tecnológica en terapias avanzadas",
+    "description": "Avencia Sánchez-Mejías, CEO y cofundadora de Integra Therapeutics, combina una sólida carrera científica internacional en genética y biología sintética con una destacada experiencia en gestión empresarial y transferencia tecnológica. Bajo su liderazgo, la compañía ha crecido rápidamente, desarrollando la plataforma FiCAT de escritura genética, atrayendo 24 millones de euros en inversión y avanzando hacia la fase regulatoria con el fin de crear terapias avanzadas más seguras y efectivas. Esta trayectoria personifica a la perfección el título de su ponencia, \"Aceleradora de Innovación. La historia de Integra como ejemplo de transferencia tecnológica en terapias avanzadas\", ya que el éxito de su empresa sirve como el caso de estudio ideal sobre cómo llevar la investigación de excelencia desde el laboratorio académico (en su caso, surgido de la Universidad Pompeu Fabra) hasta la industria, acelerando la conversión del conocimiento científico en soluciones terapéuticas reales para los pacientes.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T11:30:00",
+    "end_time": "2026-07-10T12:15:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_017"
+    ],
+    "biotech_color": [
+      "Salud"
+    ]
+  },
+  {
+    "id": "evt_046",
+    "title": "From Academic Innovation to the Clinic: The Good, the Bad and the Ugly of SpliceBio’s Journey",
+    "description": "Gerard Caelles, Chief Business Officer (CBO) of SpliceBio, is a key figure in the biotechnology entrepreneurship ecosystem, specializing in business development and biofarmaceutical product valuation to bridge the gap between scientific innovation and venture capital. His strategic vision was instrumental in scaling SpliceBio—a Princeton University spin-off based in Barcelona—into a global pioneer in gene therapy by leveraging an intein-based platform to overcome traditional viral vector limitations and securing historic international funding rounds. His profile perfectly aligns with his keynote, \"From Academic Innovation to the Clinic: The Good, the Bad and the Ugly of SpliceBio’s Journey\", where he will dissect the company's trajectory to provide a deeply realistic and analytical look at how a disruptive academic technology transitions to the global market, addressing the business development structures, venture capital negotiations, and intellectual property protections that define the complex path from laboratory to clinic.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T13:30:00",
+    "end_time": "2026-07-09T14:15:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "english",
+    "exhibitor_ids": [
+      "spk_020"
+    ],
+    "biotech_color": [
+      "Salud"
+    ]
+  },
+  {
+    "id": "evt_047",
+    "title": "No tenía un plan maestro: lecciones reales de una carrera en biotecnología.",
+    "description": "Laure Burtin es una referente internacional en el desarrollo de terapias biológicas y optimización de bioprocesos con una destacada trayectoria ejecutiva que abarca roles de vicepresidencia y el liderazgo de proyectos de alto impacto en multinacionales como Sanofi, LETI Pharma y Almirall. Su recorrido profesional y su enfoque actual como asesora estratégica se vinculan de manera directa con su ponencia, \"No tenía un plan maestro: lecciones reales de una carrera en biotecnología\", ya que en ella compartirá una visión genuina y transparente sobre el liderazgo. Lejos de las trayectorias lineales preestablecidas, Burtin utilizará su propia experiencia para demostrar cómo la gestión humana, la empatía, la \"duda constructiva\" y la adaptabilidad ante la incertidumbre han sido los verdaderos motores de su éxito, ofreciendo a las nuevas generaciones una lección invaluable sobre cómo construir una carrera de alta exigencia corporativa desde la autenticidad y sin la necesidad de un guion rígido.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-08T13:15:00",
+    "end_time": "2026-07-08T14:00:00",
+    "local_location": "Sala d'Actes (C0)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_024"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_048",
+    "title": "Impulsa tu carrera estelar: gestión de innovación y crecimiento profesional",
+    "description": "Estel·la Buscató, referente en la gestión estratégica de pipelines de I+D en Bayer, se especializa en la intersección entre la biotecnología agrícola, el análisis avanzado y la toma de decisiones para transformar la complejidad científica en valor empresarial. Su experiencia liderando procesos de alto riesgo, priorización estratégica y traducción de datos en productos de alcance global se vincula directamente con el título de su ponencia, \"Impulsa tu carrera estelar: gestión de innovación y crecimiento profesional\". A través de su intervención, Buscató conecta el rigor metodológico del entorno agrobiotecnológico con una dimensión personal, utilizando su propia trayectoria como una hoja de ruta práctica para demostrar cómo la gestión eficiente de la innovación y la superación de retos complejos son herramientas aplicables y necesarias para acelerar el desarrollo profesional y alinear el talento con el propósito de la organización.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T09:00:00",
+    "end_time": "2026-07-09T09:45:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_019"
+    ],
+    "biotech_color": [
+      "Vegetal"
+    ]
+  },
+  {
+    "id": "evt_049",
+    "title": "Cómo los procesos Biotech pueden ayudarnos a desarrollar los ingredientes del futuro",
+    "description": "La idea de la ponencia es alentar de las posibilidades de la Biotecnología en el desarrollo de nuevos procesos e ingredientes para la industria alimentaria. Son innumerables los ejemplos que podemos encontrar en el sector farma, pero en alimentación hay un gran campo por explorar, más aún en los tiempos actuales, y sobre todo en el área socio-económica en la que vivimos  en los que la \"calidad de los alimentos\" se impone a la \"cantidad\".",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T10:00:00",
+    "end_time": "2026-07-10T10:45:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_033"
+    ],
+    "biotech_color": [
+      "Alimentaria"
+    ]
+  },
+  {
+    "id": "evt_050",
+    "title": "Biotechnoparty",
+    "description": "☢️ ALERTA DE RADIACIÓN: La Biotechnoparty alcanza su masa crítica ☢️\n¡Olvida las batas y los protocolos por unas horas! En #BACBarcelona2026 sabemos que la verdadera ciencia también ocurre cuando los átomos chocan en la pista de baile. Ha llegado el momento de que la energía acumulada durante el congreso se libere en una reacción en cadena imparable.\nTe presentamos la Biotechnoparty: Glow Evolution. Una noche de fisión social en el corazón de Barcelona, donde la radiactividad y la bioluminiscencia se funden para crear el ecosistema de conexión más vibrante del sector.\n🔬 REACCIÓN EN CADENA: Beats & Bio-Networking\nHemos diseñado esta noche para que tu red de contactos crezca al ritmo de la música y la acción:\nVibración Fotónica (¡Mucha Música!): Nuestra pista de baile será el reactor principal. Con una selección musical de alta frecuencia, estudiantes, investigadores y líderes del sector sincronizarán sus energías. ¡Aquí el networking se hace bailando!\nDinámicas de Fisión (¡Muchas Actividades!): Nada de esperas pasivas. Prepárate para una sucesión de actividades explosivas —desde retos grupales hasta juegos de ingenio— diseñadas para romper el hielo y conectar con otros \"isótopos\" de forma natural.\nSincronización Bioluminiscente: Un entorno de interacción constante donde el brillo de las actividades facilita el intercambio de ideas. Es el momento de encontrar a tus próximos colaboradores bajo una luz totalmente nueva.\n💡 DATOS DEL PROTOCOLO\nAsegura tu estabilidad antes de que el aforo se desintegre:\n📅 FECHA: 9 de JULIO.\n📍 LUGAR: Sala La Nau\n🎫 PLAZAS: ¡Atención! Solo hay disponibles poco más de 250 plazas.  Invita YA a tu compi de laboratorio que el tiempo de vida media de estas entradas es bajísimo, ¡no os quedéis fuera! \n🌟 TEMÁTICA: Glow Evolution. Trae algo que brille (neón, fluorescente o radiactivo) y prepárate para la mutación.\n¡Porque el networking más potente es el que ocurre entre beats, risas y una energía radiactiva! 🍹🧪\n📍 RESERVA TU ENTRADA ANTES DE LA DESINTEGRACIÓN TOTAL:\n🔗 https://bac.febiotec.es/registro/\n#BAC2026 #Biotechnoparty #AlertaDeRadiacion #BioNetworking #MusicaYCiencia #BarcelonaBiotec #GlowEvolution #Julio9 #ScienceAfterDark #NetworkingActivo",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-09T23:00:00",
+    "end_time": "2026-07-09T04:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "location": "https://maps.app.goo.gl/Lfb6KXVJ5r4m7zAs9"
+  },
+  {
+    "id": "evt_051",
+    "title": "\nVisita a ROCHE: Sant Cugat como Hub estratégico",
+    "description": "Visita técnica a Roche Sant Cugat, diseñada para ofrecer una visión global de la compañía y de su papel estratégico dentro de la organización. La jornada comenzará con una bienvenida y una presentación general, “The Big Picture”, en la que se expondrán la visión, el propósito y la cadena de valor de Roche España. A continuación, se abordará Roche Sant Cugat como hub estratégico, explicando el ecosistema del centro y su propuesta de valor. La actividad incluirá además un tour operativo por distintas áreas clave, como Coag Reagents (4.ª planta), RIS - Digital Solutions (3.ª planta), Regulatory QA, D&A (2.ª planta), RDS Coagulation Lab / GCS (1.ª planta) y el Training Center Lab (Tramuntana). La visita finalizará con un espacio de Q&A y networking, pensado para resolver dudas y favorecer el intercambio con el equipo de Roche.",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-07T14:00:00",
+    "end_time": "2026-07-07T18:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "location": "https://maps.app.goo.gl/LgNAKmu6yWexbWV6A"
+  },
+  {
+    "id": "evt_052",
+    "title": "Visita al PRBB y el CRG",
+    "description": "Visita a cargo del Dr. Reimund Fickert, responsable de Comunicación y Relaciones Institucionales del PRBB, consiste en una presentación general del PRBB como ecosistema de investigación en ciencias de la vida y la biomedicina y un breve recorrido por las instalaciones. Todo ello con una duración de 1,5 h. A su vez se presentará una exposición sobre el CRG y su relevancia en la ciencia, así como oportunidades disponibles para los estudiantes.",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-07T10:00:00",
+    "end_time": "2026-07-07T12:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "location": "https://maps.app.goo.gl/cZHCNwrYEZWMniVRA"
+  },
+  {
+    "id": "evt_053",
+    "title": "Visita guiada Barcelona",
+    "description": "Una visita por el centro histórico de Barcelona para conocer sus más grandes monumentos y escuchar todo lo que ciudad contal tiene por contarte. ",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-08T16:30:00",
+    "end_time": "2026-07-08T21:45:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "location": "https://maps.app.goo.gl/AqqVcZBDmedVstqE6"
+  },
+  {
+    "id": "evt_054",
+    "title": "Descubre y lidera el ciclo de vida de un producto farmacéutico con HIPRA",
+    "description": "¿Te has preguntado cómo viaja una idea desde el laboratorio hasta el mercado global? En este Workshop, Marta Figa (Strategic Projects Director en HIPRA) nos abrirá las puertas de una de las multinacionales biotecnológicas de referencia en Europa. Durante la sesión, conoceremos la estructura de la compañía y exploraremos el fascinante ciclo de vida de un producto farmacéutico con ejemplos reales, profundizando en el papel fundamental de las distintas áreas en I+D de una compañía en expansión. Más allá de la teoría, esta sesión te brindará la excelente oportunidad de aprender mediante la resolución de retos reales de la industria. Trabajando en equipos, analizaréis casos prácticos donde podréis desarrollar vuestra visión estratégica y fomentar soft skills clave para vuestro futuro profesional. La actividad culminará en una mesa redonda interactiva, donde cada grupo compartirá su solución, creando un espacio ideal para el aprendizaje colaborativo y el intercambio de ideas con una directiva experta del sector.\n",
+    "category": "viveBAC",
+    "activity_type": "Taller",
+    "start_time": "2026-07-08T17:00:00",
+    "end_time": "2026-07-08T20:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_026"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ],
+    "location": "https://maps.app.goo.gl/8VcPPVPKGzhZZk576"
+  },
+  {
+    "id": "evt_055",
+    "title": "Biotech Meeting Point",
+    "description": "El Biotech Meeting Point es un espacio de encuentro para conectar estudiantes, profesionales, empresas e instituciones del sector biotecnológico. Su objetivo es fomentar el networking, compartir oportunidades y acercar el talento joven al ecosistema biotech.",
+    "category": "viveBAC",
+    "activity_type": "Speed Meeting",
+    "start_time": "2026-07-09T09:00:00",
+    "end_time": "2026-07-09T11:00:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_041",
+      "spk_040",
+      "spk_038",
+      "spk_039",
+      "spk_042"
     ],
     "biotech_color": [
       "Biobusiness"
+    ],
+    "location": "https://maps.app.goo.gl/jQzjgfRa4MfGUr3f8"
+  },
+  {
+    "id": "evt_056",
+    "title": "Visita científica por Barcelona Ramón y Cajal",
+    "description": "Una visita por los rincones icónicos en donde la ciencia tuvo sus más grandes hitos en la capital catalana.",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-08T16:30:00",
+    "end_time": "2026-07-08T21:30:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "location": "https://maps.app.goo.gl/Ao3dWZd2J7bVKsHK7"
+  },
+  {
+    "id": "evt_057",
+    "title": "Impulsando la biofabricación sostenible con tecnologías de un solo uso.",
+    "description": "Lara Cobacho Lluesma, actual Sustainability Marketing Expert en Sartorius, cuenta con una sólida formación académica en Economía y Política de las Ciencias de la Vida orientada a la sostenibilidad por la Universidad Técnica de Múnich, y ha liderado alianzas estratégicas e iniciativas de sostenibilidad con grandes clientes biofarmacéuticos. Su trayectoria se vincula de manera directa con su ponencia, \"Driving Sustainable Biomanufacturing with SUT\", ya que su rol actual se centra precisamente en impulsar la comunicación estratégica y la defensa industrial del bioprocesamiento sostenible. A través de su intervención, Cobacho abordará cómo avanzar en la sostenibilidad de las tecnologías de un solo uso (SUT, por sus siglas en inglés) en la biofabricación, aportando su experiencia en iniciativas clave que mejoran la eficiencia de los procesos, promueven la circularidad y fomentan la colaboración en el sector.",
+    "category": "businessBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T12:00:00",
+    "end_time": "2026-07-09T12:45:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_035"
+    ],
+    "biotech_color": [
+      "Sostenibilidad"
     ]
   },
   {
@@ -172,339 +910,9 @@
     ]
   },
   {
-    "id": "evt_055",
-    "title": "Biotech Meeting Point",
-    "description": "El Biotech Meeting Point es un espacio de encuentro para conectar estudiantes, profesionales, empresas e instituciones del sector biotecnológico. Su objetivo es fomentar el networking, compartir oportunidades y acercar el talento joven al ecosistema biotech.",
-    "category": "viveBAC",
-    "activity_type": "Speed Meeting",
-    "start_time": "2026-07-09T09:00:00",
-    "end_time": "2026-07-09T11:00:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_041",
-      "spk_040",
-      "spk_038",
-      "spk_039",
-      "spk_042"
-    ],
-    "biotech_color": [
-      "Biobusiness"
-    ],
-    "location": "https://maps.app.goo.gl/jQzjgfRa4MfGUr3f8"
-  },
-  {
-    "id": "evt_024",
-    "title": "Debate: ¿El fin del Homo Sapiens? 🧬🧠 El Gran Cisma Biotecnológico",
-    "description": "¿Estamos diseñando nuestra propia divinidad o nuestra obsolescencia?Ya no se trata solo de usar tecnología; estamos a un paso de ser la tecnología. La unión de la Inteligencia Artificial cerebral y la edición genética (CRISPR) nos sitúa ante el dilema ético más grande de nuestra historia: ¿Es la evolución un destino biológico o una decisión de mercado?\n\nAquí te dejo los 3 puntos clave para entender este \"Gran Cisma\":\n\n1. ⚡ La Desigualdad Definitiva\nSi el acceso a la \"mejora humana\" depende del patrimonio, no solo habrá brecha económica, sino segregación biológica. ¿Estamos creando una élite de súper-humanos frente a una clase \"natural\" que será vista como discapacitada o negligente?\n\n2. 🧠 El Algoritmo del Deseo\nCon una IA integrada en el cerebro para \"optimizar\" nuestras decisiones: ¿Dónde termina tu conciencia y dónde empieza el código? Si un software elimina tu capacidad de equivocarte, ¿sigue existiendo el libre albedrío o eres solo biomasa ejecutando un programa?\n\n3. 🥀 El Valor de la Fragilidad\nSi extirpamos la vulnerabilidad, la duda y, eventualmente, la muerte... ¿qué queda de la experiencia humana? ",
-    "category": "viveBAC",
-    "activity_type": "Debate",
-    "start_time": "2026-07-07T18:00:00",
-    "end_time": "2026-07-07T21:00:00",
-    "local_location": "Auditori de Lletres",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_178",
-      "spk_179",
-      "spk_180",
-      "spk_181",
-      "spk_182"
-    ],
-    "biotech_color": [
-      "Bioética",
-      "Bio sintética",
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_011",
-    "title": "Understanding protein aggregation at scale",
-    "description": "La agregación de proteínas juega un papel central en muchas enfermedades, pero sus orígenes genéticos y moleculares son difíciles de determinar. Los ensayos multiplexados de efectos de variantes nos permiten medir miles de variantes a la vez. Este enfoque a gran escala posibilita tres avances clave: (1) mejorar la interpretación clínica de variantes genéticas halladas en pacientes o individuos sanos; (2) descubrir los mecanismos fundamentales que gobiernan el plegamiento, mal plegamiento y agregación de proteínas; y (3) generar conjuntos de datos grandes y de alta calidad que permitan entrenar modelos de IA de próxima generación para predecir el comportamiento de las proteínas con mayor precisión.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T13:15:00",
-    "end_time": "2026-07-08T14:00:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_002"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_028",
-    "title": "The Good, the Bad and the Ugly: AI for Enzyme Discovery",
-    "description": "Esta charla explora cómo el aprendizaje automático y el modelado molecular pueden contribuir al descubrimiento y la ingeniería de enzimas en sistemas diversos, a partir de la experiencia de nuestro laboratorio. Se presentan casos reales de bioprospección guiada por simulación, predicción de expresión, diseño de actividad e interpretación de datos experimentales, destacando tanto los éxitos como las limitaciones recurrentes y los casos en que el uso de la IA no justifica el esfuerzo. El objetivo es ofrecer una visión crítica y aplicada de su valor práctico.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T10:45:00",
-    "end_time": "2026-07-10T11:30:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_011"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_035",
-    "title": "Design of new protein functions using deep learning",
-    "description": "David Baker presentará cómo el aprendizaje profundo ha revolucionado el diseño de proteínas de novo. Su grupo ha desarrollado métodos capaces de crear proteínas con estructuras y funciones inexistentes en la naturaleza, desde nuevas enzimas y proteínas de unión hasta máquinas moleculares. Esta plenaria mostrará el estado del arte del diseño computacional de proteínas, trabajo que le valió el Premio Nobel de Química 2024.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T18:00:00",
-    "end_time": "2026-07-09T19:00:00",
-    "local_location": "Auditori de Lletres",
-    "language": "english",
-    "exhibitor_ids": [
-      "spk_029"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_075",
-    "title": "SIN TÍTULO",
-    "description": "SIN DESCRIPCIÓN",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T09:45:00",
-    "end_time": "2026-07-09T10:30:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_045"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_043",
-    "title": "AI-ready data en la industria farmacéutica: retos y oportunidades",
-    "description": "Coté Falaguera es Senior Data Developer en el hub de AstraZeneca de Barcelona, donde trabaja en el desarrollo y preparación de datos para productos de inteligencia artificial. Biotecnóloga de formación, cuenta con un máster y un doctorado en Bioinformática por la Universidad Pompeu Fabra, y ha desarrollado su trayectoria profesional entre la academia y la industria, incluyendo etapas en el Instituto Europeo de Bioinformática (EMBL-EBI) y la Universidad de Stanford. Su perfil multidisciplinar, en la intersección entre las ciencias de la vida, la bioinformática y la inteligencia artificial, se vincula directamente con su ponencia, “AI-ready data en la industria farmacéutica: retos y oportunidades”, en la que compartirá su experiencia en uno de los ámbitos de mayor crecimiento dentro del sector farmacéutico y biotecnológico.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T12:30:00",
-    "end_time": "2026-07-08T13:15:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_018"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_005",
-    "title": "Introducción a RStudio aplicado a datos ómicos",
-    "description": "En este taller aprenderás los fundamentos del lenguaje de programación R. Darás tus primeros pasos en la escritura y ejecución de código en RStudio, abarcando desde la importación y gestión de datos hasta el análisis estadístico y la visualización. Esta introducción intensiva culminará con el análisis de un conjunto de datos proteómicos real.",
-    "category": "viveBAC",
-    "activity_type": "Curso",
-    "start_time": "2026-07-07T10:00:00",
-    "end_time": "2026-07-07T13:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_008"
-    ],
-    "biotech_color": [
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_014",
-    "title": "Computational design of enzymes for a more sustainable world",
-    "description": "Esta ponencia destaca la importancia de la catálisis enzimática y las ventajas de la biocatálisis para construir un futuro industrial más sostenible. Se analizarán los últimos avances en el campo de la inteligencia artificial aplicada a la biología, mostrando cómo estas herramientas computacionales están revolucionando el diseño de nuevas enzimas y optimizando procesos biotecnológicos clave para la sociedad actual.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T12:30:00",
-    "end_time": "2026-07-08T13:15:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_006"
-    ],
-    "biotech_color": [
-      "Computacional",
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_018",
-    "title": "Mesa Redonda: Del grado al mundo profesional",
-    "description": "Explora la transición de la universidad a la empresa de la mano de expertos consolidados en diversos sectores de la industria. A través de sus trayectorias, analizaremos las distintas salidas profesionales y los retos actuales para ayudarte a trazar tu propio camino estratégico en el sector biotecnológico.",
-    "category": "businessBAC",
-    "activity_type": "Mesa redonda",
-    "start_time": "2026-07-08T15:00:00",
-    "end_time": "2026-07-08T16:30:00",
-    "local_location": "Auditori de Lletres",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_021",
-      "spk_030",
-      "spk_031"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ]
-  },
-  {
-    "id": "evt_007",
-    "title": "Concurso de Pósteres — Estudios de grado y máster",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
-    "category": "expoBAC",
-    "activity_type": "Presentación de poster",
-    "start_time": "2026-07-08T11:30:00",
-    "end_time": "2026-07-08T12:30:00",
-    "local_location": "Pasillo ExpoBAC",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009",
-      "cc_010",
-      "cc_011",
-      "cc_012",
-      "cc_013",
-      "cc_014",
-      "cc_015"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ]
-  },
-  {
-    "id": "evt_008",
-    "title": "Concurso de Pósteres — Doctorado, posdoctoral, industrial y no académico",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
-    "category": "expoBAC",
-    "activity_type": "Presentación de poster",
-    "start_time": "2026-07-08T11:30:00",
-    "end_time": "2026-07-08T12:30:00",
-    "local_location": "Pasillo ExpoBAC",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009",
-      "cc_010",
-      "cc_011",
-      "cc_012",
-      "cc_013",
-      "cc_014",
-      "cc_015"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ]
-  },
-  {
-    "id": "evt_009",
-    "title": "Comunicaciones Orales — Estudios de grado y máster",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
-    "category": "expoBAC",
-    "activity_type": "Presentación flash",
-    "start_time": "2026-07-08T11:30:00",
-    "end_time": "2026-07-08T12:30:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009",
-      "cc_010",
-      "cc_012",
-      "cc_013",
-      "cc_014"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ]
-  },
-  {
-    "id": "evt_010",
-    "title": "Comunicaciones Orales — Doctorado, posdoctoral, industrial y no académico",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
-    "category": "expoBAC",
-    "activity_type": "Presentación flash",
-    "start_time": "2026-07-08T11:30:00",
-    "end_time": "2026-07-08T12:30:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009",
-      "cc_010",
-      "cc_012",
-      "cc_013",
-      "cc_014"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ]
-  },
-  {
     "id": "evt_067",
     "title": "Concurso de Pósteres — Estudios de grado y máster",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
-    "category": "expoBAC",
-    "activity_type": "Presentación de poster",
-    "start_time": "2026-07-09T11:00:00",
-    "end_time": "2026-07-09T12:00:00",
-    "local_location": "Pasillo ExpoBAC",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional",
-      "Biobusiness"
-    ]
-  },
-  {
-    "id": "evt_068",
-    "title": "Concurso de Pósteres — Doctorado, posdoctoral, industrial y no académico",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato póster. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
+    "description": "Exposición de trabajos en formato póster de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán echar un vistazo a las infografias preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. ",
     "category": "expoBAC",
     "activity_type": "Presentación de poster",
     "start_time": "2026-07-09T11:00:00",
@@ -530,12 +938,12 @@
   {
     "id": "evt_069",
     "title": "Comunicaciones Orales — Estudios de grado y máster",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se podrán presentar los Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional, siempre que sea de interés desde el punto de vista de la biotecnología.",
+    "description": "Exposición de trabajos en formato presentación oral de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán escuchar breves exposiciones orales de 10 minutos preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El evento està organizado para dar cabida a 12 comunicaciones orales divididas por area temàtica en 3 aulas distintas. Dentro de cada aula, 4 participantes constaran de 10 minutos para exponer sus trabajos más su respectivo turno de preguntas. ",
     "category": "expoBAC",
     "activity_type": "Presentación flash",
     "start_time": "2026-07-09T11:00:00",
     "end_time": "2026-07-09T12:00:00",
-    "local_location": "Pasillo ExpoBAC",
+    "local_location": "Sala d'Actes (C0)",
     "language": "spanish",
     "exhibitor_ids": [
       "cc_001",
@@ -551,607 +959,6 @@
     "biotech_color": [
       "Desarrollo profesional",
       "Biobusiness"
-    ]
-  },
-  {
-    "id": "evt_070",
-    "title": "Comunicaciones Orales — Doctorado, posdoctoral, industrial y no académico",
-    "description": "Cualquier asistente a BAC Barcelona 2026 con perfil científico tendrá la oportunidad de presentar de forma gratuita su trabajo en formato comunicación oral. En esta sección se presentarán los trabajos de investigadores en etapas de doctorado y posteriores, así como otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El trabajo puede ser una revisión bibliográfica/metaanálisis, un trabajo original de investigación o un estudio demográfico u observacional.",
-    "category": "expoBAC",
-    "activity_type": "Presentación flash",
-    "start_time": "2026-07-09T11:00:00",
-    "end_time": "2026-07-09T12:00:00",
-    "local_location": "Pasillo ExpoBAC",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "cc_001",
-      "cc_002",
-      "cc_003",
-      "cc_004",
-      "cc_005",
-      "cc_006",
-      "cc_007",
-      "cc_008",
-      "cc_009"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional",
-      "Biobusiness"
-    ]
-  },
-  {
-    "id": "evt_023",
-    "title": "Inteligencia Artifical aplicada a biotecnología y desarrollo profesional",
-    "description": "La inteligencia artificial está transformando la forma en la que se investiga, se trabaja y se accede a oportunidades profesionales dentro del ámbito de la biotecnología. Sin embargo, la mayoría de usuarios se limita a un uso superficial de herramientas como ChatGPT, sin aprovechar su verdadero potencial. Esta actividad formativa tiene como objetivo proporcionar una visión clara, práctica y aplicable de la inteligencia artificial, y enseñar a los participantes a utilizarla como una herramienta estratégica tanto en su día a día académico/profesional como en el desarrollo de su carrera.<br><br>A lo largo de la sesión, los asistentes descubrirán cómo funciona realmente la IA más allá de ChatGPT, aprenderán a interactuar correctamente con estos sistemas mediante técnicas de prompting, explorarán aplicaciones reales en ciencia y productividad, y verán cómo integrar estas herramientas en la búsqueda de prácticas, empleo o doctorado. Además, se abordará el uso de la inteligencia artificial para optimizar el perfil profesional en LinkedIn, mejorar la comunicación con reclutadores y preparar procesos de selección de forma más eficiente.<br><br>La actividad está",
-    "category": "viveBAC",
-    "activity_type": "Taller",
-    "start_time": "2026-07-08T17:00:00",
-    "end_time": "2026-07-08T20:00:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "biotech_color": [
-      "Desarrollo profesional",
-      "Bioética"
-    ]
-  },
-  {
-    "id": "evt_029",
-    "title": "MELiSSA: Regenerative Life Support for Humans in Space",
-    "description": "MELiSSA (Micro Ecological Life Support System Alternative) está desarrollando tecnologías regenerativas de soporte vital para misiones de exploración espacial humana de larga duración. En el escenario de misiones hacia mayores distancias y presencia en el espacio (Luna, Marte), es necesario reducir la dependencia del suministro desde la Tierra. El bucle MELiSSA está concebido como un sistema circular con varios compartimentos, cada uno realizando una función específica y proporcionando en conjunto las funciones básicas del soporte vital: producción de alimentos, regeneración de la atmósfera y recuperación del agua.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T10:00:00",
-    "end_time": "2026-07-08T11:00:00",
-    "local_location": "Auditori de Lletres",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_012"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_030",
-    "title": "Engineering microenviroments for biomedical applications",
-    "description": "Los biomateriales se han utilizado durante mucho tiempo en medicina regenerativa como andamios o vehículos de administración. Sin embargo, evidencias crecientes demuestran que interactúan activamente con su entorno biológico. Comprendiendo cómo las células detectan las propiedades de los materiales y cómo los productos de degradación impulsan respuestas metabólicas y transcripcionales, diseñamos microentornos que controlan el destino celular. Esta estrategia se aplica no solo a la regeneración, sino también a microentornos de enfermedad como los nichos tumorales.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T13:15:00",
-    "end_time": "2026-07-08T14:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_013"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_033",
-    "title": "Preparing for future pandemics and post-pandemics",
-    "description": "La charla abordará cómo la biotecnología contribuye a la preparación frente a futuras pandemias y a la gestión del periodo post‑pandémico. Se revisarán lecciones clave del COVID‑19, con especial atención al desarrollo rápido de vacunas, la vigilancia genómica, los diagnósticos avanzados y el uso de plataformas tecnológicas como el ARNm. También se tratarán los desafíos de producción, equidad y transferencia tecnológica. Finalmente, se analizará el papel de la biotecnología en la prevención, la salud pública y la construcción de sociedades más resilientes.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T12:00:00",
-    "end_time": "2026-07-09T12:45:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_028"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_076",
-    "title": "SIN TÍTULO",
-    "description": "SIN DESCRIPCIÓN",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T10:00:00",
-    "end_time": "2026-07-10T10:45:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_046",
-      "biz_018"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_034",
-    "title": "Diseño y validación de activos cosméticos biotecnológicos: del mecanismo de acción al claim",
-    "description": "Ariadna Grau, Responsable de I+D en LipoTrue, presentará cómo se diseñan y validan ingredientes activos innovadores para la industria dermocosmética, desde la identificación del mecanismo de acción molecular hasta la generación de evidencia científica que sustenta las claims del producto final. Una visión aplicada que conecta la química orgánica, la biología celular y la evaluación funcional en el desarrollo industrial de activos cosméticos.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T09:45:00",
-    "end_time": "2026-07-09T10:30:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_016"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_042",
-    "title": "De la investigación al impacto global liderando el bioproceso en la era One Health",
-    "description": "Jordi Ruano, actual Executive Director de Operaciones para la División de Salud Humana en HIPRA, cuenta con más de 25 años de experiencia liderando el diseño, escalado y operación de bioprocesos complejos bajo normativas GMP, abarcando desde la fabricación de antígenos y proteínas recombinantes hasta el llenado aséptico de vacunas. Su trayectoria se alinea directamente con su ponencia, \"De la investigación al impacto global liderando el bioproceso en la era One Health\", ya que su rol actual consiste precisamente en traducir la innovación científica en una estrategia operativa y escalable. Al gestionar la fabricación y el suministro global de soluciones preventivas en HIPRA —una compañía enfocada en la salud animal y humana—, Ruano ejemplifica cómo la excelencia en el bioproceso es la clave para conectar la investigación en el laboratorio con un impacto real y global en la salud pública.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T13:15:00",
-    "end_time": "2026-07-10T14:15:00",
-    "local_location": "Auditori de Lletres",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_022"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ],
-    "location": "Auditori de Filosofia i Lletres (UAB)"
-  },
-  {
-    "id": "evt_044",
-    "title": "Emprender en biotech: de la visión a la realidad industrial",
-    "description": "La charla abordará los desafíos de crear y escalar una CDMO desde cero: financiación, construcción de equipo, decisiones técnicas críticas y cómo convertir una necesidad del mercado en una empresa viable.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T12:45:00",
-    "end_time": "2026-07-09T13:30:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_015"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_047",
-    "title": "No tenía un plan maestro: lecciones reales de una carrera en biotecnología.",
-    "description": "Laure Burtin es una referente internacional en el desarrollo de terapias biológicas y optimización de bioprocesos con una destacada trayectoria ejecutiva que abarca roles de vicepresidencia y el liderazgo de proyectos de alto impacto en multinacionales como Sanofi, LETI Pharma y Almirall. Su recorrido profesional y su enfoque actual como asesora estratégica se vinculan de manera directa con su ponencia, \"No tenía un plan maestro: lecciones reales de una carrera en biotecnología\", ya que en ella compartirá una visión genuina y transparente sobre el liderazgo. Lejos de las trayectorias lineales preestablecidas, Burtin utilizará su propia experiencia para demostrar cómo la gestión humana, la empatía, la \"duda constructiva\" y la adaptabilidad ante la incertidumbre han sido los verdaderos motores de su éxito, ofreciendo a las nuevas generaciones una lección invaluable sobre cómo construir una carrera de alta exigencia corporativa desde la autenticidad y sin la necesidad de un guion rígido.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T13:15:00",
-    "end_time": "2026-07-08T14:00:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_024"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_021",
-    "title": "Curso dermocosmética y formulación galénica",
-    "description": "El curso de dermocosmética es un curso teórico-práctico que consiste, principalmente, en la introducción al sector cosmético a los estudiantes mediante la formulación de una crema con aceite de rosa mosqueta en el laboratorio, donde los estudiantes aprenderán conceptos básicos de la formulación galénica y los controles necesarios durante la elaboración del producto, mediante una explicación teórica por parte de profesionales y profesores del máster de Cosmética y Perfumería de IQS. <br><br> El aceite de rosa mosqueta es un aceite 100% natural, extraído por prensado frio, sin proceso químico, rico en omega 3 y 6, linoleico, vitamina A, E y antioxidantes como carotenoides, los cuales otorgan muchas propiedades, como: hidratar en profundidad, regenerar piel, reducir arrugas, cicatrices y manchas estimulando la producción de colágeno, además de que otorga un aroma muy suave a la crema.",
-    "category": "viveBAC",
-    "activity_type": "Curso",
-    "start_time": "2026-07-07T17:00:00",
-    "end_time": "2026-07-07T20:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_036"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ]
-  },
-  {
-    "id": "evt_054",
-    "title": "Descubre y lidera el ciclo de vida de un producto farmacéutico con HIPRA",
-    "description": "¿Te has preguntado cómo viaja una idea desde el laboratorio hasta el mercado global? En este Workshop, Marta Figa (Strategic Projects Director en HIPRA) nos abrirá las puertas de una de las multinacionales biotecnológicas de referencia en Europa. Durante la sesión, conoceremos la estructura de la compañía y exploraremos el fascinante ciclo de vida de un producto farmacéutico con ejemplos reales, profundizando en el papel fundamental de las distintas áreas en I+D de una compañía en expansión. Más allá de la teoría, esta sesión te brindará la excelente oportunidad de aprender mediante la resolución de retos reales de la industria. Trabajando en equipos, analizaréis casos prácticos donde podréis desarrollar vuestra visión estratégica y fomentar soft skills clave para vuestro futuro profesional. La actividad culminará en una mesa redonda interactiva, donde cada grupo compartirá su solución, creando un espacio ideal para el aprendizaje colaborativo y el intercambio de ideas con una directiva experta del sector.\n",
-    "category": "viveBAC",
-    "activity_type": "Taller",
-    "start_time": "2026-07-08T17:00:00",
-    "end_time": "2026-07-08T20:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_026"
-    ],
-    "biotech_color": [
-      "Industrial"
-    ],
-    "location": "https://maps.app.goo.gl/8VcPPVPKGzhZZk576"
-  },
-  {
-    "id": "evt_074",
-    "title": "El papel del océano en el secuestro de carbono",
-    "description": "Cristina Romera-Castillo es oceanógrafa y científica marina especializada en el papel del océano en el ciclo global del carbono, con especial énfasis en la materia orgánica disuelta (DOM, por sus siglas en inglés) y el carbono orgánico disuelto (DOC). Su investigación ha contribuido a comprender cómo el océano secuestra y almacena carbono durante escalas de tiempo que van desde décadas hasta miles de años, y cómo procesos biológicos, la disponibilidad de nutrientes y la circulación oceánica controlan la producción, acumulación y transporte de carbono orgánico disuelto. También ha estudiado el destino del carbono derivado de la contaminación por plásticos y su interacción con las comunidades microbianas marinas.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-08T12:30:00",
-    "end_time": "2026-07-08T13:15:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_044"
-    ],
-    "biotech_color": [
-      "Sostenibilidad"
-    ]
-  },
-  {
-    "id": "evt_078",
-    "title": "SIN TÍTULO",
-    "description": "SIN DESCRIPCIÓN",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T13:30:00",
-    "end_time": "2026-07-09T14:15:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_048"
-    ]
-  },
-  {
-    "id": "evt_001",
-    "title": "Mesa inaugural",
-    "description": "La apertura oficial del BAC 2026. Palabras de bienvenida del presidente de ASBTEC, el presidente de FEBIOTEC y el Rector de la Universitat Autonoma de Barcelona. Marca el comienzo de cinco días de ciencia, networking y desarrollo profesional.",
-    "category": "general",
-    "activity_type": "Acto institucional",
-    "start_time": "2026-07-08T09:30:00",
-    "end_time": "2026-07-08T10:00:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "mi_01",
-      "mi_02",
-      "mi_03",
-      "mi_04",
-      "org_022",
-      "biz_023"
-    ]
-  },
-  {
-    "id": "evt_003",
-    "title": "Mesa Clausura i Entrega de premios de cursos pharmavolution y merch sponsors",
-    "description": "Palabras de cierre de la junta de ASBTEC, anuncio de la próxima asociación anfitriona del BAC y despedida a los participantes. Incluye un breve vídeo resumen de los mejores momentos del BAC 2026. Se entregará un diploma personalizado a cada uno de los 4 ganadores y cada ganador podrá elegir 2 cursos de los ofertados",
-    "category": "general",
-    "activity_type": "Acto institucional",
-    "start_time": "2026-07-10T14:15:00",
-    "end_time": "2026-07-10T15:00:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "mc_01",
-      "mc_02",
-      "org_022",
-      "biz_023"
-    ],
-    "biotech_color": [
-      "Biobusiness"
-    ]
-  },
-  {
-    "id": "evt_036",
-    "title": "Registro",
-    "description": "Recogida de acreditaciones y material del congreso.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-08T09:00:00",
-    "end_time": "2026-07-08T09:30:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_037",
-    "title": "Coffee break",
-    "description": "Pausa para café y networking entre sesiones.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-08T11:00:00",
-    "end_time": "2026-07-08T11:30:00",
-    "local_location": "Espacio BusinessBAC (C1)",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_038",
-    "title": "Comida",
-    "description": "Pausa para comer. Tiempo libre para networking.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-08T14:00:00",
-    "end_time": "2026-07-08T15:00:00",
-    "local_location": "Catering (C0)",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_039",
-    "title": "Coffee break",
-    "description": "Pausa para café y networking entre sesiones.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-09T10:30:00",
-    "end_time": "2026-07-09T11:00:00",
-    "local_location": "Espacio BusinessBAC (C1)",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_040",
-    "title": "Comida",
-    "description": "Pausa para comer. Tiempo libre para networking.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-09T14:15:00",
-    "end_time": "2026-07-09T15:45:00",
-    "local_location": "Catering (C0)",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_041",
-    "title": "Coffee break",
-    "description": "Pausa para café y networking entre sesiones.",
-    "category": "general",
-    "activity_type": "Comidas y coffee breaks",
-    "start_time": "2026-07-10T12:15:00",
-    "end_time": "2026-07-10T13:15:00",
-    "local_location": "Espacio BusinessBAC (C1)",
-    "language": "spanish"
-  },
-  {
-    "id": "evt_050",
-    "title": "Biotechnoparty",
-    "description": "☢️ ALERTA DE RADIACIÓN: La Biotechnoparty alcanza su masa crítica ☢️\n¡Olvida las batas y los protocolos por unas horas! En #BACBarcelona2026 sabemos que la verdadera ciencia también ocurre cuando los átomos chocan en la pista de baile. Ha llegado el momento de que la energía acumulada durante el congreso se libere en una reacción en cadena imparable.\nTe presentamos la Biotechnoparty: Glow Evolution. Una noche de fisión social en el corazón de Barcelona, donde la radiactividad y la bioluminiscencia se funden para crear el ecosistema de conexión más vibrante del sector.\n🔬 REACCIÓN EN CADENA: Beats & Bio-Networking\nHemos diseñado esta noche para que tu red de contactos crezca al ritmo de la música y la acción:\nVibración Fotónica (¡Mucha Música!): Nuestra pista de baile será el reactor principal. Con una selección musical de alta frecuencia, estudiantes, investigadores y líderes del sector sincronizarán sus energías. ¡Aquí el networking se hace bailando!\nDinámicas de Fisión (¡Muchas Actividades!): Nada de esperas pasivas. Prepárate para una sucesión de actividades explosivas —desde retos grupales hasta juegos de ingenio— diseñadas para romper el hielo y conectar con otros \"isótopos\" de forma natural.\nSincronización Bioluminiscente: Un entorno de interacción constante donde el brillo de las actividades facilita el intercambio de ideas. Es el momento de encontrar a tus próximos colaboradores bajo una luz totalmente nueva.\n💡 DATOS DEL PROTOCOLO\nAsegura tu estabilidad antes de que el aforo se desintegre:\n📅 FECHA: 9 de JULIO.\n📍 LUGAR: Sala La Nau\n🎫 PLAZAS: ¡Atención! Solo hay disponibles poco más de 250 plazas.  Invita YA a tu compi de laboratorio que el tiempo de vida media de estas entradas es bajísimo, ¡no os quedéis fuera! \n🌟 TEMÁTICA: Glow Evolution. Trae algo que brille (neón, fluorescente o radiactivo) y prepárate para la mutación.\n¡Porque el networking más potente es el que ocurre entre beats, risas y una energía radiactiva! 🍹🧪\n📍 RESERVA TU ENTRADA ANTES DE LA DESINTEGRACIÓN TOTAL:\n🔗 https://bac.febiotec.es/registro/\n#BAC2026 #Biotechnoparty #AlertaDeRadiacion #BioNetworking #MusicaYCiencia #BarcelonaBiotec #GlowEvolution #Julio9 #ScienceAfterDark #NetworkingActivo",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-09T23:00:00",
-    "end_time": "2026-07-09T04:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/Lfb6KXVJ5r4m7zAs9"
-  },
-  {
-    "id": "evt_051",
-    "title": "\nVisita a ROCHE: Sant Cugat como Hub estratégico",
-    "description": "Visita técnica a Roche Sant Cugat, diseñada para ofrecer una visión global de la compañía y de su papel estratégico dentro de la organización. La jornada comenzará con una bienvenida y una presentación general, “The Big Picture”, en la que se expondrán la visión, el propósito y la cadena de valor de Roche España. A continuación, se abordará Roche Sant Cugat como hub estratégico, explicando el ecosistema del centro y su propuesta de valor. La actividad incluirá además un tour operativo por distintas áreas clave, como Coag Reagents (4.ª planta), RIS - Digital Solutions (3.ª planta), Regulatory QA, D&A (2.ª planta), RDS Coagulation Lab / GCS (1.ª planta) y el Training Center Lab (Tramuntana). La visita finalizará con un espacio de Q&A y networking, pensado para resolver dudas y favorecer el intercambio con el equipo de Roche.",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-07T14:00:00",
-    "end_time": "2026-07-07T18:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/LgNAKmu6yWexbWV6A"
-  },
-  {
-    "id": "evt_052",
-    "title": "Visita al PRBB y el CRG",
-    "description": "Visita a cargo del Dr. Reimund Fickert, responsable de Comunicación y Relaciones Institucionales del PRBB, consiste en una presentación general del PRBB como ecosistema de investigación en ciencias de la vida y la biomedicina y un breve recorrido por las instalaciones. Todo ello con una duración de 1,5 h. A su vez se presentará una exposición sobre el CRG y su relevancia en la ciencia, así como oportunidades disponibles para los estudiantes.",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-07T10:00:00",
-    "end_time": "2026-07-07T12:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/cZHCNwrYEZWMniVRA"
-  },
-  {
-    "id": "evt_053",
-    "title": "Visita guiada Barcelona",
-    "description": "Una visita por el centro histórico de Barcelona para conocer sus más grandes monumentos y escuchar todo lo que ciudad contal tiene por contarte. ",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-08T16:30:00",
-    "end_time": "2026-07-08T21:45:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/AqqVcZBDmedVstqE6"
-  },
-  {
-    "id": "evt_056",
-    "title": "Visita científica por Barcelona Ramón y Cajal",
-    "description": "Una visita por los rincones icónicos en donde la ciencia tuvo sus más grandes hitos en la capital catalana.",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-08T16:30:00",
-    "end_time": "2026-07-08T21:30:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/Ao3dWZd2J7bVKsHK7"
-  },
-  {
-    "id": "evt_013",
-    "title": "Bringing Science to the Patient",
-    "description": "Se abordará el proceso de transformar el conocimiento biológico y biomédico en productos y servicios de valor para los pacientes. La ponencia se centrará en los avances logrados en el traslado de soluciones innovadoras para el cuidado continuo del paciente oncológico, destacando cómo la investigación básica puede culminar en aplicaciones clínicas que mejoren significativamente la calidad de vida.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T11:30:00",
-    "end_time": "2026-07-10T12:15:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_001"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_015",
-    "title": "Toward selective and brain-permeable protein therapeutics",
-    "description": "Los bioterapéuticos han logrado avances clínicos importantes en cáncer y otras enfermedades, pero persisten retos clave. Muchas dianas terapéuticas se expresan tanto en tejidos enfermos como sanos, generando toxicidades limitantes de dosis. Para las indicaciones neurológicas, la administración eficiente a través de la barrera hematoencefálica (BHE) supone un obstáculo adicional. En esta ponencia presentaré los esfuerzos de nuestro grupo para diseñar bioterapéuticos de activación condicional y potenciar su transporte a través de la BHE, con el objetivo de mejorar la eficacia y minimizar los efectos fuera de la diana.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T09:45:00",
-    "end_time": "2026-07-09T10:30:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_003"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_031",
-    "title": "From Metabolic Fluxes to Genome‑Scale Modeling: Targeting Cancer Vulnerabilities",
-    "description": "La reprogramación metabólica es una característica distintiva del cáncer, pero su interpretación funcional sigue siendo limitada. Esta presentación muestra cómo el análisis quantitative del flujo metabólico revela adaptaciones relevantes en el cáncer colorrectal que no se capturan mediante la expresión génica o los niveles de metabolitos por sí solos. La integración de datos de flujo en modelos metabólicos a escala genómica descubrió una reorganización metabólica vinculada a la respuesta terapéutica, la resistencia a fármacos y la progresión metastásica, identificando vulnerabilidades accionables y permitiendo la subtipificación metabólica y la predicción de sensibilidad diferencial a fármacos.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T12:45:00",
-    "end_time": "2026-07-09T13:30:00",
-    "local_location": "Sala de Graus",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_014"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_045",
-    "title": "Aceleradora de Innovación. La historia de Integra como ejemplo de transferencia tecnológica en terapias avanzadas",
-    "description": "Avencia Sánchez-Mejías, CEO y cofundadora de Integra Therapeutics, combina una sólida carrera científica internacional en genética y biología sintética con una destacada experiencia en gestión empresarial y transferencia tecnológica. Bajo su liderazgo, la compañía ha crecido rápidamente, desarrollando la plataforma FiCAT de escritura genética, atrayendo 24 millones de euros en inversión y avanzando hacia la fase regulatoria con el fin de crear terapias avanzadas más seguras y efectivas. Esta trayectoria personifica a la perfección el título de su ponencia, \"Aceleradora de Innovación. La historia de Integra como ejemplo de transferencia tecnológica en terapias avanzadas\", ya que el éxito de su empresa sirve como el caso de estudio ideal sobre cómo llevar la investigación de excelencia desde el laboratorio académico (en su caso, surgido de la Universidad Pompeu Fabra) hasta la industria, acelerando la conversión del conocimiento científico en soluciones terapéuticas reales para los pacientes.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T11:30:00",
-    "end_time": "2026-07-10T12:15:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_017"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_046",
-    "title": "From Academic Innovation to the Clinic: The Good, the Bad and the Ugly of SpliceBio’s Journey",
-    "description": "Gerard Caelles, Chief Business Officer (CBO) of SpliceBio, is a key figure in the biotechnology entrepreneurship ecosystem, specializing in business development and biofarmaceutical product valuation to bridge the gap between scientific innovation and venture capital. His strategic vision was instrumental in scaling SpliceBio—a Princeton University spin-off based in Barcelona—into a global pioneer in gene therapy by leveraging an intein-based platform to overcome traditional viral vector limitations and securing historic international funding rounds. His profile perfectly aligns with his keynote, \"From Academic Innovation to the Clinic: The Good, the Bad and the Ugly of SpliceBio’s Journey\", where he will dissect the company's trajectory to provide a deeply realistic and analytical look at how a disruptive academic technology transitions to the global market, addressing the business development structures, venture capital negotiations, and intellectual property protections that define the complex path from laboratory to clinic.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T13:30:00",
-    "end_time": "2026-07-09T14:15:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "english",
-    "exhibitor_ids": [
-      "spk_020"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_006",
-    "title": "Curso de Fecundación In Vitro y Reproducción Asistida “Hablemos de repro”",
-    "description": "El presente taller tiene como objetivo ofrecer una visión integral de la reproducción asistida, combinando fundamentos teóricos, reflexión crítica y aproximación práctica a técnicas clave empleadas en el ámbito de la biotecnología reproductiva. La actividad se estructura en dos bloques diferenciados: un bloque teórico y un bloque práctico, diseñados para facilitar tanto la adquisición de conocimientos como el desarrollo de habilidades técnicas básicas. <br><br>Bloque teórico <br>El bloque teórico comenzará con una actividad interactiva tipo Kahoot para evaluar los conocimientos previos de los participantes y fomentar su implicación desde el inicio. A continuación, se abordarán los principales conceptos relacionados con la infertilidad y las técnicas de fecundación in vitro (FIV), incluyendo una introducción general a los procedimientos más utilizados en reproducción asistida. Se profundizará específicamente en la FIV con donación de gametos, analizando sus indicaciones, implicaciones y particularidades. El taller incorporará también una perspectiva legal, presentando los aspectos fundamentales de la legislación en reproducción asistida y destacando",
-    "category": "viveBAC",
-    "activity_type": "Curso",
-    "start_time": "2026-07-07T16:00:00",
-    "end_time": "2026-07-07T20:00:00",
-    "local_location": "Espacio BusinessBAC (C1)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_009"
-    ],
-    "biotech_color": [
-      "Salud"
-    ]
-  },
-  {
-    "id": "evt_012",
-    "title": "Omics platforms for the preclinical assessment of snake antivenom",
-    "description": "El envenenamiento por mordedura de serpiente es una enfermedad desatendida que provoca un enorme sufrimiento, discapacidad y muerte prematura, especialmente en Asia y África. La 71.ª Asamblea Mundial de la Salud adoptó una resolución que insta a una respuesta coordinada para mitigar su impacto. Hemos desarrollado plataformas para caracterizar las composiciones del veneno («Venómica»), determinar la toxicidad de las toxinas individuales («Toxicovénomica»), evaluar la capacidad de unión a toxinas de los antivenenos («Antivénomica») y determinar su potencia neutralizante in vivo. Se presentará la participación de nuestro laboratorio en el Plan de Acción de la OMS.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-10T10:00:00",
-    "end_time": "2026-07-10T10:45:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_004"
-    ],
-    "biotech_color": [
-      "Salud",
-      "Bio sintética"
-    ]
-  },
-  {
-    "id": "evt_004",
-    "title": "Curso de Neurobioingenería: Introducción a la Tractografía",
-    "description": "Curso teórico-práctico dedicado a la tractografía por DTI, orientado a comprender en profundidad los fundamentos de la imagen por tensor de difusión y su aplicación en la reconstrucción de haces de sustancia blanca. En la parte teórica se revisarán las principales técnicas tractográficas, la interpretación de mapas de FA y mapas RGB, el cálculo de tensores a partir de estudios de DTI y el uso de ROIs mediante operaciones lógicas OR, AND y NOT. La parte práctica se desarrollará con el programa DtiStudio y consistirá en localizar, delimitar y reconstruir tractos, con especial atención al tracto corticoespinal, así como en la supresión de fibras aberrantes y la obtención de parámetros cuantitativos del fascículo, incluyendo la FA (Fractional Anisotropy).",
-    "category": "viveBAC",
-    "activity_type": "Curso",
-    "start_time": "2026-07-08T17:00:00",
-    "end_time": "2026-07-08T20:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_007"
-    ],
-    "biotech_color": [
-      "Salud",
-      "Computacional"
-    ]
-  },
-  {
-    "id": "evt_057",
-    "title": "Driving Sustainable Biomanufacturing with SUT",
-    "description": "Lara Cobacho Lluesma, actual Sustainability Marketing Expert en Sartorius, cuenta con una sólida formación académica en Economía y Política de las Ciencias de la Vida orientada a la sostenibilidad por la Universidad Técnica de Múnich, y ha liderado alianzas estratégicas e iniciativas de sostenibilidad con grandes clientes biofarmacéuticos. Su trayectoria se vincula de manera directa con su ponencia, \"Driving Sustainable Biomanufacturing with SUT\", ya que su rol actual se centra precisamente en impulsar la comunicación estratégica y la defensa industrial del bioprocesamiento sostenible. A través de su intervención, Cobacho abordará cómo avanzar en la sostenibilidad de las tecnologías de un solo uso (SUT, por sus siglas en inglés) en la biofabricación, aportando su experiencia en iniciativas clave que mejoran la eficiencia de los procesos, promueven la circularidad y fomentan la colaboración en el sector.",
-    "category": "businessBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T12:00:00",
-    "end_time": "2026-07-09T12:45:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_035"
-    ],
-    "biotech_color": [
-      "Sostenibilidad"
-    ]
-  },
-  {
-    "id": "evt_020",
-    "title": "Visita al Sincrotón ALBA",
-    "description": "Descubre el instrumento científico más complejo de España. El Sincrotrón ALBA, situado en Cerdanyola del Vallès, es una infraestructura de investigación de tercera generación que funciona como un microscopio gigante. Acelerando electrones a velocidades cercanas a la de la luz, ALBA genera una luz extraordinariamente brillante que permite a los investigadores observar la estructura atómica y molecular de todo tipo de materiales. Durante este recorrido guiado, te adentrarás en las entrañas de esta fascinante instalación científica. De la mano de expertos, descubrirás cómo se produce esta luz de sincrotrón y cómo se aplica para resolver los grandes retos de nuestra sociedad en campos como la medicina, la biología, la ciencia de materiales y el medio ambiente.",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-07T15:00:00",
-    "end_time": "2026-07-07T17:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "biotech_color": [
-      "Sostenibilidad",
-      "Salud",
-      "Bio sintética",
-      "Computacional",
-      "Industrial"
-    ],
-    "location": "https://maps.app.goo.gl/dojFo5CtN3Z76h9y7"
-  },
-  {
-    "id": "evt_016",
-    "title": "Metabolic engineering for resistance against pathogens in plants",
-    "description": "Las enfermedades causadas por patógenos vasculares son un grave problema para la agricultura porque bloquean el sistema de transporte de agua de las plantas, provocando su marchitamiento y muerte. Mediante ingeniería genética y metabólica mostraremos cómo introducir la resistencia a patógenos vasculares en variedades comerciales de tomate, reforzando las paredes de los vasos conductores y produciendo compuestos de defensa que frenan la propagación del patógeno. Modificar estos mecanismos de defensa puede aumentar la resistencia y contribuir al desarrollo de cultivos más resilientes.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T12:00:00",
-    "end_time": "2026-07-09T12:45:00",
-    "local_location": "Sala d'Actes (C0)",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_005"
-    ],
-    "biotech_color": [
-      "Vegetal"
     ]
   },
   {
@@ -1190,13 +997,13 @@
   },
   {
     "id": "evt_073",
-    "title": "SIN TÍTULO",
-    "description": "SIN DESCRIPCIÓN",
+    "title": "Rapid adaptation vs. the Anthropocene",
+    "description": "Climate change is threatening the persistence of plant species worldwide, raising a fundamental question: can plants evolve quickly enough to keep pace with rapidly changing environments? In this talk, I will present results from an unprecedented large-scale evolution experiment using Arabidopsis thaliana across more than 30 outdoor experimental sites spanning Europe, the Levant, and the United States as part of the GrENE-net initiative.\n\nBy sequencing the genomes of more than 70,000 surviving plants grown under diverse climatic conditions, we identified clear signatures of rapid climate-driven adaptation, uncovered the genetic loci underlying adaptation in contrasting environments, and assessed the extent to which evolutionary responses are repeatable across climates.\n\nThese findings demonstrate that standing genetic variation is the foundation of rapid evolutionary adaptation and provide new insights into the capacity of plant populations to respond to environmental change. More broadly, they highlight the critical importance of preserving genetic diversity to safeguard the evolutionary potential of species and improve our ability to predict the impacts of global change on biodiversity.",
     "category": "bioBAC",
     "activity_type": "Ponencia",
     "start_time": "2026-07-09T09:00:00",
     "end_time": "2026-07-09T09:45:00",
-    "local_location": "Auditori de Lletres",
+    "local_location": "Sala d'Actes (C0)",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_043"
@@ -1206,24 +1013,24 @@
     ]
   },
   {
-    "id": "evt_032",
-    "title": "Cosechas inteligentes: de la innovación al reto real",
-    "description": "Paquita Escoi abordará cómo la visión artificial, el análisis inteligente y la IA generativa están revolucionando el control de calidad y la toma de decisiones en tiempo real en la postcosecha. Una visión aplicada e industrial sobre cómo la agricultura está evolucionando gracias a los grandes avances tecnológicos, y cómo los biotecnólogos pueden contribuir integrándose en entornos altamente tecnificados para resolver los retos del futuro.",
-    "category": "businessBAC",
+    "id": "evt_074",
+    "title": "El papel del océano en el secuestro de carbono",
+    "description": "Cristina Romera-Castillo es oceanógrafa y científica marina especializada en el papel del océano en el ciclo global del carbono, con especial énfasis en la materia orgánica disuelta (DOM, por sus siglas en inglés) y el carbono orgánico disuelto (DOC). Su investigación ha contribuido a comprender cómo el océano secuestra y almacena carbono durante escalas de tiempo que van desde décadas hasta miles de años, y cómo procesos biológicos, la disponibilidad de nutrientes y la circulación oceánica controlan la producción, acumulación y transporte de carbono orgánico disuelto. También ha estudiado el destino del carbono derivado de la contaminación por plásticos y su interacción con las comunidades microbianas marinas.",
+    "category": "bioBAC",
     "activity_type": "Ponencia",
-    "start_time": "2026-07-10T10:45:00",
-    "end_time": "2026-07-10T11:30:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "start_time": "2026-07-08T12:30:00",
+    "end_time": "2026-07-08T13:15:00",
+    "local_location": "Sala de Graus",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_027"
+      "spk_044"
     ],
     "biotech_color": [
-      "Vegetal"
+      "Sostenibilidad"
     ]
   },
   {
-    "id": "evt_074",
+    "id": "evt_070",
     "title": "Empleo Público y Oportunidades Laborales en España",
     "description": "Descubre las principales oportunidades profesionales que ofrece el sector público español y conoce las vías de acceso a organismos de investigación e instituciones públicas. Una sesión impartida por Marcos Palomo Fernández, dirigida a estudiantes y jóvenes investigadores interesados en desarrollar su carrera profesional en España.",
     "category": "bioBAC",
@@ -1241,20 +1048,84 @@
     "location": "https://maps.app.goo.gl/jxydaSHJBsfFQryw6"
   },
   {
-    "id": "evt_048",
-    "title": "Impulsa tu carrera estelar: gestión de innovación y crecimiento profesional",
-    "description": "Estel·la Buscató, referente en la gestión estratégica de pipelines de I+D en Bayer, se especializa en la intersección entre la biotecnología agrícola, el análisis avanzado y la toma de decisiones para transformar la complejidad científica en valor empresarial. Su experiencia liderando procesos de alto riesgo, priorización estratégica y traducción de datos en productos de alcance global se vincula directamente con el título de su ponencia, \"Impulsa tu carrera estelar: gestión de innovación y crecimiento profesional\". A través de su intervención, Buscató conecta el rigor metodológico del entorno agrobiotecnológico con una dimensión personal, utilizando su propia trayectoria como una hoja de ruta práctica para demostrar cómo la gestión eficiente de la innovación y la superación de retos complejos son herramientas aplicables y necesarias para acelerar el desarrollo profesional y alinear el talento con el propósito de la organización.",
-    "category": "businessBAC",
+    "id": "evt_075",
+    "title": "La investigación biomédica en la era de los datos",
+    "description": "La secuenciación del genoma humano, en 2001, supuso un antes y un después en el estudio de la salud humana, ya que por primera vez se disponía del “manual de instrucciones de la vida”. Desde entonces, los avances tecnológicos han reducido el tiempo y el coste de secuenciación, a la vez que han ampliado la cantidad y diversidad de datos disponibles, tanto genéticos como clínicos. Este crecimiento ha convertido a los datos en un elemento central para la investigación biomédica y la práctica clínica. La presentación revisa los principales proyectos del grupo Bioinformatics and Bioimaging.",
+    "category": "bioBAC",
     "activity_type": "Ponencia",
-    "start_time": "2026-07-09T09:00:00",
-    "end_time": "2026-07-09T09:45:00",
-    "local_location": "Sala d'Actes (C0)",
+    "start_time": "2026-07-09T09:45:00",
+    "end_time": "2026-07-09T10:30:00",
+    "local_location": "Sala de Graus",
     "language": "spanish",
     "exhibitor_ids": [
-      "spk_019"
+      "spk_045"
     ],
     "biotech_color": [
-      "Vegetal"
+      "Computacional"
+    ]
+  },
+  {
+    "id": "evt_076",
+    "title": "Visita PRBB y CRG",
+    "description": "Visita al PRBB (Barcelona Biomedical Research Park) y al 𝗖𝗲𝗻𝘁𝗿𝗼 𝗱𝗲 𝗥𝗲𝗴𝘂𝗹𝗮𝗰𝗶𝗼́𝗻 𝗚𝗲𝗻𝗼́𝗺𝗶𝗰𝗮 (CRG).\nUna inmersión total en el día a día de la ciencia de élite: Se descubrirá desde dentro cómo operan los laboratorios de un centro de referencia internacional.\nSe conocerá de cerca la infraestructura, la tecnología y los flujos de trabajo que hacen posible la biomedicina del futuro.\nConsistirá en una charla sobre la infraestructura e impacto del centro y una visita general.",
+    "category": "viveBAC",
+    "activity_type": "Visita",
+    "start_time": "2026-07-07T10:00:00",
+    "end_time": "2026-07-07T12:00:00",
+    "local_location": "Exterior de la facultat de biociencies",
+    "language": "spanish",
+    "biotech_color": [
+      "Salud"
+    ],
+    "location": "https://maps.app.goo.gl/pYD4MBwgjDhjBgiY6"
+  },
+  {
+    "id": "evt_077",
+    "title": "From gene to product: Engineering Proteins and Cells for Food and Pharmaceutical Applications",
+    "description": "En esta ponencia, la Dra. Magdalena Faijes ofrecerá una visión general de cómo la ingeniería de proteínas y la ingeniería celular están transformando el desarrollo de nuevos ingredientes y compuestos de alto valor para los sectores alimentario y farmacéutico. A partir del recorrido \"del gen al producto\", mostrará cómo el diseño y la modificación de enzimas y microorganismos permiten obtener de forma más eficiente y sostenible biomoléculas con aplicaciones en nutrición, salud y biomedicina.\n\nAsimismo, abordará algunos ejemplos de su investigación en biocatálisis e ingeniería metabólica, centrada en la producción de oligosacáridos, glicoconjugados y otros compuestos bioactivos mediante microorganismos modificados. La charla pondrá de relieve el potencial de estas herramientas biotecnológicas para desarrollar procesos innovadores que respondan a los retos actuales de la industria, promoviendo soluciones más sostenibles y favoreciendo la transferencia del conocimiento científico hacia aplicaciones con impacto real en la sociedad.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T10:45:00",
+    "end_time": "2026-07-10T11:30:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_047"
+    ],
+    "biotech_color": [
+      "Bio sintética",
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_078",
+    "title": "Integración de la IA en nutrición personalizada: Del laboratorio al consumidor",
+    "description": "Exploraremos como diferentes aspectos de la IA pueden utilizarse en la modelización del metabolismo individual, desde el aprendizaje automático, la IA explicativa y su integración con modelos de lenguaje natural. Estos avances nos llevan al reto final: ¿Qué exige el consumidor actual? Veremos por qué el impacto de estas tecnologías requiere una visión multidisciplinar que transforme algoritmos avanzados en aplicaciones prácticas y accesibles para la sociedad.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T13:30:00",
+    "end_time": "2026-07-09T14:15:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_048"
+    ]
+  },
+  {
+    "id": "evt_079",
+    "title": "Transferencia de conocimiento: De la investigación al mercado.",
+    "description": "IQS Tech Transfer es la división de IQS dedicada a impulsar la investigación, el desarrollo y la innovación (I+D+i), facilitando la transferencia de conocimiento y tecnología al tejido empresarial. Su misión es transformar el conocimiento científico y técnico en soluciones innovadoras que respondan a las necesidades de la industria, promoviendo el desarrollo tecnológico y la competitividad empresarial.\n\nPara ello, cuenta con equipos multidisciplinares integrados por profesorado, investigadores y personal técnico altamente cualificado, que trabajan en estrecha colaboración con empresas e instituciones. Además, dispone de laboratorios, instalaciones y equipamiento científico de última generación, lo que permite ofrecer servicios especializados de análisis, consultoría y desarrollo de proyectos de investigación e innovación en distintos ámbitos tecnológicos.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-10T11:30:00",
+    "end_time": "2026-07-10T12:15:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_201"
+    ],
+    "biotech_color": [
+      "Biobusiness"
     ]
   }
 ]

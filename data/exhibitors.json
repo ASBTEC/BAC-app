@@ -1,376 +1,5 @@
 [
   {
-    "id": "spk_001",
-    "exhibitor_type": "speaker",
-    "name": "Antonio Ferrer Montiel",
-    "photo": "antonio ferrer montiel.jpg",
-    "description": "Antonio Ferrer Montiel es Catedrático de Bioquímica y Biología Molecular y director del Instituto de Investigación, Desarrollo e Innovación en Biotecnología Sanitaria (IDiBE) de la Universidad Miguel Hernández. Actual presidente de la Sociedad Española de Bioquímica y Biología Molecular (SEBBM), centra su investigación en el diseño de moléculas terapéuticas para el tratamiento del dolor crónico y patologías dermatológicas."
-  },
-  {
-    "id": "spk_002",
-    "exhibitor_type": "speaker",
-    "name": "Benedetta Bolognesi",
-    "photo": "Benedetta bolognesi.jpg",
-    "description": "Benedetta Bolognesi es investigadora principal en el Instituto de Bioingeniería de Cataluña (IBEC) desde 2019. Doctora en Química por la Universidad de Cambridge y antigua becaria Marie Curie en el CRG, lidera estudios sobre mutaciones genéticas y plegamiento de proteínas. Su excelencia investigadora ha sido reconocida con una ayuda ERC Consolidator y el prestigioso premio de salud de Fundación «la Caixa»."
-  },
-  {
-    "id": "spk_003",
-    "exhibitor_type": "speaker",
-    "name": "Benjamí Oller-Salvia",
-    "photo": "benjami_oller-salvia.jpg",
-    "description": "Benjamí Oller‑Salvia es profesor asociado en IQS-Ramon Llull, donde lidera el grupo de Biología Química y Sintética para Bioterapias (ChemSynBio). Doctor por el IRB Barcelona y formado en el MRC-LMB de Cambridge, posee una ERC Starting Grant. Su trabajo se enfoca en el desarrollo de biofármacos inteligentes y sistemas avanzados de transporte de fármacos al sistema nervioso central."
-  },
-  {
-    "id": "spk_004",
-    "exhibitor_type": "speaker",
-    "name": "Juan J. Calvete",
-    "photo": "Juan J. calvete.jpg",
-    "description": "Juan J. Calvete es Profesor de Investigación del CSIC y director del Laboratorio de Venómica Estructural y Funcional en el Instituto de Biomedicina de Valencia. Doctor en Bioquímica por la Universidad Complutense, es un referente internacional en toxinología. Su trabajo pionero en proteómica de venenos busca descifrar la evolución de las toxinas y desarrollar nuevos antídotos y fármacos terapéuticos."
-  },
-  {
-    "id": "spk_005",
-    "exhibitor_type": "speaker",
-    "name": "Núria Sánchez Coll",
-    "photo": "nuria sanchez coll.jpg",
-    "description": "Núria Sánchez Coll es científica del CSIC y colíder del grupo de Enfermedades Bacterianas de las Plantas en el CRAG. Experta en inmunidad vegetal y proteostasis, cuenta con una sólida trayectoria internacional en instituciones como la ETH de Zúrich y la Universidad de Duke. Su investigación busca entender cómo las plantas responden a infecciones para mejorar la sanidad agrícola y alimentaria."
-  },
-  {
-    "id": "spk_006",
-    "exhibitor_type": "speaker",
-    "name": "Sílvia Osuna",
-    "photo": "Silvia Osuna.jpg",
-    "description": "Sílvia Osuna es profesora de investigación ICREA en la Universidad de Girona. Tras su formación en la Universidad de California (UCLA), su grupo se ha especializado en el desarrollo de herramientas computacionales para el diseño de enzimas de interés industrial. Su destacada trayectoria ha sido reconocida con el Premio Nacional de Química Joven 2023 y el Premio Fundación Banco Sabadell 2025."
-  },
-  {
-    "id": "spk_007",
-    "exhibitor_type": "speaker",
-    "name": "Alberto Prats Galino",
-    "photo": "SIN_FOTO.png",
-    "description": "Alberto Prats Galino es catedrático de Anatomía y Embriología Humana en la Universitat de Barcelona. Especialista en neuroanatomía quirúrgica, neuroimagen y simulación anatómica, dirige iniciativas de investigación orientadas a mejorar la planificación y precisión de intervenciones neuroquirúrgicas complejas. Su trabajo combina el conocimiento anatómico con tecnologías avanzadas de visualización y modelización, contribuyendo al desarrollo de abordajes quirúrgicos mínimamente invasivos y a la formación de profesionales de la salud."
-  },
-  {
-    "id": "spk_008",
-    "exhibitor_type": "speaker",
-    "name": "Ignasi Folch i Casanovas",
-    "photo": "SIN_FOTO.png",
-    "description": "Ignasi Folch i Casanovas es investigador y especialista en proteómica y bioinformática en el IRB Barcelona. Su actividad se centra en el análisis de proteínas mediante espectrometría de masas y en la aplicación de herramientas computacionales para interpretar grandes volúmenes de datos biológicos. Con una trayectoria que integra bioquímica, análisis de datos y tecnologías ómicas, contribuye a impulsar la investigación biomédica a través de plataformas científicas de alto nivel."
-  },
-  {
-    "id": "spk_009",
-    "exhibitor_type": "speaker",
-    "name": "Carla López",
-    "photo": "CarlaLopez.jpg",
-    "description": "Carla López es Embrióloga Senior en Reproclinic Barcelona. Graduada en Ciencias Biomédicas y con un Máster en Biología de la Reproducción por la UAB-Dexeus, combina una sólida experiencia técnica en laboratorio con una profunda visión humanista gracias a su formación en Bioética. En el taller «Hablemos de repro» guía la práctica de valoración de gametos y lidera el debate sobre los retos éticos y sociales de la reproducción asistida actual."
-  },
-  {
-    "id": "spk_010",
-    "exhibitor_type": "speaker",
-    "name": "Enrique Asin-Garcia",
-    "photo": "Enrique Asin-Garcia.jpg",
-    "description": "Enrique Asin-Garcia es profesor de Biofabricación en la Universidad de Wageningen, Países Bajos. Su investigación expande el impacto de las tecnologías vivas mediante biosensores en tiempo real y biofabricación inteligente, bajo principios de diseño seguro y sostenible. Es un miembro activo en la comunidad de biotecnología sintética, impulsando el talento joven a través de iniciativas como SynBioNL e iGEM."
-  },
-  {
-    "id": "spk_011",
-    "exhibitor_type": "speaker",
-    "name": "Martin Floor Pilquil",
-    "photo": "Martin Floor.jpg",
-    "description": "Es bioquímico, formado en la Universidad de Chile, donde se inició en el diseño computacional de enzimas con Gerald Zapata. Se doctoró en la Universidad de Vic con Jordi Villà y completó su formación con estancias de investigación en la Universidad de Uppsala con Lynn Kamerlin y en China con Jeng-Kang Hwang. Actualmente es investigador postdoctoral en el Barcelona Supercomputing Center con Víctor Guallar, donde integra inteligencia artificial y modelado molecular para la bioprospección y la ingeniería de enzimas con el objetivo de mejorar su expression, estabilidad, actividad y selectividad."
-  },
-  {
-    "id": "spk_012",
-    "exhibitor_type": "speaker",
-    "name": "Francesc Godia Casablancas",
-    "photo": "francesc godia.jpg",
-    "description": "Profesor de Ingeniería Química en la Universitat Autònoma de Barcelona. Investigador en bioprocesos basados en células animales para la producción de biofármacos, vacunas basadas en VLPs y vectores virales para terapia génica. Director de la Planta Piloto MELiSSA, un laboratorio de la European Space Agency para el desarrollo de tecnología de soporte vital en el Espacio en misiones humanas de larga duración. Miembro del Comité Ejecutivo de la European Society for the Advancement of Cell Technologies. Presidente de la European Federation of Biotechnology."
-  },
-  {
-    "id": "spk_013",
-    "exhibitor_type": "speaker",
-    "name": "Elisabeth Engel",
-    "photo": "Elisabet Engel Lopez.jpg",
-    "description": "La Prof. Engel es bióloga de formación y doctora en medicina, con más de dos décadas de trayectoria en bioingeniería. Sus intereses de investigación incluyen la preparación y el diseño de materiales y andamios para estudios fundamentales in vitro e in vivo, con un enfoque adicional en el desarrollo de herramientas para evaluar los mecanismos que gobiernan el comportamiento celular en medicina regenerativa."
-  },
-  {
-    "id": "spk_014",
-    "exhibitor_type": "speaker",
-    "name": "Marta Cascante",
-    "photo": "Marta Cascante.jpg",
-    "description": "La profesora Marta Cascante es Catedrática en la Universidad de Barcelona e investigadora principal de un grupo líder en metabolismo del cáncer. Fue pionera en la integración de datos multi-ómica en modelos de flujo metabólico para identificar dianas terapéuticas y subtipos metabólicos con relevancia clínica, especialmente en cáncer colorrectal. Ha publicado más de 320 artículos, dirigido más de 40 tesis doctorales, coordinado importantes programas de formación europeos y recibido destacadas distinciones, entre ellas tres premios ICREA Acadèmia y la Membresía Honoraria de la Metabolomics Society."
-  },
-  {
-    "id": "spk_015",
-    "exhibitor_type": "speaker",
-    "name": "Albert Font Inglès",
-    "photo": "albert font ingles.jpg",
-    "description": "Albert Font Inglès es Director General y cofundador de Leanbio, una CDMO especializada en el desarrollo y fabricación de productos biológicos, con una propuesta integrada end-to-end en Drug Substance y Drug Product para proteínas recombinantes, ADC y mRNA. Con más de una década de trayectoria y más de 100 proyectos desarrollados, Leanbio se ha consolidado como un actor clave en biológicos en España. Su reciente adquisición por Reig Jofre refuerza su propuesta de valor integrando capacidades DS y DP. Miembro de ASBTEC desde 2012."
-  },
-  {
-    "id": "spk_016",
-    "exhibitor_type": "speaker",
-    "name": "Ariadna Grau",
-    "photo": "ariadna grau.png",
-    "description": "Ariadna Grau es Responsable de I+D en LipoTrue, donde lidera el desarrollo de ingredientes activos innovadores para la industria dermocosmética. Graduada en Química por la Universidad de Barcelona, con Máster en Química Avanzada y Doctorado en Química Orgánica. Su trayectoria combina una sólida especialización en síntesis y diseño molecular con una clara orientación a la aplicación industrial, integrando química orgánica, biología celular y evaluación funcional."
-  },
-  {
-    "id": "spk_017",
-    "exhibitor_type": "speaker",
-    "name": "Avencia Sánchez-Mejías",
-    "photo": "avencia sanchez-mejias.jpg",
-    "description": "Avencia Sánchez-Mejías es CEO y cofundadora de Integra Therapeutics. Con sólida formación científica en genética clínica, oncología molecular y biología sintética, lideró investigación postdoctoral en la Universidad Nacional de Singapur y la Universidad de Miami antes de fundar Integra Therapeutics en 2018. La compañía ha captado 24M€ y su plataforma de edición genómica basa en integrasas está diseñada para superar las limitaciones de los vectores virales tradicionales. Premio Mujer y Liderazgo 2022 de Deusto Business School."
-  },
-  {
-    "id": "spk_018",
-    "exhibitor_type": "speaker",
-    "name": "Coté Falaguera",
-    "photo": "cote falaguera.jpg",
-    "description": "Coté Falaguera es Senior Data Developer en el hub de AstraZeneca de Barcelona, trabajando en el desarrollo y preparación de datos para productos de inteligencia artificial. Biotecnóloga por la Universidad Politécnica de Valencia, con máster y doctorado en Bioinformática por la Universidad Pompeu Fabra. Ha desarrollado su carrera entre la academia y la industria, con estancias posdoctorales en el Instituto de Bioinformática Europeo (EMBL-EBI, Reino Unido) y en la Universidad de Stanford."
-  },
-  {
-    "id": "spk_019",
-    "exhibitor_type": "speaker",
-    "name": "Estel·la Buscató Arsequell",
-    "photo": "estella buscato.png",
-    "description": "Estel·la Buscató trabaja en Bayer en la intersección entre biotecnología agrícola, análisis avanzado y toma de decisiones, liderando procesos que convierten la complejidad científica en valor tangible para el negocio. Es referente en la gestión estratégica de pipelines de I+D y en la conexión entre innovación científica e impacto empresarial, con experiencia en metodologías de gestión de la incertidumbre, priorización estratégica y desarrollo de talento."
-  },
-  {
-    "id": "spk_020",
-    "exhibitor_type": "speaker",
-    "name": "Gerard Caelles Vidal",
-    "photo": "gerard caelles.jpg",
-    "description": "Gerard Caelles es Chief Business Officer (CBO) de SpliceBio, spin-off de la Universidad de Princeton asentada en Barcelona y pionera global en terapia génica. Graduado en Biotecnología por la UAB, su visión estratégica ha sido clave para escalar SpliceBio —cuya plataforma tecnológica basada en inteínas supera las limitaciones de los vectores virales— cerrando rondas de financiación históricas en el sector biotecnológico español."
-  },
-  {
-    "id": "spk_021",
-    "exhibitor_type": "speaker",
-    "name": "Joan Domingo Espín",
-    "photo": "joan domingo.png",
-    "description": "Joan Domingo Espín es Senior Director de Desarrollo de Biológicos en Almirall. Experto de referencia en la dirección estratégica de operaciones CMC (Chemistry, Manufacturing and Controls), ha liderado alianzas críticas y transferencias tecnológicas con CDMOs a nivel internacional. Su pasión por el downstream —purificación y separación de terapias biológicas de última generación— ha sido pieza clave para garantizar la viabilidad, pureza y seguridad de biológicos en fases clínicas avanzadas."
-  },
-  {
-    "id": "spk_022",
-    "exhibitor_type": "speaker",
-    "name": "Jordi Ruano",
-    "photo": "jordi ruano.jpg",
-    "description": "Con más de 25 años de experiencia en el sector biotecnológico, Jordi Ruano es Executive Director de Operaciones para la División de Salud Humana en HIPRA. Su trayectoria abarca roles de liderazgo en procesos upstream y downstream, fabricación de productos biológicos complejos —incluyendo antígenos virales, proteínas recombinantes y vacunas—, formulación, llenado aséptico y liofilización. Lidera la estrategia y ejecución operativa para apoyar la expansión del portafolio de salud humana de la compañía."
-  },
-  {
-    "id": "spk_023",
-    "exhibitor_type": "speaker",
-    "name": "Jordi Xiol",
-    "photo": "jordi xiol.jpg",
-    "description": "Jordi Xiol es Partner en Ysios Capital, una de las firmas de venture capital referentes en Europa en ciencias de la vida. Doctor en Biología Molecular por el EMBL y con experiencia previa en consultoría estratégica en Boston Consulting Group, combina el rigor de la investigación básica con la viabilidad comercial. Ha liderado la identificación y el crecimiento de compañías biotecnológicas disruptivas, consolidándose como experto en transformar ciencia de vanguardia en soluciones clínicas reales."
-  },
-  {
-    "id": "spk_024",
-    "exhibitor_type": "speaker",
-    "name": "Laure Burtin",
-    "photo": "laure burtin.jpeg",
-    "description": "Laure Burtin es una referente internacional en el desarrollo de terapias biológicas y optimización de bioprocesos. Biotecnóloga de formación, su trayectoria abarca desde la investigación a escala piloto hasta la toma de decisiones ejecutivas como vicepresidenta en Sanofi, LETI Pharma y Almirall. Actualmente asesora técnica y estratégicamente a compañías y fondos de inversión en España y Suiza. Combina excelencia técnica con un liderazgo genuino basado en la confianza y el desarrollo del talento intergeneracional."
-  },
-  {
-    "id": "spk_025",
-    "exhibitor_type": "speaker",
-    "name": "Luís Ruiz-Ávila",
-    "photo": "luis ruiz-avila.png",
-    "description": "Doctor en Biología Molecular con 10 años de trayectoria académica antes de incorporarse al sector industrial en 1998. CEO de Leukos Biotech (producto de oncología en fase I/II) y emprendedor serial que ha trabajado como ejecutivo, emprendedor o inversor en más de 15 empresas, captando más de 40M€ para impulsar proyectos de la academia a fases clínicas, con diversas desinversiones y acuerdos de licencia. Profesor asociado en la Universitat Internacional de Catalunya, donde dirige el Máster en Gestión de Empresas Biomédicas."
-  },
-  {
-    "id": "spk_026",
-    "exhibitor_type": "speaker",
-    "name": "Marta Figa Bosch",
-    "photo": "marta figa.jpg",
-    "description": "Marta Figa Bosch es Strategic Projects Director en HIPRA, multinacional biofarmacéutica europea enfocada en la prevención de enfermedades infecciosas. Lidera el Biotech Workshop del BAC 2026, en el que los participantes exploran el ciclo de vida de un producto farmacéutico a través de casos reales de la industria, desarrollando visión estratégica y soft skills clave en un formato interactivo de resolución de retos en equipo."
-  },
-  {
-    "id": "spk_027",
-    "exhibitor_type": "speaker",
-    "name": "Paquita Escoi Martínez",
-    "photo": "paqui escoi.png",
-    "description": "Paquita Escoi es Gerente en Fruilar e Ingeniera Agrónoma por la Universitat de Lleida (UdL). Ha ejercido como Responsable de Calidad liderando el control de la producción y el mantenimiento de certificaciones en central frutícola. Especializada en optimizar el tratamiento de la fruta fresca mediante la integración de soluciones de visión artificial, análisis inteligente e IA generativa para el control de calidad y la toma de decisiones en tiempo real en postcosecha."
-  },
-  {
-    "id": "spk_028",
-    "exhibitor_type": "speaker",
-    "name": "Julia García Prado",
-    "photo": "julia garcia.jpg",
-    "description": "La Dra. Julia G. Prado, nacida en Avilés, es licenciada en Bioquímica por la Universidad de Oviedo y doctora con honores en Inmunología por la UAB. Realizó su postdoctorado en la Universidad de Oxford con una beca Marie Skłodowska-Curie y en 2009 regresó a España con un contrato Miguel Servet. Desde 2013 lidera un grupo en IrsiCaixa y desde 2019 es directora científica del Instituto de Investigación Germans Trias. Investiga la inmunidad frente al VIH, otras infecciones virales y la COVID-19. Es coinventora de cuatro patentes y autora de más de 80 publicaciones científicas."
-  },
-  {
-    "id": "spk_029",
-    "exhibitor_type": "speaker",
-    "name": "David Baker",
-    "photo": "SIN_FOTO.png",
-    "description": "David Baker es Catedrático de Bioquímica en la Universidad de Washington y director del Instituto para el Diseño de Proteínas. Fue pionero en el diseño computacional de proteínas, desarrollando métodos para crear proteínas con estructuras y funciones que no existen en la naturaleza. Su trabajo con el software Rosetta ha permitido diseñar desde cero nuevas enzimas, proteínas de unión y máquinas moleculares. En 2024 recibió el Premio Nobel de Química por sus contribuciones revolucionarias al diseño computacional de proteínas."
-  },
-  {
-    "id": "spk_030",
-    "exhibitor_type": "speaker",
-    "name": "Mariona Serra",
-    "photo": "mariona.jpg",
-    "description": "Mariona Serra, Cofundadora i Directora de GoodGut, és veterinària, doctora en farmacologia i formada Desenvolupament directiu IESE. Després d’uns anys dedicada a la recerca decideix fundar GoodGut amb la motivació d’oferir el benefici de la ciència a la societat. El projecte empresarial avui és un projecte d’èxit que ja compta amb 3 productes per diagnòstic de malalties digestives rellevant com és el càncer colorectal, i escala el seu creixement amb la seva recent adquisició per laboratoris HIPRA. Actualment també és membre del comitè executiu de la Cambra de Comerç de Girona i Vicepresidenta de CataloniaBio&Healthtech. El seu compromís social amb l’emprenedoria a través de la seva implicació com a membre executiu en diversos agents del sector i els seu lideratge empresarial ha estat distingit amb diferents guardons.\n"
-  },
-  {
-    "id": "spk_031",
-    "exhibitor_type": "speaker",
-    "name": "Miguel Galán",
-    "photo": "miguel_galan.jpg",
-    "description": "Biotecnólogo de formación y doctor en Biociencias Moleculares por la UAM. Realicé mi tesis doctoral en el CNIC, centrada en inmunoterapias aplicadas a enfermedades cardiovasculares. Actualmente soy Medical Advisor/MSL en Laboratorios ROVI, trabajando en las áreas de cardiovascular, hematología y metabolismo óseo. "
-  },
-  {
-    "id": "spk_033",
-    "exhibitor_type": "speaker",
-    "name": "Abel Cabezas",
-    "photo": "Abel_Cabezas.jpg",
-    "description": "Abel Cabezas Rubio, nacido en Girona en 1975. Licenciado en Ciència i Tecnología dels Aliments por la UAB. MBA avalado por la Asociación de Empresarios de A Coruña. Postgrado en Gestión de la Innovación por la UPC.\nCarrera enfocada a la I+D+i en el sector de la alimentación, con una importante dedicación al desarrollo de procesos productivos, en especial en el campo de la valorización de subproductos y desarrollo de nuevos ingredientes."
-  },
-  {
-    "id": "spk_036",
-    "exhibitor_type": "speaker",
-    "name": "Luca Caprera",
-    "photo": "LucaCaprera.jpg",
-    "description": "Luca Caprera es un profesional titulado en Química y Tecnología Farmacéutica por la Universidad de Turín (Italia), especializado en Química de los Productos Cosméticos y posgraduado en Perfumes y Fragancias en IQS (Barcelona). Tiene una sólida trayectoria profesional en formulación cosmética y farmacéutica, centrada en el desarrollo, optimización y evaluación de productos. Actualmente, es profesor responsable del laboratorio de Cosmética y Perfumería del Máster en Cosmética y Perfumería de IQS.\n"
-  },
-  {
-    "id": "spk_178",
-    "exhibitor_type": "speaker",
-    "name": "Gemma Marfany",
-    "photo": "Gemma Marfany.png",
-    "description": "La Dra. Gemma Marfany Nadal es catedrática de Genética en la UB, miembro de su Comisión de Bioética y del Instituto de Biomedicina (IBUB). Su investigación lidera el estudio de enfermedades raras visuales mediante edición genética con CRISPR-Cas9. Destaca enormemente por su faceta como divulgadora científica —reconocida por el Claustre de Doctors de la UB—, siendo columnista habitual y coautora de documentos clave sobre la regulación ética genómica. Además, cuenta con una vertiente emprendedora como cofundadora de la spin-off de diagnóstico ocular DBGen. Secretària acadèmica de la Comissió de Bioètica de la Universitat de Barcelona i Catedrática de Genética en la Universidad de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
-  },
-  {
-    "id": "spk_179",
-    "exhibitor_type": "speaker",
-    "name": "Marco Mariotti",
-    "photo": "Marco Mariotti.png",
-    "description": "El Prof. Marco Mariotti trabaja en la intersección de la bioinformática, la biología evolutiva y la ingeniería genética. Tras formarse en Italia, España, Irlanda y Estados Unidos, estableció su propio laboratorio en la Universitat de Barcelona en 2021. Su investigación se centra en mecanismos poco convencionales de síntesis de proteínas que desafían las reglas tradicionales del código genético. Al comprender y aprovechar estos procesos naturales, su investigación también busca desarrollar nuevas tecnologías para el tratamiento de enfermedades genéticas y el control de la expresión génica."
-  },
-  {
-    "id": "spk_180",
-    "exhibitor_type": "speaker",
-    "name": "Aroa Casado",
-    "photo": "Aroa Casado.jpg",
-    "description": "Aroa Casado Rodríguez es doctora en Medicina e Investigación Traslacional (UB) y profesora universitaria de Anatomía Humana. Cuenta con una amplia trayectoria docente e investigadora en múltiples universidades y centros especializados, además de trabajar como asesora científica basada en la evidencia para empresas. Su investigación se centra en la anatomía funcional, primatología, anatomía comparada y enfermedades raras."
-  },
-  {
-    "id": "spk_181",
-    "exhibitor_type": "speaker",
-    "name": "Luis G. Mérida",
-    "photo": "Luis G. Merida.png",
-    "description": "Luis G. Mérida es doctor en Filosofía por la UAB y técnico superior en sistemas de telecomunicación e informáticos. Es miembro del Seminario Tecnologías Filosóficas de la UNAM. Sus principales áreas de investigación son la filosofía de la técnica, la epistemología, la metafísica y el pesimismo filosófico. Como especialista en filosofía de la técnica, se ha dedicado a la reflexión sobre los vínculos entre tecnología, pensamiento y educación. Su trabajo se ha centrado en la filosofía contemporánea, especialmente en autores como Gilbert Simondon, Bernard Stiegler o Yuk Hui. Es autor de Campos de forma. La axiomatización de la ontogénesis en Gilbert Simondon (EUG, 2023) y recientemente ha traducido y prologado Post-Europa (Mutatis Mutandis, 2025), de Yuk Hui."
-  },
-  {
-    "id": "spk_035",
-    "exhibitor_type": "speaker",
-    "name": "Lara Cobacho",
-    "photo": "Lara Cobacho Lluesma.jpg",
-    "description": "Lara Cobacho Lluesma, actual Sustainability Marketing Expert en Sartorius, cuenta con una sólida formación académica en Economía y Política de las Ciencias de la Vida orientada a la sostenibilidad por la Universidad Técnica de Múnich, y ha liderado alianzas estratégicas e iniciativas de sostenibilidad con grandes clientes biofarmacéuticos. Su trayectoria se vincula de manera directa con su ponencia, \"Driving Sustainable Biomanufacturing with SUT\", ya que su rol actual se centra precisamente en impulsar la comunicación estratégica y la defensa industrial del bioprocesamiento sostenible. A través de su intervención, Cobacho abordará cómo avanzar en la sostenibilidad de las tecnologías de un solo uso (SUT, por sus siglas en inglés) en la biofabricación, aportando su experiencia en iniciativas clave que mejoran la eficiencia de los procesos, promueven la circularidad y fomentan la colaboración en el sector."
-  },
-  {
-    "id": "spk_034",
-    "exhibitor_type": "speaker",
-    "name": "Antonio Molina",
-    "photo": "FotoAmolina - Antonio Molina.png",
-    "description": "Antonio Molina es Catedrático de Bioquímica y Biología Molecular de la UPM y jefe de grupo en el Centro de Biotecnología y Genómica de Plantas (CBGP), un centro mixto entre la UPM y el INIA/CSIC (www.cbgp.upm.es) que tiene el sello de Excelencia Severo Ochoa (2017-2021 y 2022-2026), siendo el Dr. Molina Director científico de este programa. Ha sido director del CBGP 8 años. La actividad de investigación del grupo del Dr. Molina se centra en el estudio de la Inmunidad Vegetal y sus aplicaciones a la protección de los cultivos. A. Molina es co-fundador de 3 empresas spin-off"
-  },
-  {
-    "id": "spk_037",
-    "exhibitor_type": "speaker",
-    "name": "L. Maria Lois",
-    "photo": "MariaLois.jpg",
-    "description": "María Lois es investigadora científica con una trayectoria multidisciplinar en microbiología, química, genética vegetal y biología molecular. Durante su doctorado en la Universidad de Barcelona (UB), descubrió una nueva vía de biosíntesis de isoprenoides. En su etapa posdoctoral en la Universidad Rockefeller, estudió la SUMOilación como un mecanismo clave de regulación en las plantas. Se incorporó a la Universidad de Barcelona en 2004 y obtuvo una plaza como Científica Titular del CSIC en 2008, donde puso en marcha una línea de investigación en el CRAG. Ha liderado importantes proyectos financiados, incluyendo subvenciones del Consejo Europeo de Investigación (ERC), y actualmente ejerce como directora del CRAG, impulsando la innovación y la transferencia de tecnología."
-  },
-  {
-    "id": "spk_038",
-    "exhibitor_type": "speaker",
-    "name": "Juan Carlos Esteban",
-    "photo": "JuanCarlos.jpg",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_039",
-    "exhibitor_type": "speaker",
-    "name": "Xavier Aldeguer",
-    "photo": "Xavier_Aldeguer.jpg",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_040",
-    "exhibitor_type": "speaker",
-    "name": "Xavier Rovira",
-    "photo": "xavier_rovira.jpg",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_041",
-    "exhibitor_type": "speaker",
-    "name": "Jordi Martorell",
-    "photo": "JordiMartorell.jpg",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_042",
-    "exhibitor_type": "speaker",
-    "name": "Rocío Vázquez",
-    "photo": "RocíoVazquez.jpg",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_043",
-    "exhibitor_type": "speaker",
-    "name": "Moises Exposito Alonso",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_044",
-    "exhibitor_type": "speaker",
-    "name": "Cristina Romera",
-    "photo": "SIN_FOTO.png",
-    "description": "Cristina Romera Castillo es licenciada en Química y realizó su doctorado en el Instituto de Ciencias del Mar-CSIC (ICM-CSIC) de Barcelona. Trabajó 5 años como postdoc en EEUU y Austria. En 2017 volvió al ICM-CSIC donde trabaja actualmente. Sus investigaciones se centran en la biogeoquímica de la materia orgánica disuelta para entender el papel del océano en el secuestro de carbono. Ha recibido varios premios como el Raymond L. Lindeman Award 2020 o el International Rising Talents 2020, de L'Oreal-UNESCO. Es autora del libro de divulgación científica, “AntropOcéano”."
-  },
-  {
-    "id": "spk_045",
-    "exhibitor_type": "speaker",
-    "name": "Malu Calle",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_046",
-    "exhibitor_type": "speaker",
-    "name": "IQS Tech Transfer",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_047",
-    "exhibitor_type": "speaker",
-    "name": "Magda Faijes",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_048",
-    "exhibitor_type": "speaker",
-    "name": "BIOBAC14",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
-    "id": "spk_049",
-    "exhibitor_type": "speaker",
-    "name": "Federico Álvarez Villarreal",
-    "photo": "SIN_FOTO.png",
-    "description": "Federico Álvarez Villarreal forma parte del equipo de Cervesa del Montseny, donde desarrolla su actividad en el ámbito de la elaboración cervecera y los procesos de fermentación. Con formación científica y una trayectoria vinculada a la producción artesanal, combina conocimientos técnicos y control de procesos para desarrollar cervezas de calidad. Su trabajo se centra en optimizar la fermentación y la producción, contribuyendo a la innovación y excelencia de una de las cerveceras artesanas de referencia en Cataluña."
-  },
-  {
-    "id": "spk_050",
-    "exhibitor_type": "speaker",
-    "name": "Marcos Palomo Fernández",
-    "photo": "SIN_FOTO.png",
-    "description": "Subdirector General de Organismos y Entidades Publicas de Investigación - Ministerio de Ciencia, Innovación y Universidades que dará una charla sobre Empleo Público y Oportunidades Laborales en España"
-  },
-  {
     "id": "biz_001",
     "exhibitor_type": "business",
     "name": "Farmandome",
@@ -515,14 +144,6 @@
     "sponsor_tier": "bronze"
   },
   {
-    "id": "biz_021",
-    "exhibitor_type": "business",
-    "name": "Universitat de Vic (UVic)",
-    "photo": "logo_3linies_uvic_color.jpg",
-    "description": "La Universitat de Vic - Universitat Central de Catalunya (UVic-UCC) es una institución de educación superior de iniciativa pública y gestión privada que opera bajo un modelo federativo con campus en Vic, Manresa (UManresa) y Barcelona (Elisava). Con una comunidad de más de 10.000 estudiantes y una oferta que supera las 50 titulaciones oficiales, destaca por su especialización en ciencias de la salud, empresa, educación, diseño e ingeniería. Su fuerte vinculación con el tejido empresarial y sanitario, sumada a su red de investigación aplicada y a sus más de 350 convenios internacionales, la convierte en una universidad de primer nivel para el talento joven biotecnólogo, potenciar la innovación y desarrollar proyectos de impacto transversal.",
-    "sponsor_tier": "silver"
-  },
-  {
     "id": "biz_020",
     "exhibitor_type": "business",
     "name": "Kuhner",
@@ -531,12 +152,28 @@
     "sponsor_tier": "bronze"
   },
   {
-    "id": "org_023",
-    "exhibitor_type": "Organizadores",
-    "name": "ASBTEC",
-    "photo": "asbtec.jpg",
-    "description": "La Associació de Biotecnòlegs de Catalunya (ASBTEC) es una entidad sin ánimo de lucro que reúne a estudiantes, graduados y profesionales de la biotecnología en Cataluña. Su objetivo es impulsar el desarrollo académico, profesional y social del sector biotecnológico mediante la organización de congresos, actividades formativas, eventos de divulgación científica y oportunidades de networking. Además, actúa como punto de conexión entre estudiantes, investigadores, empresas e instituciones, fomentando el crecimiento de la comunidad biotecnológica catalana y acercando la biotecnología a la sociedad.",
-    "sponsor_tier": "platinum"
+    "id": "biz_021",
+    "exhibitor_type": "business",
+    "name": "Universitat de Vic (UVic)",
+    "photo": "logo_3linies_uvic_color.jpg",
+    "description": "La Universitat de Vic - Universitat Central de Catalunya (UVic-UCC) es una institución de educación superior de iniciativa pública y gestión privada que opera bajo un modelo federativo con campus en Vic, Manresa (UManresa) y Barcelona (Elisava). Con una comunidad de más de 10.000 estudiantes y una oferta que supera las 50 titulaciones oficiales, destaca por su especialización en ciencias de la salud, empresa, educación, diseño e ingeniería. Su fuerte vinculación con el tejido empresarial y sanitario, sumada a su red de investigación aplicada y a sus más de 350 convenios internacionales, la convierte en una universidad de primer nivel para el talento joven biotecnólogo, potenciar la innovación y desarrollar proyectos de impacto transversal.",
+    "sponsor_tier": "silver"
+  },
+  {
+    "id": "biz_022",
+    "exhibitor_type": "business",
+    "name": "Mahou-SanMiguel",
+    "photo": "mahou.png",
+    "description": "Mahou San Miguel desempeña un rol clave y transversal en la biotecnología aplicada a la industria agroalimentaria y la sostenibilidad, impulsando la innovación mediante el aprovechamiento de subproductos —como la valorización biológica del bagazo para biocompostables—, la investigación en microbiomas y el desarrollo de ingredientes avanzados con propiedades prebióticas y postbióticas dirigidos a la salud articular. Consolidando su apuesta por la transferencia de conocimiento y la colaboración científico-tecnológica, la compañía ha ampliado su marco formativo y de innovación abierta ofreciendo ahora la realización de doctorados industriales, un programa estratégico que permite a investigadores desarrollar sus tesis directamente en entornos empresariales para resolver retos reales del sector.",
+    "sponsor_tier": "bronze"
+  },
+  {
+    "id": "biz_023",
+    "exhibitor_type": "business",
+    "name": "Trencant el Biaix",
+    "photo": "trencant_biaix.jpeg",
+    "description": "\"Trencant el Biaix\" es una iniciativa estudiantil independiente dedicada a organizar espacios de tertulia en torno a temáticas bioéticas y filosóficas candentes, de forma transversal, interdisciplinar y rigurosa, en la Facultad de Biología de la Universidad de Barcelona.\n\nEn tres años de trayectoria, se han abordado sesiones sobre selección y modificación genética de embriones, modificación y transgénesis en plantas, biología del comportamiento y adicciones, ciencia racializada, y muchas otras cuestiones.\n\nCon esta nueva sesión en el BAC, en colaboración con FEBIOTEC, damos el salto para llevar este espacio de reflexión a un estudiantado más amplio, a nivel nacional.\n\nMás información en Instagram: @trencantelbiaix",
+    "sponsor_tier": "bronze"
   },
   {
     "id": "cc_001",
@@ -644,14 +281,6 @@
     "description": "I completed my undergraduate studies in Biological Sciences at the University of Navarra in 1988 and earned a PhD in Microbiology from the Center for Molecular Biology (CSIC-UAM) at the Autonomous University of Madrid in 1992. I subsequently spent three years conducting research in the laboratory of Professor Pascale Cossart at the Pasteur Institute, focusing on the genetics of Listeria monocytogenes actin-based motility. In 1997, I returned to Spain to join the Public University of Navarra (UPNA) in Pamplona as a professor of Microbiology. The following year, I was appointed Associate Professor and established my own laboratory at the Center for Agrobiotechnology, where my research focused on the genetics of bacterial biofilm formation. From 2010 to 2013, I served as Director of the Center. In 2008, I became a Full Professor of Microbiology at UPNA, and between 2015 and 2022, I was Director of Navarrabiomed, a newly established biomedical research institute in Pamplona. As a principal investigator, I have led nine consecutive research projects funded by the Spanish Ministry of Economy, Industry, and Competitiveness, as well as five grants from the European Union’s 6th, 7th, and Horizon Europe Framework Programmes. I have supervised 20 doctoral students and 12 postdoctoral researchers, several of whom now lead their own research groups. My laboratory is dedicated to studying the genetic mechanisms underlying biofilm formation in pathogenic bacteria. Currently, our work focuses on the global function of the two-component sensory network in Staphylococcus aureus, transcriptional gene regulation through overlapping mRNAs of adjacent genes, and the development of recombinant phages for therapeutic applications. Among our major scientific contributions are: (i) the identification of a family of proteins, termed Bap, that promote biofilm formation in various bacterial species through amyloid conformations; (ii) the demonstration that the two-component sensory system is dispensable for S. aureus growth under laboratory conditions; (iii) the discovery of a transcriptional control mechanism based on overlapping mRNAs processed by RNase III; and (iv) the identification of a novel bacterial gene organization, which we have termed the non-contiguous operon. Throughout my career, I have been deeply committed to translating scientific discoveries into tangible benefits for society. In 2011, I co-founded RECOMBINA S.L. (Pamplona), a biotechnology company specialising in customised genetic engineering services and the development of attenuated microorganisms for veterinary vaccine production."
   },
   {
-    "id": "org_022",
-    "exhibitor_type": "Organizadores",
-    "name": "FEBiotec",
-    "photo": "febiotec_color.png",
-    "description": "La Federación Española de Biotecnólogos (FEBiotec) fue fundada en 2008 para agrupar a las Asociaciones de Biotecnólogos de toda España. Hoy, contamos con 14 asociaciones miembro para trabajar en la defensa, promoción y difusión de los biotecnólogos y la biotecnología, con actividades como el Congreso Anual de Biotecnología (BAC), BioNorth, BioSouth, Biotechnofarm y reivindicaciones a administraciones públicas.  ",
-    "sponsor_tier": "platinum"
-  },
-  {
     "id": "ch_01",
     "exhibitor_type": "Comité de Honor",
     "name": "Diana Morant",
@@ -659,11 +288,18 @@
     "description": "Ministra de Ciencia, Innovación y Universidades. Miembro del Comité de Honor del BAC Barcelona 2026."
   },
   {
-    "id": "mi_02",
-    "exhibitor_type": "Mesa Inaugural",
-    "name": "Javier Lafuente",
-    "photo": "Javier_Lafuente.jpeg",
-    "description": "Rector Universitat Autonoma de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
+    "id": "mc_01",
+    "exhibitor_type": "Mesa Clausura",
+    "name": "Juan Antonio Castro",
+    "photo": "JuananCastro.png",
+    "description": "Juan Antonio Castro Lozano es biotecnólogo por la UAB y estudiante del Máster en Bioingeniería en IQS. Actualmente es presidente de ASBTEC y coordinador general del BAC Barcelona 2026. Su actividad combina la investigación en biotecnología y bioingeniería con la organización de iniciativas científicas para acercar la biotecnología a estudiantes, profesionales y entidades del sector."
+  },
+  {
+    "id": "mc_02",
+    "exhibitor_type": "Mesa Clausura",
+    "name": "Teresa Sanchis Estruch",
+    "photo": "teresa-sanchis.webp",
+    "description": "Teresa Sanchis Estruch es la directora general de Investigación de la Generalitat de Catalunya. Con una amplia trayectoria en gestión y política científica, trabaja en el impulso del sistema catalán de investigación e innovación, promoviendo la excelencia científica, la captación de talento y el fortalecimiento de la colaboración entre universidades, centros de investigación y empresas para afrontar los retos científicos y tecnológicos de la sociedad."
   },
   {
     "id": "mc_03",
@@ -673,18 +309,18 @@
     "description": "Mónica Gutiérrez es doctora en Nanociencia y Nanotecnología por la Universidad de Valencia y graduada en Biotecnología en la Universidad Politécnica de Valencia. Tras su experiencia en investigación en cultivos celulares, biología sintética en plantas y el estudio del plegamiento de proteínas de membrana, ahora se dedica a la gestión de proyectos de investigación en el Instituto de Ciencia Molecular. Con un interés por la divulgación científica, la biotecnología y el asociacionismo profesional, desde 2017 forma parte de la Asociación de Biotecnólogos de Valencia (ABiVa), y desde 2023 es presidenta de la Federación Española de Biotecnólogos (FEBiotec). "
   },
   {
-    "id": "mc_01",
-    "exhibitor_type": "Mesa Clausura",
-    "name": "Juan Antonio Castro",
-    "photo": "SIN_FOTO.png",
-    "description": "SIN DESCRIPCIÓN"
-  },
-  {
     "id": "mi_01",
     "exhibitor_type": "Mesa Inaugural",
     "name": "Alba Tomás",
     "photo": "alba_tomas.jpg",
     "description": "Alba Tomás es graduada en Biotecnología por la Universitat Autònoma de Barcelona y cuenta con un máster multidisciplinar en ciencias experimentales organizado por Barcelona Institute of Science and Technology (BIST). Actualmente realiza su doctorado en Genética en el Institut de Biologia Molecular de Barcelona (IBMB-CSIC). Comprometida con la divulgación científica y el impulso de la comunidad biotecnológica, ejerce como Coordinadora General del Congreso Anual de Biotecnología (BAC)."
+  },
+  {
+    "id": "mi_02",
+    "exhibitor_type": "Mesa Inaugural",
+    "name": "Javier Lafuente",
+    "photo": "Javier_Lafuente.jpeg",
+    "description": "Rector Universitat Autonoma de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
   },
   {
     "id": "mi_03",
@@ -694,10 +330,390 @@
     "description": "Eva Ortega Paíno es doctora en Bioquímica y Biología Molecular por la Universidad Complutense de Madrid y cuenta con más de 30 años de experiencia en investigación, gestión científica e industria biotecnológica, especialmente en los ámbitos de la oncología y la inmunología. Actualmente ocupa el cargo de Secretaria General de Investigación del Ministerio de Ciencia, Innovación y Universidades. Anteriormente fue directora científica del Biobanco del CNIO y ha desempeñado diversos cargos de liderazgo en infraestructuras científicas nacionales e internacionales, consolidándose como una de las figuras de referencia en la gestión y promoción de la investigación en España."
   },
   {
-    "id": "mc_02",
-    "exhibitor_type": "Mesa Clausura",
-    "name": "Teresa Sanchis Estruch",
-    "photo": "teresa-sanchis.webp",
-    "description": "Teresa Sanchis Estruch es la directora general de Investigación de la Generalitat de Catalunya. Con una amplia trayectoria en gestión y política científica, trabaja en el impulso del sistema catalán de investigación e innovación, promoviendo la excelencia científica, la captación de talento y el fortalecimiento de la colaboración entre universidades, centros de investigación y empresas para afrontar los retos científicos y tecnológicos de la sociedad."
+    "id": "org_022",
+    "exhibitor_type": "Organizadores",
+    "name": "FEBiotec",
+    "photo": "febiotec_color.png",
+    "description": "La Federación Española de Biotecnólogos (FEBiotec) fue fundada en 2008 para agrupar a las Asociaciones de Biotecnólogos de toda España. Hoy, contamos con 14 asociaciones miembro para trabajar en la defensa, promoción y difusión de los biotecnólogos y la biotecnología, con actividades como el Congreso Anual de Biotecnología (BAC), BioNorth, BioSouth, Biotechnofarm y reivindicaciones a administraciones públicas.  ",
+    "sponsor_tier": "platinum"
+  },
+  {
+    "id": "org_023",
+    "exhibitor_type": "Organizadores",
+    "name": "ASBTEC",
+    "photo": "asbtec.jpg",
+    "description": "La Associació de Biotecnòlegs de Catalunya (ASBTEC) es una entidad sin ánimo de lucro que reúne a estudiantes, graduados y profesionales de la biotecnología en Cataluña. Su objetivo es impulsar el desarrollo académico, profesional y social del sector biotecnológico mediante la organización de congresos, actividades formativas, eventos de divulgación científica y oportunidades de networking. Además, actúa como punto de conexión entre estudiantes, investigadores, empresas e instituciones, fomentando el crecimiento de la comunidad biotecnológica catalana y acercando la biotecnología a la sociedad.",
+    "sponsor_tier": "platinum"
+  },
+  {
+    "id": "spk_001",
+    "exhibitor_type": "speaker",
+    "name": "Antonio Ferrer Montiel",
+    "photo": "antonio ferrer montiel.jpg",
+    "description": "Antonio Ferrer Montiel es Catedrático de Bioquímica y Biología Molecular y director del Instituto de Investigación, Desarrollo e Innovación en Biotecnología Sanitaria (IDiBE) de la Universidad Miguel Hernández. Actual presidente de la Sociedad Española de Bioquímica y Biología Molecular (SEBBM), centra su investigación en el diseño de moléculas terapéuticas para el tratamiento del dolor crónico y patologías dermatológicas."
+  },
+  {
+    "id": "spk_002",
+    "exhibitor_type": "speaker",
+    "name": "Benedetta Bolognesi",
+    "photo": "Benedetta bolognesi.jpg",
+    "description": "Benedetta Bolognesi es investigadora principal en el Instituto de Bioingeniería de Cataluña (IBEC) desde 2019. Doctora en Química por la Universidad de Cambridge y antigua becaria Marie Curie en el CRG, lidera estudios sobre mutaciones genéticas y plegamiento de proteínas. Su excelencia investigadora ha sido reconocida con una ayuda ERC Consolidator y el prestigioso premio de salud de Fundación «la Caixa»."
+  },
+  {
+    "id": "spk_003",
+    "exhibitor_type": "speaker",
+    "name": "Benjamí Oller-Salvia",
+    "photo": "benjami_oller-salvia.jpg",
+    "description": "Benjamí Oller‑Salvia es profesor asociado en IQS-Ramon Llull, donde lidera el grupo de Biología Química y Sintética para Bioterapias (ChemSynBio). Doctor por el IRB Barcelona y formado en el MRC-LMB de Cambridge, posee una ERC Starting Grant. Su trabajo se enfoca en el desarrollo de biofármacos inteligentes y sistemas avanzados de transporte de fármacos al sistema nervioso central."
+  },
+  {
+    "id": "spk_004",
+    "exhibitor_type": "speaker",
+    "name": "Juan J. Calvete",
+    "photo": "Juan J. calvete.jpg",
+    "description": "Juan J. Calvete es Profesor de Investigación del CSIC y director del Laboratorio de Venómica Estructural y Funcional en el Instituto de Biomedicina de Valencia. Doctor en Bioquímica por la Universidad Complutense, es un referente internacional en toxinología. Su trabajo pionero en proteómica de venenos busca descifrar la evolución de las toxinas y desarrollar nuevos antídotos y fármacos terapéuticos."
+  },
+  {
+    "id": "spk_005",
+    "exhibitor_type": "speaker",
+    "name": "Núria Sánchez Coll",
+    "photo": "nuria sanchez coll.jpg",
+    "description": "Núria Sánchez Coll es científica del CSIC y colíder del grupo de Enfermedades Bacterianas de las Plantas en el CRAG. Experta en inmunidad vegetal y proteostasis, cuenta con una sólida trayectoria internacional en instituciones como la ETH de Zúrich y la Universidad de Duke. Su investigación busca entender cómo las plantas responden a infecciones para mejorar la sanidad agrícola y alimentaria."
+  },
+  {
+    "id": "spk_006",
+    "exhibitor_type": "speaker",
+    "name": "Sílvia Osuna",
+    "photo": "Silvia Osuna.jpg",
+    "description": "Sílvia Osuna es profesora de investigación ICREA en la Universidad de Girona. Tras su formación en la Universidad de California (UCLA), su grupo se ha especializado en el desarrollo de herramientas computacionales para el diseño de enzimas de interés industrial. Su destacada trayectoria ha sido reconocida con el Premio Nacional de Química Joven 2023 y el Premio Fundación Banco Sabadell 2025."
+  },
+  {
+    "id": "spk_007",
+    "exhibitor_type": "speaker",
+    "name": "Alberto Prats Galino",
+    "photo": "AlbertoPrats.jpg",
+    "description": "Alberto Prats Galino es catedrático de Anatomía y Embriología Humana en la Universitat de Barcelona. Especialista en neuroanatomía quirúrgica, neuroimagen y simulación anatómica, dirige iniciativas de investigación orientadas a mejorar la planificación y precisión de intervenciones neuroquirúrgicas complejas. Su trabajo combina el conocimiento anatómico con tecnologías avanzadas de visualización y modelización, contribuyendo al desarrollo de abordajes quirúrgicos mínimamente invasivos y a la formación de profesionales de la salud."
+  },
+  {
+    "id": "spk_008",
+    "exhibitor_type": "speaker",
+    "name": "Ignasi Folch i Casanovas",
+    "photo": "IgnasiFolch.jpeg",
+    "description": "Ignasi Folch i Casanovas es investigador y especialista en proteómica y bioinformática en el IRB Barcelona. Su actividad se centra en el análisis de proteínas mediante espectrometría de masas y en la aplicación de herramientas computacionales para interpretar grandes volúmenes de datos biológicos. Con una trayectoria que integra bioquímica, análisis de datos y tecnologías ómicas, contribuye a impulsar la investigación biomédica a través de plataformas científicas de alto nivel."
+  },
+  {
+    "id": "spk_009",
+    "exhibitor_type": "speaker",
+    "name": "Carla López",
+    "photo": "CarlaLopez.jpg",
+    "description": "Carla López es Embrióloga Senior en Reproclinic Barcelona. Graduada en Ciencias Biomédicas y con un Máster en Biología de la Reproducción por la UAB-Dexeus, combina una sólida experiencia técnica en laboratorio con una profunda visión humanista gracias a su formación en Bioética. En el taller «Hablemos de repro» guía la práctica de valoración de gametos y lidera el debate sobre los retos éticos y sociales de la reproducción asistida actual."
+  },
+  {
+    "id": "spk_010",
+    "exhibitor_type": "speaker",
+    "name": "Enrique Asin-Garcia",
+    "photo": "Enrique Asin-Garcia.jpg",
+    "description": "Enrique Asin-Garcia es profesor de Biofabricación en la Universidad de Wageningen, Países Bajos. Su investigación expande el impacto de las tecnologías vivas mediante biosensores en tiempo real y biofabricación inteligente, bajo principios de diseño seguro y sostenible. Es un miembro activo en la comunidad de biotecnología sintética, impulsando el talento joven a través de iniciativas como SynBioNL e iGEM."
+  },
+  {
+    "id": "spk_011",
+    "exhibitor_type": "speaker",
+    "name": "Martin Floor Pilquil",
+    "photo": "Martin Floor.jpg",
+    "description": "Es bioquímico, formado en la Universidad de Chile, donde se inició en el diseño computacional de enzimas con Gerald Zapata. Se doctoró en la Universidad de Vic con Jordi Villà y completó su formación con estancias de investigación en la Universidad de Uppsala con Lynn Kamerlin y en China con Jeng-Kang Hwang. Actualmente es investigador postdoctoral en el Barcelona Supercomputing Center con Víctor Guallar, donde integra inteligencia artificial y modelado molecular para la bioprospección y la ingeniería de enzimas con el objetivo de mejorar su expression, estabilidad, actividad y selectividad."
+  },
+  {
+    "id": "spk_012",
+    "exhibitor_type": "speaker",
+    "name": "Francesc Godia Casablancas",
+    "photo": "francesc godia.jpg",
+    "description": "Profesor de Ingeniería Química en la Universitat Autònoma de Barcelona. Investigador en bioprocesos basados en células animales para la producción de biofármacos, vacunas basadas en VLPs y vectores virales para terapia génica. Director de la Planta Piloto MELiSSA, un laboratorio de la European Space Agency para el desarrollo de tecnología de soporte vital en el Espacio en misiones humanas de larga duración. Miembro del Comité Ejecutivo de la European Society for the Advancement of Cell Technologies. Presidente de la European Federation of Biotechnology."
+  },
+  {
+    "id": "spk_013",
+    "exhibitor_type": "speaker",
+    "name": "Elisabeth Engel",
+    "photo": "Elisabet Engel Lopez.jpg",
+    "description": "La Prof. Engel es bióloga de formación y doctora en medicina, con más de dos décadas de trayectoria en bioingeniería. Sus intereses de investigación incluyen la preparación y el diseño de materiales y andamios para estudios fundamentales in vitro e in vivo, con un enfoque adicional en el desarrollo de herramientas para evaluar los mecanismos que gobiernan el comportamiento celular en medicina regenerativa."
+  },
+  {
+    "id": "spk_014",
+    "exhibitor_type": "speaker",
+    "name": "Marta Cascante",
+    "photo": "Marta Cascante.jpg",
+    "description": "La profesora Marta Cascante es Catedrática en la Universidad de Barcelona e investigadora principal de un grupo líder en metabolismo del cáncer. Fue pionera en la integración de datos multi-ómica en modelos de flujo metabólico para identificar dianas terapéuticas y subtipos metabólicos con relevancia clínica, especialmente en cáncer colorrectal. Ha publicado más de 320 artículos, dirigido más de 40 tesis doctorales, coordinado importantes programas de formación europeos y recibido destacadas distinciones, entre ellas tres premios ICREA Acadèmia y la Membresía Honoraria de la Metabolomics Society."
+  },
+  {
+    "id": "spk_015",
+    "exhibitor_type": "speaker",
+    "name": "Albert Font Inglès",
+    "photo": "albert font ingles.jpg",
+    "description": "Albert Font Inglès es Director General y cofundador de Leanbio, una CDMO especializada en el desarrollo y fabricación de productos biológicos, con una propuesta integrada end-to-end en Drug Substance y Drug Product para proteínas recombinantes, ADC y mRNA. Con más de una década de trayectoria y más de 100 proyectos desarrollados, Leanbio se ha consolidado como un actor clave en biológicos en España. Su reciente adquisición por Reig Jofre refuerza su propuesta de valor integrando capacidades DS y DP. Miembro de ASBTEC desde 2012."
+  },
+  {
+    "id": "spk_016",
+    "exhibitor_type": "speaker",
+    "name": "Ariadna Grau",
+    "photo": "ariadna grau.png",
+    "description": "Ariadna Grau es Responsable de I+D en LipoTrue, donde lidera el desarrollo de ingredientes activos innovadores para la industria dermocosmética. Graduada en Química por la Universidad de Barcelona, con Máster en Química Avanzada y Doctorado en Química Orgánica. Su trayectoria combina una sólida especialización en síntesis y diseño molecular con una clara orientación a la aplicación industrial, integrando química orgánica, biología celular y evaluación funcional."
+  },
+  {
+    "id": "spk_017",
+    "exhibitor_type": "speaker",
+    "name": "Avencia Sánchez-Mejías",
+    "photo": "avencia sanchez-mejias.jpg",
+    "description": "Avencia Sánchez-Mejías es CEO y cofundadora de Integra Therapeutics. Con sólida formación científica en genética clínica, oncología molecular y biología sintética, lideró investigación postdoctoral en la Universidad Nacional de Singapur y la Universidad de Miami antes de fundar Integra Therapeutics en 2018. La compañía ha captado 24M€ y su plataforma de edición genómica basa en integrasas está diseñada para superar las limitaciones de los vectores virales tradicionales. Premio Mujer y Liderazgo 2022 de Deusto Business School."
+  },
+  {
+    "id": "spk_018",
+    "exhibitor_type": "speaker",
+    "name": "Coté Falaguera",
+    "photo": "cote falaguera.jpg",
+    "description": "Coté Falaguera es Senior Data Developer en el hub de AstraZeneca de Barcelona, trabajando en el desarrollo y preparación de datos para productos de inteligencia artificial. Biotecnóloga por la Universidad Politécnica de Valencia, con máster y doctorado en Bioinformática por la Universidad Pompeu Fabra. Ha desarrollado su carrera entre la academia y la industria, con estancias posdoctorales en el Instituto de Bioinformática Europeo (EMBL-EBI, Reino Unido) y en la Universidad de Stanford."
+  },
+  {
+    "id": "spk_019",
+    "exhibitor_type": "speaker",
+    "name": "Estel·la Buscató Arsequell",
+    "photo": "estella buscato.png",
+    "description": "Estel·la Buscató trabaja en Bayer en la intersección entre biotecnología agrícola, análisis avanzado y toma de decisiones, liderando procesos que convierten la complejidad científica en valor tangible para el negocio. Es referente en la gestión estratégica de pipelines de I+D y en la conexión entre innovación científica e impacto empresarial, con experiencia en metodologías de gestión de la incertidumbre, priorización estratégica y desarrollo de talento."
+  },
+  {
+    "id": "spk_020",
+    "exhibitor_type": "speaker",
+    "name": "Gerard Caelles Vidal",
+    "photo": "gerard caelles.jpg",
+    "description": "Gerard Caelles es Chief Business Officer (CBO) de SpliceBio, spin-off de la Universidad de Princeton asentada en Barcelona y pionera global en terapia génica. Graduado en Biotecnología por la UAB, su visión estratégica ha sido clave para escalar SpliceBio —cuya plataforma tecnológica basada en inteínas supera las limitaciones de los vectores virales— cerrando rondas de financiación históricas en el sector biotecnológico español."
+  },
+  {
+    "id": "spk_021",
+    "exhibitor_type": "speaker",
+    "name": "Joan Domingo Espín",
+    "photo": "joan domingo.png",
+    "description": "Joan Domingo Espín es Senior Director de Desarrollo de Biológicos en Almirall. Experto de referencia en la dirección estratégica de operaciones CMC (Chemistry, Manufacturing and Controls), ha liderado alianzas críticas y transferencias tecnológicas con CDMOs a nivel internacional. Su pasión por el downstream —purificación y separación de terapias biológicas de última generación— ha sido pieza clave para garantizar la viabilidad, pureza y seguridad de biológicos en fases clínicas avanzadas."
+  },
+  {
+    "id": "spk_022",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Ruano",
+    "photo": "jordi ruano.jpg",
+    "description": "Con más de 25 años de experiencia en el sector biotecnológico, Jordi Ruano es Executive Director de Operaciones para la División de Salud Humana en HIPRA. Su trayectoria abarca roles de liderazgo en procesos upstream y downstream, fabricación de productos biológicos complejos —incluyendo antígenos virales, proteínas recombinantes y vacunas—, formulación, llenado aséptico y liofilización. Lidera la estrategia y ejecución operativa para apoyar la expansión del portafolio de salud humana de la compañía."
+  },
+  {
+    "id": "spk_023",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Xiol",
+    "photo": "jordi xiol.jpg",
+    "description": "Jordi Xiol es Partner en Ysios Capital, una de las firmas de venture capital referentes en Europa en ciencias de la vida. Doctor en Biología Molecular por el EMBL y con experiencia previa en consultoría estratégica en Boston Consulting Group, combina el rigor de la investigación básica con la viabilidad comercial. Ha liderado la identificación y el crecimiento de compañías biotecnológicas disruptivas, consolidándose como experto en transformar ciencia de vanguardia en soluciones clínicas reales."
+  },
+  {
+    "id": "spk_024",
+    "exhibitor_type": "speaker",
+    "name": "Laure Burtin",
+    "photo": "laure burtin.jpeg",
+    "description": "Laure Burtin es una referente internacional en el desarrollo de terapias biológicas y optimización de bioprocesos. Biotecnóloga de formación, su trayectoria abarca desde la investigación a escala piloto hasta la toma de decisiones ejecutivas como vicepresidenta en Sanofi, LETI Pharma y Almirall. Actualmente asesora técnica y estratégicamente a compañías y fondos de inversión en España y Suiza. Combina excelencia técnica con un liderazgo genuino basado en la confianza y el desarrollo del talento intergeneracional."
+  },
+  {
+    "id": "spk_025",
+    "exhibitor_type": "speaker",
+    "name": "Luís Ruiz-Ávila",
+    "photo": "luis ruiz-avila.png",
+    "description": "Doctor en Biología Molecular con 10 años de trayectoria académica antes de incorporarse al sector industrial en 1998. CEO de Leukos Biotech (producto de oncología en fase I/II) y emprendedor serial que ha trabajado como ejecutivo, emprendedor o inversor en más de 15 empresas, captando más de 40M€ para impulsar proyectos de la academia a fases clínicas, con diversas desinversiones y acuerdos de licencia. Profesor asociado en la Universitat Internacional de Catalunya, donde dirige el Máster en Gestión de Empresas Biomédicas."
+  },
+  {
+    "id": "spk_026",
+    "exhibitor_type": "speaker",
+    "name": "Marta Figa Bosch",
+    "photo": "marta figa.jpg",
+    "description": "Marta Figa Bosch es Strategic Projects Director en HIPRA, multinacional biofarmacéutica europea enfocada en la prevención de enfermedades infecciosas. Lidera el Biotech Workshop del BAC 2026, en el que los participantes exploran el ciclo de vida de un producto farmacéutico a través de casos reales de la industria, desarrollando visión estratégica y soft skills clave en un formato interactivo de resolución de retos en equipo."
+  },
+  {
+    "id": "spk_027",
+    "exhibitor_type": "speaker",
+    "name": "Ignasi Iglesias",
+    "photo": "ignasi iglesias.png",
+    "description": "L’Ignasi és doctor Enginyer Agrònom i actualment és el Technical Manager global d’Agromillora. Representa el vincle ideal entre la recerca aplicada, el desenvolupament tècnic i l’estratègia empresarial en agro biotecnologia.  Des d’Agromillora pot aportar una visió puntera sobre com s’aplica la biotecnologia en el sector: des de la millora genètica, la selecció clonal i els processos de micropropagación in vitro, fins a com aquesta innovació en material vegetal es transforma en solucions reals per al productor i en un model de negoci global. És una figura molt coneguda en el sector. S’exposa el context global i els reptes de la producció en el marc de la Agenda 2030 y del Pacte Verd la Unió Europea i com la biotecnologia i la innovació els hi donen resposta. Es dona una mirada al futur i com les noves tècniques genòmiques i la innovació tecnològica en els conreus, inclosa la robòtica, permetran avançar cap a la eficiència y sostenibilitat en al producció d’aliments."
+  },
+  {
+    "id": "spk_028",
+    "exhibitor_type": "speaker",
+    "name": "Julia García Prado",
+    "photo": "julia garcia.jpg",
+    "description": "La Dra. Julia G. Prado, nacida en Avilés, es licenciada en Bioquímica por la Universidad de Oviedo y doctora con honores en Inmunología por la UAB. Realizó su postdoctorado en la Universidad de Oxford con una beca Marie Skłodowska-Curie y en 2009 regresó a España con un contrato Miguel Servet. Desde 2013 lidera un grupo en IrsiCaixa y desde 2019 es directora científica del Instituto de Investigación Germans Trias. Investiga la inmunidad frente al VIH, otras infecciones virales y la COVID-19. Es coinventora de cuatro patentes y autora de más de 80 publicaciones científicas."
+  },
+  {
+    "id": "spk_029",
+    "exhibitor_type": "speaker",
+    "name": "David Baker",
+    "photo": "david baker.jpg",
+    "description": "David Baker es Catedrático de Bioquímica en la Universidad de Washington y director del Instituto para el Diseño de Proteínas. Fue pionero en el diseño computacional de proteínas, desarrollando métodos para crear proteínas con estructuras y funciones que no existen en la naturaleza. Su trabajo con el software Rosetta ha permitido diseñar desde cero nuevas enzimas, proteínas de unión y máquinas moleculares. En 2024 recibió el Premio Nobel de Química por sus contribuciones revolucionarias al diseño computacional de proteínas."
+  },
+  {
+    "id": "spk_030",
+    "exhibitor_type": "speaker",
+    "name": "Mariona Serra",
+    "photo": "mariona.jpg",
+    "description": "Mariona Serra, Cofundadora i Directora de GoodGut, és veterinària, doctora en farmacologia i formada Desenvolupament directiu IESE. Després d’uns anys dedicada a la recerca decideix fundar GoodGut amb la motivació d’oferir el benefici de la ciència a la societat. El projecte empresarial avui és un projecte d’èxit que ja compta amb 3 productes per diagnòstic de malalties digestives rellevant com és el càncer colorectal, i escala el seu creixement amb la seva recent adquisició per laboratoris HIPRA. Actualment també és membre del comitè executiu de la Cambra de Comerç de Girona i Vicepresidenta de CataloniaBio&Healthtech. El seu compromís social amb l’emprenedoria a través de la seva implicació com a membre executiu en diversos agents del sector i els seu lideratge empresarial ha estat distingit amb diferents guardons.\n"
+  },
+  {
+    "id": "spk_031",
+    "exhibitor_type": "speaker",
+    "name": "Miguel Galán",
+    "photo": "miguel_galan.jpg",
+    "description": "Biotecnólogo de formación y doctor en Biociencias Moleculares por la UAM. Realicé mi tesis doctoral en el CNIC, centrada en inmunoterapias aplicadas a enfermedades cardiovasculares. Actualmente soy Medical Advisor/MSL en Laboratorios ROVI, trabajando en las áreas de cardiovascular, hematología y metabolismo óseo. "
+  },
+  {
+    "id": "spk_033",
+    "exhibitor_type": "speaker",
+    "name": "Abel Cabezas",
+    "photo": "Abel_Cabezas.jpg",
+    "description": "Abel Cabezas Rubio, nacido en Girona en 1975. Licenciado en Ciència i Tecnología dels Aliments por la UAB. MBA avalado por la Asociación de Empresarios de A Coruña. Postgrado en Gestión de la Innovación por la UPC.\nCarrera enfocada a la I+D+i en el sector de la alimentación, con una importante dedicación al desarrollo de procesos productivos, en especial en el campo de la valorización de subproductos y desarrollo de nuevos ingredientes."
+  },
+  {
+    "id": "spk_034",
+    "exhibitor_type": "speaker",
+    "name": "Antonio Molina",
+    "photo": "FotoAmolina - Antonio Molina.png",
+    "description": "Antonio Molina es Catedrático de Bioquímica y Biología Molecular de la UPM y jefe de grupo en el Centro de Biotecnología y Genómica de Plantas (CBGP), un centro mixto entre la UPM y el INIA/CSIC (www.cbgp.upm.es) que tiene el sello de Excelencia Severo Ochoa (2017-2021 y 2022-2026), siendo el Dr. Molina Director científico de este programa. Ha sido director del CBGP 8 años. La actividad de investigación del grupo del Dr. Molina se centra en el estudio de la Inmunidad Vegetal y sus aplicaciones a la protección de los cultivos. A. Molina es co-fundador de 3 empresas spin-off"
+  },
+  {
+    "id": "spk_035",
+    "exhibitor_type": "speaker",
+    "name": "Lara Cobacho",
+    "photo": "Lara Cobacho Lluesma.jpg",
+    "description": "Lara Cobacho Lluesma, actual Sustainability Marketing Expert en Sartorius, cuenta con una sólida formación académica en Economía y Política de las Ciencias de la Vida orientada a la sostenibilidad por la Universidad Técnica de Múnich, y ha liderado alianzas estratégicas e iniciativas de sostenibilidad con grandes clientes biofarmacéuticos. Su trayectoria se vincula de manera directa con su ponencia, \"Driving Sustainable Biomanufacturing with SUT\", ya que su rol actual se centra precisamente en impulsar la comunicación estratégica y la defensa industrial del bioprocesamiento sostenible. A través de su intervención, Cobacho abordará cómo avanzar en la sostenibilidad de las tecnologías de un solo uso (SUT, por sus siglas en inglés) en la biofabricación, aportando su experiencia en iniciativas clave que mejoran la eficiencia de los procesos, promueven la circularidad y fomentan la colaboración en el sector."
+  },
+  {
+    "id": "spk_036",
+    "exhibitor_type": "speaker",
+    "name": "Luca Caprera",
+    "photo": "LucaCaprera.jpg",
+    "description": "Luca Caprera es un profesional titulado en Química y Tecnología Farmacéutica por la Universidad de Turín (Italia), especializado en Química de los Productos Cosméticos y posgraduado en Perfumes y Fragancias en IQS (Barcelona). Tiene una sólida trayectoria profesional en formulación cosmética y farmacéutica, centrada en el desarrollo, optimización y evaluación de productos. Actualmente, es profesor responsable del laboratorio de Cosmética y Perfumería del Máster en Cosmética y Perfumería de IQS.\n"
+  },
+  {
+    "id": "spk_037",
+    "exhibitor_type": "speaker",
+    "name": "L. Maria Lois",
+    "photo": "MariaLois.jpg",
+    "description": "María Lois es investigadora científica con una trayectoria multidisciplinar en microbiología, química, genética vegetal y biología molecular. Durante su doctorado en la Universidad de Barcelona (UB), descubrió una nueva vía de biosíntesis de isoprenoides. En su etapa posdoctoral en la Universidad Rockefeller, estudió la SUMOilación como un mecanismo clave de regulación en las plantas. Se incorporó a la Universidad de Barcelona en 2004 y obtuvo una plaza como Científica Titular del CSIC en 2008, donde puso en marcha una línea de investigación en el CRAG. Ha liderado importantes proyectos financiados, incluyendo subvenciones del Consejo Europeo de Investigación (ERC), y actualmente ejerce como directora del CRAG, impulsando la innovación y la transferencia de tecnología."
+  },
+  {
+    "id": "spk_038",
+    "exhibitor_type": "speaker",
+    "name": "Juan Carlos Esteban",
+    "photo": "JuanCarlos.jpg",
+    "description": "Periodista. Experiencia profesional en medios de información general, especializados, tecnológicos y de salud. Experto en imagen y relaciones públicas internas y externas de varias actividades económicas. Durante 25 años, directivo de comunicación y asuntos públicos en empresas farmacéuticas y biotecnológicas internacionales. Editor ejecutivo en sectores profesionales y organizaciones no gubernamentales. Enfocado en salud humana y tecnología, con especial énfasis en biotecnología médica, vegetal y medioambiental. Desde 2015, integrante de la Asociación Comunicadores de Biotecnología -ComunicaBiotec. Secretario Ejecutivo de la Asociación durante 6 años, de 2018 a 2023. Vicepresidente desde octubre de 2024. Participante en la organización del congreso de la Asociación durante el período 2018-2026.\n"
+  },
+  {
+    "id": "spk_039",
+    "exhibitor_type": "speaker",
+    "name": "Xavier Aldeguer",
+    "photo": "Xavier_Aldeguer.jpg",
+    "description": "El Dr. Aldeguer es gastroenterólogo, investigador y especialista en innovación biomédica y gestión pública. Se especializó en Gastroenterología en el Hospital Universitari Germans Trias i Pujol entre 1994 y 1997, y en 2004 obtuvo su Doctorado en Medicina por la Universidad Autónoma de Barcelona con una tesis doctoral centrada en la interacción entre el sistema inmunitario y la regeneración hepática. A finales de la década de los noventa, expandió su formación internacional gracias a las becas de \"la Caixa\" para estudios de posgrado y de la Sociedad Catalana de Gastroenterología, que le permitieron realizar una estancia de investigación de 1998 a 2001 en el Laboratorio de Trasplante Hepático de la Universidad de Pensilvania, en Filadelfia. Más adelante, en 2004 y 2006, completó su alta especialización en técnicas endoscópicas con estancias formativas en Marsella y Galveston (Texas), respectivamente.\nSu trayectoria asistencial y de gestión clínica se consolidó a partir de 2001, año en el que se incorporó al Servicio de Aparato Digestivo del Hospital Doctor Josep Trueta de Girona. Una década más tarde, en 2011, asumió la Jefatura de Servicio de Aparato Digestivo de la alianza de los Hospitales Doctor Josep Trueta y Santa Caterina de Girona/Salt, cargo que ejerció hasta 2021. En el ámbito académico, ha estado fuertemente vinculado a la docencia como profesor asociado de la Facultad de Medicina de la Universidad de Girona desde su misma fundación en 2009, donde además tuvo el honor de ser el primer coordinador de la asignatura de Digestivo.\nComo investigador, ha destacado especialmente por sus estudios sobre el papel de la microbiota en las enfermedades digestivas. Fruto de esta labor científica, en 2014 cofundó la spin-off GoodGut, una empresa biotecnológica dedicada al desarrollo de marcadores bacterianos para el diagnóstico y seguimiento de patologías digestivas, de la cual fue Director Médico hasta que fue adquirida por la farmacéutica catalana Hipra en 2021. A raíz de este hito de transferencia tecnológica, se le propuso liderar la primera Dirección General de Transferencia del Conocimiento de la Consejería de Investigación y Universidades de la Generalitat de Cataluña, cargo que ocupó hasta 2023.\nTras esta etapa en la administración autonómica, regresó al ámbito sanitario para coordinar el Área de Innovación de la Alianza de Hospitales Doctor Josep Trueta y Santa Caterina, participando también en el Comité de Innovación del nuevo proyecto del Campus de Salud de Girona. En la actualidad, compagina esta labor estratégica e innovadora en el sector salud con el servicio público local, ejerciendo como Teniente de Alcalde de Innovación, Talento, Salud y Comunidad del Ayuntamiento de Girona.\n"
+  },
+  {
+    "id": "spk_040",
+    "exhibitor_type": "speaker",
+    "name": "Xavier Rovira",
+    "photo": "xavier_rovira.jpg",
+    "description": "El Dr. Xavier Rovira Clavé es un destacado investigador y científico especializado en biotecnología espacial, bioingeniería y oncología. Tras consolidar su carrera internacional como investigador en la Facultad de Medicina de la Universidad de Stanford (EE. UU.), regresó a España para liderar la investigación de vanguardia en el Instituto de Bioingeniería de Cataluña (IBEC), donde ejerce como investigador principal del grupo de Biotecnología Espacial.\nSu excelencia científica e investigadora fue reconocida por el Consejo Europeo de Investigación (ERC), que le otorgó la prestigiosa financiación Starting Grant para desarrollar su ambicioso proyecto «SpaceClones». Con una dotación de 2,5 millones de euros, esta iniciativa busca descifrar la compleja evolución clonal de los tumores sólidos, combinando ingeniería celular, modelos in vitro e in vivo e imágenes multiplexadas avanzadas para comprender cómo se organizan espacialmente las células cancerosas y cómo desarrollan resistencias frente a las terapias. Asimismo, el potencial comercial y social de sus aproximaciones diagnósticas y terapéuticas contra el cáncer le ha valido la obtención de la financiación ERC Proof of Concept Grant para el desarrollo de la plataforma EVOaware.\nEn el ámbito de la inmunoterapia, el Dr. Rovira Clavé lidera proyectos altamente traslacionales respaldados por entidades de referencia como la Asociación Española Contra el Cáncer (AECC). Su línea de investigación en este campo se enfoca en superar uno de los grandes desafíos de la oncología actual: lograr que las terapias de células CAR-T —de gran éxito en cánceres hematológicos— rompan las barreras físicas y los microambientes inmunosupresores propios de los tumores sólidos, abriendo nuevas vías para el descubrimiento de tratamientos más eficaces y personalizados.\n"
+  },
+  {
+    "id": "spk_041",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Martorell",
+    "photo": "JordiMartorell.jpg",
+    "description": "El Dr. Jordi Martorell es CEO y cofundador de Aortyx. Tras diez años buscando el equilibrio entre el avance de la ciencia básica, la comprensión de la patogénesis cardiovascular y el desarrollo de soluciones clínicas para la industria, a través de su investigación entre IQS y el MIT, cofundó Aortyx en 2018 junto con la Dra. Noemí Balà, el Dr. Vicenç Riambau y el Dr. Salvador Borrós para desarrollar y comercializar sus patentes e invenciones. Su primer producto es un revolucionario parche endovascular para el tratamiento de la disección aórtica. En siete años, el equipo ha pasado de 4 a 21 integrantes.\n\nDesde 2012, el Dr. Martorell ha captado más de 25 millones de euros en financiación pública y privada para impulsar el desarrollo de su investigación y tecnología. Con un fuerte enfoque en la transferencia tecnológica, es autor de más de 25 artículos científicos y de 6 familias de patentes. Conseguir que sus descubrimientos lleguen al paciente y al mercado ha sido el eje central de su carrera desde que decidió realizar el doctorado.\n\nAdemás, el Dr. Martorell continúa liderando el Laboratorio de Ingeniería Vascular en IQS, redoblando esfuerzos para seguir generando avances científicos desde su laboratorio. Su investigación sobre la relación entre la dinámica de fluidos y la biología vascular en entornos vasculares complejos sigue impulsando la innovación y constituye la base de las ideas que alimentan la cartera de productos de Aortyx y otros proyectos vasculares que dirige.\n\nAsimismo, ha desarrollado una importante labor docente, hoy más reducida, como profesor de ingeniería, biotecnología y negocio biofarmacéutico. En los últimos doce años ha dirigido más de 75 tesis doctorales, trabajos de fin de máster y trabajos de fin de grado.\n"
+  },
+  {
+    "id": "spk_042",
+    "exhibitor_type": "speaker",
+    "name": "Rocío Vázquez",
+    "photo": "RocíoVazquez.jpg",
+    "description": "Ha obtenido el grado en Biotecnología y un Máster en Biología Molecular y Celular. Actualmente es estudiante de doctorado en el área de Bioquímica y Biología Molecular, donde desarrolla su investigación bajo la línea “Mitocondria, Cáncer e Hipertermia”. Su trabajo se centra en el desarrollo de nuevas estrategias terapéuticas frente al cáncer de mama basadas en hipertermia magnética. Para ello, emplea nanopartículas de óxido de hierro dirigidas a las mitocondrias de las células tumorales, que, al ser activadas mediante campos magnéticos alternos, generan un aumento localizado de temperatura capaz de inducir la muerte celular o potenciar la eficacia de otras terapias. De forma complementaria, estudia la respuesta celular al estrés térmico desde una perspectiva centrada en el sistema OXPHOS, considerando la mitocondria como un punto clave en la vulnerabilidad del cáncer. Desde hace seis años, compagina su actividad investigadora con la divulgación científica en redes sociales, donde muestra el día a día en el laboratorio y acerca la biología molecular al público general, fomentando el interés por la ciencia y la investigación. Además, forma parte de la Asociación de Biotecnología de Aragón (ASBAR) como vocal de estrategia y planificación, participando en la organización de actividades formativas y en la creación de una comunidad que conecta estudiantes, profesionales y empresas del sector biotecnológico."
+  },
+  {
+    "id": "spk_043",
+    "exhibitor_type": "speaker",
+    "name": "Moises Exposito Alonso",
+    "photo": "Moises_Exposito.jpeg",
+    "description": "Evolutionary biologist, plant ecologist and geneticist Moises (Moi) Exposito-Alonso is an Assistant Professor of Integrative Biology at the University of California Berkeley and Freeman Hrabowski Scholar of the Howard Hughes Medical institute. He is also investigator in the Innovate Genomics Institute, and faculty part of the Center for Theoretical Evolutionary Genomics and the Center for Computational Biology. Moi received a BSc. in biology from the University of Seville (Spain) in 2013, working as an evolutionary ecologist in the Doñana Biological Station (CSIC), and conducted a MSc in Quantitative Genomics in 2014 at the University of Edinburgh (Scotland, UK). After earning his Ph.D. in plant genomics in 2018 at the Max Planck Institute (Germany), he started his independent group in 2019 at the Carnegie Institute for Science at Stanford University. Since 2024, he joined the faculty at University of California Berkeley and HHMI to combine experimental ecology, computational genomics, and evolution-inspired gene editing to understand whether and how plants will evolve to keep pace with climate change."
+  },
+  {
+    "id": "spk_044",
+    "exhibitor_type": "speaker",
+    "name": "Cristina Romera",
+    "photo": "Cristina Romera Castillo.jpg",
+    "description": "Cristina Romera Castillo es licenciada en Química y realizó su doctorado en el Instituto de Ciencias del Mar-CSIC (ICM-CSIC) de Barcelona. Trabajó 5 años como postdoc en EEUU y Austria. En 2017 volvió al ICM-CSIC donde trabaja actualmente. Sus investigaciones se centran en la biogeoquímica de la materia orgánica disuelta para entender el papel del océano en el secuestro de carbono. Ha recibido varios premios como el Raymond L. Lindeman Award 2020 o el International Rising Talents 2020, de L'Oreal-UNESCO. Es autora del libro de divulgación científica, “AntropOcéano”."
+  },
+  {
+    "id": "spk_045",
+    "exhibitor_type": "speaker",
+    "name": "Malu Calle",
+    "photo": "Malu Calle.JPG",
+    "description": "Malu Calle es doctora en matemáticas y catedrática de Bioestadística y Bioinformàtica de la Universitat de Vic - Universitat Central de Catalunya. Es Decana de la Facultat de Ciències, Tecnologia i Enginyeries y coordina el grupo de investigación en Bioinformática y Bioimagen. Sus principales áreas de investigación son el desarrollo de biomarcadores o perfiles genéticos de riesgo y modelos pronósticos de la evolución de enfermedades. También está interesada en la integración de datos ómicos y en los métodos para el estudio del microbioma."
+  },
+  {
+    "id": "spk_046",
+    "exhibitor_type": "speaker",
+    "name": "Jordi Arbusà",
+    "photo": "Jordi Arbusa.jpg",
+    "description": "Ingeniero industrial especializado en materiales. Fue investigador en GEMAT-IQS-URL y fundó GLOO, una empresa derivada de GEMAT, para explotar comercialmente su proyecto de fin de carrera en un mercado con usuarios muy exigentes. Con más de 15 años de experiencia en el emprendimiento en serie y en el sector de los adhesivos, actualmente es responsable de IQS TECH FACTORY, la unidad de emprendimiento de IQS, con un enfoque técnico en la química industrial aplicada al sector de los adhesivos."
+  },
+  {
+    "id": "spk_047",
+    "exhibitor_type": "speaker",
+    "name": "Magda Faijes",
+    "photo": "iqs-faijes-magda.webp",
+    "description": "La Dra. Magda Faijes Simona es profesora titular, responsable del Departamento de Bioingeniería de IQS–Universitat Ramon Llull e investigadora del Grupo de Investigación en Biotecnología y Biología Química (GQBB). Su investigación se centra en la ingeniería de proteínas enzimáticas, la ingeniería metabólica de Escherichia coli y levaduras, y la funcionalización de carbohidratos en nanopartículas y exosomas. Su trabajo tiene como objetivo desarrollar plataformas biotecnológicas innovadoras para la producción sostenible de compuestos de alto valor añadido con aplicaciones en los ámbitos de la salud, la industria farmacéutica, la alimentación y la biotecnología industrial. Mediante la integración de herramientas de biología molecular, bioquímica y biocatálisis, impulsa el desarrollo de bioprocesos de nueva generación y soluciones bio-basadas más eficientes y sostenibles. Su investigación combina ciencia fundamental y transferencia tecnológica, contribuyendo al avance de la bioingeniería y fortaleciendo la colaboración entre la investigación académica y la aplicación industrial para generar un impacto científico, tecnológico y social."
+  },
+  {
+    "id": "spk_048",
+    "exhibitor_type": "speaker",
+    "name": "Josep M del Bas\t",
+    "photo": "Josep.jfif",
+    "description": "Doctor en Nutrició i Metabolisme. Al llarg de la seva trajectòria ha dirigit diferents equips en activitats de recerca i innovació. Actualment és professor al departament de Bioquímica i Biotecnologia de la URV. La seva recerca es centra en la interacció entre la nutrició i el metabolisme utilitzant un enfocament translacional i integratiu basat en la biologia de sistemes. Ha estat investigador principal en diferents projectes Europeus dins dels programes H2020 i Horizon Europe entre d'altres adreçats a l’ús de noves tecnologies en l’àmbit de l’alimentació i la nutrició personalitzada."
+  },
+  {
+    "id": "spk_050",
+    "exhibitor_type": "speaker",
+    "name": "Marcos Palomo Fernández",
+    "photo": "MarcosPalomo.jpg",
+    "description": "Subdirector General de Organismos y Entidades Publicas de Investigación - Ministerio de Ciencia, Innovación y Universidades que dará una charla sobre Empleo Público y Oportunidades Laborales en España"
+  },
+  {
+    "id": "spk_051",
+    "exhibitor_type": "speaker",
+    "name": "Roberto Manfrellotti",
+    "photo": "Roberto Manfrellotti.jpeg",
+    "description": "Roberto Manfrellotti es un neurocirujano italiano afincado en Barcelona, con un especial interés por la neurocirugía pediátrica y la investigación básica en neurooncología.\nSe graduó en Medicina en la Universidad de Pisa y, tras una estancia de investigación en los Harvey Cushing Laboratories de Harvard Medical School, completó su formación como especialista en Neurocirugía entre Italia y España. Posteriormente realizó un Máster en Biomedicina y Oncología Traslacional en la Universidad de Barcelona y el Vall d’Hebron Institute of Oncology (VHIO).\nActualmente está a punto de incorporarse al Servicio de Neurocirugía Pediátrica del Hospital Sant Joan de Déu de Barcelona y busca desarrollar una carrera como neurocirujano-científico, combinando la práctica clínica con la investigación en tumores cerebrales pediátricos. Sus principales intereses científicos incluyen la neurooncología, la biología de las células madre tumorales, la mecanobiología y la biología del ARN.\nEs miembro de la European Association of Neurosurgical Societies (EANS), candidato Fellow of the European Board of Neurological Surgery (FEBNS), miembro de la European Society for Paediatric Neurosurgery (ESPN) y de la European Association for Cancer Research (EACR).\nParalelamente a su actividad clínica e investigadora, es profesor asociado de Anatomía i Embriologia Humana en la Facultad de Medicina y Ciencias de la Salud de la Universidad de Barcelona.\nFuera del ámbito académico, toca el violín desde la infancia y forma parte de diversas orquestas internacionales. También disfruta del deporte, los idiomas, los viajes y la filosofía."
+  },
+  {
+    "id": "spk_178",
+    "exhibitor_type": "speaker",
+    "name": "Gemma Marfany",
+    "photo": "Gemma Marfany.png",
+    "description": "La Dra. Gemma Marfany Nadal es catedrática de Genética en la UB, miembro de su Comisión de Bioética y del Instituto de Biomedicina (IBUB). Su investigación lidera el estudio de enfermedades raras visuales mediante edición genética con CRISPR-Cas9. Destaca enormemente por su faceta como divulgadora científica —reconocida por el Claustre de Doctors de la UB—, siendo columnista habitual y coautora de documentos clave sobre la regulación ética genómica. Además, cuenta con una vertiente emprendedora como cofundadora de la spin-off de diagnóstico ocular DBGen. Secretària acadèmica de la Comissió de Bioètica de la Universitat de Barcelona i Catedrática de Genética en la Universidad de Barcelona. Miembro del Comité de Honor del BAC Barcelona 2026."
+  },
+  {
+    "id": "spk_179",
+    "exhibitor_type": "speaker",
+    "name": "Marco Mariotti",
+    "photo": "Marco Mariotti.png",
+    "description": "El Prof. Marco Mariotti trabaja en la intersección de la bioinformática, la biología evolutiva y la ingeniería genética. Tras formarse en Italia, España, Irlanda y Estados Unidos, estableció su propio laboratorio en la Universitat de Barcelona en 2021. Su investigación se centra en mecanismos poco convencionales de síntesis de proteínas que desafían las reglas tradicionales del código genético. Al comprender y aprovechar estos procesos naturales, su investigación también busca desarrollar nuevas tecnologías para el tratamiento de enfermedades genéticas y el control de la expresión génica."
+  },
+  {
+    "id": "spk_180",
+    "exhibitor_type": "speaker",
+    "name": "Aroa Casado",
+    "photo": "Aroa Casado.jpg",
+    "description": "Aroa Casado Rodríguez es doctora en Medicina e Investigación Traslacional (UB) y profesora universitaria de Anatomía Humana. Cuenta con una amplia trayectoria docente e investigadora en múltiples universidades y centros especializados, además de trabajar como asesora científica basada en la evidencia para empresas. Su investigación se centra en la anatomía funcional, primatología, anatomía comparada y enfermedades raras."
+  },
+  {
+    "id": "spk_181",
+    "exhibitor_type": "speaker",
+    "name": "Luis G. Mérida",
+    "photo": "Luis G. Merida.png",
+    "description": "Luis G. Mérida es doctor en Filosofía por la UAB y técnico superior en sistemas de telecomunicación e informáticos. Es miembro del Seminario Tecnologías Filosóficas de la UNAM. Sus principales áreas de investigación son la filosofía de la técnica, la epistemología, la metafísica y el pesimismo filosófico. Como especialista en filosofía de la técnica, se ha dedicado a la reflexión sobre los vínculos entre tecnología, pensamiento y educación. Su trabajo se ha centrado en la filosofía contemporánea, especialmente en autores como Gilbert Simondon, Bernard Stiegler o Yuk Hui. Es autor de Campos de forma. La axiomatización de la ontogénesis en Gilbert Simondon (EUG, 2023) y recientemente ha traducido y prologado Post-Europa (Mutatis Mutandis, 2025), de Yuk Hui."
   }
 ]
