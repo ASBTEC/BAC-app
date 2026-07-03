@@ -57,24 +57,25 @@ const TYPE_FILTERS: { key: FilterType; label: string; iconName: string }[] = [
   { key: 'Visita',                  label: 'Visita',                  iconName: 'park' },
 ];
 
-// PNG crop dimensions (487,0)→(1115,2200) of the original map
-const MAP_W = 628;
-const MAP_H = 2200;
+// Full map image dimensions (Plano completo.png — 1587×2245)
+// Old mapa.png was a crop of this: (487,0)→(1115,2200); x coords below are x_crop + 487
+const MAP_W = 1587;
+const MAP_H = 2245;
 const MAP_VIEWPORT_H_FALLBACK = 300;
 
 const EXTERIOR_ID  = 'Exterior de la facultat de biociencies';
 const AUDITORI_ID  = 'Auditori de Lletres';
 const AUDITORI_COLOR = '#7C3AED';
 
-// Coordinates are in the cropped PNG space (original x − 487, y unchanged)
+// Coordinates in Plano completo.png space: x = x_crop + 487, y = y_crop × (2245/2200)
 const SPACES = [
-  { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 98,  y: 160,  w: 154, h: 74,  type: 'classroom' },
-  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 99,  y: 251,  w: 390, h: 153, type: 'stand' },
-  { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x: 208, y: 473,  w: 158, h: 65,  type: 'classroom' },
-  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 313, y: 633,  w: 175, h: 111, type: 'classroom' },
-  { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 346, y: 755,  w: 232, h: 785, type: 'expo' },
-  { id: 'Catering (C0)',                label: 'Catering (C0)',                 x: 228, y: 1660, w: 154, h: 117, type: 'catering' },
-  { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x: 83,  y: 1785, w: 194, h: 162, type: 'stand' },
+  { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 585, y: 163,  w: 154, h: 75,  type: 'classroom' },
+  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 586, y: 256,  w: 390, h: 156, type: 'stand' },
+  { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x: 695, y: 483,  w: 158, h: 66,  type: 'classroom' },
+  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 800, y: 646,  w: 175, h: 113, type: 'classroom' },
+  { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 833, y: 770,  w: 232, h: 801, type: 'expo' },
+  { id: 'Catering (C0)',                label: 'Catering (C0)',                 x: 715, y: 1694, w: 154, h: 119, type: 'catering' },
+  { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x: 570, y: 1822, w: 194, h: 165, type: 'stand' },
 ] as const;
 
 const ALL_SPACES = [
@@ -301,7 +302,7 @@ export default function MapScreen() {
           <GestureDetector gesture={mapGesture}>
             <Animated.View style={[{ width: imgW, height: imgH }, mapAnimStyle]}>
               <Image
-                source={require('@/assets/images/map/mapa.png')}
+                source={require('@/assets/images/map/Plano completo.png')}
                 style={{ width: imgW, height: imgH }}
                 resizeMode="stretch"
               />
