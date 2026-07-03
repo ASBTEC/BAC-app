@@ -80,6 +80,11 @@ export default function CreditsScreen() {
               contributions: ['Beta-testing'],
             },
             {
+              name: 'David Martínez',
+              role: 'Coordinador del área de web del BAC Barcelona 2026',
+              contributions: ['Beta-testing'],
+            },
+            {
               name: 'Mònica Gutiérrez',
               role: 'Presidenta de la junta directiva de FEBIOTEC',
               contributions: [
