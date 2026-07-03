@@ -113,8 +113,13 @@ const SPACES_LLETRES: RoomSpace[] = [
   { id: 'Auditori de Lletres', label: 'Auditori de Lletres', x: 280, y: 50, w: 425, h: 375, type: 'auditori' },
 ];
 
-// Torres: no event locations yet; add entries here when events reference Torres rooms.
-const SPACES_TORRES: RoomSpace[] = [];
+// Torres: coordinates in 1587×2245 space.
+const SPACES_TORRES: RoomSpace[] = [
+  { id: 'Laboratori Docent II C5/413 y C5/433', label: 'Laboratori Docent II C5/413 y C5/433', x: 886, y: 700, w: 539, h: 105, type: 'classroom' },
+  { id: 'Aula Docent I C5b/007',                 label: 'Aula Docent I C5b/007',                 x: 173, y: 905, w: 289, h:  41, type: 'classroom' },
+  { id: 'Aula Informática PC5',                  label: 'Aula Informática PC5',                  x: 559, y: 704, w: 269, h:  45, type: 'classroom' },
+  { id: 'C3B/013',                                label: 'C3B/013',                                x: 160, y: 1317, w: 181, h:  49, type: 'classroom' },
+];
 
 const SPACES_BY_LEVEL: Record<MapLevel, RoomSpace[]> = {
   uab:         [],
@@ -127,6 +132,7 @@ const SPACES_BY_LEVEL: Record<MapLevel, RoomSpace[]> = {
 const ALL_SPACES: { id: string; label: string }[] = [
   ...SPACES_BIO,
   ...SPACES_LLETRES,
+  ...SPACES_TORRES,
   { id: EXTERIOR_ID, label: 'Exterior de la UAB' },
 ];
 
@@ -208,13 +214,17 @@ export default function MapScreen() {
   useEffect(() => {
     if (!space) return;
     // Resolve the raw location string to the room that contains it
-    const allRooms = [...SPACES_BIO, ...SPACES_LLETRES];
+    const allRooms = [...SPACES_BIO, ...SPACES_LLETRES, ...SPACES_TORRES];
     const match = allRooms.find(
       (r) => r.id === space || r.id.includes(space) || space.includes(r.id),
     );
     if (match) {
       setSelectedSpace(match.id);
-      setMapLevel(SPACES_LLETRES.some((s) => s.id === match.id) ? 'lletres' : 'biociencies');
+      setMapLevel(
+        SPACES_LLETRES.some((s) => s.id === match.id) ? 'lletres' :
+        SPACES_TORRES.some((s) => s.id === match.id) ? 'torres' :
+        'biociencies',
+      );
     } else {
       // Exterior or unknown → just show biociencies with the raw location
       setSelectedSpace(space);
@@ -471,7 +481,14 @@ export default function MapScreen() {
         </View>
       </View>
     );
-    if (mapLevel === 'torres') return null;
+    if (mapLevel === 'torres') return (
+      <View style={styles.legend}>
+        <View style={styles.legendItem}>
+          <View style={[styles.legendDot, { backgroundColor: BACColors.lightBlue }]} />
+          <Text style={[styles.legendText, { color: colors.text }]}>Aula</Text>
+        </View>
+      </View>
+    );
     // biociencies
     return (
       <View style={styles.legend}>

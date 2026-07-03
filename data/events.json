@@ -45,8 +45,8 @@
     "category": "viveBAC",
     "activity_type": "Curso",
     "start_time": "2026-07-08T17:00:00",
-    "end_time": "2026-07-08T20:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "end_time": "2026-07-08T19:30:00",
+    "local_location": "Aula Informática PC5",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_007"
@@ -64,7 +64,7 @@
     "activity_type": "Curso",
     "start_time": "2026-07-07T10:00:00",
     "end_time": "2026-07-07T13:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "local_location": "Aula Informática PC5",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_008"
@@ -298,13 +298,30 @@
   },
   {
     "id": "evt_021",
-    "title": "Curso dermocosmética y formulación galénica",
+    "title": "Curso dermocosmética y formulación galénica - Teoria",
+    "description": "El curso de dermocosmética es un curso teórico-práctico que consiste, principalmente, en la introducción al sector cosmético a los estudiantes mediante la formulación de una crema con aceite de rosa mosqueta en el laboratorio, donde los estudiantes aprenderán conceptos básicos de la formulación galénica y los controles necesarios durante la elaboración del producto, mediante una explicación teórica por parte de profesionales y profesores del máster de Cosmética y Perfumería de IQS. <br><br> El aceite de rosa mosqueta es un aceite 100% natural, extraído por prensado frio, sin proceso químico, rico en omega 3 y 6, linoleico, vitamina A, E y antioxidantes como carotenoides, los cuales otorgan muchas propiedades, como: hidratar en profundidad, regenerar piel, reducir arrugas, cicatrices y manchas estimulando la producción de colágeno, además de que otorga un aroma muy suave a la crema.",
+    "category": "viveBAC",
+    "activity_type": "Curso",
+    "start_time": "2026-07-07T16:00:00",
+    "end_time": "2026-07-07T17:00:00",
+    "local_location": "Aula Docent II C5b/009",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_036"
+    ],
+    "biotech_color": [
+      "Industrial"
+    ]
+  },
+  {
+    "id": "evt_022",
+    "title": "Curso dermocosmética y formulación galénica - Práctica",
     "description": "El curso de dermocosmética es un curso teórico-práctico que consiste, principalmente, en la introducción al sector cosmético a los estudiantes mediante la formulación de una crema con aceite de rosa mosqueta en el laboratorio, donde los estudiantes aprenderán conceptos básicos de la formulación galénica y los controles necesarios durante la elaboración del producto, mediante una explicación teórica por parte de profesionales y profesores del máster de Cosmética y Perfumería de IQS. <br><br> El aceite de rosa mosqueta es un aceite 100% natural, extraído por prensado frio, sin proceso químico, rico en omega 3 y 6, linoleico, vitamina A, E y antioxidantes como carotenoides, los cuales otorgan muchas propiedades, como: hidratar en profundidad, regenerar piel, reducir arrugas, cicatrices y manchas estimulando la producción de colágeno, además de que otorga un aroma muy suave a la crema.",
     "category": "viveBAC",
     "activity_type": "Curso",
     "start_time": "2026-07-07T17:00:00",
-    "end_time": "2026-07-07T20:00:00",
-    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "end_time": "2026-07-07T19:00:00",
+    "local_location": "Laboratori Docent II C5/413 y C5/433",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_036"
@@ -321,7 +338,7 @@
     "activity_type": "Taller",
     "start_time": "2026-07-08T17:00:00",
     "end_time": "2026-07-08T19:00:00",
-    "local_location": "Sala d'Actes (C0)",
+    "local_location": "Aula Docent I C5b/007",
     "language": "spanish",
     "biotech_color": [
       "Desarrollo profesional",
@@ -336,7 +353,7 @@
     "activity_type": "Debate",
     "start_time": "2026-07-07T18:00:00",
     "end_time": "2026-07-07T21:00:00",
-    "local_location": "Auditori de Lletres",
+    "local_location": "Exterior de la facultat de biociencies",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_178",
@@ -734,18 +751,6 @@
     "location": "https://maps.app.goo.gl/LgNAKmu6yWexbWV6A"
   },
   {
-    "id": "evt_052",
-    "title": "Visita al PRBB y el CRG",
-    "description": "Visita a cargo del Dr. Reimund Fickert, responsable de Comunicación y Relaciones Institucionales del PRBB, consiste en una presentación general del PRBB como ecosistema de investigación en ciencias de la vida y la biomedicina y un breve recorrido por las instalaciones. Todo ello con una duración de 1,5 h. A su vez se presentará una exposición sobre el CRG y su relevancia en la ciencia, así como oportunidades disponibles para los estudiantes.",
-    "category": "viveBAC",
-    "activity_type": "Visita",
-    "start_time": "2026-07-07T10:00:00",
-    "end_time": "2026-07-07T12:00:00",
-    "local_location": "Exterior de la facultat de biociencies",
-    "language": "spanish",
-    "location": "https://maps.app.goo.gl/cZHCNwrYEZWMniVRA"
-  },
-  {
     "id": "evt_053",
     "title": "Visita guiada Barcelona",
     "description": "Una visita por el centro histórico de Barcelona para conocer sus más grandes monumentos y escuchar todo lo que ciudad contal tiene por contarte. ",
@@ -783,14 +788,14 @@
     "activity_type": "Speed Meeting",
     "start_time": "2026-07-09T09:00:00",
     "end_time": "2026-07-09T11:00:00",
-    "local_location": "Sala de Graus",
+    "local_location": "C3B/013",
     "language": "spanish",
     "exhibitor_ids": [
       "spk_041",
       "spk_040",
       "spk_038",
       "spk_039",
-      "spk_042"
+      "mod_042"
     ],
     "biotech_color": [
       "Biobusiness"
@@ -962,6 +967,24 @@
     ]
   },
   {
+    "id": "evt_070",
+    "title": "Empleo Público y Oportunidades Laborales en España",
+    "description": "Descubre las principales oportunidades profesionales que ofrece el sector público español y conoce las vías de acceso a organismos de investigación e instituciones públicas. Una sesión impartida por Marcos Palomo Fernández, dirigida a estudiantes y jóvenes investigadores interesados en desarrollar su carrera profesional en España.",
+    "category": "bioBAC",
+    "activity_type": "Ponencia",
+    "start_time": "2026-07-09T17:15:00",
+    "end_time": "2026-07-09T18:00:00",
+    "local_location": "Auditori de Lletres",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "spk_050"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional"
+    ],
+    "location": "https://maps.app.goo.gl/jxydaSHJBsfFQryw6"
+  },
+  {
     "id": "evt_071",
     "title": "Cell wall signals – mediated vegetative immunity",
     "description": "En esta charla se presentarán los avances más recientes del grupo en la identificación y caracterización de oligosacáridos derivados de la pared celular vegetal capaces de activar las defensas naturales de las plantas. Estos compuestos son reconocidos por receptores específicos descubiertos por el propio grupo, lo que ha permitido desvelar nuevos mecanismos de percepción y activación de la inmunidad vegetal.\n\nAdemás, se mostrará cómo este conocimiento fundamental se está trasladando a aplicaciones prácticas para una agricultura más sostenible. En particular, se abordará el desarrollo de productos biológicos innovadores capaces de estimular las defensas de los cultivos y reducir la dependencia de fitosanitarios de síntesis química, contribuyendo así a una producción agrícola más respetuosa con el medio ambiente.",
@@ -1028,24 +1051,6 @@
     "biotech_color": [
       "Sostenibilidad"
     ]
-  },
-  {
-    "id": "evt_070",
-    "title": "Empleo Público y Oportunidades Laborales en España",
-    "description": "Descubre las principales oportunidades profesionales que ofrece el sector público español y conoce las vías de acceso a organismos de investigación e instituciones públicas. Una sesión impartida por Marcos Palomo Fernández, dirigida a estudiantes y jóvenes investigadores interesados en desarrollar su carrera profesional en España.",
-    "category": "bioBAC",
-    "activity_type": "Ponencia",
-    "start_time": "2026-07-09T17:15:00",
-    "end_time": "2026-07-09T18:00:00",
-    "local_location": "Auditori de Lletres",
-    "language": "spanish",
-    "exhibitor_ids": [
-      "spk_050"
-    ],
-    "biotech_color": [
-      "Desarrollo profesional"
-    ],
-    "location": "https://maps.app.goo.gl/jxydaSHJBsfFQryw6"
   },
   {
     "id": "evt_075",
