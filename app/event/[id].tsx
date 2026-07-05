@@ -25,6 +25,7 @@ import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
 import { useData } from '@/context/data-context';
 import { Event, EventCategory, Exhibitor } from '@/types';
+import { idPrefix, ROLE_GROUP_LABEL, ROLE_ORDER } from '@/utils/exhibitorRoles';
 import { formatDateRange, formatTimeSlot, getTemporalStatus } from '@/utils/temporal';
 
 const CATEGORY_LOGOS: Partial<Record<EventCategory, React.FC<SvgProps>>> = {
@@ -181,26 +182,16 @@ export default function EventDetailScreen() {
 
       {/* Exhibitors — grouped by ID prefix */}
       {exhibitors.length > 0 && (() => {
-        const PREFIX_LABEL: Record<string, string> = {
-          mi:  'Mesa inaugural',
-          mc:  'Mesa clausura',
-          ch:  'Comité de Honor',
-          cc:  'Comité Científico',
-          spk: 'Ponentes',
-          biz: 'Colaboradores',
-          org: 'Organizadores',
-        };
-        const ORDER = ['mi', 'mc', 'ch', 'cc', 'spk', 'biz', 'org'];
         const groups: Record<string, Exhibitor[]> = {};
         for (const ex of exhibitors) {
-          const prefix = ex.id.replace(/_.*/, '');
-          const key = ORDER.includes(prefix) ? prefix : 'org';
+          const prefix = idPrefix(ex.id);
+          const key = ROLE_ORDER.includes(prefix) ? prefix : 'org';
           (groups[key] ??= []).push(ex);
         }
-        return ORDER.filter((p) => groups[p]?.length).map((prefix) => (
+        return ROLE_ORDER.filter((p) => groups[p]?.length).map((prefix) => (
           <View key={prefix} style={styles.exhibitorSection}>
             <Text style={[styles.sectionTitle, { color: BACColors.navyDark }]}>
-              {PREFIX_LABEL[prefix]}
+              {ROLE_GROUP_LABEL[prefix]}
             </Text>
             {groups[prefix].map((ex) => (
               <ExhibitorCard key={ex.id} exhibitor={ex} />

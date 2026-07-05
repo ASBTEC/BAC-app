@@ -6,6 +6,7 @@ import { getExhibitorPhoto } from '@/constants/exhibitorPhotos';
 import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Exhibitor } from '@/types';
+import { ENTITY_PREFIXES, idPrefix, ROLE_LABEL } from '@/utils/exhibitorRoles';
 
 interface Props {
   exhibitor: Exhibitor;
@@ -17,6 +18,9 @@ export function ExhibitorCard({ exhibitor }: Props) {
   const colors = Colors[scheme];
   const photo = getExhibitorPhoto(exhibitor.id, scheme);
   const isBusiness = exhibitor.exhibitor_type === 'business';
+  const prefix = idPrefix(exhibitor.id);
+  const isEntity = ENTITY_PREFIXES.has(prefix);
+  const roleLabel = ROLE_LABEL[prefix] ?? (isBusiness ? 'Colaborador' : 'Ponente');
 
   let avatarContent: React.ReactNode;
   if (photo) {
@@ -53,9 +57,9 @@ export function ExhibitorCard({ exhibitor }: Props) {
         </View>
 
         <View style={styles.tagRow}>
-          <View style={[styles.typeBadge, { backgroundColor: isBusiness ? BACColors.navyDark + '22' : BACColors.teal + '22', borderColor: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
-            <Text style={[styles.typeLabel, { color: isBusiness ? BACColors.navyDark : BACColors.teal }]}>
-              {isBusiness ? 'Colaborador' : 'Ponente'}
+          <View style={[styles.typeBadge, { backgroundColor: isEntity ? BACColors.navyDark + '22' : BACColors.teal + '22', borderColor: isEntity ? BACColors.navyDark : BACColors.teal }]}>
+            <Text style={[styles.typeLabel, { color: isEntity ? BACColors.navyDark : BACColors.teal }]}>
+              {roleLabel}
             </Text>
           </View>
         </View>

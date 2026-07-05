@@ -13,6 +13,7 @@ import { BACColors, Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useData } from '@/context/data-context';
 import { Exhibitor } from '@/types';
+import { ENTITY_PREFIXES, idPrefix, PERSON_PREFIXES } from '@/utils/exhibitorRoles';
 
 // ─── Filter definitions ──────────────────────────────────────────────────────
 
@@ -38,13 +39,6 @@ const ENTITY_ROLE_OPTIONS: FilterOption[] = [
 ];
 
 const ALL_ROLE_OPTIONS: FilterOption[] = [...PERSON_ROLE_OPTIONS, ...ENTITY_ROLE_OPTIONS];
-
-const PERSON_PREFIXES = new Set(['spk', 'cc', 'ch', 'mc', 'mi']);
-const ENTITY_PREFIXES = new Set(['biz', 'org']);
-
-function idPrefix(id: string): string {
-  return id.match(/^[a-zA-Z]+/)?.[0]?.toLowerCase() ?? '';
-}
 
 // ─── Sorting ─────────────────────────────────────────────────────────────────
 

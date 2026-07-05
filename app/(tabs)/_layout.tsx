@@ -71,7 +71,7 @@ function TabLayoutInner() {
         <Tabs.Screen
           name="sponsors"
           options={{
-            title: 'Colaboradores y Ponentes',
+            title: 'Participantes',
             tabBarLabel: 'Participantes',
             tabBarIcon: ({ color }) => <MaterialIcons name="people" size={24} color={color} />,
           }}
