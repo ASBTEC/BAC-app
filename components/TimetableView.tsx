@@ -346,10 +346,10 @@ export function TimetableView({
             // Each text row uses lineHeight:9 + marginTop:1 ≈ 9px budget here.
             let rem = contentH - 28;
             const showExhibitors = names.length > 0 && rem >= 9; if (showExhibitors) rem -= 9;
+            const showLocation = rem >= 9; if (showLocation) rem -= 9;
             const showType     = rem >= 9; if (showType) rem -= 9;
             const showBiotech  = hasBiotech && rem >= 8; if (showBiotech) rem -= 8;
             const showCategory = rem >= 9; if (showCategory) rem -= 9;
-            const showLocation = rem >= 9; if (showLocation) rem -= 9;
             // Title takes remaining space (at least 2 lines, at most 8)
             const titleLines = Math.max(2, Math.min(8, Math.floor((28 + rem) / 14)));
 
@@ -376,6 +376,11 @@ export function TimetableView({
                     {names}
                   </Text>
                 ) : null}
+                {showLocation && item.event.local_location ? (
+                  <Text style={styles.blockMeta} numberOfLines={1}>
+                    {item.event.local_location}
+                  </Text>
+                ) : null}
                 {showType && item.event.activity_type ? (
                   <Text style={styles.blockMeta} numberOfLines={1}>
                     {item.event.activity_type}
@@ -394,11 +399,6 @@ export function TimetableView({
                 {showCategory ? (
                   <Text style={styles.blockMeta} numberOfLines={1}>
                     {item.event.category}
-                  </Text>
-                ) : null}
-                {showLocation && item.event.local_location ? (
-                  <Text style={styles.blockMeta} numberOfLines={1}>
-                    {item.event.local_location}
                   </Text>
                 ) : null}
                 <Pressable
