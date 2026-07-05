@@ -75,7 +75,7 @@ type MapConfig = {
 const MAP_CONFIGS: Record<MapLevel, MapConfig> = {
   uab:         { w: 1229, h:  864, source: require('@/assets/images/map/uab.png'),         parent: null,        label: 'Campus UAB',          title: 'CAMPUS — UNIVERSITAT AUTÒNOMA DE BARCELONA' },
   facultats:   { w: 1365, h:  768, source: require('@/assets/images/map/facultats.png'),   parent: 'uab',       label: 'Facultats',           title: 'FACULTATS DEL CONGRESO — UAB' },
-  biociencies: { w: 1587, h: 2245, source: require('@/assets/images/map/biociencies.png'), parent: 'facultats', label: 'Fac. Biociències',    title: 'FACULTAD DE BIOCIENCIAS — UAB' },
+  biociencies: { w: 2023, h: 3388, source: require('@/assets/images/map/biociencies.png'), parent: 'facultats', label: 'Fac. Biociències',    title: 'FACULTAD DE BIOCIENCIAS — UAB' },
   lletres:     { w: 1587, h: 2245, source: require('@/assets/images/map/lletres.png'),     parent: 'facultats', label: 'Fac. Lletres',        title: 'FACULTAD DE FILOSOFIA I LLETRES — UAB' },
   torres:      { w: 1587, h: 2245, source: require('@/assets/images/map/torres.png'),      parent: 'facultats', label: 'Torres C',            title: 'TORRES C (BIOCIENCIAS) — UAB' },
 };
@@ -99,13 +99,13 @@ const FACULTATS_HOTSPOTS: Hotspot[] = [
 type RoomSpace = { id: string; label: string; x: number; y: number; w: number; h: number; type: string };
 
 const SPACES_BIO: RoomSpace[] = [
-  { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x: 585, y:  163, w: 154, h:  75, type: 'classroom' },
-  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x: 586, y:  256, w: 390, h: 156, type: 'stand' },
-  { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x: 695, y:  483, w: 158, h:  66, type: 'classroom' },
-  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 800, y:  646, w: 175, h: 113, type: 'classroom' },
-  { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 833, y:  770, w: 232, h: 801, type: 'expo' },
-  { id: 'Catering (C0)',                label: 'Catering (C0)',                 x: 715, y: 1694, w: 154, h: 119, type: 'catering' },
-  { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x: 570, y: 1822, w: 194, h: 165, type: 'stand' },
+  { id: 'Sala de Graus',                 label: 'Sala de Graus',                 x:  703, y:  270, w: 271, h:  127, type: 'classroom' },
+  { id: 'Espacio BusinessBAC (C1)',      label: 'Espacio BusinessBAC (C1)',       x:  705, y:  415, w: 689, h:  243, type: 'stand' },
+  { id: "Sala d'Actes (C0)",            label: "Sala d'Actes (C0)",             x:  855, y:  749, w: 277, h:  133, type: 'classroom' },
+  { id: 'Aula PEP Vendrell (C0/1434.)', label: 'Aula PEP Vendrell (C0/1434.)',  x: 1039, y: 1023, w: 273, h:  176, type: 'classroom' },
+  { id: 'Pasillo ExpoBAC (C2-C1)',      label: 'Pasillo ExpoBAC',               x: 1091, y: 1216, w: 362, h: 1248, type: 'expo' },
+  { id: 'Catering (C0)',                label: 'Catering (C0)',                 x:  906, y: 2596, w: 241, h:  185, type: 'catering' },
+  { id: 'Espacio BusinessBAC (C2)',     label: 'Espacio BusinessBAC (C2)',      x:  680, y: 2856, w: 303, h:  257, type: 'stand' },
 ];
 
 // Lletres: Auditori is the only current event location. Coordinates in 1587×2245 space.
