@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Rect as SvgRect, Text as SvgText } from 'react-native-svg';
 import {
   FlatList,
@@ -236,6 +236,12 @@ export default function MapScreen() {
   const imgW = screenWidth - 48;
   const imgH = imgW * (mapCfg.h / mapCfg.w);
 
+  // Drill-down hotspots + room overlays for the current level (also used for tap hit-testing below).
+  const hotspots: Hotspot[] =
+    mapLevel === 'uab' ? UAB_HOTSPOTS :
+    mapLevel === 'facultats' ? FACULTATS_HOTSPOTS : [];
+  const roomSpaces = SPACES_BY_LEVEL[mapLevel];
+
   const imgWShared = useSharedValue(imgW);
   const imgHShared = useSharedValue(imgH);
   const viewportH = useSharedValue(MAP_VIEWPORT_H_FALLBACK);
@@ -300,7 +306,37 @@ export default function MapScreen() {
       savedY.value = translateY.value;
     });
 
-  const mapGesture = Gesture.Simultaneous(pinchGesture, panGesture);
+  // Tap hit-testing is driven through gesture-handler (not react-native-svg's own
+  // onPress) because on real Android devices RNGH intercepts the native touch
+  // stream before SVG's touch-responder path sees it — onPress on SvgRect/SvgText
+  // only fires on web/iOS/emulators, never on a physical Android device.
+  const handleMapTap = (localX: number, localY: number) => {
+    const scaleFactor = mapCfg.w / imgW;
+    const hitX = localX * scaleFactor;
+    const hitY = localY * scaleFactor;
+
+    const hotspot = hotspots.find(
+      (hs) => hitX >= hs.x && hitX <= hs.x + hs.w && hitY >= hs.y && hitY <= hs.y + hs.h,
+    );
+    if (hotspot) {
+      setSelectedSpace(null);
+      setMapLevel(hotspot.target);
+      return;
+    }
+
+    const room = roomSpaces.find(
+      (r) => hitX >= r.x && hitX <= r.x + r.w && hitY >= r.y && hitY <= r.y + r.h,
+    );
+    if (room) {
+      setSelectedSpace((prev) => (prev === room.id ? null : room.id));
+    }
+  };
+
+  const tapGesture = Gesture.Tap().onEnd((e) => {
+    runOnJS(handleMapTap)(e.x, e.y);
+  });
+
+  const mapGesture = Gesture.Simultaneous(pinchGesture, panGesture, tapGesture);
 
   const handleZoom = (factor: number) => {
     const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, savedScale.value * factor));
@@ -363,12 +399,6 @@ export default function MapScreen() {
 
   // ── Map SVG overlays (hotspots + room rects) ───────────────────────────────
 
-  const hotspots: Hotspot[] =
-    mapLevel === 'uab' ? UAB_HOTSPOTS :
-    mapLevel === 'facultats' ? FACULTATS_HOTSPOTS : [];
-
-  const roomSpaces = SPACES_BY_LEVEL[mapLevel];
-
   const svgOverlay = (
     <Svg
       viewBox={`0 0 ${mapCfg.w} ${mapCfg.h}`}
@@ -389,7 +419,6 @@ export default function MapScreen() {
             stroke={hs.color}
             strokeWidth={4}
             strokeDasharray="12,8"
-            onPress={() => navigateTo(hs.target)}
           />
           <SvgText
             x={hs.x + hs.w / 2}
@@ -399,7 +428,6 @@ export default function MapScreen() {
             fill={hs.color}
             textAnchor="middle"
             alignmentBaseline="middle"
-            onPress={() => navigateTo(hs.target)}
           >
             {hs.label}
           </SvgText>
@@ -421,7 +449,6 @@ export default function MapScreen() {
             fill={sel ? color + 'bb' : color + '44'}
             stroke={sel ? BACColors.teal : BACColors.navyDark + '88'}
             strokeWidth={sel ? 4 : 2}
-            onPress={() => setSelectedSpace(room.id === selectedSpace ? null : room.id)}
           />
         );
       })}
