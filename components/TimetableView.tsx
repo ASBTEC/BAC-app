@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { CategoryColors, BACColors, Colors, TrackColors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Event } from '@/types';
+import { Event, Exhibitor } from '@/types';
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
@@ -44,6 +44,7 @@ interface LayoutItem {
 
 export interface TimetableViewProps {
   events: Event[];
+  exhibitors?: Exhibitor[];
   now?: Date;
   isSaved: (id: string) => boolean;
   onToggleSave: (id: string) => void;
@@ -193,6 +194,7 @@ function layoutDayEvents(events: Event[], dateStr: string): LayoutItem[] {
 
 export function TimetableView({
   events,
+  exhibitors = [],
   now = new Date(),
   isSaved,
   onToggleSave,
@@ -203,6 +205,18 @@ export function TimetableView({
   const scheme = useColorScheme() ?? 'light';
   const colors = Colors[scheme];
   const { width: screenWidth } = useWindowDimensions();
+
+  const exhibitorsById = useMemo(() => {
+    const map = new Map<string, Exhibitor>();
+    for (const ex of exhibitors) map.set(ex.id, ex);
+    return map;
+  }, [exhibitors]);
+
+  const exhibitorNames = (event: Event): string =>
+    (event.exhibitor_ids ?? [])
+      .map((id) => exhibitorsById.get(id)?.name)
+      .filter((name): name is string => Boolean(name))
+      .join(', ');
   // Auto-select the current congress day; fall back to the first day
   const initialDay = useMemo(() => {
     const today = now.toISOString().slice(0, 10);
@@ -327,9 +341,11 @@ export function TimetableView({
             // Available vertical content space (paddingTop=3, height-2 rendered)
             const contentH = item.height - 5;
             const hasBiotech = (item.event.biotech_color?.length ?? 0) > 0;
+            const names = exhibitorNames(item.event);
             // Allocate metadata greedily after 2 reserved title lines (28px).
             // Each text row uses lineHeight:9 + marginTop:1 ≈ 9px budget here.
             let rem = contentH - 28;
+            const showExhibitors = names.length > 0 && rem >= 9; if (showExhibitors) rem -= 9;
             const showType     = rem >= 9; if (showType) rem -= 9;
             const showBiotech  = hasBiotech && rem >= 8; if (showBiotech) rem -= 8;
             const showCategory = rem >= 9; if (showCategory) rem -= 9;
@@ -355,6 +371,11 @@ export function TimetableView({
                 <Text style={styles.blockTitle} numberOfLines={titleLines}>
                   {item.event.title}
                 </Text>
+                {showExhibitors ? (
+                  <Text style={styles.blockExhibitors} numberOfLines={1}>
+                    {names}
+                  </Text>
+                ) : null}
                 {showType && item.event.activity_type ? (
                   <Text style={styles.blockMeta} numberOfLines={1}>
                     {item.event.activity_type}
@@ -517,6 +538,13 @@ const styles = StyleSheet.create({
   blockMeta: {
     color: 'rgba(255,255,255,0.85)',
     fontSize: 9,
+    lineHeight: 9,
+    marginTop: 1,
+  },
+  blockExhibitors: {
+    color: 'rgba(255,255,255,0.85)',
+    fontSize: 9,
+    fontStyle: 'italic',
     lineHeight: 9,
     marginTop: 1,
   },

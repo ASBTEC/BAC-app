@@ -724,6 +724,7 @@ export default function MapScreen() {
       ) : (
         <TimetableView
           events={filteredEvents}
+          exhibitors={exhibitors}
           isSaved={isSaved}
           onToggleSave={handleToggleSave}
           header={<>{mapSection}{spaceHeader}{filterHeader}</>}

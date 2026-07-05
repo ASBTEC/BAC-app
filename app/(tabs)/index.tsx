@@ -287,6 +287,7 @@ export default function HomeScreen() {
         ) : (
           <TimetableView
             events={filteredEvents}
+            exhibitors={exhibitors}
             now={now}
             isSaved={isSaved}
             onToggleSave={handleToggleSave}

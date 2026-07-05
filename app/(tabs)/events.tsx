@@ -203,6 +203,7 @@ export default function EventsScreen() {
       ) : (
         <TimetableView
           events={filteredEvents}
+          exhibitors={exhibitors}
           isSaved={isSaved}
           onToggleSave={handleToggleSave}
           header={filterHeader}

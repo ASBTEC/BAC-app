@@ -226,6 +226,7 @@ export default function ScheduleScreen() {
         ) : (
           <TimetableView
             events={savedEvents}
+            exhibitors={exhibitors}
             now={now}
             isSaved={isSaved}
             onToggleSave={handleToggleSave}
