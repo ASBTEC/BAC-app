@@ -10,6 +10,7 @@ import { useNotifications } from '@/hooks/use-notifications';
 import { useSchedule } from '@/hooks/use-schedule';
 import { useData } from '@/context/data-context';
 import { Event, Exhibitor } from '@/types';
+import { ENTITY_PREFIXES, idPrefix, ROLE_LABEL } from '@/utils/exhibitorRoles';
 
 function getExhibitorsForEvent(event: Event, exhibitors: Exhibitor[]): Exhibitor[] {
   if (!event.exhibitor_ids) return [];
@@ -62,6 +63,9 @@ export default function ExhibitorDetailScreen() {
   const photo = getExhibitorPhoto(exhibitor.id, scheme);
   const isBusiness = exhibitor.exhibitor_type === 'business';
   const isImagePhoto = photo && typeof photo !== 'function';
+  const prefix = idPrefix(exhibitor.id);
+  const isEntity = ENTITY_PREFIXES.has(prefix);
+  const roleLabel = ROLE_LABEL[prefix] ?? (isBusiness ? 'Colaborador' : 'Ponente');
 
   let heroAvatarContent: React.ReactNode;
   if (photo) {
@@ -99,9 +103,9 @@ export default function ExhibitorDetailScreen() {
         <Text style={styles.heroName}>{exhibitor.name}</Text>
 
         <View style={styles.heroTags}>
-          <View style={[styles.typeBadge, { backgroundColor: exhibitor.exhibitor_type === 'speaker' ? BACColors.teal : BACColors.amber }]}>
+          <View style={[styles.typeBadge, { backgroundColor: isEntity ? BACColors.amber : BACColors.teal }]}>
             <Text style={styles.typeBadgeText}>
-              {exhibitor.exhibitor_type === 'speaker' ? 'Ponente' : 'Colaborador'}
+              {roleLabel}
             </Text>
           </View>
         </View>
