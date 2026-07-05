@@ -41,7 +41,7 @@ export function ExhibitorCard({ exhibitor }: Props) {
       style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}
       onPress={() => router.push(`/exhibitor/${exhibitor.id}` as never)}>
       {/* Avatar */}
-      <View style={[styles.avatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 6 : 24 }]}>
+      <View style={[styles.avatar, { backgroundColor: photo ? '#fff' : BACColors.lightBlue, borderRadius: isBusiness ? 6 : 24 }]}>
         {avatarContent}
       </View>
 

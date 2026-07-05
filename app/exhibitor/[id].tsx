@@ -87,7 +87,7 @@ export default function ExhibitorDetailScreen() {
       <View style={[styles.hero, { backgroundColor: BACColors.navyDark }]}>
         {isImagePhoto ? (
           <Pressable
-            style={[styles.heroAvatar, { backgroundColor: BACColors.lightBlue, borderRadius: isBusiness ? 12 : 70 }]}
+            style={[styles.heroAvatar, { backgroundColor: '#fff', borderRadius: isBusiness ? 12 : 70 }]}
             onPress={() => setPhotoVisible(true)}>
             {heroAvatarContent}
           </Pressable>
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   eventsHeader: { paddingHorizontal: 20, paddingTop: 20, paddingBottom: 4 },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: BACColors.lightBlue,
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
   },
