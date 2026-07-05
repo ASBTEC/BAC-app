@@ -2,13 +2,16 @@
 <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.22 455.94">
   <defs>
     <style>
-      .cls-1, .cls-2 {
-        fill: #fff;
-        stroke: #2c4e62;
+      .cls-1 {
+        fill: #000;
+        stroke: #000;
         stroke-miterlimit: 10;
       }
 
       .cls-2 {
+        fill: #000;
+        stroke: #000;
+        stroke-miterlimit: 10;
         font-family: Orbitron-Black, Orbitron;
         font-size: 59.85px;
         font-weight: 800;
