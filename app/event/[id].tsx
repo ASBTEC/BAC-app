@@ -136,7 +136,7 @@ export default function EventDetailScreen() {
               </View>
               {CategoryLogo && (
                 <View style={styles.categoryLogoWrap}>
-                  <CategoryLogo width={140} height={75} />
+                  <CategoryLogo width={64} height={64} />
                 </View>
               )}
             </View>
@@ -236,10 +236,12 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   categoryLogoWrap: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
     backgroundColor: '#fff',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   dateTimeStack: { gap: 4 },
   date: { color: BACColors.lightBlue, fontSize: 13, fontWeight: '600' },
