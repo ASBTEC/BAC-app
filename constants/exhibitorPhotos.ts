@@ -38,7 +38,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'spk_024': require('@/assets/images/exhibitors/speakers/laure burtin.jpeg'),
   'spk_025': require('@/assets/images/exhibitors/speakers/luis ruiz-avila.png'),
   'spk_026': require('@/assets/images/exhibitors/speakers/marta figa.jpg'),
-  'spk_027': require('@/assets/images/exhibitors/SIN_FOTO.png'), // ignasi iglesias.png missing from assets
+  'spk_027': require('@/assets/images/exhibitors/speakers/ignasi iglesias.png'),
   'spk_028': require('@/assets/images/exhibitors/speakers/julia garcia.jpg'),
   'spk_029': require('@/assets/images/exhibitors/speakers/david baker.jpg'),
   'spk_030': require('@/assets/images/exhibitors/speakers/mariona.jpg'),
@@ -63,6 +63,8 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'spk_179': require('@/assets/images/exhibitors/speakers/Marco Mariotti.png'),
   'spk_180': require('@/assets/images/exhibitors/speakers/Aroa Casado.jpg'),
   'spk_181': require('@/assets/images/exhibitors/speakers/Luis G. Merida.png'),
+  'spk_202': require('@/assets/images/exhibitors/speakers/Foto_Cinta.jpg.jpeg'),
+  'spk_203': require('@/assets/images/exhibitors/speakers/rebecca.jpg'),
   'cc_001': require('@/assets/images/exhibitors/speakers/Eliana Carolina Bianucci Ovando.jpg'),
   'cc_002': require('@/assets/images/exhibitors/speakers/Jordi Saldo.jpg'),
   'cc_003': require('@/assets/images/exhibitors/speakers/Antonio Jose Trujillo.png'),
