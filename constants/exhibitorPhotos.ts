@@ -90,6 +90,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'mi_01': require('@/assets/images/exhibitors/speakers/alba_tomas.jpg'),
   'mi_02': require('@/assets/images/exhibitors/speakers/Javier_Lafuente.jpeg'),
   'mi_03': require('@/assets/images/exhibitors/speakers/eva-ortega-paino.jpg'),
+  'mi_04': require('@/assets/images/exhibitors/speakers/rafa_serrano.jpeg'),
   // New speakers
   'spk_049': require('@/assets/images/exhibitors/SIN_FOTO.png'),
   'spk_050': require('@/assets/images/exhibitors/speakers/MarcosPalomo.jpg'),
