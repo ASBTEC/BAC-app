@@ -755,14 +755,14 @@
   {
     "id": "evt_053",
     "title": "Visita guiada Barcelona",
-    "description": "Una visita por el centro histórico de Barcelona para conocer sus más grandes monumentos y escuchar todo lo que ciudad contal tiene por contarte. ",
+    "description": "El autobús es verde! Una visita por el centro histórico de Barcelona para conocer sus más grandes monumentos y escuchar todo lo que ciudad contal tiene por contarte. ",
     "category": "viveBAC",
     "activity_type": "Visita",
     "start_time": "2026-07-08T16:00:00",
     "end_time": "2026-07-08T21:45:00",
     "local_location": "Exterior de la facultat de biociencies",
     "language": "spanish",
-    "location": "https://maps.app.goo.gl/f7k2D6F59yDwiCmj8"
+    "location": "https://maps.app.goo.gl/VMK6eKToooACJQTFA"
   },
   {
     "id": "evt_054",
@@ -806,14 +806,14 @@
   {
     "id": "evt_056",
     "title": "Visita científica por Barcelona Ramón y Cajal",
-    "description": "Una visita por los rincones icónicos en donde la ciencia tuvo sus más grandes hitos en la capital catalana.",
+    "description": "El autobús es verde! Una visita por los rincones icónicos en donde la ciencia tuvo sus más grandes hitos en la capital catalana.",
     "category": "viveBAC",
     "activity_type": "Visita",
     "start_time": "2026-07-08T16:00:00",
     "end_time": "2026-07-08T21:30:00",
     "local_location": "Exterior de la facultat de biociencies",
     "language": "spanish",
-    "location": "https://maps.app.goo.gl/f7k2D6F59yDwiCmj8"
+    "location": "https://maps.app.goo.gl/VMK6eKToooACJQTFA"
   },
   {
     "id": "evt_057",
