@@ -967,6 +967,58 @@
       "Biobusiness"
     ]
   },
+    {
+    "id": "evt_369",
+    "title": "Comunicaciones Orales — Estudios de grado y máster",
+    "description": "Exposición de trabajos en formato presentación oral de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán escuchar breves exposiciones orales de 10 minutos preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El evento està organizado para dar cabida a 12 comunicaciones orales divididas por area temàtica en 3 aulas distintas. Dentro de cada aula, 4 participantes constaran de 10 minutos para exponer sus trabajos más su respectivo turno de preguntas. ",
+    "category": "expoBAC",
+    "activity_type": "Presentación flash",
+    "start_time": "2026-07-09T11:00:00",
+    "end_time": "2026-07-09T12:00:00",
+    "local_location": "Sala de Graus",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "cc_001",
+      "cc_002",
+      "cc_003",
+      "cc_004",
+      "cc_005",
+      "cc_006",
+      "cc_007",
+      "cc_008",
+      "cc_009"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional",
+      "Biobusiness"
+    ]
+  },
+    {
+    "id": "evt_469",
+    "title": "Comunicaciones Orales — Estudios de grado y máster",
+    "description": "Exposición de trabajos en formato presentación oral de los participantes del conscurso de ExpoBAC. En esta sección los asistentes podrán escuchar breves exposiciones orales de 10 minutos preparadas por los participantes sobre sus Trabajos de Fin de Grado, Trabajos de Fin de Máster y otros proyectos de investigación realizados en etapas previas al doctorado así como trabajos de investigadores en etapas de doctorado y posteriores, u otros proyectos realizados fuera del ámbito académico que tengan especial relevancia en la biotecnología. El evento està organizado para dar cabida a 12 comunicaciones orales divididas por area temàtica en 3 aulas distintas. Dentro de cada aula, 4 participantes constaran de 10 minutos para exponer sus trabajos más su respectivo turno de preguntas. ",
+    "category": "expoBAC",
+    "activity_type": "Presentación flash",
+    "start_time": "2026-07-09T11:00:00",
+    "end_time": "2026-07-09T12:00:00",
+    "local_location": "Aula PEP Vendrell (C0/1434.)",
+    "language": "spanish",
+    "exhibitor_ids": [
+      "cc_001",
+      "cc_002",
+      "cc_003",
+      "cc_004",
+      "cc_005",
+      "cc_006",
+      "cc_007",
+      "cc_008",
+      "cc_009"
+    ],
+    "biotech_color": [
+      "Desarrollo profesional",
+      "Biobusiness"
+    ]
+  },
   {
     "id": "evt_070",
     "title": "Empleo Público y Oportunidades Laborales en España",
