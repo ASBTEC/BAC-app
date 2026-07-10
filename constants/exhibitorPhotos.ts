@@ -86,6 +86,7 @@ export const EXHIBITOR_PHOTOS: Record<string, ReturnType<typeof require>> = {
   'mc_01': require('@/assets/images/exhibitors/speakers/JuananCastro.png'),
   'mc_02': require('@/assets/images/exhibitors/speakers/teresa-sanchis.webp'),
   'mc_03': require('@/assets/images/exhibitors/speakers/monicagutierrez.jpg'),
+  'mc_04': require('@/assets/images/exhibitors/SIN_FOTO.png'),
   // Mesa Inaugural
   'mi_01': require('@/assets/images/exhibitors/speakers/alba_tomas.jpg'),
   'mi_02': require('@/assets/images/exhibitors/speakers/Javier_Lafuente.jpeg'),
